@@ -5,7 +5,7 @@
  */
 package ciclodeinstruccion;
 
-import ciclodeinstruccion.Usuarios.Usuarios;
+import ciclodeinstruccion.Usuarios.Usuario;
 import java.util.ArrayList;
 
 /**
@@ -20,9 +20,10 @@ public class Ciclodeinstruccion {
     public static void main(String[] args) {
         // TODO code application logic hereqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
         
-        ArrayList <Usuarios> usuarios = new ArrayList <Usuarios>();
+        ArrayList <Usuario> usuarios = new ArrayList <Usuario>();
         ArrayList <Personaje> personajes = new ArrayList <Personaje>();
-        
+        ArrayList <Partida> partidas = new ArrayList <Partida>();
+        ArrayList <MiPersonaje> misPersonajes = new ArrayList <MiPersonaje>();
         
         
     }

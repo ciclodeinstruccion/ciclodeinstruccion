@@ -2,18 +2,25 @@
 package ciclodeinstruccion.Usuarios;
 
 
-public class Usuarios {
+public class Usuario {
     
     private String nombre;
     private String correo;
     private String contraseña;
 
-    public Usuarios(String nombre, String correo, String contraseña) {
+    public Usuario(String nombre, String correo, String contraseña) {
         this.nombre = nombre;
         this.correo = correo;
         this.contraseña = contraseña;
     }
 
+    public void mostrarDatos(){
+        System.out.println(nombre);
+        System.out.println(correo);
+        System.out.println(contraseña);
+    }
+        
+    
     public String getNombre() {
         return nombre;
     }
