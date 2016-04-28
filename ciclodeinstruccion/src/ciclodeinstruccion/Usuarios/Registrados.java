@@ -44,10 +44,15 @@ public class Registrados extends Usuarios{
         
     }
     
-    public void modificar
+    public void modificarInteligencia(){
+        
+    }
     
+    public void comprarPersonaje(){
+        
+    }
     
-    
+    public void mejorarPersonaje(Personaje p )
     
     public float getHorasJugadas() {
         return horasJugadas;
