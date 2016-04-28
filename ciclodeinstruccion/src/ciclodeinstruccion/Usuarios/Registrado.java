@@ -5,11 +5,15 @@
  */
 package ciclodeinstruccion.Usuarios;
 
+import ciclodeinstruccion.MiPersonaje;
+import ciclodeinstruccion.Personaje;
+import java.util.ArrayList;
+
 /**
  *
  * @author alumno
  */
-public class Registrados extends Usuarios{
+public class Registrado extends Usuario{
     
     private float horasJugadas;
     private int nivel;
@@ -19,8 +23,10 @@ public class Registrados extends Usuarios{
     private int fuerza;
     private int especial;
     private int inteligencia;
+    private final int EXPERIENCIA_NECESARIA=1000;
+    private int puntosNivel;
 
-    public Registrados(float horasJugadas, int nivel, int oro, int experiencia, int vitalidad, int fuerza, int especial, int inteligencia, String nombre, String correo, String contraseña) {
+    public Registrado(float horasJugadas, int nivel, int oro, int experiencia, int vitalidad, int fuerza, int especial, int inteligencia, int puntosNivel, String nombre, String correo, String contraseña) {
         super(nombre, correo, contraseña);
         this.horasJugadas = horasJugadas;
         this.nivel = nivel;
@@ -30,30 +36,36 @@ public class Registrados extends Usuarios{
         this.fuerza = fuerza;
         this.especial = especial;
         this.inteligencia = inteligencia;
+        this.puntosNivel = puntosNivel;
     }
 
     public void modificarVitalidad(){
         
+        this.vitalidad++;
+        this.gastarPuntos();
     }
     
     public void modificarFuerza(){
         
+        this.fuerza++;
+        this.gastarPuntos();
     }
     
     public void modificarEspecial(){
         
+        this.especial++;
+        this.gastarPuntos();
     }
     
     public void modificarInteligencia(){
         
+        this.inteligencia++;
+        this.gastarPuntos();
     }
     
-    public void comprarPersonaje(){
+    public void comprarPersonaje(MiPersonaje p, ArrayList <MiPersonaje> misPersonajes){
         
-    }
-    
-    public void mejorarPersonaje(Personaje p ){
-        
+        misPersonajes.add(p);
     }
     
     public void verHistorialDePartidas(listaDePartidas){
@@ -64,9 +76,25 @@ public class Registrados extends Usuarios{
         
     }
     
-    public void subirNivel(){
+    public void gastarPuntos(){
+        puntosNivel--;
+    }
+    
+    public void aumentarExperiencia(int sumaExperiencia){
+        
+        experiencia+=sumaExperiencia;
+        if (experiencia>=EXPERIENCIA_NECESARIA*nivel){
+            experiencia = experiencia - EXPERIENCIA_NECESARIA * nivel;
+            this.subirNivel();
+        }
         
     }
+    
+    public void subirNivel(){
+        nivel++;
+        puntosNivel++;
+    }
+    
     public float getHorasJugadas() {
         return horasJugadas;
     }
