@@ -52,8 +52,21 @@ public class Registrados extends Usuarios{
         
     }
     
-    public void mejorarPersonaje(Personaje p )
+    public void mejorarPersonaje(Personaje p ){
+        
+    }
     
+    public void verHistorialDePartidas(listaDePartidas){
+        
+    }
+    
+    public void verRepeticion (listaDePartidas){
+        
+    }
+    
+    public void subirNivel(){
+        
+    }
     public float getHorasJugadas() {
         return horasJugadas;
     }
