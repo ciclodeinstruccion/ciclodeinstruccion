@@ -9,20 +9,16 @@ package ciclodeinstruccion;
  *
  * @author alumno
  */
-public class Personaje {
+public abstract class Personaje {
     private String nombre;
     private float vida;
     private float daño;
-    private int nivel;
-    private int experiencia;
     private int precio;
 
-    public Personaje(String nombre, float vida, float daño, int nivel, int experiencia, int precio) {
+    public Personaje(String nombre, float vida, float daño, int precio) {
         this.nombre = nombre;
         this.vida = vida;
         this.daño = daño;
-        this.nivel = nivel;
-        this.experiencia = experiencia;
         this.precio = precio;
     }
 
@@ -36,14 +32,6 @@ public class Personaje {
 
     public void setDaño(float daño) {
         this.daño = daño;
-    }
-
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
-    }
-
-    public void setExperiencia(int experiencia) {
-        this.experiencia = experiencia;
     }
 
     public void setPrecio(int precio) {
@@ -60,14 +48,6 @@ public class Personaje {
 
     public float getDaño() {
         return daño;
-    }
-
-    public int getNivel() {
-        return nivel;
-    }
-
-    public int getExperiencia() {
-        return experiencia;
     }
 
     public int getPrecio() {
