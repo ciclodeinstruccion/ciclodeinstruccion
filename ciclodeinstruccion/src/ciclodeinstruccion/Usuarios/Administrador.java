@@ -44,7 +44,7 @@ public class Administrador extends Usuarios{
     }
     
     public void verPersonajes(listaDePersonajes){
-        
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     }
     
     public void historialDePartidas(listaDePartidas){
