@@ -3,6 +3,11 @@ package ciclodeinstruccion.Usuarios;
 
 import ciclodeinstruccion.Personaje;
 import ciclodeinstruccion.Usuarios.Usuarios;
+import static java.nio.file.Files.list;
+import static java.rmi.Naming.list;
+import java.util.ArrayList;
+import static java.util.Collections.list;
+import java.util.Iterator;
 
 
 public class Administrador extends Usuarios{
@@ -34,12 +39,12 @@ public class Administrador extends Usuarios{
         
     }
     
-    public void verUsuarios(listaDeUsuarios){
-        
+    public void verUsuarios(ArrayList <Usuarios> usuarios){
+        Iterator it = usuarios.iterator();
     }
     
     public void verPersonajes(listaDePersonajes){
-        
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     }
     
     public void historialDePartidas(listaDePartidas){

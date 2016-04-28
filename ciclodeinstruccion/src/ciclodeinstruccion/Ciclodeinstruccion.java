@@ -5,6 +5,9 @@
  */
 package ciclodeinstruccion;
 
+import ciclodeinstruccion.Usuarios.Usuarios;
+import java.util.ArrayList;
+
 /**
  *
  * @author alumno
@@ -17,8 +20,8 @@ public class Ciclodeinstruccion {
     public static void main(String[] args) {
         // TODO code application logic hereqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
         
-        
-        
+        ArrayList <Usuarios> usuarios = new ArrayList <Usuarios>();
+        ArrayList <Personaje> personajes = new ArrayList <Personaje>();
         
         
         
