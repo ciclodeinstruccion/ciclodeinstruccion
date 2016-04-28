@@ -16,6 +16,12 @@ public class Ciclodeinstruccion {
      */
     public static void main(String[] args) {
         // TODO code application logic hereqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+        
+        
+        
+        
+        
+        
     }
     
 }
