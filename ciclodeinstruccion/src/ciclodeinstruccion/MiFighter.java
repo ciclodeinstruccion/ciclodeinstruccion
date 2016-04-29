@@ -12,13 +12,17 @@ package ciclodeinstruccion;
 public class MiFighter extends MiPersonaje{
     private Fighter personaje;
     private float bonusCritico;
+    private final float AUMENTAR_CRITICO=1;
 
-    public MiFighter(float bonusVida, float bonusDaño, int nivel, int experiencia, Fighter personaje, float bonusCritico) {
-        super(bonusVida, bonusDaño, nivel, experiencia);
+    public MiFighter(float bonusVida, float bonusDaño, int nivel, int experiencia,int puntosNivel, Fighter personaje, float bonusCritico) {
+        super(bonusVida, bonusDaño, nivel, experiencia,puntosNivel);
         this.personaje=personaje;
         this.bonusCritico=bonusCritico;
     }
-
+    public void aumentarCritico(){
+        this.bonusCritico+=this.AUMENTAR_CRITICO;
+        this.gastarPuntosNivel();
+    }
     public Fighter getPersonaje() {
         return personaje;
     }
