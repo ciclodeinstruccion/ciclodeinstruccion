@@ -12,13 +12,17 @@ package ciclodeinstruccion;
 public class MiTanque extends MiPersonaje{
     private Tanque personaje;
     private float bonusArmadura;
+    private final float AUMENTAR_ARMADURA=1;
 
-    public MiTanque(float bonusVida, float bonusDaño, int nivel, int experiencia,Tanque personaje,float bonusArmadura) {
-        super(bonusVida, bonusDaño, nivel, experiencia);
+    public MiTanque(float bonusVida, float bonusDaño, int nivel, int experiencia,int puntosNivel,Tanque personaje,float bonusArmadura) {
+        super(bonusVida, bonusDaño, nivel, experiencia,puntosNivel);
         this.personaje=personaje;
         this.bonusArmadura=bonusArmadura;
     }
-
+    public void aumentarArmadura(){
+        this.bonusArmadura+=AUMENTAR_ARMADURA;
+        this.gastarPuntosNivel();
+    }
     public Tanque getPersonaje() {
         return personaje;
     }
