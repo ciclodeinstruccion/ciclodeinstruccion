@@ -39,4 +39,9 @@ public class MiAsesino extends MiPersonaje{
         this.bonusEsquivar = bonusEsquivar;
     }
     
+    public boolean critico(){
+        return false;
+    }
+    
+    
 }

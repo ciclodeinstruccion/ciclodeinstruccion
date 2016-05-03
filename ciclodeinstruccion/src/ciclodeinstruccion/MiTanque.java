@@ -39,4 +39,10 @@ public class MiTanque extends MiPersonaje{
         this.bonusArmadura = bonusArmadura;
     }
     
+    public boolean critico(){
+        return false;
+    }
+    
+    
+    
 }

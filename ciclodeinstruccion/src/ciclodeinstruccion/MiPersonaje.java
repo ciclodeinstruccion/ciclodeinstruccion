@@ -89,4 +89,7 @@ public abstract class MiPersonaje implements Personajeable{
     }
     
     
+    public abstract boolean critico();
+    
+    
 }

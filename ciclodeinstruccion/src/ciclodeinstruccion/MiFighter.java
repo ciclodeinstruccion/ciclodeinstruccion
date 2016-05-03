@@ -37,5 +37,15 @@ public class MiFighter extends MiPersonaje{
 
     public void setBonusCritico(float bonusCritico) {
         this.bonusCritico = bonusCritico;
-    }   
+    }
+    
+    public boolean critico(){
+        boolean critico = false;
+        int random=GeneradorAleatorios.generarAleatorio(100);
+        if (random<personaje.getCritico()+bonusCritico){
+            critico = true;
+        }
+        return critico;
+    }
+    
 }

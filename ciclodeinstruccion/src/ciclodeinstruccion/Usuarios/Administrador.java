@@ -32,8 +32,9 @@ public class Administrador extends Usuario{
         r.setCorreo(CorreoNuevo);
     }
 
-    public void eliminarUsuarios(Registrado r){
+    public void eliminarUsuarios(Registrado r, ArrayList <Usuario> usuarios){
         
+        usuarios.remove(r);
     }
     
     public void modificarPersonaje(Personaje p){
