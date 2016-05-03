@@ -9,6 +9,29 @@ package ciclodeinstruccion;
  *
  * @author alumno
  */
-public class Fighter {
+public class Fighter extends Personaje {
+
+    private float Critico;
+    
+
+    public Fighter(float Critico, String nombre, float vida, float daño, int precio) {
+        super(nombre, vida, daño, precio);
+        this.Critico = Critico;
+    }
+
+    public float getCritico() {
+        return Critico;
+    }
+
+    public void setCritico(float Critico) {
+        this.Critico = Critico;
+    }
+    
+    
+    
+    
+    
+    
+    
     
 }
