@@ -9,6 +9,20 @@ package ciclodeinstruccion;
  *
  * @author alumno
  */
-public class Tanque {
+public class Tanque extends Personaje{
+    private float armadura;
+
+    public Tanque(String nombre, float vida, float daño, int precio, float armadura) {
+        super(nombre, vida, daño, precio);
+        this.armadura=armadura;
+    }
+
+    public float getArmadura() {
+        return armadura;
+    }
+
+    public void setArmadura(float armadura) {
+        this.armadura = armadura;
+    }
     
 }

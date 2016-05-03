@@ -91,5 +91,16 @@ public abstract class MiPersonaje implements Personajeable{
     
     public abstract boolean critico();
     
+    public abstract float getVidaBase();
+    
+    public abstract float getDañoBase();
+    
+    public abstract boolean esquiva();
+    
+    public abstract float armadura();
+    
+    public abstract Habilidad elegirHabilidad(int inteligencia);
+    
+    
     
 }

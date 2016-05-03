@@ -39,9 +39,39 @@ public class MiAsesino extends MiPersonaje{
         this.bonusEsquivar = bonusEsquivar;
     }
     
+    public float getVidaBase(){
+        return personaje.getVida();
+    }
     public boolean critico(){
         return false;
     }
-    
+    public float armadura(){
+        return 0;
+    }
+    public boolean esquiva(){
+        boolean esquivar=false;
+        int random=GeneradorAleatorios.generarAleatorio(100);
+        if(random<personaje.getEsquivar()+this.bonusEsquivar){
+            esquivar=true;
+        }
+        return esquivar;
+    }
+    public Habilidad elegirHabilidad(int inteligencia){
+        Habilidad elegida;
+        int random=GeneradorAleatorios.generarAleatorio(100+inteligencia);
+        if (random<personaje.getHabilidades().get(0).getPorcentajeDeUso()){
+            elegida=personaje.getHabilidades().get(0);
+        }
+        else if (random<personaje.getHabilidades().get(0).getPorcentajeDeUso()+personaje.getHabilidades().get(1).getPorcentajeDeUso()){
+            elegida=personaje.getHabilidades().get(1);
+        }
+        else{
+            elegida=personaje.getHabilidades().get(2);
+        }
+        return elegida;
+    }
+    public float getDañoBase(){
+        return personaje.getDaño();
+    }
     
 }
