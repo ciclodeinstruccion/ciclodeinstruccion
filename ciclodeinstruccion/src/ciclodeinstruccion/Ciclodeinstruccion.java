@@ -24,8 +24,8 @@ public class Ciclodeinstruccion {
         ArrayList <Usuario> usuarios = new ArrayList <Usuario>();
         ArrayList <Personaje> personajes = new ArrayList <Personaje>();
         
-        Registrado a = new Registrado (1,1,1,1,1,1,1,1,1, "a", "a", "a");
-        Registrado b = new Registrado (1,1,1,1,1,1,1,1,1, "b", "b", "b");
+        Registrado a = new Registrado (1,1,1,900,1,1,1,1,1, "a", "a", "a");
+        Registrado b = new Registrado (1,2,1,1900,1,1,1,1,1, "b", "b", "b");
         
         Asesino p = new Asesino ("sonic", 50 ,30 ,50 , 50);
         Fighter f = new Fighter ("lucario", 100, 15, 10, 50);
@@ -55,8 +55,19 @@ public class Ciclodeinstruccion {
         Partida partida = new Partida (a, ma);
         partida.unirsePartida(b, mf);
         
+        a.mostrar();
+        b.mostrar();
+        
+        p.mostrarHabilidad();
+        f.mostrarHabilidad();
+        
+        
         partida.jugarPartida();
         partida.ver();
+        
+        a.mostrar();
+        b.mostrar();
+        
     }
     
 }

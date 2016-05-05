@@ -67,5 +67,10 @@ public abstract class Personaje {
         return habilidades;
     }
     
+    public void mostrarHabilidad(){
+        for(Habilidad h:habilidades){
+            System.out.println(h.getNombre());
+        }
+    }
     
 }

@@ -107,6 +107,13 @@ public class Registrado extends Usuario{
         oro+=orosumado;
     }
     
+    public void mostrar(){
+        System.out.println(oro);
+        System.out.println(experiencia);
+        System.out.println(nivel);
+        System.out.println(puntosNivel);
+    }
+    
     public void subirNivel(){
         nivel++;
         puntosNivel++;

@@ -58,7 +58,7 @@ public class Habilidad implements Comparable<Habilidad>{
     @Override
     public int compareTo(Habilidad h) {
         int diferencia;
-        return diferencia=this.porcentajeDeUso-h.porcentajeDeUso;
+        return diferencia=h.porcentajeDeUso-this.porcentajeDeUso;
         
     }
     
