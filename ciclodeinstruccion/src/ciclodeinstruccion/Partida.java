@@ -21,6 +21,7 @@ public class Partida {
     private boolean finalizada;
     private ArrayList <String> texto;
     private final int EXP=100;
+    private final int ORO=100;
 
     public Partida(Registrado jugador1, MiPersonaje personaje1) {
         this.jugador1 = jugador1;
@@ -47,15 +48,15 @@ public class Partida {
                 boolean critico1=personaje1.critico(jugador1.getEspecial());
                 Habilidad habilidad=personaje1.elegirHabilidad(jugador1.getInteligencia());
                 if(esquivar2){
-                    texto.add(personaje1.getNombre()+" uso "+habilidad.getNombre()+" y "+personaje2.getNombre()+" la esquivo y no recibio daño.");
+                    texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" uso "+habilidad.getNombre()+" y "+personaje2.getNombre()+"("+jugador2.getNombre()+")"+" la esquivo y no recibio daño.");
                 } else{
                     if(critico1){
                         vidaPersonaje2-=this.dañoRecibido(2*dañoPersonaje1, armadura2);
-                        texto.add(personaje1.getNombre()+" uso "+habilidad.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(2*dañoPersonaje1, armadura2)+".");
+                        texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" uso "+habilidad.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(2*dañoPersonaje1, armadura2)+".");
                     }
                     else{
                         vidaPersonaje2-=this.dañoRecibido(dañoPersonaje1, armadura2);
-                        texto.add(personaje1.getNombre()+" uso "+habilidad.getNombre()+" y realizo "+this.dañoRecibido(2*dañoPersonaje1, armadura2)+".");
+                        texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" uso "+habilidad.getNombre()+" y realizo "+this.dañoRecibido(2*dañoPersonaje1, armadura2)+".");
                     }
                 }
                 texto.add(personaje2.getNombre()+" tiene "+vidaPersonaje2);
@@ -67,28 +68,29 @@ public class Partida {
                 boolean critico2=personaje2.critico(jugador2.getEspecial());
                 Habilidad habilidad=personaje2.elegirHabilidad(jugador2.getInteligencia());
                 if(esquivar1){
-                    texto.add(personaje2.getNombre()+" uso "+habilidad.getNombre()+" y "+personaje1.getNombre()+" la esquivo y no recibio daño.");
+                    texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" uso "+habilidad.getNombre()+" y "+personaje1.getNombre()+"("+jugador1.getNombre()+")"+" la esquivo y no recibio daño.");
                 } else{
                     if(critico2){
                         vidaPersonaje1-=this.dañoRecibido(2*dañoPersonaje2, armadura1);
-                        texto.add(personaje2.getNombre()+" uso "+habilidad.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(2*dañoPersonaje2, armadura1)+".");
+                        texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" uso "+habilidad.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(2*dañoPersonaje2, armadura1)+".");
                     }
                     else{
                         vidaPersonaje1-=this.dañoRecibido(dañoPersonaje2, armadura1);
-                        texto.add(personaje2.getNombre()+" uso "+habilidad.getNombre()+" y realizo "+this.dañoRecibido(2*dañoPersonaje2, armadura1)+".");
+                        texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" uso "+habilidad.getNombre()+" y realizo "+this.dañoRecibido(2*dañoPersonaje2, armadura1)+".");
                     }
                 }
-                texto.add(personaje1.getNombre()+" tiene "+vidaPersonaje1);
+                texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1);
                 bandera=true;
             }
-            if(vidaPersonaje1<=0){
+            
+        }
+        if(vidaPersonaje1<=0){
                 this.finalizarPartida(jugador2, personaje2);
-                texto.add(jugador2.getNombre()+" es el ganador.");
-            }
-            else{
+                texto.add(jugador2.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+ORO+" de oro");
+        }
+        else{
                 this.finalizarPartida(jugador1, personaje1);
-                texto.add(jugador1.getNombre()+" es el ganador.");
-            }
+                texto.add(jugador1.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+ORO+" de oro");
         }
     }
     public void mostrarDatos(){
@@ -108,6 +110,8 @@ public class Partida {
     
     public void finalizarPartida(Registrado ganador, MiPersonaje personaje){
         this.ganador=ganador;
-        this.ganador.aumentarExperiencia(EXP);
+        ganador.aumentarExperiencia(EXP);
+        ganador.aumentarOro(ORO);
+        personaje.aumentarExperiencia(EXP);
     }
 }
