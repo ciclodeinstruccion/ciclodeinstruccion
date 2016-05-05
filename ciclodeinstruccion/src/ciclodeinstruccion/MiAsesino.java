@@ -42,16 +42,16 @@ public class MiAsesino extends MiPersonaje{
     public float getVidaBase(){
         return personaje.getVida();
     }
-    public boolean critico(){
+    public boolean critico(int especial){
         return false;
     }
-    public float armadura(){
+    public float armadura(int especial){
         return 0;
     }
-    public boolean esquiva(){
+    public boolean esquiva(int especial){
         boolean esquivar=false;
         int random=GeneradorAleatorios.generarAleatorio(100);
-        if(random<personaje.getEsquivar()+this.bonusEsquivar){
+        if(random<personaje.getEsquivar()+this.bonusEsquivar+especial){
             esquivar=true;
         }
         return esquivar;
@@ -73,5 +73,7 @@ public class MiAsesino extends MiPersonaje{
     public float getDañoBase(){
         return personaje.getDaño();
     }
-    
+    public String getNombre(){
+        return this.personaje.getNombre();
+    }
 }

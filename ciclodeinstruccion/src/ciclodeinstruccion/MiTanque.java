@@ -41,13 +41,13 @@ public class MiTanque extends MiPersonaje{
     public float getVidaBase(){
         return personaje.getVida();
     }
-    public boolean critico(){
+    public boolean critico(int especial){
         return false;
     }
-    public float armadura(){
-        return personaje.getArmadura()+this.bonusArmadura;
+    public float armadura(int especial){
+        return personaje.getArmadura()+this.bonusArmadura+especial;
     }
-    public boolean esquiva(){
+    public boolean esquiva(int especial){
         return false;
     }
     public Habilidad elegirHabilidad(int inteligencia){
@@ -67,7 +67,9 @@ public class MiTanque extends MiPersonaje{
     public float getDañoBase(){
         return personaje.getDaño();
     }
-    
+    public String getNombre(){
+        return this.personaje.getNombre();
+    }
     
     
 }

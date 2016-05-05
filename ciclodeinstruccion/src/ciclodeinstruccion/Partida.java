@@ -6,6 +6,7 @@
 package ciclodeinstruccion;
 
 import ciclodeinstruccion.Usuarios.Registrado;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,11 +19,14 @@ public class Partida {
     private MiPersonaje personaje2;
     private Registrado ganador;
     private boolean finalizada;
+    private ArrayList <String> texto;
+    private final int EXP=100;
 
     public Partida(Registrado jugador1, MiPersonaje personaje1) {
         this.jugador1 = jugador1;
         this.personaje1 = personaje1;
         this.finalizada=false;
+        this.texto=new ArrayList();
     }
     
     public void unirsePartida(Registrado jugador2, MiPersonaje personaje2){
@@ -38,10 +42,44 @@ public class Partida {
         
         while(vidaPersonaje1>0||vidaPersonaje2>0){
             if(bandera){
-                boolean esquivar2;
-                float armadura2;
-                boolean critico1;
-                vidaPersonaje2-=dañoPersonaje1+personaje1.elegirHabilidad(jugador1.getInteligencia()).getDaño();
+                boolean esquivar2=personaje2.esquiva(jugador2.getEspecial());
+                float armadura2=personaje2.armadura(jugador2.getEspecial());
+                boolean critico1=personaje1.critico(jugador1.getEspecial());
+                Habilidad habilidad=personaje1.elegirHabilidad(jugador1.getInteligencia());
+                if(esquivar2){
+                    texto.add(personaje1.getNombre()+" uso "+habilidad.getNombre()+" y "+personaje2.getNombre()+" la esquivo y no recibio daño.");
+                } else{
+                    if(critico1){
+                        vidaPersonaje2-=this.dañoRecibido(2*dañoPersonaje1, armadura2);
+                        texto.add(personaje1.getNombre()+" uso "+habilidad.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(2*dañoPersonaje1, armadura2)+".");
+                    }
+                    else{
+                        vidaPersonaje2-=this.dañoRecibido(dañoPersonaje1, armadura2);
+                        texto.add(personaje1.getNombre()+" uso "+habilidad.getNombre()+" y realizo "+this.dañoRecibido(2*dañoPersonaje1, armadura2)+".");
+                    }
+                }
+                texto.add(personaje2.getNombre()+" tiene "+vidaPersonaje2);
+                bandera=false;
+            }
+            else{
+                boolean esquivar1=personaje1.esquiva(jugador1.getEspecial());
+                float armadura1=personaje1.armadura(jugador1.getEspecial());
+                boolean critico2=personaje2.critico(jugador2.getEspecial());
+                Habilidad habilidad=personaje2.elegirHabilidad(jugador2.getInteligencia());
+                if(esquivar1){
+                    texto.add(personaje2.getNombre()+" uso "+habilidad.getNombre()+" y "+personaje1.getNombre()+" la esquivo y no recibio daño.");
+                } else{
+                    if(critico2){
+                        vidaPersonaje1-=this.dañoRecibido(2*dañoPersonaje2, armadura1);
+                        texto.add(personaje2.getNombre()+" uso "+habilidad.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(2*dañoPersonaje2, armadura1)+".");
+                    }
+                    else{
+                        vidaPersonaje1-=this.dañoRecibido(dañoPersonaje2, armadura1);
+                        texto.add(personaje2.getNombre()+" uso "+habilidad.getNombre()+" y realizo "+this.dañoRecibido(2*dañoPersonaje2, armadura1)+".");
+                    }
+                }
+                texto.add(personaje1.getNombre()+" tiene "+vidaPersonaje1);
+                bandera=true;
             }
         }
     }
@@ -49,6 +87,19 @@ public class Partida {
         
     }
     
+    public float dañoRecibido(float daño, float armadura){
+        float dañoRecibido;
+        if(armadura>daño){
+            dañoRecibido=0;
+        } 
+        else{
+            dañoRecibido=daño-armadura;
+        }
+        return dañoRecibido;
+    }
     
-    
+    public void finalizarPartida(Registrado ganador, MiPersonaje personaje){
+        this.ganador=ganador;
+        this.ganador.aumentarExperiencia(EXP);
+    }
 }

@@ -10,5 +10,17 @@ package ciclodeinstruccion;
  * @author alumno
  */
 public interface Personajeable {
+    public boolean critico(int especial);
     
+    public float getVidaBase();
+    
+    public float getDañoBase();
+    
+    public boolean esquiva(int especial);
+    
+    public float armadura(int especial);
+    
+    public Habilidad elegirHabilidad(int inteligencia);
+    
+    public String getNombre();
 }

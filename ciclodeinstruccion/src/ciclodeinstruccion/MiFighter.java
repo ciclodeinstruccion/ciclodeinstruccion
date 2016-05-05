@@ -42,10 +42,10 @@ public class MiFighter extends MiPersonaje{
         return personaje.getVida();
     }
     
-    public float armadura(){
+    public float armadura(int especial){
         return 0;
     }
-    public boolean esquiva(){
+    public boolean esquiva(int especial){
         return false;
     }
     public Habilidad elegirHabilidad(int inteligencia){
@@ -62,15 +62,18 @@ public class MiFighter extends MiPersonaje{
         }
         return elegida;
     }
-    public boolean critico(){
+    public boolean critico(int especial){
         boolean critico = false;
         int random=GeneradorAleatorios.generarAleatorio(100);
-        if (random<personaje.getCritico()+bonusCritico){
+        if (random<personaje.getCritico()+bonusCritico+especial){
             critico = true;
         }
         return critico;
     }
     public float getDañoBase(){
         return personaje.getDaño();
+    }
+    public String getNombre(){
+        return this.personaje.getNombre();
     }
 }
