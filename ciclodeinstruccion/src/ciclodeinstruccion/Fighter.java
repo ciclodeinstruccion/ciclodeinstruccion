@@ -14,7 +14,7 @@ public class Fighter extends Personaje {
     private float Critico;
     
 
-    public Fighter(float Critico, String nombre, float vida, float daño, int precio) {
+    public Fighter(String nombre, float vida, float daño,float Critico, int precio) {
         super(nombre, vida, daño, precio);
         this.Critico = Critico;
     }

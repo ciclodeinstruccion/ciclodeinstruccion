@@ -12,7 +12,7 @@ package ciclodeinstruccion;
 public class Tanque extends Personaje{
     private float armadura;
 
-    public Tanque(String nombre, float vida, float daño, int precio, float armadura) {
+    public Tanque(String nombre, float vida, float daño, float armadura, int precio ) {
         super(nombre, vida, daño, precio);
         this.armadura=armadura;
     }

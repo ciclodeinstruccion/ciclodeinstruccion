@@ -12,7 +12,7 @@ package ciclodeinstruccion;
 public class Asesino extends Personaje{
     private float esquivar;
 
-    public Asesino(String nombre, float vida, float daño, int precio, float esquivar) {
+    public Asesino(String nombre, float vida, float daño ,float esquivar, int precio) {
         super(nombre, vida, daño, precio);
         this.esquivar=esquivar;
     }

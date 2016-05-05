@@ -41,7 +41,7 @@ public class Partida {
         float dañoPersonaje2=personaje2.getDañoBase()+personaje2.getBonusDaño()+jugador2.getFuerza();
         boolean bandera=true;
         
-        while(vidaPersonaje1>0||vidaPersonaje2>0){
+        while(vidaPersonaje1>0&&vidaPersonaje2>0){
             if(bandera){
                 boolean esquivar2=personaje2.esquiva(jugador2.getEspecial());
                 float armadura2=personaje2.armadura(jugador2.getEspecial());
@@ -60,7 +60,9 @@ public class Partida {
                     }
                 }
                 texto.add(personaje2.getNombre()+" tiene "+vidaPersonaje2);
+                if(vidaPersonaje2>0){
                 bandera=false;
+                }
             }
             else{
                 boolean esquivar1=personaje1.esquiva(jugador1.getEspecial());
@@ -80,7 +82,9 @@ public class Partida {
                     }
                 }
                 texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1);
+                //if(vidaPersonaje1>0){
                 bandera=true;
+                //}
             }
             
         }
@@ -113,5 +117,11 @@ public class Partida {
         ganador.aumentarExperiencia(EXP);
         ganador.aumentarOro(ORO);
         personaje.aumentarExperiencia(EXP);
+    }
+    
+    public void ver (){
+        for (String s: texto){
+            System.out.println(s);
+        }
     }
 }
