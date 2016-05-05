@@ -22,8 +22,8 @@ public class Ciclodeinstruccion {
         
         ArrayList <Usuario> usuarios = new ArrayList <Usuario>();
         ArrayList <Personaje> personajes = new ArrayList <Personaje>();
-        ArrayList <Partida> partidas = new ArrayList <Partida>();
-        ArrayList <MiPersonaje> misPersonajes = new ArrayList <MiPersonaje>();
+        
+        
         
         
     }

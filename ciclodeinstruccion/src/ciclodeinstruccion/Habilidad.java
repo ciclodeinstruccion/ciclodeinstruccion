@@ -9,7 +9,7 @@ package ciclodeinstruccion;
  *
  * @author Javier
  */
-public class Habilidad {
+public class Habilidad implements Comparable<Habilidad>{
     
     private String nombre;
     private int porcentajeDeUso;
@@ -54,7 +54,13 @@ public class Habilidad {
     public void setCura(float cura) {
         this.cura = cura;
     }
-    
+
+    @Override
+    public int compareTo(Habilidad h) {
+        int diferencia;
+        return diferencia=this.porcentajeDeUso-h.porcentajeDeUso;
+        
+    }
     
     
     
