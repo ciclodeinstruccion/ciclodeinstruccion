@@ -42,25 +42,25 @@ public class Registrado extends Usuario{
     public void modificarVitalidad(){
         
         this.vitalidad++;
-        this.gastarPuntos();
+        this.gastarPuntosExp();
     }
     
     public void modificarFuerza(){
         
         this.fuerza++;
-        this.gastarPuntos();
+        this.gastarPuntosExp();
     }
     
     public void modificarEspecial(){
         
         this.especial++;
-        this.gastarPuntos();
+        this.gastarPuntosExp();
     }
     
     public void modificarInteligencia(){
         
         this.inteligencia++;
-        this.gastarPuntos();
+        this.gastarPuntosExp();
     }
     
     public void comprarPersonaje(MiPersonaje p, ArrayList <MiPersonaje> misPersonajes){
@@ -68,16 +68,25 @@ public class Registrado extends Usuario{
         misPersonajes.add(p);
     }
     
-    public void verHistorialDePartidas(listaDePartidas){
+    /*public void verHistorialDePartidas(listaDePartidas){
         
     }
     
     public void verRepeticion (listaDePartidas){
         
+    }*/
+    
+    public void gastarPuntosExp(){
+        puntosNivel--;
     }
     
-    public void gastarPuntos(){
-        puntosNivel--;
+    public void gastarPuntosOro(int oroGastado){
+        
+        if(this.oro>oroGastado){
+            oro-=oroGastado;
+        } else {
+            System.out.println("no hay suficiente oro");
+        }
     }
     
     public void aumentarExperiencia(int sumaExperiencia){
@@ -88,6 +97,11 @@ public class Registrado extends Usuario{
             this.subirNivel();
         }
         
+    }
+    
+    public void aumentarOro(int orosumado){
+        
+        oro+=orosumado;
     }
     
     public void subirNivel(){
