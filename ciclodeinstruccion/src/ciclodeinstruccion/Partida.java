@@ -81,6 +81,14 @@ public class Partida {
                 texto.add(personaje1.getNombre()+" tiene "+vidaPersonaje1);
                 bandera=true;
             }
+            if(vidaPersonaje1<=0){
+                this.finalizarPartida(jugador2, personaje2);
+                texto.add(jugador2.getNombre()+" es el ganador.");
+            }
+            else{
+                this.finalizarPartida(jugador1, personaje1);
+                texto.add(jugador1.getNombre()+" es el ganador.");
+            }
         }
     }
     public void mostrarDatos(){
