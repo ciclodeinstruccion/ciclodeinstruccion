@@ -20,7 +20,7 @@ public class Partida {
     private Registrado ganador;
     private boolean finalizada;
     private ArrayList <String> texto;
-    private final int EXP=100;
+    private final int EXP=100;//
     private final int ORO=100;
 
     public Partida(Registrado jugador1, MiPersonaje personaje1) {
