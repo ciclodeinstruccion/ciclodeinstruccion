@@ -48,12 +48,12 @@ public class Administrador extends Usuario{
         }
     }
     
-    public void verPersonajes(ArrayList <Personaje> personajes){
+    /*public void verPersonajes(ArrayList <Personaje> personajes){
         
         for (Personaje p: personajes){
             p.mostrarDatos();
         }
-    }
+    }*/
     
     public void historialDePartidas(ArrayList <Partida> partidas){
         

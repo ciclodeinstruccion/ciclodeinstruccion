@@ -25,6 +25,8 @@ public class Registrado extends Usuario{
     private int inteligencia;
     private final int EXPERIENCIA_NECESARIA=1000;
     private int puntosNivel;
+    private ArrayList <MiPersonaje> misPersonajes;
+    
 
     public Registrado(float horasJugadas, int nivel, int oro, int experiencia, int vitalidad, int fuerza, int especial, int inteligencia, int puntosNivel, String nombre, String correo, String contraseña) {
         super(nombre, correo, contraseña);
@@ -37,6 +39,8 @@ public class Registrado extends Usuario{
         this.especial = especial;
         this.inteligencia = inteligencia;
         this.puntosNivel = puntosNivel;
+        this.misPersonajes = new ArrayList();
+       
     }
 
     public void modificarVitalidad(){
@@ -63,8 +67,7 @@ public class Registrado extends Usuario{
         this.gastarPuntosExp();
     }
     
-    public void comprarPersonaje(MiPersonaje p, ArrayList <MiPersonaje> misPersonajes){
-        
+    public void añadirPersonajes(MiPersonaje p){
         misPersonajes.add(p);
     }
     

@@ -26,6 +26,11 @@ public abstract class Personaje {
         this.habilidades=new ArrayList(3);
     }
     
+    public void añadirHabilidad(Habilidad h){
+        habilidades.add(h);
+        habilidades.sort(null);
+    }
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
