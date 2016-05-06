@@ -40,7 +40,7 @@ public class Partida {
         float dañoPersonaje1=personaje1.getDañoBase()+personaje1.getBonusDaño()+jugador1.getFuerza();
         float dañoPersonaje2=personaje2.getDañoBase()+personaje2.getBonusDaño()+jugador2.getFuerza();
         boolean bandera=true;
-        
+        texto.add(vidaPersonaje1+","+vidaPersonaje2);
         while(vidaPersonaje1>0&&vidaPersonaje2>0){
             if(bandera){
                 boolean esquivar2=personaje2.esquiva(jugador2.getEspecial());
@@ -51,12 +51,14 @@ public class Partida {
                     texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" uso "+habilidad.getNombre()+" y "+personaje2.getNombre()+"("+jugador2.getNombre()+")"+" la esquivo y no recibio daño.");
                 } else{
                     if(critico1){
-                        vidaPersonaje2-=this.dañoRecibido(2*dañoPersonaje1, armadura2);
-                        texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" uso "+habilidad.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(2*dañoPersonaje1, armadura2)+".");
+                        float daño=2*(dañoPersonaje1+habilidad.getDaño());
+                        vidaPersonaje2-=this.dañoRecibido(daño, armadura2);
+                        texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" uso "+habilidad.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(daño, armadura2)+" de daño.");
                     }
                     else{
-                        vidaPersonaje2-=this.dañoRecibido(dañoPersonaje1, armadura2);
-                        texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" uso "+habilidad.getNombre()+" y realizo "+this.dañoRecibido(2*dañoPersonaje1, armadura2)+".");
+                        float daño=dañoPersonaje1+habilidad.getDaño();
+                        vidaPersonaje2-=this.dañoRecibido(daño, armadura2);
+                        texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" uso "+habilidad.getNombre()+" y realizo "+this.dañoRecibido(daño, armadura2)+"de daño.");
                     }
                 }
                 texto.add(personaje2.getNombre()+" tiene "+vidaPersonaje2);
@@ -73,12 +75,14 @@ public class Partida {
                     texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" uso "+habilidad.getNombre()+" y "+personaje1.getNombre()+"("+jugador1.getNombre()+")"+" la esquivo y no recibio daño.");
                 } else{
                     if(critico2){
-                        vidaPersonaje1-=this.dañoRecibido(2*dañoPersonaje2, armadura1);
-                        texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" uso "+habilidad.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(2*dañoPersonaje2, armadura1)+".");
+                        float daño=2*(dañoPersonaje2+habilidad.getDaño());
+                        vidaPersonaje1-=this.dañoRecibido(daño, armadura1);
+                        texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" uso "+habilidad.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(daño, armadura1)+" de daño.");
                     }
                     else{
-                        vidaPersonaje1-=this.dañoRecibido(dañoPersonaje2, armadura1);
-                        texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" uso "+habilidad.getNombre()+" y realizo "+this.dañoRecibido(2*dañoPersonaje2, armadura1)+".");
+                        float daño=(dañoPersonaje2+habilidad.getDaño());
+                        vidaPersonaje1-=this.dañoRecibido(daño, armadura1);
+                        texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" uso "+habilidad.getNombre()+" y realizo "+this.dañoRecibido(daño, armadura1)+" de daño.");
                     }
                 }
                 texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1);
