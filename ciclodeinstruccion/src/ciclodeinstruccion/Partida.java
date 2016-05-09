@@ -104,6 +104,120 @@ public class Partida {
     public void mostrarDatos(){
         
     }
+    /*public void hDaño(boolean esquivar, float armadura, boolean critico, Habilidad h, Registrado JAtaca, Registrado JDefiende, MiPersonaje PAtaca, MiPersonaje PDefiende, float dañoPAtaca){
+        if(esquivar){
+                    texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y "+PDefiende.getNombre()+"("+JDefiende.getNombre()+")"+" la esquivo y no recibio daño.");
+                } 
+        else{
+            if(critico){
+                float daño=2*(dañoPAtaca+h.getDaño());
+                if(JAtaca==jugador1){   
+                    vidaPersonaje2-=this.dañoRecibido(daño, armadura);    
+                }
+                else{
+                    vidaPersonaje1-=this.dañoRecibido(daño, armadura);
+                }
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(daño, armadura)+" de daño.");
+            }
+            else{
+                float daño=(dañoPAtaca+h.getDaño());
+                if(JAtaca==jugador1){   
+                    vidaPersonaje2-=this.dañoRecibido(daño, armadura);    
+                }
+                else{
+                    vidaPersonaje1-=this.dañoRecibido(daño, armadura);
+                }
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y realizo "+this.dañoRecibido(daño, armadura)+" de daño.");
+            }
+        }
+        if(JAtaca==jugador1){
+            texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+vidaPersonaje2+" puntos de vida.");
+        }
+        else{
+            texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1+" puntos de vida.");
+        }
+    }
+    
+    public void hCura(Habilidad h, Registrado JAtaca, MiPersonaje PAtaca, float vidaMax){
+        if(JAtaca==jugador1){
+            if(vidaPersonaje1+h.getCura()<=vidaMax){
+                vidaPersonaje1+=h.getCura();
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+h.getCura()+" puntos de vida.");
+            }
+            else{
+                float vidaCurada=vidaMax-vidaPersonaje1;
+                vidapersonaje1=vidaMax;
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+vidaCurada+" puntos de vida.");
+            }
+            texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1+" puntos de vida.");
+        }
+        else{
+            if(vidaPersonaje2+h.getCura()<=vidaMax){
+                vidaPersonaje2+=h.getCura();
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+h.getCura()+" puntos de vida.");
+            }
+            else{
+                float vidaCurada=vidaMax-vidaPersonaje2;
+                vidapersonaje2=vidaMax;
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+vidaCurada+" puntos de vida.");
+            }
+            texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+vidaPersonaje2+" puntos de vida.");
+        }
+    }
+    
+    public void hMixta(boolean esquivar, float armadura, boolean critico, Habilidad h, Registrado JAtaca, Registrado JDefiende, MiPersonaje PAtaca, MiPersonaje PDefiende, float dañoPAtaca, float vidaMax){
+        if(esquivar){
+                    texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y "+PDefiende.getNombre()+"("+JDefiende.getNombre()+")"+" la esquivo y no recibio daño.");
+                } 
+        else{
+            if(critico){
+                float daño=2*(dañoPAtaca+h.getDaño());
+                if(JAtaca==jugador1){   
+                    vidaPersonaje2-=this.dañoRecibido(daño, armadura);    
+                }
+                else{
+                    vidaPersonaje1-=this.dañoRecibido(daño, armadura);
+                }
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(daño, armadura)+" de daño.");
+            }
+            else{
+                float daño=(dañoPAtaca+h.getDaño());
+                if(JAtaca==jugador1){   
+                    vidaPersonaje2-=this.dañoRecibido(daño, armadura);    
+                }
+                else{
+                    vidaPersonaje1-=this.dañoRecibido(daño, armadura);
+                }
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y realizo "+this.dañoRecibido(daño, armadura)+" de daño.");
+            }
+        }
+        if(JAtaca==jugador1){
+            if(vidaPersonaje1+h.getCura()<=vidaMax){
+                vidaPersonaje1+=h.getCura();
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" tambien se curo "+h.getCura()+" puntos de vida.");
+            }
+            else{
+                float vidaCurada=vidaMax-vidaPersonaje1;
+                vidapersonaje1=vidaMax;
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" también se curo "+vidaCurada+" puntos de vida.");
+            }
+            texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+vidaPersonaje2+" puntos de vida.");
+            texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1+" puntos de vida.");
+        }
+        else{
+            if(vidaPersonaje2+h.getCura()<=vidaMax){
+                vidaPersonaje2+=h.getCura();
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" tambien se curo "+h.getCura()+" puntos de vida.");
+            }
+            else{
+                float vidaCurada=vidaMax-vidaPersonaje2;
+                vidapersonaje2=vidaMax;
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" también se curo "+vidaCurada+" puntos de vida.");
+            }
+            texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1+" puntos de vida.");
+            texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+vidaPersonaje2+" puntos de vida.");
+        }
+    }*/
     
     public float dañoRecibido(float daño, float armadura){
         float dañoRecibido;
