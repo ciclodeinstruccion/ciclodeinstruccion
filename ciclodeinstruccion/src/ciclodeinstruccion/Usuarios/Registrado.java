@@ -49,6 +49,8 @@ public class Registrado extends Usuario{
         this.gastarPuntosExp();
     }
     
+    
+    
     public void modificarFuerza(){
         
         this.fuerza++;

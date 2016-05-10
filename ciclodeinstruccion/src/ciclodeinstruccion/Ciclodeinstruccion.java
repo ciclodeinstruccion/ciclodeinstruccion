@@ -5,6 +5,7 @@
  */
 package ciclodeinstruccion;
 
+import ciclodeinstruccion.Usuarios.Administrador;
 import ciclodeinstruccion.Usuarios.Registrado;
 import ciclodeinstruccion.Usuarios.Usuario;
 import java.util.ArrayList;
@@ -21,11 +22,14 @@ public class Ciclodeinstruccion {
     public static void main(String[] args) {
         // TODO code application logic hereqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
         
-        ArrayList <Usuario> usuarios = new ArrayList <Usuario>();
+        ArrayList <Registrado> usuarios = new ArrayList <Registrado>();
         ArrayList <Personaje> personajes = new ArrayList <Personaje>();
+        
+        Administrador ab = new Administrador ("aaaa", "aaa", "bbb");
         
         Registrado a = new Registrado (1,1,1,900,1,1,1,1,1, "a", "a", "a");
         Registrado b = new Registrado (1,2,1,1900,1,1,1,1,1, "b", "b", "b");
+        
         
         Asesino p = new Asesino ("sonic", 50 ,30 ,50 , 50);
         Fighter f = new Fighter ("lucario", 100, 15, 10, 50);
@@ -55,7 +59,7 @@ public class Ciclodeinstruccion {
         Partida partida = new Partida (a, ma);
         partida.unirsePartida(b, mf);
         
-        a.mostrar();
+        /*a.mostrar();
         b.mostrar();
         
         p.mostrarHabilidad();
@@ -66,8 +70,9 @@ public class Ciclodeinstruccion {
         partida.ver();
         
         a.mostrar();
-        b.mostrar();
+        b.mostrar();*/
         
+        ab.verUsuarios(usuarios);
     }
     
 }
