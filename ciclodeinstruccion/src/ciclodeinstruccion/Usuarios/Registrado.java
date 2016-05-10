@@ -42,6 +42,9 @@ public class Registrado extends Usuario{
         this.misPersonajes = new ArrayList();
        
     }
+    public Registrado(String nombre){
+        super(nombre);
+    }
 
     public void modificarVitalidad(){
         

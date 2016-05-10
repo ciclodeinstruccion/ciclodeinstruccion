@@ -22,23 +22,28 @@ public class Partida {
     private ArrayList <String> texto;
     private final int EXP=100;//
     private final int ORO=100;
+    private float vidaPersonaje1;
+    private float vidaPersonaje2;
+    
 
     public Partida(Registrado jugador1, MiPersonaje personaje1) {
         this.jugador1 = jugador1;
         this.personaje1 = personaje1;
         this.finalizada=false;
         this.texto=new ArrayList();
+        this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
     }
     
     public void unirsePartida(Registrado jugador2, MiPersonaje personaje2){
         this.jugador2=jugador2;
         this.personaje2=personaje2;
+        this.vidaPersonaje2=personaje2.getVidaBase()+personaje2.getBonusVida()+jugador2.getVitalidad();
     }
     public void jugarPartida(){
-        float vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
-        float vidaPersonaje2=personaje2.getVidaBase()+personaje2.getBonusVida()+jugador2.getVitalidad();
         float dañoPersonaje1=personaje1.getDañoBase()+personaje1.getBonusDaño()+jugador1.getFuerza();
         float dañoPersonaje2=personaje2.getDañoBase()+personaje2.getBonusDaño()+jugador2.getFuerza();
+        float vidaMax1=vidaPersonaje1;
+        float vidaMax2=vidaPersonaje2;
         boolean bandera=true;
         texto.add(vidaPersonaje1+","+vidaPersonaje2);
         while(vidaPersonaje1>0&&vidaPersonaje2>0){
@@ -47,21 +52,15 @@ public class Partida {
                 float armadura2=personaje2.armadura(jugador2.getEspecial());
                 boolean critico1=personaje1.critico(jugador1.getEspecial());
                 Habilidad habilidad=personaje1.elegirHabilidad(jugador1.getInteligencia());
-                if(esquivar2){
-                    texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" uso "+habilidad.getNombre()+" y "+personaje2.getNombre()+"("+jugador2.getNombre()+")"+" la esquivo y no recibio daño.");
-                } else{
-                    if(critico1){
-                        float daño=2*(dañoPersonaje1+habilidad.getDaño());
-                        vidaPersonaje2-=this.dañoRecibido(daño, armadura2);
-                        texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" uso "+habilidad.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(daño, armadura2)+" de daño.");
-                    }
-                    else{
-                        float daño=dañoPersonaje1+habilidad.getDaño();
-                        vidaPersonaje2-=this.dañoRecibido(daño, armadura2);
-                        texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" uso "+habilidad.getNombre()+" y realizo "+this.dañoRecibido(daño, armadura2)+"de daño.");
-                    }
+                if(habilidad.getDaño()>0&&habilidad.getCura()==0){
+                    this.hDaño(esquivar2, armadura2, critico1, habilidad, jugador1, jugador2, personaje1, personaje2, dañoPersonaje1);
                 }
-                texto.add(personaje2.getNombre()+" tiene "+vidaPersonaje2);
+                else if(habilidad.getDaño()==0&&habilidad.getCura()>0){
+                    this.hCura(habilidad, jugador1, personaje1, vidaMax1);
+                }
+                else{
+                    this.hMixta(esquivar2, armadura2, critico1, habilidad, jugador1, jugador2, personaje1, personaje2, dañoPersonaje1, vidaMax1);
+                }
                 if(vidaPersonaje2>0){
                 bandera=false;
                 }
@@ -71,21 +70,15 @@ public class Partida {
                 float armadura1=personaje1.armadura(jugador1.getEspecial());
                 boolean critico2=personaje2.critico(jugador2.getEspecial());
                 Habilidad habilidad=personaje2.elegirHabilidad(jugador2.getInteligencia());
-                if(esquivar1){
-                    texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" uso "+habilidad.getNombre()+" y "+personaje1.getNombre()+"("+jugador1.getNombre()+")"+" la esquivo y no recibio daño.");
-                } else{
-                    if(critico2){
-                        float daño=2*(dañoPersonaje2+habilidad.getDaño());
-                        vidaPersonaje1-=this.dañoRecibido(daño, armadura1);
-                        texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" uso "+habilidad.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(daño, armadura1)+" de daño.");
-                    }
-                    else{
-                        float daño=(dañoPersonaje2+habilidad.getDaño());
-                        vidaPersonaje1-=this.dañoRecibido(daño, armadura1);
-                        texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" uso "+habilidad.getNombre()+" y realizo "+this.dañoRecibido(daño, armadura1)+" de daño.");
-                    }
+                if(habilidad.getDaño()>0&&habilidad.getCura()==0){
+                    this.hDaño(esquivar1, armadura1, critico2, habilidad, jugador2, jugador1, personaje2, personaje1, dañoPersonaje2);
                 }
-                texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1);
+                else if(habilidad.getDaño()==0&&habilidad.getCura()>0){
+                    this.hCura(habilidad, jugador2, personaje2, vidaMax2);
+                }
+                else{
+                    this.hMixta(esquivar1, armadura1, critico2, habilidad, jugador2, jugador1, personaje2, personaje1, dañoPersonaje2, vidaMax2);
+                }
                 //if(vidaPersonaje1>0){
                 bandera=true;
                 //}
@@ -104,7 +97,7 @@ public class Partida {
     public void mostrarDatos(){
         
     }
-    /*public void hDaño(boolean esquivar, float armadura, boolean critico, Habilidad h, Registrado JAtaca, Registrado JDefiende, MiPersonaje PAtaca, MiPersonaje PDefiende, float dañoPAtaca){
+    public void hDaño(boolean esquivar, float armadura, boolean critico, Habilidad h, Registrado JAtaca, Registrado JDefiende, MiPersonaje PAtaca, MiPersonaje PDefiende, float dañoPAtaca){
         if(esquivar){
                     texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y "+PDefiende.getNombre()+"("+JDefiende.getNombre()+")"+" la esquivo y no recibio daño.");
                 } 
@@ -146,7 +139,7 @@ public class Partida {
             }
             else{
                 float vidaCurada=vidaMax-vidaPersonaje1;
-                vidapersonaje1=vidaMax;
+                vidaPersonaje1=vidaMax;
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+vidaCurada+" puntos de vida.");
             }
             texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1+" puntos de vida.");
@@ -158,7 +151,7 @@ public class Partida {
             }
             else{
                 float vidaCurada=vidaMax-vidaPersonaje2;
-                vidapersonaje2=vidaMax;
+                vidaPersonaje2=vidaMax;
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+vidaCurada+" puntos de vida.");
             }
             texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+vidaPersonaje2+" puntos de vida.");
@@ -198,7 +191,7 @@ public class Partida {
             }
             else{
                 float vidaCurada=vidaMax-vidaPersonaje1;
-                vidapersonaje1=vidaMax;
+                vidaPersonaje1=vidaMax;
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" también se curo "+vidaCurada+" puntos de vida.");
             }
             texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+vidaPersonaje2+" puntos de vida.");
@@ -211,13 +204,13 @@ public class Partida {
             }
             else{
                 float vidaCurada=vidaMax-vidaPersonaje2;
-                vidapersonaje2=vidaMax;
+                vidaPersonaje2=vidaMax;
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" también se curo "+vidaCurada+" puntos de vida.");
             }
             texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1+" puntos de vida.");
             texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+vidaPersonaje2+" puntos de vida.");
         }
-    }*/
+    }
     
     public float dañoRecibido(float daño, float armadura){
         float dañoRecibido;

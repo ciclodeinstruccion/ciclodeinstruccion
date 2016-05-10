@@ -30,15 +30,15 @@ public class Ciclodeinstruccion {
         Asesino p = new Asesino ("sonic", 50 ,30 ,50 , 50);
         Fighter f = new Fighter ("lucario", 100, 15, 10, 50);
     
-        Habilidad h = new Habilidad ("hiper", 50, 10, 0);
-        Habilidad h1 = new Habilidad ("sombra", 30, 5, 0);
+        Habilidad h = new Habilidad ("hiper", 50, 10, 2);
+        Habilidad h1 = new Habilidad ("sombra", 30, 0, 40);
         Habilidad h2 = new Habilidad ("excalibur", 20, 50, 0);
         
         p.añadirHabilidad(h);
         p.añadirHabilidad(h1);
         p.añadirHabilidad(h2);
         
-        Habilidad g = new Habilidad ("patadavoladora", 50, 20, 0);
+        Habilidad g = new Habilidad ("patadavoladora", 50, 20, 5);
         Habilidad g1 = new Habilidad ("puñetazoBionico", 30, 20, 0);
         Habilidad g2 = new Habilidad ("roboEspecial", 20, 30, 0);
         

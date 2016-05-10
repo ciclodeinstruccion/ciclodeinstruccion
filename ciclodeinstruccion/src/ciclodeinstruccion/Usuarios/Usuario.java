@@ -2,7 +2,7 @@
 package ciclodeinstruccion.Usuarios;
 
 
-public class Usuario {
+public class Usuario implements Comparable <Usuario>{
     
     private String nombre;
     private String correo;
@@ -13,7 +13,9 @@ public class Usuario {
         this.correo = correo;
         this.contraseña = contraseña;
     }
-
+    public Usuario(String nombre){
+        this.nombre=nombre;
+    }
     public void mostrarDatos(){
         System.out.println(nombre);
         System.out.println(correo);
@@ -43,6 +45,11 @@ public class Usuario {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
+    }
+
+    @Override
+    public int compareTo(Usuario o) {
+        return this.nombre.compareTo(o.nombre);
     }
 
 }

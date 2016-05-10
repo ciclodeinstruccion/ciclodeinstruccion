@@ -16,6 +16,9 @@ public class Administrador extends Usuario{
     public Administrador(String nombre, String correo, String contraseña) {
         super(nombre, correo, contraseña);
     }
+    public Administrador(String nombre){
+        super(nombre);
+    }
 
     public void modificarUsuarioNombre(Registrado r, String nombreNuevo){
         
