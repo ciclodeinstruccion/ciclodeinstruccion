@@ -123,7 +123,9 @@ public class Registrado extends Usuario{
         nivel++;
         puntosNivel++;
     }
-    
+    public void unirsePartida(){
+        
+    }
     public float getHorasJugadas() {
         return horasJugadas;
     }

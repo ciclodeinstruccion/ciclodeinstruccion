@@ -7,6 +7,7 @@ package ciclodeinstruccion;
 
 import ciclodeinstruccion.Usuarios.Administrador;
 import ciclodeinstruccion.Usuarios.Registrado;
+import ciclodeinstruccion.Usuarios.Usuario;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -75,15 +76,55 @@ public class Juego {
         this.noFinalizada = noFinalizada;
     }
     
-    public void iniciarSesion(){
+    public Usuario iniciarSesion(){
         Scanner teclado=new Scanner(System.in);
         String nombreUsuario;
         String contraseña;
+        Usuario usuario=null;
         System.out.println("Introduce nombre de usuario:");
         nombreUsuario=teclado.nextLine();
         System.out.println("Introduce contraseña:");
         contraseña=teclado.nextLine();
-        
+        int regist=this.buscarRegistrado(nombreUsuario);
+        int admin=this.buscarAdministrador(nombreUsuario);
+        if(regist>=0){
+            if(registrados.get(regist).getContraseña().equals(contraseña)){
+                usuario=registrados.get(regist);
+            }
+        }
+        else if(admin>=0){
+            if(administradores.get(admin).getContraseña().equals(contraseña)){
+                usuario=administradores.get(admin);
+            }
+        }
+        else{
+            System.out.println("Nombre de usuario o contraseña no validos");
+        }
+        return usuario;
+    }
+    
+    public Registrado registrarse(){
+        Registrado usuario=null;
+        String nombreUsuario;
+        String correo;
+        String contraseña;
+        Scanner teclado=new Scanner(System.in);
+        System.out.println("Introduzca nombre de usuario: ");
+        nombreUsuario=teclado.nextLine();
+        if(this.buscarRegistrado(nombreUsuario)<0&&this.buscarAdministrador(nombreUsuario)<0){
+            System.out.println("Introduce correo: ");
+            correo=teclado.nextLine();
+            System.out.println("Introduce contraseña: ");
+            contraseña=teclado.nextLine();
+            Registrado r=new Registrado(0,0,500,0,0,0,0,0,0,nombreUsuario,correo,contraseña);
+            usuario=r;
+            System.out.println("REGISTRADO CON EXITO");
+            this.añadirRegistrado(r);
+        }
+        else{
+            System.out.println("El usuario ya existe.");
+        }
+        return usuario;
     }
     
     public int buscarRegistrado(String nombre){
@@ -132,4 +173,26 @@ public class Juego {
         }
         return posicion;
     }
+    public void buscarPartida(Registrado r){
+        Scanner teclado=new Scanner(System.in);
+        ArrayList <Partida> partidas=new ArrayList();
+        for(Partida p:noFinalizada){
+            if(!p.getJugador1().getNombre().equals(r.getNombre())){
+                partidas.add(p);
+            }
+        }
+        for(Partida p: partidas){
+            System.out.println(partidas.indexOf(p)+1);
+            p.mostrarPartidasNoFinalizadas();
+        }
+        System.out.println("Seleccione partida: ");
+        int partida;
+        partida=teclado.nextInt();
+        teclado.nextLine();
+        
+        Partida jugar=partidas.get(partida-1);
+        
+    }
+   
+    
 }

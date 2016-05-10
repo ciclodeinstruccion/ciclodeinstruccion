@@ -235,4 +235,54 @@ public class Partida {
             System.out.println(s);
         }
     }
+    
+    public void mostrarPartidasNoFinalizadas(){
+        System.out.println("Jugador: "+jugador1.getNombre());
+        System.out.println("Personaje: "+personaje1.getNombre());
+    }
+
+    public Registrado getJugador1() {
+        return jugador1;
+    }
+
+    public Registrado getJugador2() {
+        return jugador2;
+    }
+
+    public MiPersonaje getPersonaje1() {
+        return personaje1;
+    }
+
+    public MiPersonaje getPersonaje2() {
+        return personaje2;
+    }
+
+    public Registrado getGanador() {
+        return ganador;
+    }
+
+    public boolean isFinalizada() {
+        return finalizada;
+    }
+
+    public ArrayList<String> getTexto() {
+        return texto;
+    }
+
+    public int getEXP() {
+        return EXP;
+    }
+
+    public int getORO() {
+        return ORO;
+    }
+
+    public float getVidaPersonaje1() {
+        return vidaPersonaje1;
+    }
+
+    public float getVidaPersonaje2() {
+        return vidaPersonaje2;
+    }
+    
 }
