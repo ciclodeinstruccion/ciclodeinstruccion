@@ -10,9 +10,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import static java.util.Collections.list;
 import java.util.Iterator;
+import java.util.Scanner;
 
 
 public class Administrador extends Usuario{
+    
+    Scanner teclado = new Scanner(System.in);
 
     public Administrador(String nombre, String correo, String contraseña) {
         super(nombre, correo, contraseña);
@@ -21,81 +24,96 @@ public class Administrador extends Usuario{
         super(nombre);
     }
 
-    public void modificarUsuarioNombre(Registrado r, String nombreNuevo){
+    public void modificarUsuarioNombre(Registrado r){
         
-        
+        System.out.println("nombre nuevo");
+        String nombreNuevo=teclado.nextLine();
         r.setNombre(nombreNuevo);  
     }
     
-    public void modificarUsuarioContraseña(Registrado r, String contraseñaNueva){
+    public void modificarUsuarioContraseña(Registrado r){
         
+        System.out.println("contraseña nuevo");
+        String contraseñaNueva=teclado.nextLine();
         r.setContraseña(contraseñaNueva);
     }
     
     public void modificarUsuarioCorreo(Registrado r, String CorreoNuevo){
         
+        System.out.println("correo nuevo");
+        String correoNuevo=teclado.nextLine();
         r.setCorreo(CorreoNuevo);
     }
 
-    public void eliminarUsuarios(Registrado r, ArrayList <Usuario> usuarios){
+    public void eliminarUsuarios(ArrayList <Usuario> usuarios){
         
-        usuarios.remove(r);
+        System.out.println("posicion a eliminar");
+        int posicion=teclado.nextInt();
+        usuarios.remove(posicion);
     }
     
-    public void modificarPersonajeNombre(Personaje p, String nombreNuevo){
+    public void modificarPersonajeNombre(Personaje p){
         
+        System.out.println("nombre nuevo");
+        String nombreNuevo=teclado.nextLine();
         p.setNombre(nombreNuevo);
     }
     
-    public void modificarPersonajeDaño(Personaje p, float dañoNuevo){
+    public void modificarPersonajeDaño(Personaje p){
         
+        System.out.println("daño nuevo");
+        float dañoNuevo=teclado.nextFloat();
         p.setDaño(dañoNuevo);
     }
     
-    public void modificarPersonajeVida(Personaje p, float vidaNueva){
+    public void modificarPersonajeVida(Personaje p){
         
+        System.out.println("vida nuevo");
+        float vidaNueva=teclado.nextFloat();
         p.setVida(vidaNueva);
     }
     
-    public void modificarPersonajePrecio(Personaje p, int precioNuevo){
+    public void modificarPersonajePrecio(Personaje p){
         
+        System.out.println("precio nuevo");
+        int precioNuevo=teclado.nextInt();
         p.setPrecio(precioNuevo);
     }
     
     public void verUsuarios(ArrayList <Registrado> registrados){
         
-        String [][] tablaDeUsuarios = new String [registrados.size()][6];
+        String [][] tablaDeUsuarios = new String [registrados.size()][3];
         for (int i = 0; i < registrados.size(); i++  )  {
             Registrado r =(Registrado) registrados.get(i);
             tablaDeUsuarios[i][0] =r.getNombre();
             tablaDeUsuarios[i][1] =r.getCorreo();
             tablaDeUsuarios[i][2] =r.getContraseña();
-            System.out.println(tablaDeUsuarios);
+            System.out.println(tablaDeUsuarios[i][0]);
+            System.out.println(tablaDeUsuarios[i][1]);
+            System.out.println(tablaDeUsuarios[i][2]);
         }      
-        for(String[] s: tablaDeUsuarios){
-            
-        }
     }
     
-    /*public void verPersonajes(ArrayList <Personaje> personajes){
+    public void verPersonajes(ArrayList <Personaje> personajes){
         
-        String [][] tablaDeUsuarios = new String [registrados.size()][6];
-        for (int i = 0; i < registrados.size(); i++  )  {
-            Registrado r =(Registrado) registrados.get(i);
-            tablaDeUsuarios[i][0] =r.getNombre();
-            tablaDeUsuarios[i][1] =r.getCorreo();
-            tablaDeUsuarios[i][2] =r.getContraseña();
+        String [][] tablaDePersonajes = new String [personajes.size()][3];
+        for (int i = 0; i < personajes.size(); i++  )  {
+            Personaje p =(Personaje) personajes.get(i);
+            tablaDePersonajes[i][0] = p.getNombre();
+            tablaDePersonajes[i][1] = Float.toString(p.getDaño());
+            tablaDePersonajes[i][2] = Float.toString(p.getVida());
+            tablaDePersonajes[i][3] = Integer.toString(p.getPrecio());
+            System.out.println(tablaDePersonajes[i][0]);
+            System.out.println(tablaDePersonajes[i][1]);
+            System.out.println(tablaDePersonajes[i][2]);
+            System.out.println(tablaDePersonajes[i][3]);
         }      
-        System.out.println(tablaDeUsuarios);
-            
-        
-    }*/
+    }
     
     public void historialDePartidas(ArrayList <Partida> partidas){
         
-        for (Partida p: partidas){
-            p.mostrarDatos();
-        }
+        
+       
     }
     
     public void verEstadisticasAvanzadas(ArrayList <Partida> partidas){

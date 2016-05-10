@@ -31,8 +31,16 @@ public class Ciclodeinstruccion {
         Registrado b = new Registrado (1,2,1,1900,1,1,1,1,1, "b", "b", "b");
         
         
+        
+        Juego j = new Juego();
+        
+        j.añadirRegistrado(a);
+        
+        
         Asesino p = new Asesino ("sonic", 50 ,30 ,50 , 50);
         Fighter f = new Fighter ("lucario", 100, 15, 10, 50);
+        
+        j.añadirPersonajes(p);
     
         Habilidad h = new Habilidad ("hiper", 50, 10, 2);
         Habilidad h1 = new Habilidad ("sombra", 30, 0, 40);
@@ -72,7 +80,9 @@ public class Ciclodeinstruccion {
         a.mostrar();
         b.mostrar();*/
         
-        ab.verUsuarios(usuarios);
+        //ab.verUsuarios(j.getRegistrados());
+        //a.mostrarPersonajes();
+        
     }
     
 }
