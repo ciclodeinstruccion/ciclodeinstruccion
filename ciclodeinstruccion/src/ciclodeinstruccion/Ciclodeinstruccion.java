@@ -22,66 +22,7 @@ public class Ciclodeinstruccion {
     public static void main(String[] args) {
         // TODO code application logic hereqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
         
-        ArrayList <Registrado> usuarios = new ArrayList <Registrado>();
-        ArrayList <Personaje> personajes = new ArrayList <Personaje>();
         
-        Administrador ab = new Administrador ("aaaa", "aaa", "bbb");
-        
-        Registrado a = new Registrado (1,1,1,900,1,1,1,1,1, "a", "a", "a");
-        Registrado b = new Registrado (1,2,1,1900,1,1,1,1,1, "b", "b", "b");
-        
-        
-        
-        Juego j = new Juego();
-        
-        j.añadirRegistrado(a);
-        
-        
-        Asesino p = new Asesino ("sonic", 50 ,30 ,50 , 50);
-        Fighter f = new Fighter ("lucario", 100, 15, 10, 50);
-        
-        j.añadirPersonajes(p);
-    
-        Habilidad h = new Habilidad ("hiper", 50, 10, 2);
-        Habilidad h1 = new Habilidad ("sombra", 30, 0, 40);
-        Habilidad h2 = new Habilidad ("excalibur", 20, 50, 0);
-        
-        p.añadirHabilidad(h);
-        p.añadirHabilidad(h1);
-        p.añadirHabilidad(h2);
-        
-        Habilidad g = new Habilidad ("patadavoladora", 50, 20, 5);
-        Habilidad g1 = new Habilidad ("puñetazoBionico", 30, 20, 0);
-        Habilidad g2 = new Habilidad ("roboEspecial", 20, 30, 0);
-        
-        f.añadirHabilidad(g);
-        f.añadirHabilidad(g1);
-        f.añadirHabilidad(g2);
-        
-        MiAsesino ma = new MiAsesino(1,1,1,1,1, p, 1);
-        MiFighter mf = new MiFighter(2,2,2,2,2, f, 2);
-        
-        a.añadirPersonajes(ma);
-        b.añadirPersonajes(mf);
-        
-        Partida partida = new Partida (a, ma);
-        partida.unirsePartida(b, mf);
-        
-        /*a.mostrar();
-        b.mostrar();
-        
-        p.mostrarHabilidad();
-        f.mostrarHabilidad();
-        
-        
-        partida.jugarPartida();
-        partida.ver();
-        
-        a.mostrar();
-        b.mostrar();*/
-        
-        //ab.verUsuarios(j.getRegistrados());
-        //a.mostrarPersonajes();
         
     }
     
