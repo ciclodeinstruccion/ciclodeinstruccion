@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import static java.util.Collections.list;
 import java.util.Iterator;
+import java.util.Scanner;
 
 
 public class Administrador extends Usuario{
@@ -22,7 +23,6 @@ public class Administrador extends Usuario{
     }
 
     public void modificarUsuarioNombre(Registrado r, String nombreNuevo){
-        
         
         r.setNombre(nombreNuevo);  
     }
@@ -103,69 +103,161 @@ public class Administrador extends Usuario{
         
     }
 
-    /*public void menuGrande(){
+    public void menuGrande(){
+        Scanner teclado = new Scanner(System.in);
+        int opcion;
         
-        boolean bandera = true;
-        
-        while (bandera=true){
-            System.out.println("1 modificar nombre de usuario");
-            System.out.println("2 modificar correo del usuario");
-            System.out.println("3 modificar contraseña del usuario");
-            System.out.println("4 ");
-            System.out.println("5 eliminar erramientas");
-            System.out.println("6 guardar las herramientas en binario");
-            //System.out.println("7 guardar las ferreterias");
-            System.out.println("8 modificar una herramienta");
-            System.out.println("9 cargar herramientas desde binario");
-            
-            
-            opcion=teclado.nextInt();
+        do{
+            System.out.println("MENÚ DE ADMINSTRACIÓN");
+            System.out.println("-------------------------");
+            System.out.println("1.-Gestionar");
+            System.out.println("2.-Ver");
+            System.out.println("3.-Salir");
+            opcion = teclado.nextInt();
             teclado.hasNextLine();
+           
             switch(opcion){
-                case 1: f.añadirDatos();
+                case 1:
+                    menuGestionar();
                     break;
-                //case 2: f.introducirFerreteria();
-                    //break;
+                case 2:
+                    menuVer();
+                    break;
                 case 3:
-                    
-                        System.out.println("1 mostrar ordenado por el precio");
-                        System.out.println("2 mostrar ordenado por el nombre");
-                        System.out.println("3 mostrar ordenado por marca y modelo");
-                        System.out.println("4 mostrar sin ordenar");
-                        
-                        opcion1=teclado.nextInt();
-                        teclado.nextLine();
-                        switch(opcion1){
-                            case 1: f.mostrarHerramientasOrdenadasPrecio();
-                                break;
-                            case 2: f.mostrarHerramientasOrdenadasNombre();
-                                break;
-                            case 3: f.mostrarHerramientasOrdenadasMarcaModelo();
-                                break;
-                            case 4: f.mostrar();
-                                break;
-                            
-                                
-                        }
-                    
                     break;
-                case 4: f1.mostrarferreteria();
-                    break;
-                case 5: f.elimiarHerramientas();
-                    break;
-                case 6: h.escribirEnBinario();
-                    break;
-                case 7: f.guardarFerreteria();
-                    break;
-                case 8: f.modificar();
-                    break;
-                case 9: f.cargarDesdeBinarioHerramientas();
-                    break;
-                default:
-                    bandera=false;
-            }   
-        }*/
+            }
+        }while(opcion < 3);
+                          
     }
+    
+    public void menuGestionar(){
+        Scanner teclado = new Scanner(System.in);
+        int opcion;
+        
+        do{
+            System.out.println("MENÚ DE GESTIÓN");
+            System.out.println("----------------");
+            System.out.println("1.-Usuarios");
+            System.out.println("2.-Personajes");
+            System.out.println("3.-Volver");
+            opcion = teclado.nextInt();
+            teclado.hasNextLine();
+           
+            switch(opcion){
+                case 1:
+                    menuGestionarUsuarios();
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    break;
+            }
+        }while(opcion < 3);
+    }
+    
+    public void menuVer(){
+        Scanner teclado = new Scanner(System.in);
+        int opcion;
+        
+        do{
+            System.out.println("MENÚ DE VER");
+            System.out.println("----------------");
+            System.out.println("1.-Ver historial de partidas");
+            System.out.println("2.-Usuarios");
+            System.out.println("3.-Personajes");
+            System.out.println("4.-Volver");
+            opcion = teclado.nextInt();
+            teclado.hasNextLine();
+           
+            switch(opcion){
+                case 1:
+                    menuVerHistorialPartidas();
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+            }
+        }while(opcion < 3);
+        
+    }
+    
+    public void menuGestionarUsuarios(){
+        Scanner teclado = new Scanner(System.in);
+        int opcion;
+        
+        do{
+            System.out.println("MENÚ DE USUARIOS");
+            System.out.println("----------------");
+            System.out.println("1.-Modificar usuarios");
+            System.out.println("2.-Eliminar usuarios");
+            System.out.println("3.-Volver");
+            opcion = teclado.nextInt();
+            teclado.hasNextLine();
+           
+            switch(opcion){
+                case 1:
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    break;
+            }
+        }while(opcion < 3);
+    }
+    
+    
+    public void menuVerHistorialPartidas(){
+        
+    }
+    
+    public void modificarUsuarios(){
+       Scanner teclado = new Scanner(System.in);
+        int opcion;
+        
+        do{
+            System.out.println("MENÚ MODIFICAR USUARIOS");
+            System.out.println("-------------------------");
+            System.out.println("1.-Modificar nombre");
+            System.out.println("2.-Modificar contraseña");
+            System.out.println("3.-Modificar e-mail");
+            System.out.println("4.-Volver");
+            opcion = teclado.nextInt();
+            teclado.hasNextLine();
+           
+            switch(opcion){
+                case 1:
+                    String nombre1;
+                    String nombre2;
+                    nombre1 = teclado.nextLine();
+                    teclado.hasNextLine();
+                    nombre2 = teclado.nextLine();
+                    teclado.hasNextLine();
+                    modificarUsuarioNombre(null, null);
+                    break;
+                case 2:
+                    modificarUsuarioContraseña(null, null);
+                    break;
+                case 3:
+                    modificarUsuarioCorreo(null, null);
+                    break;
+                case 4:
+                    break;
+            }
+        }while(opcion<3);
+                          
+    }
+    }
+        
+ }
+    
+    
     
     
     
