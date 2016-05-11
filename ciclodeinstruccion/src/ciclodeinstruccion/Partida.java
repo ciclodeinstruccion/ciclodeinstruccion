@@ -95,11 +95,11 @@ public class Partida {
         }
         if(vidaPersonaje1<=0){
                 this.finalizarPartida(jugador2, personaje2);
-                texto.add(jugador2.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+ORO+" de oro");
+                texto.add("\033[32m"+jugador2.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+ORO+" de oro"+"\033[30m");
         }
         else{
                 this.finalizarPartida(jugador1, personaje1);
-                texto.add(jugador1.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+ORO+" de oro");
+                texto.add("\033[32m"+jugador1.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+ORO+" de oro"+"\033[30m");
         }
         finalizada=true;
     }
@@ -144,24 +144,24 @@ public class Partida {
         if(JAtaca==jugador1){
             if(vidaPersonaje1+h.getCura()<=vidaMax){
                 vidaPersonaje1+=h.getCura();
-                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+h.getCura()+" puntos de vida.");
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+"\033[35m"+h.getCura()+"\033[30m"+" puntos de vida.");
             }
             else{
                 float vidaCurada=vidaMax-vidaPersonaje1;
                 vidaPersonaje1=vidaMax;
-                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+vidaCurada+" puntos de vida.");
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+"\033[35m"+vidaCurada+"\033[30m"+" puntos de vida.");
             }
             texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+"\033[34m"+vidaPersonaje1+"\033[30m"+" puntos de vida.");
         }
         else{
             if(vidaPersonaje2+h.getCura()<=vidaMax){
                 vidaPersonaje2+=h.getCura();
-                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+h.getCura()+" puntos de vida.");
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+"\033[35m"+h.getCura()+"\033[30m"+" puntos de vida.");
             }
             else{
                 float vidaCurada=vidaMax-vidaPersonaje2;
                 vidaPersonaje2=vidaMax;
-                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+vidaCurada+" puntos de vida.");
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+"\033[35m"+vidaCurada+"\033[30m"+" puntos de vida.");
             }
             texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+"\033[34m"+vidaPersonaje2+"\033[30m"+" puntos de vida.");
         }
@@ -196,12 +196,12 @@ public class Partida {
         if(JAtaca==jugador1){
             if(vidaPersonaje1+h.getCura()<=vidaMax){
                 vidaPersonaje1+=h.getCura();
-                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" tambien se curo "+h.getCura()+" puntos de vida.");
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" tambien se curo "+"\033[35m"+h.getCura()+"\033[30m"+" puntos de vida.");
             }
             else{
                 float vidaCurada=vidaMax-vidaPersonaje1;
                 vidaPersonaje1=vidaMax;
-                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" también se curo "+vidaCurada+" puntos de vida.");
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" también se curo "+"\033[35m"+vidaCurada+"\033[30m"+" puntos de vida.");
             }
             texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+"\033[34m"+vidaPersonaje2+"\033[30m"+" puntos de vida.");
             texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+"\033[34m"+vidaPersonaje1+"\033[30m"+" puntos de vida.");
@@ -209,12 +209,12 @@ public class Partida {
         else{
             if(vidaPersonaje2+h.getCura()<=vidaMax){
                 vidaPersonaje2+=h.getCura();
-                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" tambien se curo "+h.getCura()+" puntos de vida.");
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" tambien se curo "+"\033[35m"+h.getCura()+"\033[30m"+" puntos de vida.");
             }
             else{
                 float vidaCurada=vidaMax-vidaPersonaje2;
                 vidaPersonaje2=vidaMax;
-                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" también se curo "+vidaCurada+" puntos de vida.");
+                texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" también se curo "+"\033[35m"+vidaCurada+"\033[30m"+" puntos de vida.");
             }
             texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+"\033[34m"+vidaPersonaje1+"\033[30m"+" puntos de vida.");
             texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+"\033[34m"+vidaPersonaje2+"\033[30m"+" puntos de vida.");
