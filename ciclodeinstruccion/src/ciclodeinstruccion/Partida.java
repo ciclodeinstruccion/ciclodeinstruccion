@@ -94,6 +94,7 @@ public class Partida {
                 this.finalizarPartida(jugador1, personaje1);
                 texto.add(jugador1.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+ORO+" de oro");
         }
+        finalizada=true;
     }
     public void mostrarDatos(){
         

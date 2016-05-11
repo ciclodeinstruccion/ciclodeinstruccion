@@ -19,15 +19,13 @@ import java.util.Scanner;
 public class Juego {
     private ArrayList <Registrado> registrados;
     private ArrayList <Administrador> administradores;
-    private ArrayList <Partida> finalizadas;
-    private ArrayList <Partida> noFinalizada;
+    private ArrayList <Partida> partidas;
     private ArrayList <Personaje> personajes;
 
     public Juego() {
         this.registrados = new ArrayList();
         this.administradores = new ArrayList();
-        this.finalizadas = new ArrayList();
-        this.noFinalizada = new ArrayList();
+        this.partidas = new ArrayList();
         this.personajes = new ArrayList();
     }
     
@@ -39,20 +37,16 @@ public class Juego {
         administradores.add(a);
     }
     
-    public void añadirPNofinalizada(Partida p){
-        noFinalizada.add(p);
+    public void añadirPartida(Partida p){
+        partidas.add(p);
     }
     
-    public void añadirPFinalizada(Partida p){
-        noFinalizada.add(p);
-    }
+    
     
     public void añadirPersonajes(Personaje personaje){
         personajes.add(personaje);
     }
-    public void eliminarNoFinalizada(Partida p){
-        noFinalizada.remove(p);
-    }
+    
     public ArrayList<Registrado> getRegistrados() {
         return registrados;
     }
@@ -61,13 +55,6 @@ public class Juego {
         return administradores;
     }
 
-    public ArrayList<Partida> getFinalizadas() {
-        return finalizadas;
-    }
-
-    public ArrayList<Partida> getNoFinalizada() {
-        return noFinalizada;
-    }
 
     public void setRegistrados(ArrayList<Registrado> registrados) {
         this.registrados = registrados;
@@ -77,13 +64,6 @@ public class Juego {
         this.administradores = administradores;
     }
 
-    public void setFinalizadas(ArrayList<Partida> finalizadas) {
-        this.finalizadas = finalizadas;
-    }
-
-    public void setNoFinalizada(ArrayList<Partida> noFinalizada) {
-        this.noFinalizada = noFinalizada;
-    }
     
     public Usuario iniciarSesion(){
         Scanner teclado=new Scanner(System.in);
@@ -185,8 +165,8 @@ public class Juego {
     public void buscarPartida(Registrado r){
         Scanner teclado=new Scanner(System.in);
         ArrayList <Partida> partidas=new ArrayList();
-        for(Partida p:noFinalizada){
-            if(!p.getJugador1().getNombre().equals(r.getNombre())){
+        for(Partida p:this.partidas){
+            if(!p.getJugador1().getNombre().equals(r.getNombre()) && !p.isFinalizada()){
                 partidas.add(p);
             }
         }
@@ -202,8 +182,6 @@ public class Juego {
         Partida jugar=partidas.get(partida-1);
         jugar.unirsePartida(r, r.elegirPersonaje());
         jugar.jugarPartida();
-        this.añadirPFinalizada(jugar);
-        this.eliminarNoFinalizada(jugar);
         
     }
    
