@@ -19,13 +19,15 @@ public class Partida {
     private MiPersonaje personaje1;
     private MiPersonaje personaje2;
     private Registrado ganador;
+    private MiPersonaje pGanador;
     private boolean finalizada;
     private ArrayList <String> texto;
     private final int EXP=100;//
-    private final int ORO=100;
+    private final int ORO=200;
     private float vidaPersonaje1;
     private float vidaPersonaje2;
     private int identificador;
+    private final int COSTE_PARTIDA=100;
     
 
     public Partida(int identificador, Registrado jugador1, MiPersonaje personaje1) {
@@ -35,12 +37,14 @@ public class Partida {
         this.finalizada=false;
         this.texto=new ArrayList();
         this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
+        this.jugador1.gastarPuntosOro(COSTE_PARTIDA);
     }
     
     public void unirsePartida(Registrado jugador2, MiPersonaje personaje2){
         this.jugador2=jugador2;
         this.personaje2=personaje2;
         this.vidaPersonaje2=personaje2.getVidaBase()+personaje2.getBonusVida()+jugador2.getVitalidad();
+        this.jugador2.gastarPuntosOro(COSTE_PARTIDA);
     }
     public void jugarPartida(){
         float dañoPersonaje1=personaje1.getDañoBase()+personaje1.getBonusDaño()+jugador1.getFuerza();
@@ -230,6 +234,7 @@ public class Partida {
     
     public void finalizarPartida(Registrado ganador, MiPersonaje personaje){
         this.ganador=ganador;
+        this.pGanador=personaje;
         ganador.aumentarExperiencia(EXP);
         ganador.aumentarOro(ORO);
         personaje.aumentarExperiencia(EXP);
@@ -277,6 +282,10 @@ public class Partida {
 
     public Registrado getGanador() {
         return ganador;
+    }
+
+    public MiPersonaje getpGanador() {
+        return pGanador;
     }
 
     public boolean isFinalizada() {

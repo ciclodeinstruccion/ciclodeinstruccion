@@ -213,4 +213,36 @@ public class Juego {
         jugar.ver();
     }
     
+    public float calcularWinratio(String s){
+        float winratio=0;
+        ArrayList <Partida> finalizadas;
+        int numeropartidas=0;
+        int ganadas=0;
+        for(Partida p:partidas){
+            if(p.getPersonaje1().getNombre().equals(s)){
+                numeropartidas++;
+            }
+            if(p.getPersonaje2().getNombre().equals(s)){
+                numeropartidas++;
+            }
+            if(p.getpGanador().getNombre().equals(s)){
+                ganadas++;
+            }
+        }
+        if(numeropartidas==0){
+            winratio=0;
+        }
+        else{
+            winratio=(ganadas/numeropartidas)*100;
+        }
+        return winratio;
+    }
+    
+    public void estadisticasAvanzadas(){
+  
+        for(Personaje p:this.personajes){
+            System.out.println((personajes.indexOf(p)+1)+"."+p.getNombre()+":"+this.calcularWinratio(p.getNombre()));
+        }
+        
+    }
 }
