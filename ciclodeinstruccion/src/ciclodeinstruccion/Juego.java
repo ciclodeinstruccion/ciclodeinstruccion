@@ -186,4 +186,31 @@ public class Juego {
     }
    
     
+    public void historialPartidas(Registrado r){
+        
+        Scanner a = new Scanner(System.in);
+        
+        int opcion;
+        
+        ArrayList <Partida> partidas=new ArrayList();
+        
+        for(Partida p:partidas){
+            if(p.getJugador1().getNombre().equals(r.getNombre())&&p.isFinalizada()){
+                
+                partidas.add(p);
+            }
+        }  
+    
+        for(Partida p:partidas){
+            System.out.println(partidas.indexOf(p)+1);
+            p.mostrarPartidasFinalizadas();
+        }
+        
+        System.out.println("seleciona partida: ");
+        opcion=a.nextInt();
+        Partida jugar=partidas.get(opcion-1);
+    
+        jugar.ver();
+    }
+    
 }

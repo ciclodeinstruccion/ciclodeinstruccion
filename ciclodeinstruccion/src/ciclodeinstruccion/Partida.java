@@ -25,9 +25,11 @@ public class Partida {
     private final int ORO=100;
     private float vidaPersonaje1;
     private float vidaPersonaje2;
+    private int identificador;
     
 
-    public Partida(Registrado jugador1, MiPersonaje personaje1) {
+    public Partida(int identificador, Registrado jugador1, MiPersonaje personaje1) {
+        this.identificador = identificador;
         this.jugador1 = jugador1;
         this.personaje1 = personaje1;
         this.finalizada=false;
@@ -43,6 +45,7 @@ public class Partida {
     public void jugarPartida(){
         float dañoPersonaje1=personaje1.getDañoBase()+personaje1.getBonusDaño()+jugador1.getFuerza();
         float dañoPersonaje2=personaje2.getDañoBase()+personaje2.getBonusDaño()+jugador2.getFuerza();
+        
         float vidaMax1=vidaPersonaje1;
         float vidaMax2=vidaPersonaje2;
         boolean bandera=true;
@@ -239,10 +242,23 @@ public class Partida {
     }
     
     public void mostrarPartidasNoFinalizadas(){
+        System.out.println("numero de partida: "+identificador);
         System.out.println("Jugador: "+jugador1.getNombre());
         System.out.println("Personaje: "+personaje1.getNombre());
     }
+    
+    public void mostrarPartidasFinalizadas(){
+        System.out.println("numero de partida: "+identificador);
+        System.out.println("Jugador: "+jugador1.getNombre()+"con personaje: "+personaje1.getNombre());
+        System.out.println("jugador: "+jugador2.getNombre()+"con personaje: "+personaje2.getNombre());
+        System.out.println("ganador: "+this.ganador);
+        
+    }
 
+    public int getIdentificador() {
+        return identificador;
+    }
+ 
     public Registrado getJugador1() {
         return jugador1;
     }

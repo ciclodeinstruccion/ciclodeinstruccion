@@ -77,14 +77,6 @@ public class Registrado extends Usuario{
         misPersonajes.add(p);
     }
     
-    /*public void verHistorialDePartidas(listaDePartidas){
-        
-    }
-    
-    public void verRepeticion (listaDePartidas){
-        
-    }*/
-    
     public void gastarPuntosExp(){
         puntosNivel--;
     }
