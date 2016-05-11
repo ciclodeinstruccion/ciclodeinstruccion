@@ -9,6 +9,7 @@ import ciclodeinstruccion.Usuarios.Administrador;
 import ciclodeinstruccion.Usuarios.Registrado;
 import ciclodeinstruccion.Usuarios.Usuario;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -20,6 +21,11 @@ public class Ciclodeinstruccion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Scanner a = new Scanner(System.in);
+        
+        boolean bandera = true;
+        
         
         
         

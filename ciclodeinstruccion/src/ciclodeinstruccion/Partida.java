@@ -5,6 +5,7 @@
  */
 package ciclodeinstruccion;
 
+import MiPersonaje.MiPersonaje;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.util.ArrayList;
 

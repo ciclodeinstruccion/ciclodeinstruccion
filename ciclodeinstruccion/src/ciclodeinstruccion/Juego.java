@@ -5,6 +5,7 @@
  */
 package ciclodeinstruccion;
 
+import Personaje.Personaje;
 import ciclodeinstruccion.Usuarios.Administrador;
 import ciclodeinstruccion.Usuarios.Registrado;
 import ciclodeinstruccion.Usuarios.Usuario;

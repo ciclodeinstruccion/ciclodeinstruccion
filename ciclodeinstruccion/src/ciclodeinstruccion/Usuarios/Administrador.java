@@ -2,7 +2,7 @@
 package ciclodeinstruccion.Usuarios;
 
 import ciclodeinstruccion.Partida;
-import ciclodeinstruccion.Personaje;
+import Personaje.Personaje;
 import ciclodeinstruccion.Usuarios.Usuario;
 import static java.nio.file.Files.list;
 import static java.rmi.Naming.list;

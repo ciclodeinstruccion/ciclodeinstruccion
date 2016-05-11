@@ -5,8 +5,8 @@
  */
 package ciclodeinstruccion.Usuarios;
 
-import ciclodeinstruccion.MiPersonaje;
-import ciclodeinstruccion.Personaje;
+import MiPersonaje.MiPersonaje;
+import Personaje.Personaje;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -129,12 +129,13 @@ public class Registrado extends Usuario{
         MiPersonaje elegido;
         this.mostrarPersonajes();
         int opcion;
-        System.out.println("Seleccione personaje");
+        System.out.println("Seleccione numero del personaje");
         opcion=teclado.nextInt();
         teclado.nextLine();
         elegido=misPersonajes.get(opcion-1);
         return elegido;
     }
+    
     public void aumentarOro(int orosumado){
         
         oro+=orosumado;

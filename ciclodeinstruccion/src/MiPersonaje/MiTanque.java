@@ -3,42 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ciclodeinstruccion;
+package MiPersonaje;
+
+import Personaje.Tanque;
+import ciclodeinstruccion.GeneradorAleatorios;
+import ciclodeinstruccion.Habilidad;
 
 /**
  *
  * @author alumno
  */
-public class MiAsesino extends MiPersonaje{
-    private Asesino personaje;
-    private float bonusEsquivar;
-    private final float AUMENTAR_ESQUIVAR=1;
+public class MiTanque extends MiPersonaje{
+    private Tanque personaje;
+    private float bonusArmadura;
+    private final float AUMENTAR_ARMADURA=1;
 
-    public MiAsesino(float bonusVida, float bonusDaño, int nivel, int experiencia,int puntosNivel,Asesino personaje,float bonusEsquivar) {
+    public MiTanque(float bonusVida, float bonusDaño, int nivel, int experiencia,int puntosNivel,Tanque personaje,float bonusArmadura) {
         super(bonusVida, bonusDaño, nivel, experiencia,puntosNivel);
         this.personaje=personaje;
-        this.bonusEsquivar=bonusEsquivar;
+        this.bonusArmadura=bonusArmadura;
     }
-    public void aumentarEsquivar(){
-        this.bonusEsquivar+=AUMENTAR_ESQUIVAR;
+    public void aumentarArmadura(){
+        this.bonusArmadura+=AUMENTAR_ARMADURA;
         this.gastarPuntosNivel();
     }
-    public Asesino getPersonaje() {
+    public Tanque getPersonaje() {
         return personaje;
     }
 
-    public float getBonusEsquivar() {
-        return bonusEsquivar;
+    public float getBonusArmadura() {
+        return bonusArmadura;
     }
 
-    public void setPersonaje(Asesino personaje) {
+    public void setPersonaje(Tanque personaje) {
         this.personaje = personaje;
     }
 
-    public void setBonusEsquivar(float bonusEsquivar) {
-        this.bonusEsquivar = bonusEsquivar;
+    public void setBonusArmadura(float bonusArmadura) {
+        this.bonusArmadura = bonusArmadura;
     }
-    
     public float getVidaBase(){
         return personaje.getVida();
     }
@@ -46,15 +49,10 @@ public class MiAsesino extends MiPersonaje{
         return false;
     }
     public float armadura(int especial){
-        return 0;
+        return personaje.getArmadura()+this.bonusArmadura+especial;
     }
     public boolean esquiva(int especial){
-        boolean esquivar=false;
-        int random=GeneradorAleatorios.generarAleatorio(100);
-        if(random<personaje.getEsquivar()+this.bonusEsquivar+especial){
-            esquivar=true;
-        }
-        return esquivar;
+        return false;
     }
     public Habilidad elegirHabilidad(int inteligencia){
         Habilidad elegida;
@@ -76,4 +74,6 @@ public class MiAsesino extends MiPersonaje{
     public String getNombre(){
         return this.personaje.getNombre();
     }
+    
+    
 }
