@@ -23,6 +23,26 @@ public class Administrador extends Usuario{
     public Administrador(String nombre){
         super(nombre);
     }
+    
+    public Registrado elegirRegistrado(ArrayList <Registrado> registrados){
+        
+        Scanner teclado = new Scanner(System.in);
+        this.verUsuarios(registrados);
+        System.out.println("escribe el numero del usuario ");
+        int numero = teclado.nextInt();
+        
+        return registrados.get(numero);   
+    }
+    
+    public Personaje elegirPersonaje(ArrayList <Personaje> personajes){
+        
+        Scanner teclado = new Scanner(System.in);
+        this.verPersonajes(personajes);
+        System.out.println("escribe el numero del personaje ");
+        int numero = teclado.nextInt();
+        
+        return personajes.get(numero);   
+    }
 
     public void modificarUsuarioNombre(Registrado r){
         
@@ -38,11 +58,11 @@ public class Administrador extends Usuario{
         r.setContraseña(contraseñaNueva);
     }
     
-    public void modificarUsuarioCorreo(Registrado r, String CorreoNuevo){
+    public void modificarUsuarioCorreo(Registrado r){
         
         System.out.println("correo nuevo");
         String correoNuevo=teclado.nextLine();
-        r.setCorreo(CorreoNuevo);
+        r.setCorreo(correoNuevo);
     }
 
     public void eliminarUsuarios(ArrayList <Usuario> usuarios){
@@ -88,6 +108,10 @@ public class Administrador extends Usuario{
             tablaDeUsuarios[i][0] =r.getNombre();
             tablaDeUsuarios[i][1] =r.getCorreo();
             tablaDeUsuarios[i][2] =r.getContraseña();
+
+
+            System.out.println(i+1);
+
             System.out.println(tablaDeUsuarios[i][0]);
             System.out.println(tablaDeUsuarios[i][1]);
             System.out.println(tablaDeUsuarios[i][2]);
@@ -103,6 +127,10 @@ public class Administrador extends Usuario{
             tablaDePersonajes[i][1] = Float.toString(p.getDaño());
             tablaDePersonajes[i][2] = Float.toString(p.getVida());
             tablaDePersonajes[i][3] = Integer.toString(p.getPrecio());
+
+
+            System.out.println(i+1);
+
             System.out.println(tablaDePersonajes[i][0]);
             System.out.println(tablaDePersonajes[i][1]);
             System.out.println(tablaDePersonajes[i][2]);
