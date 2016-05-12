@@ -329,10 +329,10 @@ public class Registrado extends Usuario{
                     break;
                     
                 default:
-                    System.out.println("ERORR: opciones del 1 al 3");
+                    System.out.println("ERORR: opciones del 1 al 8");
                     break;
             }
-        }while(opcion<3);
+        }while(opcion<9);
     }
     
     public void menuAtributosPersonajes(Juego juego){

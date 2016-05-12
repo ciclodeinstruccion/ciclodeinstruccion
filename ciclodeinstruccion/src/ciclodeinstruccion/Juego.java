@@ -176,13 +176,13 @@ public class Juego {
     }
     public void buscarPartida(Registrado r){
         Scanner teclado=new Scanner(System.in);
-        ArrayList <Partida> partidas=new ArrayList();
+        ArrayList <Partida> jugables=new ArrayList();
         for(Partida p:this.partidas){
             if(!p.getJugador1().getNombre().equals(r.getNombre()) && !p.isFinalizada()){
-                partidas.add(p);
+                jugables.add(p);
             }
         }
-        for(Partida p: partidas){
+        for(Partida p: jugables){
             System.out.println(partidas.indexOf(p)+1);
             p.mostrarPartidasNoFinalizadas();
         }
@@ -191,7 +191,7 @@ public class Juego {
         partida=teclado.nextInt();
         teclado.nextLine();
         
-        Partida jugar=partidas.get(partida-1);
+        Partida jugar=jugables.get(partida-1);
         jugar.unirsePartida(r, r.elegirPersonaje());
         jugar.jugarPartida();
         
@@ -213,23 +213,23 @@ public class Juego {
         
         int opcion;
         
-        ArrayList <Partida> partidas=new ArrayList();
+        ArrayList <Partida> acabadas=new ArrayList();
         
         for(Partida p:partidas){
-            if(p.getJugador1().getNombre().equals(r.getNombre())&&p.isFinalizada()){
+            if(p.isFinalizada()&&(p.getJugador1().getNombre().equals(r.getNombre())||p.getJugador2().getNombre().equals(r.getNombre()))){
                 
-                partidas.add(p);
+                acabadas.add(p);
             }
         }  
     
-        for(Partida p:partidas){
+        for(Partida p:acabadas){
             System.out.println(partidas.indexOf(p)+1);
             p.mostrarPartidasFinalizadas();
         }
         
         System.out.println("seleciona partida: ");
         opcion=a.nextInt();
-        Partida jugar=partidas.get(opcion-1);
+        Partida jugar=acabadas.get(opcion-1);
     
         jugar.ver();
     }

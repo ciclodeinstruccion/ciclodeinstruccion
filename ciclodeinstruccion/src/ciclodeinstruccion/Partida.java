@@ -102,6 +102,7 @@ public class Partida {
                 texto.add("\033[32m"+jugador1.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+ORO+" de oro"+"\033[30m");
         }
         finalizada=true;
+        this.ver();
     }
     public void mostrarDatos(){
         

@@ -73,12 +73,12 @@ public class Ciclodeinstruccion {
         /*partida.unirsePartida(dos, miAsesino2);*/
         
         
-        game.añadirPartida(partida);
+        juego.añadirPartida(partida);
         
         Partida partida1 = new Partida(2, uno, miAsesino1);
         //partida1.mostrarPartidasNoFinalizadas();
         
-        game.añadirPartida(partida1);
+        juego.añadirPartida(partida1);
         
         /*game.añadirRegistrado(uno);
         game.buscarPartida((Registrado) game.iniciarSesion());
