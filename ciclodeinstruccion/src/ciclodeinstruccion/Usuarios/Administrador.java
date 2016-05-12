@@ -3,6 +3,7 @@ package ciclodeinstruccion.Usuarios;
 
 import ciclodeinstruccion.Partida;
 import Personaje.Personaje;
+import ciclodeinstruccion.Juego;
 import ciclodeinstruccion.Usuarios.Usuario;
 import static java.nio.file.Files.list;
 import static java.rmi.Naming.list;
@@ -154,7 +155,7 @@ public class Administrador extends Usuario{
         
     }
     //Menú general de los administradores
-    public void menuGrande(){
+    public void menuGrande(Juego j){
         Scanner teclado = new Scanner(System.in);
         int opcion;
         
@@ -186,7 +187,7 @@ public class Administrador extends Usuario{
     }
     
     //Menú general de gestionar Usuarios y personajes
-    public void menuGestionar(){
+    public void menuGestionar(Juego j){
         Scanner teclado = new Scanner(System.in);
         int opcion;
         
@@ -205,7 +206,7 @@ public class Administrador extends Usuario{
                     menuGestionarUsuarios();
                     break;
                 case 2:
-                    
+                    menuGestionarPersonaje(Juego j);
                     break;
                 case 3:
                     break;
@@ -237,10 +238,10 @@ public class Administrador extends Usuario{
                     menuVerHistorialPartidas();
                     break;
                 case 2:
-                    
+                    verUsuarios(null);
                     break;
                 case 3:
-                    
+                    verPersonajes(null);
                     break;
                 case 4:
                     break;
@@ -269,10 +270,10 @@ public class Administrador extends Usuario{
            
             switch(opcion){
                 case 1:
-                    modificarUsuarios();
+                    menuMmodificarUsuarios();
                     break;
                 case 2:
-                    eliminarUsario();
+                    menueEiminarUsario();
                     break;
                 case 3:
                     break;
@@ -283,13 +284,53 @@ public class Administrador extends Usuario{
         }while(opcion < 3);
     }
     
+    public void menuGestionarPersonaje(Juego j){
+        Scanner teclado = new Scanner(System.in);
+        int opcion;
+        
+        do{
+            System.out.println("MENÚ DE PERSONAJES");
+            System.out.println("----------------");
+            System.out.println("1.-Modificar nombre");
+            System.out.println("2.-Modificar daño");
+            System.out.println("3.-Modificar vida");
+            System.out.println("4.-Volver");
+            System.out.println("\nElige una opcion: ");
+            opcion = teclado.nextInt();
+            teclado.hasNextLine();
+           
+            switch(opcion){
+                case 1:
+                    this.elegirPersonaje(j.ge);
+                    modificarPersonajeNombre(j.get);
+                    break;
+                case 2:
+                    this.elegirPersonaje(j.);
+                    modificarPersonajeDaño();
+                    break;
+                case 3:
+                    this.elegirPersonaje(j.);
+                    modificarPersonajeVida();
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.println("ERORR: opciones del 1 al 3");
+                    break;
+            }
+        }while(opcion < 3);
+    }
+        
+        
+    }
+    
     //Menú para ver el historial de partidas
     public void menuVerHistorialPartidas(){
         
     }
     
     //Menú para modificar los datos de usuario
-    public void modificarUsuarios(){
+    public void menuModificarUsuarios(Registrado r){
        Scanner teclado = new Scanner(System.in);
         int opcion;
         
@@ -315,10 +356,7 @@ public class Administrador extends Usuario{
                     //modificarUsuarioNombre();
                     break;
                 case 2:
-                    String contraseña;
-                    System.out.println("\nIntroduce la nueva contraseña: ");
-                    contraseña = teclado.nextLine();
-                    teclado.hasNextLine();
+                    ver
                     modificarUsuarioContraseña(null);
                     break;
                 case 3:
@@ -336,7 +374,7 @@ public class Administrador extends Usuario{
     }
     
     
-    public void eliminarUsario(){
+    public void menuEliminarUsario(){
         Scanner teclado = new Scanner(System.in);
         int opcion;
         
