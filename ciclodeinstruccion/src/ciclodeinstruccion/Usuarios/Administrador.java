@@ -14,6 +14,8 @@ import java.util.Scanner;
 
 
 public class Administrador extends Usuario{
+    
+    Scanner teclado = new Scanner(System.in);
 
     public Administrador(String nombre, String correo, String contraseña) {
         super(nombre, correo, contraseña);
@@ -22,87 +24,105 @@ public class Administrador extends Usuario{
         super(nombre);
     }
 
-    public void modificarUsuarioNombre(Registrado r, String nombreNuevo){
+
+    public void modificarUsuarioNombre(Registrado r){
         
+        System.out.println("nombre nuevo");
+        String nombreNuevo=teclado.nextLine();
+
         r.setNombre(nombreNuevo);  
     }
     
-    public void modificarUsuarioContraseña(Registrado r, String contraseñaNueva){
+    public void modificarUsuarioContraseña(Registrado r){
         
+        System.out.println("contraseña nuevo");
+        String contraseñaNueva=teclado.nextLine();
         r.setContraseña(contraseñaNueva);
     }
     
     public void modificarUsuarioCorreo(Registrado r, String CorreoNuevo){
         
+        System.out.println("correo nuevo");
+        String correoNuevo=teclado.nextLine();
         r.setCorreo(CorreoNuevo);
     }
 
-    public void eliminarUsuarios(Registrado r, ArrayList <Usuario> usuarios){
+    public void eliminarUsuarios(ArrayList <Usuario> usuarios){
         
-        usuarios.remove(r);
+        System.out.println("posicion a eliminar");
+        int posicion=teclado.nextInt();
+        usuarios.remove(posicion);
     }
     
-    public void modificarPersonajeNombre(Personaje p, String nombreNuevo){
+    public void modificarPersonajeNombre(Personaje p){
         
+        System.out.println("nombre nuevo");
+        String nombreNuevo=teclado.nextLine();
         p.setNombre(nombreNuevo);
     }
     
-    public void modificarPersonajeDaño(Personaje p, float dañoNuevo){
+    public void modificarPersonajeDaño(Personaje p){
         
+        System.out.println("daño nuevo");
+        float dañoNuevo=teclado.nextFloat();
         p.setDaño(dañoNuevo);
     }
     
-    public void modificarPersonajeVida(Personaje p, float vidaNueva){
+    public void modificarPersonajeVida(Personaje p){
         
+        System.out.println("vida nuevo");
+        float vidaNueva=teclado.nextFloat();
         p.setVida(vidaNueva);
     }
     
-    public void modificarPersonajePrecio(Personaje p, int precioNuevo){
+    public void modificarPersonajePrecio(Personaje p){
         
+        System.out.println("precio nuevo");
+        int precioNuevo=teclado.nextInt();
         p.setPrecio(precioNuevo);
     }
     
     public void verUsuarios(ArrayList <Registrado> registrados){
         
-        String [][] tablaDeUsuarios = new String [registrados.size()][6];
+        String [][] tablaDeUsuarios = new String [registrados.size()][3];
         for (int i = 0; i < registrados.size(); i++  )  {
             Registrado r =(Registrado) registrados.get(i);
             tablaDeUsuarios[i][0] =r.getNombre();
             tablaDeUsuarios[i][1] =r.getCorreo();
             tablaDeUsuarios[i][2] =r.getContraseña();
-            System.out.println(tablaDeUsuarios);
+            System.out.println(tablaDeUsuarios[i][0]);
+            System.out.println(tablaDeUsuarios[i][1]);
+            System.out.println(tablaDeUsuarios[i][2]);
         }      
-        for(String[] s: tablaDeUsuarios){
-            
-        }
     }
     
-    /*public void verPersonajes(ArrayList <Personaje> personajes){
+    public void verPersonajes(ArrayList <Personaje> personajes){
         
-        String [][] tablaDeUsuarios = new String [registrados.size()][6];
-        for (int i = 0; i < registrados.size(); i++  )  {
-            Registrado r =(Registrado) registrados.get(i);
-            tablaDeUsuarios[i][0] =r.getNombre();
-            tablaDeUsuarios[i][1] =r.getCorreo();
-            tablaDeUsuarios[i][2] =r.getContraseña();
+        String [][] tablaDePersonajes = new String [personajes.size()][3];
+        for (int i = 0; i < personajes.size(); i++  )  {
+            Personaje p =(Personaje) personajes.get(i);
+            tablaDePersonajes[i][0] = p.getNombre();
+            tablaDePersonajes[i][1] = Float.toString(p.getDaño());
+            tablaDePersonajes[i][2] = Float.toString(p.getVida());
+            tablaDePersonajes[i][3] = Integer.toString(p.getPrecio());
+            System.out.println(tablaDePersonajes[i][0]);
+            System.out.println(tablaDePersonajes[i][1]);
+            System.out.println(tablaDePersonajes[i][2]);
+            System.out.println(tablaDePersonajes[i][3]);
         }      
-        System.out.println(tablaDeUsuarios);
-            
-        
-    }*/
+    }
     
     public void historialDePartidas(ArrayList <Partida> partidas){
         
-        for (Partida p: partidas){
-            p.mostrarDatos();
-        }
+        
+       
     }
     
     public void verEstadisticasAvanzadas(ArrayList <Partida> partidas){
         
         
     }
-
+    //Menú general de los administradores
     public void menuGrande(){
         Scanner teclado = new Scanner(System.in);
         int opcion;
@@ -113,6 +133,7 @@ public class Administrador extends Usuario{
             System.out.println("1.-Gestionar");
             System.out.println("2.-Ver");
             System.out.println("3.-Salir");
+            System.out.println("\nElige una opcion: ");
             opcion = teclado.nextInt();
             teclado.hasNextLine();
            
@@ -125,11 +146,15 @@ public class Administrador extends Usuario{
                     break;
                 case 3:
                     break;
+                default:
+                    System.out.println("ERORR: opciones del 1 al 3");
+                    break;
             }
         }while(opcion < 3);
                           
     }
     
+    //Menú general de gestionar Usuarios y personajes
     public void menuGestionar(){
         Scanner teclado = new Scanner(System.in);
         int opcion;
@@ -140,6 +165,7 @@ public class Administrador extends Usuario{
             System.out.println("1.-Usuarios");
             System.out.println("2.-Personajes");
             System.out.println("3.-Volver");
+            System.out.println("\nElige una opcion: ");
             opcion = teclado.nextInt();
             teclado.hasNextLine();
            
@@ -152,10 +178,14 @@ public class Administrador extends Usuario{
                     break;
                 case 3:
                     break;
+                default:
+                    System.out.println("ERORR: opciones del 1 al 6");
+                    break;
             }
         }while(opcion < 3);
     }
     
+    //Menú general de ver
     public void menuVer(){
         Scanner teclado = new Scanner(System.in);
         int opcion;
@@ -167,6 +197,7 @@ public class Administrador extends Usuario{
             System.out.println("2.-Usuarios");
             System.out.println("3.-Personajes");
             System.out.println("4.-Volver");
+            System.out.println("\nElige una opcion: ");
             opcion = teclado.nextInt();
             teclado.hasNextLine();
            
@@ -178,14 +209,19 @@ public class Administrador extends Usuario{
                     
                     break;
                 case 3:
+                    
                     break;
                 case 4:
+                    break;
+                default:
+                    System.out.println("ERORR: opciones del 1 al 4");
                     break;
             }
         }while(opcion < 3);
         
     }
     
+    //Menú general para gestionar usuarios
     public void menuGestionarUsuarios(){
         Scanner teclado = new Scanner(System.in);
         int opcion;
@@ -196,27 +232,32 @@ public class Administrador extends Usuario{
             System.out.println("1.-Modificar usuarios");
             System.out.println("2.-Eliminar usuarios");
             System.out.println("3.-Volver");
+            System.out.println("\nElige una opcion: ");
             opcion = teclado.nextInt();
             teclado.hasNextLine();
            
             switch(opcion){
                 case 1:
-                    
+                    modificarUsuarios();
                     break;
                 case 2:
-                    
+                    eliminarUsario();
                     break;
                 case 3:
+                    break;
+                default:
+                    System.out.println("ERORR: opciones del 1 al 3");
                     break;
             }
         }while(opcion < 3);
     }
     
-    
+    //Menú para ver el historial de partidas
     public void menuVerHistorialPartidas(){
         
     }
     
+    //Menú para modificar los datos de usuario
     public void modificarUsuarios(){
        Scanner teclado = new Scanner(System.in);
         int opcion;
@@ -228,32 +269,70 @@ public class Administrador extends Usuario{
             System.out.println("2.-Modificar contraseña");
             System.out.println("3.-Modificar e-mail");
             System.out.println("4.-Volver");
+            System.out.println("\nElige una opcion: ");
             opcion = teclado.nextInt();
             teclado.hasNextLine();
            
             switch(opcion){
                 case 1:
-                    String nombre1;
-                    String nombre2;
-                    nombre1 = teclado.nextLine();
+                    String nombre;
+                    System.out.println("\nIntroduce el nuevo nombre de usuario: ");
+                    nombre = teclado.nextLine();
                     teclado.hasNextLine();
-                    nombre2 = teclado.nextLine();
-                    teclado.hasNextLine();
-                    modificarUsuarioNombre(null, null);
+                    System.out.println("Usuario a modificar: ");
+                    
+                    //modificarUsuarioNombre();
                     break;
                 case 2:
-                    modificarUsuarioContraseña(null, null);
+                    String contraseña;
+                    System.out.println("\nIntroduce la nueva contraseña: ");
+                    contraseña = teclado.nextLine();
+                    teclado.hasNextLine();
+                    modificarUsuarioContraseña(null);
                     break;
                 case 3:
+                    System.out.println("\nIntroduce la nueva direccion e-mail: ");
                     modificarUsuarioCorreo(null, null);
                     break;
                 case 4:
+                    break;
+                default:
+                    System.out.println("ERORR: opciones del 1 al 3");
                     break;
             }
         }while(opcion<3);
                           
     }
+    
+    
+    public void eliminarUsario(){
+        Scanner teclado = new Scanner(System.in);
+        int opcion;
+        
+        do{    
+            System.out.println("ELEMINAR USARIOS");
+            System.out.println("-----------------");
+            System.out.println("1.-Eliminar usuario");
+            System.out.println("2.-Volver");
+            System.out.println("\nElige una opcion: ");
+            opcion = teclado.nextInt();
+            teclado.hasNextLine();
+           
+            switch(opcion){
+                case 1:
+                    
+                    break;
+                case 2:
+                    break;
+                default:
+                    System.out.println("ERORR: opciones del 1 al 2");
+                    break;
+            }
+        }while(opcion<2);
+        
     }
+    
+    
         
  }
     

@@ -19,12 +19,14 @@ public class Juego {
     private ArrayList <Administrador> administradores;
     private ArrayList <Partida> finalizadas;
     private ArrayList <Partida> noFinalizada;
+    private ArrayList <Personaje> personajes;
 
     public Juego() {
         this.registrados = new ArrayList();
         this.administradores = new ArrayList();
         this.finalizadas = new ArrayList();
         this.noFinalizada = new ArrayList();
+        this.personajes = new ArrayList();
     }
     
     public void añadirRegistrado(Registrado r){
@@ -41,6 +43,10 @@ public class Juego {
     
     public void añadirPFinalizada(Partida p){
         noFinalizada.add(p);
+    }
+    
+    public void añadirPersonajes(Personaje personaje){
+        personajes.add(personaje);
     }
 
     public ArrayList<Registrado> getRegistrados() {

@@ -107,16 +107,33 @@ public class Registrado extends Usuario{
         
     }
     
+    public void mostrarPersonajes(){
+        
+        String [][] tablaDeMisPersonajes = new String [misPersonajes.size()][3];
+        for (int i = 0; i < misPersonajes.size(); i++  )  {
+            MiPersonaje mp =(MiPersonaje) misPersonajes.get(i);
+            tablaDeMisPersonajes[i][0] = mp.getNombre();
+            tablaDeMisPersonajes[i][1] = Float.toString(mp.getDañoBase()+mp.getBonusDaño()+this.fuerza);
+            tablaDeMisPersonajes[i][2] = Float.toString(mp.getVidaBase()+mp.getBonusVida()+this.vitalidad);
+            System.out.println(tablaDeMisPersonajes[i][0]);
+            System.out.println(tablaDeMisPersonajes[i][1]);
+            System.out.println(tablaDeMisPersonajes[i][2]);
+        }      
+        
+         
+    }
+    
     public void aumentarOro(int orosumado){
         
         oro+=orosumado;
     }
     
-    public void mostrar(){
-        System.out.println(oro);
-        System.out.println(experiencia);
-        System.out.println(nivel);
-        System.out.println(puntosNivel);
+    @Override
+    public void mostrarDatos(){
+        super.mostrarDatos();
+        System.out.println("oro "+oro);
+        System.out.println("experiencia "+this.experiencia);
+        System.out.println("puntos de subir "+this.puntosNivel);
     }
     
     public void subirNivel(){
