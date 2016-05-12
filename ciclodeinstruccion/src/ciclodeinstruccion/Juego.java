@@ -263,19 +263,20 @@ public class Juego {
     
     public float calcularWinratio(String s){
         float winratio=0;
-        ArrayList <Partida> finalizadas;
-        int numeropartidas=0;
-        int ganadas=0;
+        float numeropartidas=0;
+        float ganadas=0;
         for(Partida p:partidas){
-            if(p.getPersonaje1().getNombre().equals(s)){
-                numeropartidas++;
-            }
-            if(p.getPersonaje2().getNombre().equals(s)){
-                numeropartidas++;
-            }
-            if(p.getpGanador().getNombre().equals(s)){
-                ganadas++;
-            }
+            if(p.isFinalizada()){
+                if(p.getPersonaje1().getNombre().equals(s)){
+                    numeropartidas++;
+                }
+                if(p.getPersonaje2().getNombre().equals(s)){
+                    numeropartidas++;
+                }
+                if(p.getpGanador().getNombre().equals(s)){
+                    ganadas++;
+                }
+            }         
         }
         if(numeropartidas==0){
             winratio=0;

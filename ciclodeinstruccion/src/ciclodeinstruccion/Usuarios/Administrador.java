@@ -32,7 +32,7 @@ public class Administrador extends Usuario{
         System.out.println("escribe el numero del usuario ");
         int numero = teclado.nextInt();
         
-        return registrados.get(numero);   
+        return registrados.get(numero-1);   
     }
     
     public Personaje elegirPersonaje(ArrayList <Personaje> personajes){
@@ -42,7 +42,7 @@ public class Administrador extends Usuario{
         System.out.println("escribe el numero del personaje ");
         int numero = teclado.nextInt();
         
-        return personajes.get(numero);   
+        return personajes.get(numero-1);   
     }
 
     public void modificarUsuarioNombre(Registrado r){
