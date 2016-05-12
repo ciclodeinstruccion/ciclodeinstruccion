@@ -7,6 +7,8 @@ package ciclodeinstruccion.Usuarios;
 
 import MiPersonaje.MiPersonaje;
 import Personaje.Personaje;
+import ciclodeinstruccion.Juego;
+import ciclodeinstruccion.Partida;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -145,8 +147,21 @@ public class Registrado extends Usuario{
         nivel++;
         puntosNivel++;
     }
-    public void unirsePartida(){
+    
+    public Partida crearPartida(Juego j){
         
+        Scanner teclado = new Scanner(System.in);
+        
+        Partida p;
+        
+        System.out.println("elige un personaje");
+        
+        
+        
+        return p = new Partida ((j.getPartidas().size()+1),this, this.elegirPersonaje());
+    }
+    public void unirsePartida(Juego j){
+        j.buscarPartida(this);
     }
     public float getHorasJugadas() {
         return horasJugadas;
@@ -212,10 +227,192 @@ public class Registrado extends Usuario{
         this.inteligencia = inteligencia;
     }
     
+    public void menu(Juego juego){
+        
+        Scanner teclado = new Scanner (System.in);
+        
+        int opcion;
+        
+        do{
+            System.out.println("MENÚ Regis");
+            System.out.println("-------------------------");
+            System.out.println("1.-Ver tus personajes");
+            System.out.println("2.-ver tus cosas");
+            System.out.println("3.-gestionar tus puntos para los personajes");
+            System.out.println("4.-gestionar tu configuracion de usuario");
+            System.out.println("5.-crear partida");
+            System.out.println("6.-unirse a una partida");
+            System.out.println("\nElige una opcion: ");
+            opcion = teclado.nextInt();
+            teclado.hasNextLine();
+           
+            switch(opcion){
+                case 1:
+                    
+                    this.mostrarPersonajes();
+                    
+                    break;
+                    
+                case 2:
+                    
+                    this.mostrarDatos();
+                    
+                    break;
+                    
+                case 3:
+                    
+                    this.menuAtributosPersonajes(juego);
+                    
+                    break;
+                    
+                case 4:
+                    
+                    this.menuAtributosUsuario(juego);
+                    
+                    break;
+                    
+                case 5:
+                    
+                    this.crearPartida(juego);
+                    
+                    break;
+                    
+                case 6:
+                    
+                    juego.buscarPartida(this);
+                    
+                    break;
+                    
+                default:
+                    System.out.println("ERORR: opciones del 1 al 3");
+                    break;
+            }
+        }while(opcion<3);
+    }
     
-
+    public void menuAtributosPersonajes(Juego juego){
+        
+        Scanner teclado = new Scanner (System.in);
+        
+        int opcion;
+        
+        do{
+            System.out.println("MENÚ Atributos para los personajes");
+            System.out.println("-------------------------");
+            System.out.println("1.-puntos que tines que nes para usar");
+            System.out.println("2.-aumentar la vitalidad un punto");
+            System.out.println("3.-aumentar la fuerza un punto");
+            System.out.println("4.-aumentar la inteligencia un punto");
+            System.out.println("4.-aumentar el especial un punto");
+            System.out.println("5.-mostrar los atributos totales");
+            System.out.println("6.-volver atras");
+            System.out.println("\nElige una opcion: ");
+            opcion = teclado.nextInt();
+            teclado.hasNextLine();
+           
+            switch(opcion){
+                case 1:
+                    
+                    System.out.println(this.puntosNivel);
+                    
+                    break;
+                    
+                case 2:
+                    
+                    this.modificarVitalidad();
+                    
+                    break;
+                    
+                case 3:
+                    
+                    this.modificarFuerza();
+                    
+                    break;
+                    
+                case 4:
+                    
+                    this.modificarInteligencia();
+                    
+                    break;
+                    
+                case 5:
+                    
+                    this.modificarEspecial();
+                    
+                    break;
+                    
+                case 6: 
+                    
+                    this.menu(juego);
+                    
+                default:
+                    System.out.println("error opciones del 1 al 6");
+                    break;
+            }
+        }while(opcion<3);
+    }
     
-    
+    public void menuAtributosUsuario(Juego juego){
+        
+        Scanner teclado = new Scanner (System.in);
+        
+        int opcion;
+        
+        do{
+            System.out.println("MENÚ configuracion de la cuenta");
+            System.out.println("-------------------------");
+            System.out.println("1.-cambiar tu nombre");
+            System.out.println("2.-aumentar la vitalidad un punto");
+            System.out.println("3.-aumentar la fuerza un punto");
+            System.out.println("4.-aumentar la inteligencia un punto");
+            System.out.println("4.-aumentar el especial un punto");
+            System.out.println("5.-mostrar los atributos totales");
+            System.out.println("6.-volver atras");
+            System.out.println("\nElige una opcion: ");
+            opcion = teclado.nextInt();
+            teclado.hasNextLine();
+           
+            switch(opcion){
+                case 1:
+                    
+                    
+                    
+                    break;
+                    
+                case 2:
+                    
+                    this.modificarVitalidad();
+                    
+                    break;
+                    
+                case 3:
+                    
+                    this.modificarFuerza();
+                    
+                    break;
+                    
+                case 4:
+                    
+                    this.modificarInteligencia();
+                    
+                    break;
+                    
+                case 5:
+                    
+                    this.modificarEspecial();
+                    
+                    break;
+                    
+                case 6: 
+                    
+                    this.menu(juego);
+                    
+                default:
+                    System.out.println("error opciones del 1 al 6");
+                    break;
+            }
+        }while(opcion<3);
+    }
     
     
     

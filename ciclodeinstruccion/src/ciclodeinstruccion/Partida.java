@@ -295,7 +295,8 @@ public class Partida {
     public ArrayList<String> getTexto() {
         return texto;
     }
-
+    
+    
     public int getEXP() {
         return EXP;
     }
