@@ -18,7 +18,9 @@ public class Tanque extends Personaje{
         super(nombre, vida, daño, precio);
         this.armadura=armadura;
     }
-
+    public Tanque(String nombre){
+        super(nombre);
+    }
     public float getArmadura() {
         return armadura;
     }

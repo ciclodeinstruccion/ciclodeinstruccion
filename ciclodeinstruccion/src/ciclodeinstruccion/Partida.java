@@ -6,6 +6,7 @@
 package ciclodeinstruccion;
 
 import MiPersonaje.MiPersonaje;
+import Personaje.Personaje;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.util.ArrayList;
 
@@ -240,6 +241,7 @@ public class Partida {
         ganador.aumentarOro(ORO);
         personaje.aumentarExperiencia(EXP);
     }
+    
     
     public void ver (){
         for (String s: texto){

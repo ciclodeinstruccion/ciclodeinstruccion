@@ -5,8 +5,14 @@
  */
 package ciclodeinstruccion;
 
+import MiPersonaje.MiAsesino;
+import MiPersonaje.MiFighter;
 import MiPersonaje.MiPersonaje;
+import MiPersonaje.MiTanque;
+import Personaje.Asesino;
+import Personaje.Fighter;
 import Personaje.Personaje;
+import Personaje.Tanque;
 import ciclodeinstruccion.Usuarios.Administrador;
 import ciclodeinstruccion.Usuarios.Registrado;
 import ciclodeinstruccion.Usuarios.Usuario;
@@ -174,6 +180,29 @@ public class Juego {
         }
         return posicion;
     }
+    public int buscarPersonaje(String nombre){
+        personajes.sort(null);
+        int inicio=0;
+        int fin=personajes.size()-1;
+        int medio;
+        int posicion=-1;
+        
+        while (inicio<=fin){
+            Tanque t=new Tanque(nombre);
+            medio=(inicio+fin)/2;
+            if ((personajes.get(medio).compareTo(t))<0){
+                inicio=medio+1;
+            }
+            else if((personajes.get(medio).compareTo(t))>0){
+                fin=medio-1;
+            }
+            else{
+                posicion=medio;
+                inicio=fin+1;
+            }
+        }
+        return posicion;
+    }
     public void buscarPartida(Registrado r){
         Scanner teclado=new Scanner(System.in);
         ArrayList <Partida> jugables=new ArrayList();
@@ -265,5 +294,49 @@ public class Juego {
             System.out.println((personajes.indexOf(p)+1)+"."+p.getNombre()+":"+this.calcularWinratio(p.getNombre()));
         }
         
+    }
+    public void comprarPersonaje(Registrado r){
+        Scanner teclado=new Scanner (System.in);
+        ArrayList <Personaje> comprable=this.pjNoTengo(r);
+        
+        if (comprable.size()>0){
+            for(Personaje p:comprable){
+                System.out.println((comprable.indexOf(p)+1)+".- "+p.getNombre()+" "+p.getPrecio()+"oro");
+                
+                
+            }
+            System.out.println("Seleccione personaje que desea comprar");
+            int opcion;
+                opcion=teclado.nextInt();
+                if(comprable.get(opcion-1) instanceof Tanque){
+                    MiTanque t=new MiTanque(0, 0, 1, 0, 0, (Tanque)comprable.get(opcion-1), 0);
+                    r.añadirPersonajes(t);
+                }
+                else if(comprable.get(opcion-1) instanceof Asesino){
+                    MiAsesino a=new MiAsesino(0, 0, 1, 0, 0, (Asesino)comprable.get(opcion-1), 0);
+                    r.añadirPersonajes(a);
+                }
+                else{
+                    MiFighter f=new MiFighter(0, 0, 1, 0, 0, (Fighter)comprable.get(opcion-1), 0);
+                    r.añadirPersonajes(f);
+                }
+        }
+        else{
+            System.out.println("No hay personajes disponibles");
+        }
+        
+        
+    }
+    public ArrayList <Personaje> pjNoTengo(Registrado r){
+        
+        ArrayList <Personaje> noTengo=new ArrayList();
+        this.personajes.sort(null);
+        noTengo=this.personajes;
+        for(MiPersonaje mp:r.getMisPersonajes()){
+            if(this.buscarPersonaje(mp.getNombre())>=0){
+                noTengo.remove(this.buscarPersonaje(mp.getNombre()));
+            }
+        }
+        return noTengo;
     }
 }

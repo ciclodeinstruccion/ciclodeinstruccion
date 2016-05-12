@@ -273,7 +273,7 @@ public class Registrado extends Usuario{
             System.out.println("4.-gestionar tu configuracion de usuario");
             System.out.println("5.-crear partida");
             System.out.println("6.-unirse a una partida");
-            //System.out.println("7.-comprar personaje");
+            System.out.println("7.-comprar personaje");
             System.out.println("8.-ver historial de partidas");
             System.out.println("\nElige una opcion: ");
             opcion = teclado.nextInt();
@@ -318,7 +318,7 @@ public class Registrado extends Usuario{
                     
                 case 7:
                     
-                    System.out.println("todavia no");
+                    juego.comprarPersonaje(this);
                     
                     break;
                     

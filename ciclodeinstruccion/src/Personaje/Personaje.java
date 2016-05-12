@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author alumno
  */
-public abstract class Personaje {
+public abstract class Personaje implements Comparable <Personaje>{
     private String nombre;
     private float vida;
     private float daño;
@@ -26,7 +26,9 @@ public abstract class Personaje {
         this.precio = precio;
         this.habilidades=new ArrayList(3);
     }
-    
+    public Personaje(String nombre){
+        this.nombre=nombre;
+    }
     public void añadirHabilidad(Habilidad h){
         habilidades.add(h);
         habilidades.sort(null);
@@ -73,5 +75,8 @@ public abstract class Personaje {
             System.out.println(h.getNombre());
         }
     }
-    
+    @Override
+    public int compareTo(Personaje p) {
+        return this.nombre.compareTo(p.nombre);
+    }
 }
