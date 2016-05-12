@@ -201,7 +201,7 @@ public class Juego {
         for (Partida p:partidas){
             System.out.println(p.getJugador1().getNombre()+" jugo con "+p.getPersonaje1());
             System.out.println(p.getJugador2().getNombre()+" jugo con "+p.getPersonaje2());
-            System.out.println(p.getTexto());
+            System.out.println("la partida la gano "+p.getGanador());
         }    
     }
     

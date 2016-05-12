@@ -65,9 +65,9 @@ public class Ciclodeinstruccion {
         
         Juego game = new Juego();
         
-        game.añadirRegistrado(uno);
-        game.añadirRegistrado(dos);
-        game.añadirRegistrado(tres);
+        juego.añadirRegistrado(uno);
+        juego.añadirRegistrado(dos);
+        juego.añadirRegistrado(tres);
         juego.añadirAdministrador(admin2);
         Partida partida = new Partida(1, uno, miAsesino1);
         /*partida.unirsePartida(dos, miAsesino2);*/
