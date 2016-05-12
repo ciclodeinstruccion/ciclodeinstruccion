@@ -55,15 +55,7 @@ public class Registrado extends Usuario{
         this.gastarPuntosExp();
     }
     
-    public void personajesQueNoTiene(ArrayList <Personaje> personajes){
-        
-        for (int i=0;i<=personajes.size();i++){
-            for(int j=0;j<=misPersonajes.size();j++){
-                misPersonajes.
-            }
-        }
-        
-    }
+    
     
     public void modificarFuerza(){
         
