@@ -55,15 +55,14 @@ public class Juego {
     public ArrayList<Personaje> getPersonajes() {
         return personajes;
     }
+    
     public void eliminarRegistrado(Registrado r){
         registrados.remove(r);
     }
     
-    
     public void añadirPersonajes(Personaje personaje){
         personajes.add(personaje);
-    }
-    
+    }  
 
     public ArrayList<Registrado> getRegistrados() {
         return registrados;
@@ -73,7 +72,6 @@ public class Juego {
         return administradores;
     }
 
-
     public void setRegistrados(ArrayList<Registrado> registrados) {
         this.registrados = registrados;
     }
@@ -81,7 +79,6 @@ public class Juego {
     public void setAdministradores(ArrayList<Administrador> administradores) {
         this.administradores = administradores;
     }
-
     
     public Usuario iniciarSesion(){
         Scanner teclado=new Scanner(System.in);
@@ -157,6 +154,7 @@ public class Juego {
         }
         return posicion;
     }
+    
     public int buscarAdministrador(String nombre){
         administradores.sort(null);
         int inicio=0;
@@ -180,6 +178,7 @@ public class Juego {
         }
         return posicion;
     }
+    
     public int buscarPersonaje(String nombre){
         personajes.sort(null);
         int inicio=0;
@@ -203,6 +202,7 @@ public class Juego {
         }
         return posicion;
     }
+    
     public void buscarPartida(Registrado r){
         Scanner teclado=new Scanner(System.in);
         ArrayList <Partida> jugables=new ArrayList();
@@ -233,9 +233,7 @@ public class Juego {
             System.out.println("la partida la gano "+p.getGanador());
         }    
     }
-    
-    
-    
+      
     public void historialPartidas(Registrado r){
         
         Scanner a = new Scanner(System.in);
@@ -295,6 +293,7 @@ public class Juego {
         }
         
     }
+    
     public void comprarPersonaje(Registrado r){
         Scanner teclado=new Scanner (System.in);
         ArrayList <Personaje> comprable=this.pjNoTengo(r);
@@ -327,6 +326,7 @@ public class Juego {
         
         
     }
+    
     public ArrayList <Personaje> pjNoTengo(Registrado r){
         
         ArrayList <Personaje> noTengo=new ArrayList();
