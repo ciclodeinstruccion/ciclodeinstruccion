@@ -5,9 +5,10 @@
  */
 package ciclodeinstruccion.Usuarios;
 
-import ciclodeinstruccion.MiPersonaje;
-import ciclodeinstruccion.Personaje;
+import MiPersonaje.MiPersonaje;
+import Personaje.Personaje;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -76,14 +77,6 @@ public class Registrado extends Usuario{
         misPersonajes.add(p);
     }
     
-    /*public void verHistorialDePartidas(listaDePartidas){
-        
-    }
-    
-    public void verRepeticion (listaDePartidas){
-        
-    }*/
-    
     public void gastarPuntosExp(){
         puntosNivel--;
     }
@@ -115,12 +108,24 @@ public class Registrado extends Usuario{
             tablaDeMisPersonajes[i][0] = mp.getNombre();
             tablaDeMisPersonajes[i][1] = Float.toString(mp.getDañoBase()+mp.getBonusDaño()+this.fuerza);
             tablaDeMisPersonajes[i][2] = Float.toString(mp.getVidaBase()+mp.getBonusVida()+this.vitalidad);
+            System.out.println(i+1);
             System.out.println(tablaDeMisPersonajes[i][0]);
             System.out.println(tablaDeMisPersonajes[i][1]);
             System.out.println(tablaDeMisPersonajes[i][2]);
         }      
         
          
+    }
+    public MiPersonaje elegirPersonaje(){
+        Scanner teclado =new Scanner(System.in);
+        MiPersonaje elegido;
+        this.mostrarPersonajes();
+        int opcion;
+        System.out.println("Seleccione numero del personaje");
+        opcion=teclado.nextInt();
+        teclado.nextLine();
+        elegido=misPersonajes.get(opcion-1);
+        return elegido;
     }
     
     public void aumentarOro(int orosumado){
@@ -140,7 +145,9 @@ public class Registrado extends Usuario{
         nivel++;
         puntosNivel++;
     }
-    
+    public void unirsePartida(){
+        
+    }
     public float getHorasJugadas() {
         return horasJugadas;
     }

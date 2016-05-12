@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ciclodeinstruccion;
+package MiPersonaje;
+
+import MiPersonaje.MiPersonaje;
+import Personaje.Fighter;
+import ciclodeinstruccion.GeneradorAleatorios;
+import ciclodeinstruccion.Habilidad;
 
 /**
  *
