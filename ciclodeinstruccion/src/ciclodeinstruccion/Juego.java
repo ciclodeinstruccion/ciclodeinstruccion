@@ -194,6 +194,15 @@ public class Juego {
         
     }
    
+    public void mostrarTodasPartidas(){
+        for (Partida p:partidas){
+            System.out.println(p.getJugador1().getNombre()+" jugo con "+p.getPersonaje1());
+            System.out.println(p.getJugador2().getNombre()+" jugo con "+p.getPersonaje2());
+            System.out.println(p.getTexto());
+        }    
+    }
+    
+    
     
     public void historialPartidas(Registrado r){
         
