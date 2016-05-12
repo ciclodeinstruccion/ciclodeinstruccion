@@ -43,6 +43,7 @@ public class MiAsesino extends MiPersonaje{
         this.bonusEsquivar = bonusEsquivar;
     }
     
+    
     public float getVidaBase(){
         return personaje.getVida();
     }

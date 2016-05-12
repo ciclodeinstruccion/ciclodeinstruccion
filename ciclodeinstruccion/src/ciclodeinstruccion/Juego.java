@@ -40,6 +40,14 @@ public class Juego {
     public void añadirPartida(Partida p){
         partidas.add(p);
     }
+
+    public ArrayList<Partida> getPartidas() {
+        return partidas;
+    }
+
+    public ArrayList<Personaje> getPersonajes() {
+        return personajes;
+    }
     
     
     
