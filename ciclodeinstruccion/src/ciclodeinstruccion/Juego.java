@@ -196,6 +196,15 @@ public class Juego {
         jugar.jugarPartida();
         
     }
+   
+    public void mostrarTodasPartidas(){
+        for (Partida p:partidas){
+            System.out.println(p.getJugador1().getNombre()+" jugo con "+p.getPersonaje1());
+            System.out.println(p.getJugador2().getNombre()+" jugo con "+p.getPersonaje2());
+            System.out.println(p.getTexto());
+        }    
+    }
+    
     
     
     public void historialPartidas(Registrado r){
@@ -257,14 +266,4 @@ public class Juego {
         }
         
     }
-    /*public void comprar(Registrado r){
-        ArrayList <Personaje> comprables=new ArrayList();
-        for(Personaje p: this.personajes){
-            for(MiPersonaje mp:r.getMisPersonajes()){
-                if(!p.getNombre().equals(mp.getNombre())){
-                    
-                }
-            }
-        }
-    }*/
 }
