@@ -55,7 +55,15 @@ public class Registrado extends Usuario{
         this.gastarPuntosExp();
     }
     
-    
+    public void personajesQueNoTiene(ArrayList <Personaje> personajes){
+        
+        for (int i=0;i<=personajes.size();i++){
+            for(int j=0;j<=misPersonajes.size();j++){
+                misPersonajes.
+            }
+        }
+        
+    }
     
     public void modificarFuerza(){
         
@@ -163,6 +171,34 @@ public class Registrado extends Usuario{
     public void unirsePartida(Juego j){
         j.buscarPartida(this);
     }
+    public void modificarUsuarioNombre(){
+        
+        Scanner teclado = new Scanner (System.in);
+        
+        System.out.println("nombre nuevo");
+        String nombreNuevo=teclado.nextLine();
+
+        this.setNombre(nombreNuevo);  
+    }
+    
+    public void modificarUsuarioContraseña(){
+        
+        Scanner teclado = new Scanner (System.in);
+        
+        System.out.println("contraseña nuevo");
+        String contraseñaNueva=teclado.nextLine();
+        this.setContraseña(contraseñaNueva);
+    }
+    
+    public void modificarUsuarioCorreo(){
+        
+        Scanner teclado = new Scanner (System.in);
+        
+        System.out.println("correo nuevo");
+        String correoNuevo=teclado.nextLine();
+        this.setCorreo(correoNuevo);
+
+    }
     public float getHorasJugadas() {
         return horasJugadas;
     }
@@ -242,6 +278,7 @@ public class Registrado extends Usuario{
             System.out.println("4.-gestionar tu configuracion de usuario");
             System.out.println("5.-crear partida");
             System.out.println("6.-unirse a una partida");
+            System.out.println("7.-comprar personaje");
             System.out.println("\nElige una opcion: ");
             opcion = teclado.nextInt();
             teclado.hasNextLine();
@@ -349,7 +386,7 @@ public class Registrado extends Usuario{
                     System.out.println("error opciones del 1 al 6");
                     break;
             }
-        }while(opcion<3);
+        }while(opcion<7);
     }
     
     public void menuAtributosUsuario(Juego juego){
@@ -362,12 +399,9 @@ public class Registrado extends Usuario{
             System.out.println("MENÚ configuracion de la cuenta");
             System.out.println("-------------------------");
             System.out.println("1.-cambiar tu nombre");
-            System.out.println("2.-aumentar la vitalidad un punto");
-            System.out.println("3.-aumentar la fuerza un punto");
-            System.out.println("4.-aumentar la inteligencia un punto");
-            System.out.println("4.-aumentar el especial un punto");
-            System.out.println("5.-mostrar los atributos totales");
-            System.out.println("6.-volver atras");
+            System.out.println("2.-cambiar la contraseña");
+            System.out.println("3.-cambiar el correo");
+            System.out.println("4.-volver atras");
             System.out.println("\nElige una opcion: ");
             opcion = teclado.nextInt();
             teclado.hasNextLine();
@@ -375,43 +409,35 @@ public class Registrado extends Usuario{
             switch(opcion){
                 case 1:
                     
-                    
+                    this.modificarUsuarioNombre();
                     
                     break;
                     
                 case 2:
                     
-                    this.modificarVitalidad();
+                    this.modificarUsuarioContraseña();
                     
                     break;
                     
                 case 3:
                     
-                    this.modificarFuerza();
+                    this.modificarUsuarioCorreo();
                     
                     break;
                     
                 case 4:
                     
-                    this.modificarInteligencia();
-                    
-                    break;
-                    
-                case 5:
-                    
-                    this.modificarEspecial();
-                    
-                    break;
-                    
-                case 6: 
-                    
                     this.menu(juego);
                     
+                    break;
+                    
                 default:
-                    System.out.println("error opciones del 1 al 6");
+                    
+                    System.out.println("error opciones del 1 al 4");
+                    
                     break;
             }
-        }while(opcion<3);
+        }while(opcion<5);
     }
     
     
