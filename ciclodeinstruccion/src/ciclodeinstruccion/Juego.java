@@ -5,6 +5,7 @@
  */
 package ciclodeinstruccion;
 
+import MiPersonaje.MiPersonaje;
 import Personaje.Personaje;
 import ciclodeinstruccion.Usuarios.Administrador;
 import ciclodeinstruccion.Usuarios.Registrado;
@@ -48,7 +49,9 @@ public class Juego {
     public ArrayList<Personaje> getPersonajes() {
         return personajes;
     }
-    
+    public void eliminarRegistrado(Registrado r){
+        registrados.remove(r);
+    }
     
     
     public void añadirPersonajes(Personaje personaje){
@@ -193,7 +196,7 @@ public class Juego {
         jugar.jugarPartida();
         
     }
-   
+    
     
     public void historialPartidas(Registrado r){
         
@@ -254,4 +257,14 @@ public class Juego {
         }
         
     }
+    /*public void comprar(Registrado r){
+        ArrayList <Personaje> comprables=new ArrayList();
+        for(Personaje p: this.personajes){
+            for(MiPersonaje mp:r.getMisPersonajes()){
+                if(!p.getNombre().equals(mp.getNombre())){
+                    
+                }
+            }
+        }
+    }*/
 }

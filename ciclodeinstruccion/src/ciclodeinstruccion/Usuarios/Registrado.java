@@ -175,6 +175,10 @@ public class Registrado extends Usuario{
         return oro;
     }
 
+    public ArrayList<MiPersonaje> getMisPersonajes() {
+        return misPersonajes;
+    }
+    
     public int getExperiencia() {
         return experiencia;
     }
