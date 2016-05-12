@@ -229,10 +229,10 @@ public class Administrador extends Usuario{
            
             switch(opcion){
                 case 1:
-                    this.historialDePartidas(j.getPartidas());
+                    j.mostrarTodasPartidas();
                     break;
                 case 2:
-                    this.verEstadisticasAvanzadas(j.getPartidas());
+                    j.estadisticasAvanzadas();
                     break;
                 case 3:
                     verUsuarios(j.getRegistrados());
