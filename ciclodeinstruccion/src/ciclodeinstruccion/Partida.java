@@ -259,7 +259,7 @@ public class Partida {
         System.out.println("numero de partida: "+identificador);
         System.out.println("Jugador: "+jugador1.getNombre()+"con personaje: "+personaje1.getNombre());
         System.out.println("jugador: "+jugador2.getNombre()+"con personaje: "+personaje2.getNombre());
-        System.out.println("ganador: "+this.ganador);
+        System.out.println("ganador: "+this.ganador.getNombre());
         
     }
 

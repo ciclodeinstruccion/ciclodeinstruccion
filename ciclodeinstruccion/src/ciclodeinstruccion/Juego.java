@@ -228,9 +228,9 @@ public class Juego {
    
     public void mostrarTodasPartidas(){
         for (Partida p:partidas){
-            System.out.println(p.getJugador1().getNombre()+" jugo con "+p.getPersonaje1());
-            System.out.println(p.getJugador2().getNombre()+" jugo con "+p.getPersonaje2());
-            System.out.println("la partida la gano "+p.getGanador());
+            System.out.println(p.getJugador1().getNombre()+" jugo con "+p.getPersonaje1().getNombre());
+            System.out.println(p.getJugador2().getNombre()+" jugo con "+p.getPersonaje2().getNombre());
+            System.out.println("la partida la gano "+p.getGanador().getNombre());
         }    
     }
       
