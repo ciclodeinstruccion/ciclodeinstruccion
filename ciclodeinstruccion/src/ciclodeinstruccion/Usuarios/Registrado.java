@@ -156,8 +156,9 @@ public class Registrado extends Usuario{
         System.out.println("elige un personaje");
         
         
-        
+        j.añadirPartida(p);
         return p = new Partida ((j.getPartidas().size()+1),this, this.elegirPersonaje());
+        
     }
     public void unirsePartida(Juego j){
         j.buscarPartida(this);
