@@ -244,6 +244,14 @@ public class Registrado extends Usuario{
         return inteligencia;
     }
 
+    public int getPuntosNivel() {
+        return puntosNivel;
+    }
+
+    public Date getUltimaEntrada() {
+        return ultimaEntrada;
+    }
+
     public void setPartidasJugadas(int partidasJugadas) {
         this.partidasJugadas = partidasJugadas;
     }
