@@ -17,13 +17,15 @@ public abstract class Personaje implements Comparable <Personaje>{
     private float vida;
     private float daño;
     private int precio;
+    private String tipo;
     private ArrayList <Habilidad> habilidades;
 
-    public Personaje(String nombre, float vida, float daño, int precio) {
+    public Personaje(String nombre, float vida, float daño, int precio, String tipo) {
         this.nombre = nombre;
         this.vida = vida;
         this.daño = daño;
         this.precio = precio;
+        this.tipo = tipo;
         this.habilidades=new ArrayList(3);
     }
     public Personaje(String nombre){
@@ -37,7 +39,11 @@ public abstract class Personaje implements Comparable <Personaje>{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    
+    public String getTipo(){
+        return tipo;
+    }
+    
     public void setVida(float vida) {
         this.vida = vida;
     }

@@ -12,8 +12,8 @@ package Personaje;
 public class Asesino extends Personaje{
     private float esquivar;
 
-    public Asesino(String nombre, float vida, float daño ,float esquivar, int precio) {
-        super(nombre, vida, daño, precio);
+    public Asesino(String nombre, float vida, float daño ,float esquivar, int precio, String tipo) {
+        super(nombre, vida, daño, precio, tipo);
         this.esquivar=esquivar;
     }
 
