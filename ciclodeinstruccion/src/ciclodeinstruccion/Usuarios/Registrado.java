@@ -11,6 +11,7 @@ import ciclodeinstruccion.Juego;
 import ciclodeinstruccion.Partida;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.*;
 
 /**
  *
@@ -18,7 +19,7 @@ import java.util.Scanner;
  */
 public class Registrado extends Usuario{
     
-    private float horasJugadas;
+
     private int nivel;
     private int oro;
     private int experiencia;
@@ -29,11 +30,13 @@ public class Registrado extends Usuario{
     private final int EXPERIENCIA_NECESARIA=1000;
     private int puntosNivel;
     private ArrayList <MiPersonaje> misPersonajes;
+    private int partidasJugadas;
+    private Date ultimaEntrada;
     
 
-    public Registrado(float horasJugadas, int nivel, int oro, int experiencia, int vitalidad, int fuerza, int especial, int inteligencia, int puntosNivel, String nombre, String correo, String contraseña) {
+    public Registrado(int partidasJugadas, int nivel, int oro, int experiencia, int vitalidad, int fuerza, int especial, int inteligencia, int puntosNivel, String nombre, String correo, String contraseña,Date ultimaEntrada) {
         super(nombre, correo, contraseña);
-        this.horasJugadas = horasJugadas;
+
         this.nivel = nivel;
         this.oro = oro;
         this.experiencia = experiencia;
@@ -43,6 +46,16 @@ public class Registrado extends Usuario{
         this.inteligencia = inteligencia;
         this.puntosNivel = puntosNivel;
         this.misPersonajes = new ArrayList();
+        this.ultimaEntrada=ultimaEntrada;
+        
+        Date hoy=new Date();
+        if(this.ultimaEntrada.getDay()!=hoy.getDay()){
+            this.partidasJugadas=0;
+            this.oro+=50;
+        }
+        else{
+            this.partidasJugadas=partidasJugadas;
+        }
        
     }
     public Registrado(String nombre){
@@ -191,9 +204,11 @@ public class Registrado extends Usuario{
         this.setCorreo(correoNuevo);
 
     }
-    public float getHorasJugadas() {
-        return horasJugadas;
+
+    public int getPartidasJugadas() {
+        return partidasJugadas;
     }
+    
 
     public int getNivel() {
         return nivel;
@@ -227,9 +242,11 @@ public class Registrado extends Usuario{
         return inteligencia;
     }
 
-    public void setHorasJugadas(float horasJugadas) {
-        this.horasJugadas = horasJugadas;
+    public void setPartidasJugadas(int partidasJugadas) {
+        this.partidasJugadas = partidasJugadas;
     }
+
+    
 
     public void setNivel(int nivel) {
         this.nivel = nivel;

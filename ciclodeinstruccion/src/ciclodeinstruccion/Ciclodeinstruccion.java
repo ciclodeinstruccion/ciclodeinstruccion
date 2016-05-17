@@ -10,7 +10,9 @@ import Personaje.Asesino;
 import ciclodeinstruccion.Usuarios.Administrador;
 import ciclodeinstruccion.Usuarios.Registrado;
 import ciclodeinstruccion.Usuarios.Usuario;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -24,9 +26,14 @@ public class Ciclodeinstruccion {
      */
     public static void main(String[] args) {
         Juego juego=new Juego();
-        Registrado uno = new Registrado(0, 1, 200, 0, 0, 0, 0, 0, 0, "a", "aa", "a");
-        Registrado dos = new Registrado(0, 1, 200, 0, 0, 0, 0, 0, 0, "b", "aa", "a");
-        Registrado tres = new Registrado(0, 1, 200, 0, 0, 0, 0, 0, 0, "c", "aa", "aaaa");
+        Date funo=new Date(2000, 8, 8);
+        Date fdos=new Date(2000, 8, 8);
+        Date ftres=new Date(2000, 8, 8);
+
+
+        Registrado uno = new Registrado(0, 1, 200, 0, 0, 0, 0, 0, 0, "a", "aa", "a",funo);
+        Registrado dos = new Registrado(0, 1, 200, 0, 0, 0, 0, 0, 0, "b", "aa", "a",fdos);
+        Registrado tres = new Registrado(0, 1, 200, 0, 0, 0, 0, 0, 0, "c", "aa", "aaaa",ftres);
         
         Administrador admin2 = new Administrador("admin", "admin", "admin");
         

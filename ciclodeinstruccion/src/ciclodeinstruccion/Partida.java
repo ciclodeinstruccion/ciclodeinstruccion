@@ -25,10 +25,14 @@ public class Partida {
     private ArrayList <String> texto;
     private final int EXP=100;//
     private final int ORO=200;
+    private final int ORO_MEDIO=150;
     private float vidaPersonaje1;
     private float vidaPersonaje2;
     private int identificador;
     private final int COSTE_PARTIDA=0;
+    private int partidasJ1;
+    private int partidasJ2;
+    private final int LIMITE=10;
     
 
     public Partida(int identificador, Registrado jugador1, MiPersonaje personaje1) {
@@ -38,6 +42,7 @@ public class Partida {
         this.finalizada=false;
         this.texto=new ArrayList();
         this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
+        this.partidasJ1=this.jugador1.getPartidasJugadas();
         this.jugador1.gastarPuntosOro(COSTE_PARTIDA);
     }
     
@@ -46,6 +51,7 @@ public class Partida {
         this.personaje2=personaje2;
         this.vidaPersonaje2=personaje2.getVidaBase()+personaje2.getBonusVida()+jugador2.getVitalidad();
         this.jugador2.gastarPuntosOro(COSTE_PARTIDA);
+        this.partidasJ2=this.jugador2.getPartidasJugadas();
     }
     public void jugarPartida(){
         float dañoPersonaje1=personaje1.getDañoBase()+personaje1.getBonusDaño()+jugador1.getFuerza();
@@ -96,11 +102,11 @@ public class Partida {
         }
         if(vidaPersonaje1<=0){
                 this.finalizarPartida(jugador2, personaje2);
-                texto.add("\033[32m"+jugador2.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+ORO+" de oro"+"\033[30m");
+                texto.add("\033[32m"+jugador2.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+this.oroGanado()+" de oro"+"\033[30m");
         }
         else{
                 this.finalizarPartida(jugador1, personaje1);
-                texto.add("\033[32m"+jugador1.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+ORO+" de oro"+"\033[30m");
+                texto.add("\033[32m"+jugador1.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+this.oroGanado()+" de oro"+"\033[30m");
         }
         finalizada=true;
         this.ver();
@@ -238,10 +244,29 @@ public class Partida {
         this.ganador=ganador;
         this.pGanador=personaje;
         ganador.aumentarExperiencia(EXP);
-        ganador.aumentarOro(ORO);
+        ganador.aumentarOro(this.oroGanado());
         personaje.aumentarExperiencia(EXP);
     }
-    
+    public int oroGanado(){
+        int oro=0;
+        if(this.ganador.getNombre().equals(this.jugador1.getNombre())){
+            if(this.partidasJ1<=LIMITE/2){
+                oro=this.ORO;
+            }
+            else{
+                oro=this.ORO_MEDIO;
+            }
+        }
+        else{
+            if(this.partidasJ1<=LIMITE/2){
+                oro=this.ORO;
+            }
+            else{
+                oro=this.ORO_MEDIO;
+            }
+        }
+        return oro;
+    }
     
     public void ver (){
         for (String s: texto){

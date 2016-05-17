@@ -17,6 +17,7 @@ import ciclodeinstruccion.Usuarios.Administrador;
 import ciclodeinstruccion.Usuarios.Registrado;
 import ciclodeinstruccion.Usuarios.Usuario;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -120,7 +121,8 @@ public class Juego {
             correo=teclado.nextLine();
             System.out.println("Introduce contraseña: ");
             contraseña=teclado.nextLine();
-            Registrado r=new Registrado(0,0,500,0,0,0,0,0,0,nombreUsuario,correo,contraseña);
+            Date fecha=new Date();
+            Registrado r=new Registrado(0,0,500,0,0,0,0,0,0,nombreUsuario,correo,contraseña,fecha);
             usuario=r;
             System.out.println("REGISTRADO CON EXITO");
             this.añadirRegistrado(r);
