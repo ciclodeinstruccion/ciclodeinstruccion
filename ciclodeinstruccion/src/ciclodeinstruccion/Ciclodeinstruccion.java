@@ -50,17 +50,17 @@ public class Ciclodeinstruccion {
         MiAsesino miAsesino2 = new MiAsesino(0, 0, 1, 0, 0, asesino2, 0);
         MiAsesino miAsesino3 = new MiAsesino(0, 0, 1, 0, 0, asesino3, 0);
         
-        Habilidad sonic1 = new Habilidad("hipervelocidad", 50, 10, 0);
-        Habilidad sonic2 = new Habilidad("sombre", 30, 5, 30);
-        Habilidad sonic3 = new Habilidad("excalibur", 20, 50, 0);
+        Habilidad sonic1 = new Habilidad("hipervelocidad", 50, 10, 0,"a");
+        Habilidad sonic2 = new Habilidad("sombre", 30, 5, 30,"a");
+        Habilidad sonic3 = new Habilidad("excalibur", 20, 50, 0,"a");
         
         asesino1.añadirHabilidad(sonic1);
         asesino1.añadirHabilidad(sonic2);
         asesino1.añadirHabilidad(sonic3);
         
-        Habilidad chuck1 = new Habilidad("Ranger", 50, 50, 0);
-        Habilidad chuck2 = new Habilidad("Patada giratoria", 45, 60, 0);
-        Habilidad chuck3 = new Habilidad("La muerte no llama", 5, 1000, 0);
+        Habilidad chuck1 = new Habilidad("Ranger", 50, 50, 0,"a");
+        Habilidad chuck2 = new Habilidad("Patada giratoria", 45, 60, 0,"a");
+        Habilidad chuck3 = new Habilidad("La muerte no llama", 5, 1000, 0,"a");
         
         asesino2.añadirHabilidad(chuck1);
         asesino2.añadirHabilidad(chuck2);

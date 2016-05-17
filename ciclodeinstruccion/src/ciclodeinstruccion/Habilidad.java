@@ -15,12 +15,14 @@ public class Habilidad implements Comparable<Habilidad>{
     private int porcentajeDeUso;
     private float daño;
     private float cura;
+    private String descripcion;
 
-    public Habilidad(String nombre, int porcentajeDeUso, float daño, float cura) {
+    public Habilidad(String nombre, int porcentajeDeUso, float daño, float cura, String descripcion) {
         this.nombre = nombre;
         this.porcentajeDeUso = porcentajeDeUso;
         this.daño = daño;
         this.cura = cura;
+        this.descripcion=descripcion;
     }
 
     public String getNombre() {
