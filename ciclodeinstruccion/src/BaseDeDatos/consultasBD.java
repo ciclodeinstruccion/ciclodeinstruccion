@@ -16,6 +16,7 @@ import ciclodeinstruccion.Usuarios.Administrador;
 import java.sql.SQLException;
 import Excepciones.ErrorAñadirRegistrado;
 import Excepciones.ErrorEliminarRegistrado;
+import Excepciones.ErrorModificarPersonaje;
 import ciclodeinstruccion.Habilidad;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.sql.ResultSet;
@@ -178,4 +179,48 @@ public class consultasBD {
         return p;
     }
 
+    public void modificarPersonaje(Personaje p) throws ErrorModificarPersonaje{
+        
+        float especial = 0;
+        
+        if(p instanceof Tanque){
+            Tanque t=(Tanque) p;
+            especial=t.getArmadura();
+        } else if(p instanceof Asesino){
+            Asesino a=(Asesino) p;
+            especial=a.getEsquivar();
+        } else if(p instanceof Fighter){
+            Fighter f=(Fighter) p;
+            especial=f.getCritico();
+        }
+        
+        try {
+            ConexionBD.instancia().getStatement().execute(
+            "UPDATE Personajes SET vida='"+p.getVida()+"','daño='"+p.getDaño()+"','precio='"+p.getPrecio()+"','especial='"+especial+"WHERE nombre='"+p.getNombre()+"')");
+        } catch (SQLException e){
+            throw new ErrorModificarPersonaje();
+        }
+    }
+    
+    public ArrayList<Habilidad> buscarHabilidades(Personaje p) throws SQLException{
+        
+        ArrayList <Habilidad> habilidades = new ArrayList();
+        
+        try {
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
+                "SELECT * FROM Habilidades WHERE nombre='"+p.getNombre()+"')");
+                
+            while(rs.next()){
+                Habilidad h = new Habilidad(rs.getString(1),Integer.parseInt(rs.getNString(2)),Integer.parseInt(rs.getNString(3)),Integer.parseInt(rs.getNString(4)),rs.getNString(5));
+                habilidades.add(h);
+            }
+        }    
+        catch (SQLException e){
+              
+        }
+        
+        return habilidades;
+        
+    }
+    
 }
