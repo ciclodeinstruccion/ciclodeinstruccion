@@ -16,10 +16,12 @@ import ciclodeinstruccion.Usuarios.Administrador;
 import java.sql.SQLException;
 import Excepciones.ErrorAñadirRegistrado;
 import Excepciones.ErrorEliminarRegistrado;
+import ciclodeinstruccion.Habilidad;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  *
@@ -78,17 +80,19 @@ public class consultasBD {
                 "select * from Registrados where nombre='" + (nombre)+"'"              
                 );
                  
-            /*if (rs.next()) {
-                r = new Registrado(rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4),Integer.parseInt(rs.getString(5)));
+            if (rs.next()) {
+                r = new Registrado(Integer.parseInt(rs.getString(13)),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(12)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),Integer.parseInt(rs.getString(8)),Integer.parseInt(rs.getString(11)),Integer.parseInt(rs.getString(9)),Integer.parseInt(rs.getString(10)),rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4));
                 
                 
                 ResultSet rsi = ConexionBD.instancia().getStatement().executeQuery(
-                    "select * from herramientas where razonSocial='"+ (razon)+"'");
+                    "select * from miPersonaje where nombreDeUsuario='"+ (r.getNombre())+"'");
             
                 while (rsi.next()) {
-                    f.añadirHerramienta(new Herramienta(rsi.getString(2),rsi.getString(3),rsi.getString(4),rsi.getInt(5),rsi.getInt(6),rsi.getInt(7)));
+                    if (this.buscarPersonaje(r.getNombre()) instanceof Tanque){
+                        r.añadirPersonajes(new miTanque(this.buscarPersonaje(nombre)),);
+                    }
                 }
-            } */           
+            }           
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -141,6 +145,37 @@ public class consultasBD {
         } catch(SQLException e){
             throw new ErrorBorrarAdministrador();
         } 
-    }    
+    }
+    
+    public Personaje buscarPersonaje (String nombre){
+        Personaje p=null;
+        try {
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
+                "select * from Personajes where nombre='" + (nombre)+"'"              
+                );
+                 
+            if (rs.next()) {
+                if(rs.getString(5).equals("Tanque")){
+                    p=new Tanque(rs.getString(1),Integer.parseInt(rs.getString(2)),Integer.parseInt(rs.getString(3)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(4)),rs.getString(5));
+                }
+                else if(rs.getString(5).equals("Asesino")){
+                    p=new Asesino(rs.getString(1),Integer.parseInt(rs.getString(2)),Integer.parseInt(rs.getString(3)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(4)),rs.getString(5));
+                }
+                else{
+                    p=new Fighter(rs.getString(1),Integer.parseInt(rs.getString(2)),Integer.parseInt(rs.getString(3)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(4)),rs.getString(5));
+                }
+            
+                ArrayList <Habilidad> Habilidades;
+                Habilidades=this.buscarHabilidades(p);
+                for (Habilidad h:Habilidades){
+                    p.añadirHabilidad(h);
+                }
+            }           
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return p;
+    }
 
 }
