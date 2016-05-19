@@ -22,6 +22,7 @@ import MiPersonaje.MiFighter;
 import MiPersonaje.MiPersonaje;
 import MiPersonaje.MiTanque;
 import ciclodeinstruccion.Habilidad;
+import ciclodeinstruccion.Juego;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -80,27 +81,34 @@ public class consultasBD {
     }
     public Registrado buscarRegistrado(String nombre){
         Registrado r=null;
+        System.out.println("jhghjasfdhgf");
         try {
+                         System.out.println("aui");
             ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
                 "select * from Registrados where nombre='" + (nombre)+"'"              
                 );
-                 
+                         System.out.println("aui");     
             if (rs.next()) {
                 r = new Registrado(Integer.parseInt(rs.getString(13)),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(12)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),Integer.parseInt(rs.getString(8)),Integer.parseInt(rs.getString(11)),Integer.parseInt(rs.getString(9)),Integer.parseInt(rs.getString(10)),rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4));
                 
-                
+   
                 ResultSet rsi = ConexionBD.instancia().getStatement().executeQuery(
                     "select * from miPersonaje where nombreDeUsuario='"+ (r.getNombre())+"'");
-            
+                
                 while (rsi.next()) {
-                    if (this.buscarPersonaje(rsi.getString(2)) instanceof Tanque){
-                        r.añadirPersonajes(new MiTanque(Integer.parseInt(rsi.getString(3)),Integer.parseInt(rsi.getString(4)),Integer.parseInt(rsi.getString(6)),Integer.parseInt(rsi.getString(7)),Integer.parseInt(rsi.getString(8)),(Tanque) this.buscarPersonaje(rsi.getString(2)),Integer.parseInt(rsi.getString(5))));
+                    //Personaje p=juego.getPersonajes().get(juego.buscarPersonaje(rsi.getString(2)));
+                    Personaje p=this.buscarPersonaje(rsi.getString(2));
+                    if (p instanceof Tanque){
+                        Tanque t=(Tanque) p;
+                        r.añadirPersonajes(new MiTanque(Integer.parseInt(rsi.getString(3)),Integer.parseInt(rsi.getString(4)),Integer.parseInt(rsi.getString(6)),Integer.parseInt(rsi.getString(7)),Integer.parseInt(rsi.getString(8)),t,Integer.parseInt(rsi.getString(5))));
                     }
-                    else if (this.buscarPersonaje(rsi.getString(2)) instanceof Asesino){
-                        r.añadirPersonajes(new MiAsesino(Integer.parseInt(rsi.getString(3)),Integer.parseInt(rsi.getString(4)),Integer.parseInt(rsi.getString(6)),Integer.parseInt(rsi.getString(7)),Integer.parseInt(rsi.getString(8)),(Asesino) this.buscarPersonaje(rsi.getString(2)),Integer.parseInt(rsi.getString(5))));
+                    else if (p instanceof Asesino){
+                        Asesino a=(Asesino) p;
+                        r.añadirPersonajes(new MiAsesino(Integer.parseInt(rsi.getString(3)),Integer.parseInt(rsi.getString(4)),Integer.parseInt(rsi.getString(6)),Integer.parseInt(rsi.getString(7)),Integer.parseInt(rsi.getString(8)),a,Integer.parseInt(rsi.getString(5))));
                     }
                     else{
-                        r.añadirPersonajes(new MiFighter(Integer.parseInt(rsi.getString(3)),Integer.parseInt(rsi.getString(4)),Integer.parseInt(rsi.getString(6)),Integer.parseInt(rsi.getString(7)),Integer.parseInt(rsi.getString(8)),(Fighter) this.buscarPersonaje(rsi.getString(2)),Integer.parseInt(rsi.getString(5))));
+                        Fighter f=(Fighter) p;
+                        r.añadirPersonajes(new MiFighter(Integer.parseInt(rsi.getString(3)),Integer.parseInt(rsi.getString(4)),Integer.parseInt(rsi.getString(6)),Integer.parseInt(rsi.getString(7)),Integer.parseInt(rsi.getString(8)),f,Integer.parseInt(rsi.getString(5))));
                     }
                 }
             }           
@@ -157,7 +165,21 @@ public class consultasBD {
             throw new ErrorBorrarAdministrador();
         } 
     }
-    
+    public Administrador buscarAministrador(String nombre){
+        Administrador admin=null;
+        try {
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
+                "SELECT * FROM Administradores WHERE nombre='"+nombre+"')");
+                
+            if(rs.next()){
+                admin=new Administrador(rs.getString(1), rs.getString(2), rs.getString(3));
+            }
+        }    
+        catch (SQLException e){
+              
+        }
+        return admin;
+    }
     public Personaje buscarPersonaje (String nombre){
         Personaje p=null;
         try {
@@ -262,5 +284,77 @@ public class consultasBD {
             }    
         }
 
+    }
+    
+    public boolean encuentraRegistrado(String nombre, String contraseña){
+        boolean encuentra=false;
+        System.out.println("3");
+        try {
+            
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
+                "SELECT * FROM Registrados WHERE nombre='"+nombre+"' and contraseña='"+contraseña+"'");
+             System.out.println("1");   
+            if(rs.next()){
+                encuentra=true;
+                System.out.println("reg");
+            }
+        }    
+        catch (SQLException e){
+              
+        }
+        return encuentra;
+    }
+    
+    public boolean encuentraAdministrador(String nombre, String contraseña){
+        boolean encuentra=false;
+        try {
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
+                "SELECT * FROM Administradores WHERE nombre='"+nombre+"' and contraseña='"+contraseña+"'");
+                
+            if(rs.next()){
+                encuentra=true;
+                System.out.println("adm");
+            }
+        }    
+        catch (SQLException e){
+              
+        }
+        return encuentra;
+    }
+    
+    public void cargarPersonaje(Juego j){
+      
+        try {
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
+                "select * from Personajes"              
+                );
+                 
+            while (rs.next()) {
+                if(rs.getString(5).equals("Tanque")){
+                    Tanque p=new Tanque(rs.getString(1),Integer.parseInt(rs.getString(2)),Integer.parseInt(rs.getString(3)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(4)),rs.getString(5));
+                    j.añadirPersonajes(p);
+                }
+                else if(rs.getString(5).equals("Asesino")){
+                    Asesino p=new Asesino(rs.getString(1),Integer.parseInt(rs.getString(2)),Integer.parseInt(rs.getString(3)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(4)),rs.getString(5));
+                    j.añadirPersonajes(p);
+                }
+                else{
+                    Fighter p=new Fighter(rs.getString(1),Integer.parseInt(rs.getString(2)),Integer.parseInt(rs.getString(3)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(4)),rs.getString(5));
+                    j.añadirPersonajes(p);
+                }
+            
+            }
+            for(Personaje p:j.getPersonajes()){
+                ArrayList <Habilidad> Habilidades;
+                Habilidades=this.buscarHabilidades(p);
+                for (Habilidad h:Habilidades){
+                    p.añadirHabilidad(h);
+            
+                }
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

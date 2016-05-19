@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import Excepciones.ErrorConexionBD;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConexionBD {
     Connection conn;
@@ -31,6 +33,11 @@ public class ConexionBD {
     }
     
     public Statement getStatement() {
+        try {
+            stmt = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return stmt;
     }
     
