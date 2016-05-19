@@ -12,6 +12,8 @@ import ciclodeinstruccion.Usuarios.Registrado;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -156,7 +158,21 @@ public class Registrarse extends javax.swing.JDialog {
             correcto=false;
             JOptionPane.showMessageDialog(rootPane, "Ya existe un usuario registrado con este correo", "Registrarse", JOptionPane.WARNING_MESSAGE);
         }
+        else if(!correoValido(correo)){
+            correcto=false;
+            JOptionPane.showMessageDialog(rootPane, "El correo electrónico indicado no es válido", "Registrarse", JOptionPane.WARNING_MESSAGE);
+        }
         return correcto;
+    }
+    public boolean correoValido(String correo){
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = 
+		"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(correo);
+        return matcher.matches();
     }
     /**
      * @param args the command line arguments
