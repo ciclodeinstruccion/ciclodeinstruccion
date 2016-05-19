@@ -251,4 +251,16 @@ public class consultasBD {
             
         }    
     }
+    
+    public void añadirHabilidad(Personaje p){
+        
+        for(int i=0;i<=p.getHabilidades().size();i++){
+            try{
+                ConexionBD.instancia().getStatement().execute("INSERT INTO Habilidades VALUES ('"+p.getHabilidades().get(i).getNombre()+"','"+Integer.toString(p.getHabilidades().get(i).getPorcentajeDeUso())+"','"+Float.toString(p.getHabilidades().get(i).getDaño())+"','"+Float.toString(p.getHabilidades().get(i).getCura())+"','"+p.getNombre()+"')");
+            } catch (SQLException e){
+
+            }    
+        }
+
+    }
 }
