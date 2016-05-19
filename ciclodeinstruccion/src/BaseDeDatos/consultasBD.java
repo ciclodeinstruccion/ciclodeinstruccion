@@ -81,13 +81,10 @@ public class consultasBD {
     }
     public Registrado buscarRegistrado(String nombre){
         Registrado r=null;
-        System.out.println("jhghjasfdhgf");
         try {
-                         System.out.println("aui");
             ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
                 "select * from Registrados where nombre='" + (nombre)+"'"              
-                );
-                         System.out.println("aui");     
+                );   
             if (rs.next()) {
                 r = new Registrado(Integer.parseInt(rs.getString(13)),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(12)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),Integer.parseInt(rs.getString(8)),Integer.parseInt(rs.getString(11)),Integer.parseInt(rs.getString(9)),Integer.parseInt(rs.getString(10)),rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4));
                 
@@ -288,15 +285,15 @@ public class consultasBD {
     
     public boolean encuentraRegistrado(String nombre, String contraseña){
         boolean encuentra=false;
-        System.out.println("3");
+
         try {
             
             ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
                 "SELECT * FROM Registrados WHERE nombre='"+nombre+"' and contraseña='"+contraseña+"'");
-             System.out.println("1");   
+   
             if(rs.next()){
                 encuentra=true;
-                System.out.println("reg");
+
             }
         }    
         catch (SQLException e){
