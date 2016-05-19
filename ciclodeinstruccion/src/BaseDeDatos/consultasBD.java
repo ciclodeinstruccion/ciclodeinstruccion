@@ -17,6 +17,10 @@ import java.sql.SQLException;
 import Excepciones.ErrorAñadirRegistrado;
 import Excepciones.ErrorEliminarRegistrado;
 import Excepciones.ErrorModificarPersonaje;
+import MiPersonaje.MiAsesino;
+import MiPersonaje.MiFighter;
+import MiPersonaje.MiPersonaje;
+import MiPersonaje.MiTanque;
 import ciclodeinstruccion.Habilidad;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.sql.ResultSet;
@@ -223,4 +227,22 @@ public class consultasBD {
         
     }
     
+    public void añadirMiPersonaje(MiPersonaje mp, Registrado r){
+        
+        float bonusEspecial = 0;
+        
+        if(mp instanceof MiTanque){
+            MiTanque t = (MiTanque) mp;
+        } else if(mp instanceof MiAsesino){
+           MiAsesino a = (MiAsesino) mp; 
+        } else if(mp instanceof MiFighter){
+           MiFighter f = (MiFighter) mp;
+        }
+    
+        try{
+            ConexionBD.instancia().getStatement().execute("INSERT INTO miPersonaje VALUES ('"+r.getNombre()+"','"+mp.getNombre()+"','"+Float.toString(mp.getBonusVida())+"','"+Float.toString(mp.getBonusDaño())+"','"+Float.toString(bonusEspecial)+"','"+Integer.toString(mp.getNivel())+"','"+Integer.toString(mp.getExperiencia())+"','"+Integer.toString(mp.getPuntosNivel())+"')");
+        } catch (SQLException e){
+            
+        }    
+    }
 }
