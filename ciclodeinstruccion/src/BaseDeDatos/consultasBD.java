@@ -354,4 +354,54 @@ public class consultasBD {
             e.printStackTrace();
         }
     }
+    public boolean existeNombre(String nombre){
+        boolean encontrado=false;
+        try {
+            
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
+                "SELECT * FROM Registrados WHERE nombre='"+nombre+"'");
+   
+            if(rs.next()){
+                encontrado=true;
+
+            }
+            else{
+                ResultSet rsi = ConexionBD.instancia().getStatement().executeQuery(
+                "SELECT * FROM Administradores WHERE nombre='"+nombre+"'");
+                if(rsi.next()){
+                    encontrado=true;
+
+                }
+            }
+        }    
+        catch (SQLException e){
+              
+        }
+        return encontrado;
+    }
+    public boolean existeCorreo(String correo){
+        boolean encontrado=false;
+        try {
+            
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
+                "SELECT * FROM Registrados WHERE correo='"+correo+"'");
+   
+            if(rs.next()){
+                encontrado=true;
+
+            }
+            else{
+                ResultSet rsi = ConexionBD.instancia().getStatement().executeQuery(
+                "SELECT * FROM Administradores WHERE correo='"+correo+"'");
+                if(rsi.next()){
+                    encontrado=true;
+
+                }
+            }
+        }    
+        catch (SQLException e){
+              
+        }
+        return encontrado;
+    }
 }

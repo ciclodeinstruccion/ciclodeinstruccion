@@ -34,6 +34,7 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         sesion = new javax.swing.JButton();
+        registrarse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +50,13 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        registrarse.setText("Registrarse");
+        registrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                registrarse(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,13 +65,19 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(161, 161, 161)
                 .addComponent(sesion)
                 .addContainerGap(142, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(registrarse)
+                .addGap(155, 155, 155))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(77, 77, 77)
                 .addComponent(sesion)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addComponent(registrarse)
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
         pack();
@@ -84,6 +98,17 @@ public class Inicio extends javax.swing.JFrame {
         IniciarSesion is=new IniciarSesion(this, true);
         is.setVisible(true);
     }//GEN-LAST:event_iniciosesion
+
+    private void registrarse(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarse
+        try {
+            ConexionBD.crearConexion();
+        } catch (ErrorConexionBD ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("mal");
+        }
+        Registrarse r=new Registrarse(this, true);
+        r.setVisible(true);
+    }//GEN-LAST:event_registrarse
 
     /**
      * @param args the command line arguments
@@ -121,6 +146,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton registrarse;
     private javax.swing.JButton sesion;
     // End of variables declaration//GEN-END:variables
 }
