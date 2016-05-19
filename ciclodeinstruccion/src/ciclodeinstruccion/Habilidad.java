@@ -41,6 +41,10 @@ public class Habilidad implements Comparable<Habilidad>{
         return cura;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
