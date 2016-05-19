@@ -17,6 +17,9 @@ import java.sql.SQLException;
 import Excepciones.ErrorAñadirRegistrado;
 import Excepciones.ErrorEliminarRegistrado;
 import Excepciones.ErrorModificarPersonaje;
+import MiPersonaje.MiAsesino;
+import MiPersonaje.MiFighter;
+import MiPersonaje.MiTanque;
 import ciclodeinstruccion.Habilidad;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.sql.ResultSet;
@@ -89,8 +92,14 @@ public class consultasBD {
                     "select * from miPersonaje where nombreDeUsuario='"+ (r.getNombre())+"'");
             
                 while (rsi.next()) {
-                    if (this.buscarPersonaje(r.getNombre()) instanceof Tanque){
-                        r.añadirPersonajes(new miTanque(this.buscarPersonaje(nombre)),);
+                    if (this.buscarPersonaje(rsi.getString(2)) instanceof Tanque){
+                        r.añadirPersonajes(new MiTanque(Integer.parseInt(rsi.getString(3)),Integer.parseInt(rsi.getString(4)),Integer.parseInt(rsi.getString(6)),Integer.parseInt(rsi.getString(7)),Integer.parseInt(rsi.getString(8)),(Tanque) this.buscarPersonaje(rsi.getString(2)),Integer.parseInt(rsi.getString(5))));
+                    }
+                    else if (this.buscarPersonaje(rsi.getString(2)) instanceof Asesino){
+                        r.añadirPersonajes(new MiAsesino(Integer.parseInt(rsi.getString(3)),Integer.parseInt(rsi.getString(4)),Integer.parseInt(rsi.getString(6)),Integer.parseInt(rsi.getString(7)),Integer.parseInt(rsi.getString(8)),(Asesino) this.buscarPersonaje(rsi.getString(2)),Integer.parseInt(rsi.getString(5))));
+                    }
+                    else{
+                        r.añadirPersonajes(new MiFighter(Integer.parseInt(rsi.getString(3)),Integer.parseInt(rsi.getString(4)),Integer.parseInt(rsi.getString(6)),Integer.parseInt(rsi.getString(7)),Integer.parseInt(rsi.getString(8)),(Fighter) this.buscarPersonaje(rsi.getString(2)),Integer.parseInt(rsi.getString(5))));
                     }
                 }
             }           
@@ -208,7 +217,7 @@ public class consultasBD {
         
         try {
             ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
-                "SELECT * FROM Habilidades WHERE nombre='"+p.getNombre()+"')");
+                "SELECT * FROM Habilidades WHERE nombrePersonaje='"+p.getNombre()+"')");
                 
             while(rs.next()){
                 Habilidad h = new Habilidad(rs.getString(1),Integer.parseInt(rs.getNString(2)),Integer.parseInt(rs.getNString(3)),Integer.parseInt(rs.getNString(4)),rs.getNString(5));
