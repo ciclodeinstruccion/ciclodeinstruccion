@@ -22,6 +22,7 @@ import MiPersonaje.MiFighter;
 import MiPersonaje.MiPersonaje;
 import MiPersonaje.MiTanque;
 import ciclodeinstruccion.Habilidad;
+import ciclodeinstruccion.Partida;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -254,7 +255,7 @@ public class consultasBD {
     
     public void añadirHabilidad(Personaje p){
         
-        for(int i=0;i<=p.getHabilidades().size();i++){
+        for(int i=0;i<p.getHabilidades().size();i++){
             try{
                 ConexionBD.instancia().getStatement().execute("INSERT INTO Habilidades VALUES ('"+p.getHabilidades().get(i).getNombre()+"','"+Integer.toString(p.getHabilidades().get(i).getPorcentajeDeUso())+"','"+Float.toString(p.getHabilidades().get(i).getDaño())+"','"+Float.toString(p.getHabilidades().get(i).getCura())+"','"+p.getNombre()+"')");
             } catch (SQLException e){
@@ -262,5 +263,84 @@ public class consultasBD {
             }    
         }
 
+    }
+    public MiPersonaje buscarMiPersonaje(String nombre){
+        MiPersonaje mp1 = null;
+        
+        try {
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
+                "SELECT * FROM MiPersonaje WHERE nombreDePersonaje='"+nombre+"')");
+                
+            while(rs.next()){
+                if(this.buscarPersonaje(rs.getNString(2)).getTipo().equalsIgnoreCase("Tanque")){
+                    mp1=new MiTanque(Float.parseFloat(rs.getString(3)),Float.parseFloat(rs.getString(4)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),Integer.parseInt(rs.getString(8)),(Tanque)this.buscarPersonaje(rs.getString(2)),Float.parseFloat(rs.getString(5)));
+                } else if(this.buscarPersonaje(rs.getNString(2)).getTipo().equalsIgnoreCase("Asesino")){
+                    mp1=new MiAsesino(Float.parseFloat(rs.getString(3)),Float.parseFloat(rs.getString(4)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),Integer.parseInt(rs.getString(8)),(Asesino)this.buscarPersonaje(rs.getString(2)),Float.parseFloat(rs.getString(5)));
+                } else if(this.buscarPersonaje(rs.getNString(2)).getTipo().equalsIgnoreCase("Tanque")){
+                    mp1=new MiFighter(Float.parseFloat(rs.getString(3)),Float.parseFloat(rs.getString(4)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),Integer.parseInt(rs.getString(8)),(Fighter)this.buscarPersonaje(rs.getString(2)),Float.parseFloat(rs.getString(5)));
+                }
+            }
+        }    
+        catch (SQLException e){
+              
+        }
+        
+        return mp1;
+    }
+    
+     public void añadirPArtida(Partida p){
+        
+        try{
+            ConexionBD.instancia().getStatement().execute("INSERT INTO Partida (jugador1, personaje1, nPartidas1, finalizada) VALUES('"+p.getJugador1().getNombre()+"','"+p.getPersonaje1().getNombre()+"','"+Integer.toString(p.getJugador1().getPartidasJugadas())+"','"+Boolean.toString(p.isFinalizada())+"')");
+        }catch(SQLException e){
+            
+        }
+    }
+    
+    public void unirsePartida(Partida p){
+        
+        try{
+            ConexionBD.instancia().getStatement().execute("UPDATE SET jugador2='"+p.getJugador2().getNombre()+"',personaje2='"+p.getPersonaje2().getNombre()+"',nPArtidas2='"+Integer.toString(p.getJugador2().getPartidasJugadas())+"',ganador='"+p.getGanador().getNombre()+"',personajeGanador='"+p.getpGanador().getNombre()+"',finalizada='"+p.isFinalizada()+"' WHERE identificador='"+Integer.toString(p.getIdentificador())+"')");
+        } catch(SQLException e){
+            
+        }
+            
+    }
+    
+    public ArrayList<Partida> buscarPartidasNoAcabadas(Registrado r){
+        
+        ArrayList <Partida> partidas = new ArrayList();
+        
+        try{
+        ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT identificador, jugador1, personaje1 FROM Partidas WHERE jugador1!='"+r.getNombre()+"' && finalizada=false");
+        
+            while(rs.next()){
+                Partida p = new Partida(Integer.parseInt(rs.getString(1)),this.buscarRegistrado(rs.getString(2)),this.buscarMiPersonaje(rs.getString(4)));  
+                partidas.add(p);
+            }
+        
+        } catch (SQLException e){
+            
+        }
+        
+        return partidas;
+        
+    }
+    
+    public ArrayList<Partida> buscarPartidasAcabadas(Registrado r){
+        
+        ArrayList <Partida> partidas = new ArrayList();
+        
+        try{
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT * FROM Partidas WHERE jugador1='"+r.getNombre()+"', || jugador2='"+r.getNombre()+"' && finalizada= true");
+            while(rs.next()){
+                Partida p = new Partida(Integer.parseInt(rs.getString(1)),this.buscarRegistrado(rs.getString(2)),this.buscarRegistrado(rs.getString(3)),this.buscarMiPersonaje(rs.getString(4)),this.buscarMiPersonaje(rs.getString(5)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),this.buscarRegistrado(rs.getString(8)),this.buscarMiPersonaje(rs.getString(9)));
+                partidas.add(p);
+            }
+        } catch(SQLException e){
+            
+        }
+        
+        return partidas;
     }
 }

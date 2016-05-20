@@ -45,6 +45,19 @@ public class Partida {
         this.partidasJ1=this.jugador1.getPartidasJugadas();
         this.jugador1.gastarPuntosOro(COSTE_PARTIDA);
     }
+
+    public Partida(int identificador, Registrado jugador1, Registrado jugador2, MiPersonaje personaje1, MiPersonaje personaje2, int partidasJ1, int partidasJ2, Registrado ganador, MiPersonaje pGanador) {
+        this.jugador1 = jugador1;
+        this.jugador2 = jugador2;
+        this.personaje1 = personaje1;
+        this.personaje2 = personaje2;
+        this.ganador = ganador;
+        this.pGanador = pGanador;
+        
+        this.identificador = identificador;
+        this.partidasJ1 = partidasJ1;
+        this.partidasJ2 = partidasJ2;
+    }
     
     public void unirsePartida(Registrado jugador2, MiPersonaje personaje2){
         this.jugador2=jugador2;
