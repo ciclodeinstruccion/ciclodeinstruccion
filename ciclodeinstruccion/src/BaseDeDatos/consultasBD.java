@@ -275,7 +275,11 @@ public class consultasBD {
     public void añadirHabilidad(Personaje p){
         
 
+
         
+        
+
+
         for(Habilidad h:p.getHabilidades()){
 
             try{
@@ -286,6 +290,7 @@ public class consultasBD {
         }
 
     }
+
 
     public MiPersonaje buscarMiPersonaje(String nombre){
         MiPersonaje mp1 = null;
@@ -489,4 +494,5 @@ public class consultasBD {
         return encontrado;
 
     }
+
 }
