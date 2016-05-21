@@ -32,7 +32,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        unirse = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,8 +43,8 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
 
-        unirse.setText("Unirse a partida");
-        unirse.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton2.setText("jButton2");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 unirse(evt);
             }
@@ -57,18 +57,18 @@ public class InicioRegistrado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(148, 148, 148)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(unirse)
+                    .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(jButton1)
-                .addGap(26, 26, 26)
-                .addComponent(unirse)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(jButton2)
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         pack();
@@ -81,9 +81,9 @@ public class InicioRegistrado extends javax.swing.JFrame {
     }//GEN-LAST:event_crearPartida
 
     private void unirse(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirse
-        UnirseAPartida uap=new UnirseAPartida(this, true, resgistrado);
-        uap.mostrar();
-        uap.setVisible(true);
+        UnirsePartida up= new UnirsePartida(this, true, resgistrado);
+        up.mostrar();
+        up.setVisible(true);
     }//GEN-LAST:event_unirse
 
     /**
@@ -123,6 +123,6 @@ public class InicioRegistrado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton unirse;
+    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }

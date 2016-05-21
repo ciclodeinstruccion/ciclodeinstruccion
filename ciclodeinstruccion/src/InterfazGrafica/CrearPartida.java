@@ -9,6 +9,7 @@ import ciclodeinstruccion.Partida;
 import ciclodeinstruccion.Usuarios.Registrado;
 import javax.swing.table.DefaultTableModel;
 import BaseDeDatos.consultasBD;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -81,11 +82,18 @@ public class CrearPartida extends javax.swing.JDialog {
 
     private void crearPartida(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearPartida
         if(tablaMisPersonajes.getSelectedRow()>-1){
-            Partida p=new Partida(consultasBD.instancia().identificadorPartida()+1, registrado, consultasBD.instancia().buscarMiPersonaje(tablaMisPersonajes.getValueAt(tablaMisPersonajes.getSelectedRow(), 0).toString(), registrado));
-            consultasBD.instancia().añadirPArtida(p);
-            
-        }
-        
+            if(registrado.getOro()<100){
+                JOptionPane.showMessageDialog(rootPane, "No tienes oro sificiente para crear la partida", "Crear partida", JOptionPane.WARNING_MESSAGE);
+            }
+            else if(JOptionPane.showConfirmDialog(rootPane, "¿Esta seguro que quieres crear la partida?", "Crear partida", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE)==0){
+                Seleccionar.setEnabled(false);
+                Partida p=new Partida(consultasBD.instancia().identificadorPartida()+1, registrado, consultasBD.instancia().buscarMiPersonaje(tablaMisPersonajes.getValueAt(tablaMisPersonajes.getSelectedRow(), 0).toString(), registrado));
+                consultasBD.instancia().añadirPArtida(p);
+                consultasBD.instancia().modificarRegistrado(registrado);
+                JOptionPane.showMessageDialog(rootPane, "Partida creada con éxito", "Crear partida", JOptionPane.INFORMATION_MESSAGE);
+                this.setVisible(false);
+            }
+        }    
     }//GEN-LAST:event_crearPartida
     public void mostrar(){
         tabla=new DefaultTableModel(this.registrado.tablaMisPersonajes(), cabecera);

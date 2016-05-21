@@ -65,6 +65,7 @@ public class consultasBD {
             throw new ErrorAñadirRegistrado();
         }
     }
+    
     public void eliminarRegistrado(Registrado r) throws ErrorEliminarRegistrado{
         try {
             ConexionBD.instancia().getStatement().execute(
@@ -80,6 +81,7 @@ public class consultasBD {
             throw new ErrorEliminarRegistrado();
         }
     }
+    
     public Registrado buscarRegistrado(String nombre){
         Registrado r=null;
         try {
@@ -116,10 +118,20 @@ public class consultasBD {
         }
         return r;
     }
+    
+    public void modificarRegistrado (Registrado r){
+        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
+        try{
+            ConexionBD.instancia().getStatement().execute("UPDATE Registrados SET nombre='"+r.getNombre()+"',correo='"+r.getCorreo()+"',contraseña='"+r.getContraseña()+"',ultimaConexion='"+sdf.format(r.getUltimaEntrada())+"',nivel="+Integer.toString(r.getNivel())+",experiencia="+Integer.toString(r.getExperiencia())+",vitalidad="+
+            Integer.toString(r.getVitalidad())+",fuerza="+Integer.toString(r.getFuerza())+",inteligencia="+Integer.toString(r.getInteligencia())+",puntosNivel="+Integer.toString(r.getPuntosNivel())+",especial="+Integer.toString(r.getEspecial())+",oro="+r.getOro()+",partidasJugadas="+r.getPartidasJugadas()+" where nombre='"+r.getNombre()+"'");
 
+        }catch(SQLException e){
+            
+        }
+    }
+    
     public void añadirAdministradores(Administrador a) throws ErrorCrearAdministrador{
-      
-        
+         
       try{
           ConexionBD.instancia().getStatement().execute(
           "INSERT INTO Administradores VALUES ('"+a.getNombre()+"','"+a.getCorreo()+"','"+a.getContraseña()+"')");
@@ -163,6 +175,7 @@ public class consultasBD {
             throw new ErrorBorrarAdministrador();
         } 
     }
+    
     public Administrador buscarAministrador(String nombre){
         Administrador admin=null;
         try {
@@ -178,6 +191,7 @@ public class consultasBD {
         }
         return admin;
     }
+    
     public Personaje buscarPersonaje (String nombre){
         Personaje p=null;
         try {
@@ -272,6 +286,39 @@ public class consultasBD {
         }    
     }
     
+    public void modificarMiPersonaje(MiPersonaje p, Registrado r){
+        if(p instanceof MiTanque){
+            MiTanque t=(MiTanque)p;
+            try{
+                ConexionBD.instancia().getStatement().execute("UPDATE miPersonaje SET bonusVida="+Float.toString(p.getBonusVida())+", bonusDaño="+Float.toString(p.getBonusDaño())+",bonusEspecial="+
+                Float.toString(t.getBonusArmadura())+",nivel="+Integer.toString(p.getNivel())+",experiencia="+Integer.toString(p.getExperiencia())+",puntosNivel="+Integer.toString(p.getPuntosNivel())+
+                    " where nombreDeUsuario='"+r.getNombre()+"' and nombreDePersonaje='"+p.getNombre()+"'");
+            }catch(SQLException e){
+            
+            }
+        }
+        else if(p instanceof MiAsesino){
+            MiAsesino a=(MiAsesino)p;
+            try{
+                ConexionBD.instancia().getStatement().execute("UPDATE miPersonaje SET bonusVida="+Float.toString(p.getBonusVida())+", bonusDaño="+Float.toString(p.getBonusDaño())+",bonusEspecial="+
+                Float.toString(a.getBonusEsquivar())+",nivel="+Integer.toString(p.getNivel())+",experiencia="+Integer.toString(p.getExperiencia())+",puntosNivel="+Integer.toString(p.getPuntosNivel())+
+                    " where nombreDeUsuario='"+r.getNombre()+"' and nombreDePersonaje='"+p.getNombre()+"'");
+            }catch(SQLException e){
+            
+            }
+        }
+        else if(p instanceof MiFighter){
+            MiFighter f=(MiFighter)p;
+            try{
+                ConexionBD.instancia().getStatement().execute("UPDATE miPersonaje SET bonusVida="+Float.toString(p.getBonusVida())+", bonusDaño="+Float.toString(p.getBonusDaño())+",bonusEspecial="+
+                Float.toString(f.getBonusCritico())+",nivel="+Integer.toString(p.getNivel())+",experiencia="+Integer.toString(p.getExperiencia())+",puntosNivel="+Integer.toString(p.getPuntosNivel())+
+                    " where nombreDeUsuario='"+r.getNombre()+"' and nombreDePersonaje='"+p.getNombre()+"'");
+            }catch(SQLException e){
+            
+            }
+        }
+    }
+    
     public void añadirHabilidad(Personaje p){
         for(Habilidad h:p.getHabilidades()){
 
@@ -283,8 +330,7 @@ public class consultasBD {
         }
 
     }
-
-
+    
     public MiPersonaje buscarMiPersonaje(String nombre, Registrado r){
         MiPersonaje mp1 = null;
         
@@ -309,7 +355,7 @@ public class consultasBD {
         return mp1;
     }
     
-     public void añadirPArtida(Partida p){
+    public void añadirPArtida(Partida p){
         
         try{
             ConexionBD.instancia().getStatement().execute("INSERT INTO Partida (jugador1, personaje1, nPartidas1, finalizada) VALUES('"+p.getJugador1().getNombre()+"','"+p.getPersonaje1().getNombre()+"',"+Integer.toString(p.getJugador1().getPartidasJugadas())+","+Integer.toString(0)+")");
@@ -321,7 +367,7 @@ public class consultasBD {
     public void unirsePartida(Partida p){
         
         try{
-            ConexionBD.instancia().getStatement().execute("UPDATE Partida SET jugador2='"+p.getJugador2().getNombre()+"',personaje2='"+p.getPersonaje2().getNombre()+"',nPArtidas2='"+Integer.toString(p.getJugador2().getPartidasJugadas())+"',ganador='"+p.getGanador().getNombre()+"',personajeGanador='"+p.getpGanador().getNombre()+"',finalizada='"+p.isFinalizada()+"' WHERE identificador='"+Integer.toString(p.getIdentificador())+"')");
+            ConexionBD.instancia().getStatement().execute("UPDATE Partida SET jugador2='"+p.getJugador2().getNombre()+"',personaje2='"+p.getPersonaje2().getNombre()+"',nPArtidas2="+Integer.toString(p.getJugador2().getPartidasJugadas())+",ganador='"+p.getGanador().getNombre()+"',personajeGanador='"+p.getpGanador().getNombre()+"',finalizada=1 WHERE identificador="+Integer.toString(p.getIdentificador()));
             this.añadirTextoParitda(p);
         } catch(SQLException e){
             
@@ -346,7 +392,8 @@ public class consultasBD {
             ResultSet rs= ConexionBD.instancia().getStatement().executeQuery("select identificador,jugador1,personaje1 from Partida where jugador1!='"+r.getNombre()+"' and finalizada=0");
             
             while(rs.next()){
-                Partida p=new Partida(Integer.parseInt(rs.getString(1)), r, this.buscarMiPersonaje(rs.getString(3), r));
+                Registrado j=this.buscarRegistrado(rs.getString(2));
+                Partida p=new Partida(Integer.parseInt(rs.getString(1)), j, this.buscarMiPersonaje(rs.getString(3), j));
                 partidas.add(p);
             }
         } catch(SQLException e){
@@ -360,7 +407,7 @@ public class consultasBD {
         ArrayList <Partida> partidas = new ArrayList();
         
         try{
-            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT * FROM Partida WHERE jugador1=('"+r.getNombre()+"'OR jugador2='"+r.getNombre()+"') AND finalizada= true");
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT * FROM Partida WHERE jugador1=('"+r.getNombre()+"'OR jugador2='"+r.getNombre()+"') AND finalizada=1");
             while(rs.next()){
                 Partida p = new Partida(Integer.parseInt(rs.getString(1)),this.buscarRegistrado(rs.getString(2)),this.buscarRegistrado(rs.getString(3)),this.buscarMiPersonaje(rs.getString(4),this.buscarRegistrado(rs.getString(2))),this.buscarMiPersonaje(rs.getString(5),this.buscarRegistrado(rs.getString(3))),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),this.buscarRegistrado(rs.getString(8)),this.buscarMiPersonaje(rs.getString(9),this.buscarRegistrado(rs.getString(8))));
                 this.buscarTextoPartida(p);
@@ -521,15 +568,20 @@ public class consultasBD {
     public int identificadorPartida(){
         int id=0;
         try{
-            ResultSet rs= ConexionBD.instancia().getStatement().executeQuery(
-            "SELECT max(identificador) FROM Partida");
-            if(rs.next()){
-                id=Integer.parseInt(rs.getString(1));
+            try{
+                ResultSet rs= ConexionBD.instancia().getStatement().executeQuery(
+                "SELECT max(identificador) FROM Partida");
+                if(rs.next()){
+                    id=Integer.parseInt(rs.getString(1));
+                }
             }
+            catch (SQLException e){
+
+            }
+        } catch (Exception e){
+            id=1;
         }
-        catch (SQLException e){
-            
-        }
+        
         return id;
     }
 }

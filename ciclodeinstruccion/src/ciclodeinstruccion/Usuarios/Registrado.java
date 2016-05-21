@@ -55,7 +55,7 @@ public class Registrado extends Usuario{
         Date hoy=new Date();
         if(this.ultimaEntrada.getDay()!=hoy.getDay()){
             this.partidasJugadas=0;
-            this.oro+=50;
+            this.oro=oro+50;
             this.ultimaEntrada=hoy;
         }
         else{
