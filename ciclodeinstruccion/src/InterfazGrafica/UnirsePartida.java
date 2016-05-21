@@ -100,7 +100,7 @@ public class UnirsePartida extends javax.swing.JDialog {
 
     private void unirse(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirse
          if(tablaMisPersonajes.getSelectedRow()>-1 && tablaPartidas.getSelectedRow()>-1){
-            if(registrado.getOro()<100){
+            if(registrado.getOro()<Partida.getCOSTE_PARTIDA()){
                 JOptionPane.showMessageDialog(rootPane, "No tienes oro sificiente para unirte a la partida", "Unirse a partida", JOptionPane.WARNING_MESSAGE);
             }
             else if(JOptionPane.showConfirmDialog(rootPane, "¿Esta seguro que quieres unirte a esta partida?", "Unirse a partida", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE)==0){
@@ -113,6 +113,7 @@ public class UnirsePartida extends javax.swing.JDialog {
                 consultasBD.instancia().modificarRegistrado(p.getGanador());
                 consultasBD.instancia().modificarMiPersonaje(p.getpGanador(), p.getGanador());
                 VerPartida vp=new VerPartida(null, true, p);
+                vp.mostrar();
                 this.setVisible(false);
                 vp.setVisible(true);
             }

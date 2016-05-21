@@ -33,6 +33,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        historial = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,10 +44,17 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Unirse a partida");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 unirse(evt);
+            }
+        });
+
+        historial.setText("Ver historial de partidas");
+        historial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                verHistorial(evt);
             }
         });
 
@@ -57,9 +65,10 @@ public class InicioRegistrado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(148, 148, 148)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(historial)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,7 +77,9 @@ public class InicioRegistrado extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(38, 38, 38)
                 .addComponent(jButton2)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(historial)
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         pack();
@@ -85,6 +96,12 @@ public class InicioRegistrado extends javax.swing.JFrame {
         up.mostrar();
         up.setVisible(true);
     }//GEN-LAST:event_unirse
+
+    private void verHistorial(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verHistorial
+        VerHistorial vh=new VerHistorial(this, true, resgistrado);
+        vh.mostrar();
+        vh.setVisible(true);
+    }//GEN-LAST:event_verHistorial
 
     /**
      * @param args the command line arguments
@@ -122,6 +139,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton historial;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables

@@ -175,6 +175,22 @@ public class Registrado extends Usuario{
         return arrayPartidas;
     }
     
+    public String [][]tablaHistorialPartidas(){
+        ArrayList <Partida> historial=new ArrayList();
+        historial=consultasBD.instancia().buscarPartidasAcabadas(this);
+        String arrayPartidas[][]=new String [historial.size()][7];
+        for(int i=0;i<arrayPartidas.length;i++){
+            arrayPartidas[i][0]=Integer.toString(historial.get(i).getIdentificador());
+            arrayPartidas[i][1]=historial.get(i).getJugador1().getNombre();
+            arrayPartidas[i][2]=historial.get(i).getPersonaje1().getNombre();
+            arrayPartidas[i][3]=historial.get(i).getJugador2().getNombre();
+            arrayPartidas[i][4]=historial.get(i).getPersonaje2().getNombre();
+            arrayPartidas[i][5]=historial.get(i).getGanador().getNombre();
+            arrayPartidas[i][6]=historial.get(i).getpGanador().getNombre();
+        }
+        return arrayPartidas;
+    }
+    
     public MiPersonaje elegirPersonaje(){
         Scanner teclado =new Scanner(System.in);
         MiPersonaje elegido;

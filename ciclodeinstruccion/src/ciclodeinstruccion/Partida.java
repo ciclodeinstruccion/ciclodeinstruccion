@@ -29,7 +29,7 @@ public class Partida {
     private float vidaPersonaje1;
     private float vidaPersonaje2;
     private int identificador;
-    private final int COSTE_PARTIDA=100;
+    private static final int COSTE_PARTIDA=100;
     private int partidasJ1;
     private int partidasJ2;
     private final int LIMITE=10;
@@ -54,7 +54,7 @@ public class Partida {
         this.personaje2 = personaje2;
         this.ganador = ganador;
         this.pGanador = pGanador;
-        
+        this.finalizada=true;
         this.identificador = identificador;
         this.partidasJ1 = partidasJ1;
         this.partidasJ2 = partidasJ2;
@@ -75,7 +75,8 @@ public class Partida {
         float vidaMax1=vidaPersonaje1;
         float vidaMax2=vidaPersonaje2;
         boolean bandera=true;
-        texto.add(vidaPersonaje1+","+vidaPersonaje2);
+        texto.add(personaje1.getNombre()+" ("+jugador1.getNombre()+") con "+vidaPersonaje1+" puntos de vida y "+dañoPersonaje1+" puntos de daño contra "+personaje2.getNombre()+" ("+jugador2.getNombre()+") con "+vidaPersonaje2+" puntos de vida y "+dañoPersonaje2+" puntos de daño.");
+        texto.add("Que comience la batalla.");
         while(vidaPersonaje1>0&&vidaPersonaje2>0){
             if(bandera){
                 boolean esquivar2=personaje2.esquiva(jugador2.getEspecial());
@@ -321,6 +322,10 @@ public class Partida {
 
     public MiPersonaje getPersonaje2() {
         return personaje2;
+    }
+
+    public static int getCOSTE_PARTIDA() {
+        return COSTE_PARTIDA;
     }
 
     public Registrado getGanador() {

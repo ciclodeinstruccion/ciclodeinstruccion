@@ -82,7 +82,7 @@ public class CrearPartida extends javax.swing.JDialog {
 
     private void crearPartida(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearPartida
         if(tablaMisPersonajes.getSelectedRow()>-1){
-            if(registrado.getOro()<100){
+            if(registrado.getOro()<Partida.getCOSTE_PARTIDA()){
                 JOptionPane.showMessageDialog(rootPane, "No tienes oro sificiente para crear la partida", "Crear partida", JOptionPane.WARNING_MESSAGE);
             }
             else if(JOptionPane.showConfirmDialog(rootPane, "¿Esta seguro que quieres crear la partida?", "Crear partida", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE)==0){

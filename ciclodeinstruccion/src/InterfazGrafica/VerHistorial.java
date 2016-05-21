@@ -5,24 +5,27 @@
  */
 package InterfazGrafica;
 
+import ciclodeinstruccion.Usuarios.Registrado;
+import javax.swing.table.DefaultTableModel;
+import BaseDeDatos.consultasBD;
 import ciclodeinstruccion.Partida;
 
 /**
  *
  * @author Rubén
  */
-public class VerPartida extends javax.swing.JDialog {
+public class VerHistorial extends javax.swing.JDialog {
 
     /**
-     * Creates new form VerPartida
+     * Creates new form VerHistorial
      */
-    Partida partida;
-    int cont;
-    public VerPartida(java.awt.Frame parent, boolean modal,Partida p) {
+    String cabecera []={"Identificador","Jugador 1","Personaje 1","Jugador 2","Personaje 2","Jugador ganador","Personaje ganador"};
+    DefaultTableModel tabla;
+    Registrado registrado;
+    public VerHistorial(java.awt.Frame parent, boolean modal,Registrado r) {
         super(parent, modal);
         initComponents();
-        this.partida=p;
-        this.cont=1;
+        this.registrado=r;
     }
 
     /**
@@ -35,19 +38,17 @@ public class VerPartida extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        texto = new javax.swing.JTextArea();
-        siguiente = new javax.swing.JButton();
+        tablaPartidas = new javax.swing.JTable();
+        ver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        texto.setColumns(20);
-        texto.setRows(5);
-        jScrollPane1.setViewportView(texto);
+        jScrollPane1.setViewportView(tablaPartidas);
 
-        siguiente.setText("siguiente");
-        siguiente.addMouseListener(new java.awt.event.MouseAdapter() {
+        ver.setText("ver");
+        ver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                siguiente(evt);
+                ver(evt);
             }
         });
 
@@ -56,37 +57,41 @@ public class VerPartida extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(siguiente)
-                .addContainerGap(251, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(ver)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(siguiente)
-                .addGap(84, 84, 84))
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(ver)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void siguiente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguiente
-        if(cont<partida.getTexto().size()){
-            texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
-            cont++;
+    private void ver(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ver
+        if(tablaPartidas.getSelectedRow()>-1){
+            ver.setEnabled(false);
+            Partida p= consultasBD.instancia().buscarUnaPartidaFinalizadaPorId(Integer.parseInt(tablaPartidas.getValueAt(tablaPartidas.getSelectedRow(), 0).toString()));
+            VerPartida vp=new VerPartida(null, true, p);
+            vp.mostrar();
+            this.setVisible(false);
+            vp.setVisible(true);
         }
-        if(cont>=partida.getTexto().size()){
-            siguiente.setEnabled(false);
-        }
-    }//GEN-LAST:event_siguiente
+    }//GEN-LAST:event_ver
     public void mostrar(){
-        texto.setText(partida.getTexto().get(0));
+        tabla=new DefaultTableModel(this.registrado.tablaHistorialPartidas(), cabecera);
+        tablaPartidas.setModel(tabla);
     }
     /**
      * @param args the command line arguments
@@ -105,20 +110,20 @@ public class VerPartida extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VerPartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VerPartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VerPartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VerPartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerPartida dialog = new VerPartida(new javax.swing.JFrame(), true,null);
+                VerHistorial dialog = new VerHistorial(new javax.swing.JFrame(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -132,7 +137,7 @@ public class VerPartida extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton siguiente;
-    private javax.swing.JTextArea texto;
+    private javax.swing.JTable tablaPartidas;
+    private javax.swing.JButton ver;
     // End of variables declaration//GEN-END:variables
 }

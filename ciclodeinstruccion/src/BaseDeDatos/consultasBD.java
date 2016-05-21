@@ -386,6 +386,20 @@ public class consultasBD {
         }
         return p;
     }
+    public Partida buscarUnaPartidaFinalizadaPorId(int id){
+        Partida p=null;
+        try{
+            ResultSet rs=ConexionBD.instancia().getStatement().executeQuery("Select * From Partida where identificador="+Integer.toString(id));
+            if(rs.next()){
+                p = new Partida(Integer.parseInt(rs.getString(1)),this.buscarRegistrado(rs.getString(2)),this.buscarRegistrado(rs.getString(3)),this.buscarMiPersonaje(rs.getString(4),this.buscarRegistrado(rs.getString(2))),this.buscarMiPersonaje(rs.getString(5),this.buscarRegistrado(rs.getString(3))),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),this.buscarRegistrado(rs.getString(8)),this.buscarMiPersonaje(rs.getString(9),this.buscarRegistrado(rs.getString(8))));
+                this.buscarTextoPartida(p);
+            }
+        }
+        catch (SQLException e){
+            
+        }
+        return p;
+    }
     public ArrayList <Partida> buscarPartidasUnirte(Registrado r){
         ArrayList <Partida> partidas=new ArrayList();
         try {
@@ -407,7 +421,7 @@ public class consultasBD {
         ArrayList <Partida> partidas = new ArrayList();
         
         try{
-            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT * FROM Partida WHERE jugador1=('"+r.getNombre()+"'OR jugador2='"+r.getNombre()+"') AND finalizada=1");
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT * FROM Partida WHERE (jugador1='"+r.getNombre()+"'OR jugador2='"+r.getNombre()+"') AND finalizada=1");
             while(rs.next()){
                 Partida p = new Partida(Integer.parseInt(rs.getString(1)),this.buscarRegistrado(rs.getString(2)),this.buscarRegistrado(rs.getString(3)),this.buscarMiPersonaje(rs.getString(4),this.buscarRegistrado(rs.getString(2))),this.buscarMiPersonaje(rs.getString(5),this.buscarRegistrado(rs.getString(3))),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),this.buscarRegistrado(rs.getString(8)),this.buscarMiPersonaje(rs.getString(9),this.buscarRegistrado(rs.getString(8))));
                 this.buscarTextoPartida(p);
@@ -434,10 +448,10 @@ public class consultasBD {
     public void buscarTextoPartida(Partida p){
         ArrayList <String> resumen=new ArrayList();
         try{
-        ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT resumen FROM Texto WHERE indicador="+Integer.toString(p.getIdentificador())+" order by orden");
+        ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT resumen FROM Texto WHERE identificador="+Integer.toString(p.getIdentificador())+" order by orden");
         
             while(rs.next()){
-               resumen.add(rs.getString(2));
+               resumen.add(rs.getString(1));
             }
         p.setTexto(resumen);
         } catch (SQLException e){
