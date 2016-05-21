@@ -34,6 +34,10 @@ public class MiAsesino extends MiPersonaje{
     public float getBonusEsquivar() {
         return bonusEsquivar;
     }
+    
+    public String getTipo(){
+        return personaje.getTipo();
+    }
 
     public void setPersonaje(Asesino personaje) {
         this.personaje = personaje;

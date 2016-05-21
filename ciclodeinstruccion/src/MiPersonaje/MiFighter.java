@@ -35,7 +35,11 @@ public class MiFighter extends MiPersonaje{
     public float getBonusCritico() {
         return bonusCritico;
     }
-
+    
+    public String getTipo(){
+        return personaje.getTipo();
+    }
+    
     public void setPersonaje(Fighter personaje) {
         this.personaje = personaje;
     }

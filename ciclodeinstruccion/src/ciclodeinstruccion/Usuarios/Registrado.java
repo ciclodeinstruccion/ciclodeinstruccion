@@ -5,13 +5,17 @@
  */
 package ciclodeinstruccion.Usuarios;
 
+import MiPersonaje.MiAsesino;
+import MiPersonaje.MiFighter;
 import MiPersonaje.MiPersonaje;
+import MiPersonaje.MiTanque;
 import Personaje.Personaje;
 import ciclodeinstruccion.Juego;
 import ciclodeinstruccion.Partida;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.*;
+import BaseDeDatos.consultasBD;
 
 /**
  *
@@ -132,6 +136,45 @@ public class Registrado extends Usuario{
         
          
     }
+    public String[][] tablaMisPersonajes(){
+        String arrayPersonajes[][]=new String [misPersonajes.size()][8];
+        for(int i=0;i<arrayPersonajes.length;i++){
+            arrayPersonajes[i][0]=misPersonajes.get(i).getNombre();
+            arrayPersonajes[i][1]=misPersonajes.get(i).getTipo();
+            arrayPersonajes[i][2]=Float.toString(misPersonajes.get(i).getVidaBase()+misPersonajes.get(i).getBonusVida());
+            arrayPersonajes[i][3]=Float.toString(misPersonajes.get(i).getDañoBase()+misPersonajes.get(i).getBonusDaño());
+            if (misPersonajes.get(i) instanceof MiTanque){
+                MiTanque t=(MiTanque) misPersonajes.get(i);
+                arrayPersonajes[i][4]=Float.toString(t.getPersonaje().getArmadura()+t.getBonusArmadura());
+            }
+            else if (misPersonajes.get(i) instanceof MiAsesino){
+                MiAsesino a=(MiAsesino) misPersonajes.get(i);
+                arrayPersonajes[i][4]=Float.toString(a.getPersonaje().getEsquivar()+a.getBonusEsquivar());
+            }
+            else if (misPersonajes.get(i) instanceof MiFighter){
+                MiFighter f=(MiFighter) misPersonajes.get(i);
+                arrayPersonajes[i][4]=Float.toString(f.getPersonaje().getCritico()+f.getBonusCritico());
+            }
+            arrayPersonajes[i][5]=Integer.toString(misPersonajes.get(i).getNivel());
+            arrayPersonajes[i][6]=Integer.toString(misPersonajes.get(i).getExperiencia());
+            arrayPersonajes[i][7]=Integer.toString(misPersonajes.get(i).getPuntosNivel());
+        }
+        return arrayPersonajes;
+    }
+    
+    public String [][] tablaUnirseAPartida(){
+        ArrayList <Partida> jugables=new ArrayList();
+        jugables=consultasBD.instancia().buscarPartidasUnirte(this);
+        String arrayPartidas[][]=new String [jugables.size()][4];
+        for(int i=0;i<arrayPartidas.length;i++){
+            arrayPartidas[i][0]=Integer.toString(jugables.get(i).getIdentificador());
+            arrayPartidas[i][1]=jugables.get(i).getJugador1().getNombre();
+            arrayPartidas[i][2]=jugables.get(i).getPersonaje1().getNombre();
+            arrayPartidas[i][3]=Integer.toString(jugables.get(i).getJugador1().getNivel()+jugables.get(i).getPersonaje1().getNivel());
+        }
+        return arrayPartidas;
+    }
+    
     public MiPersonaje elegirPersonaje(){
         Scanner teclado =new Scanner(System.in);
         MiPersonaje elegido;

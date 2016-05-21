@@ -34,6 +34,10 @@ public class MiTanque extends MiPersonaje{
     public float getBonusArmadura() {
         return bonusArmadura;
     }
+    
+    public String getTipo(){
+        return personaje.getTipo();
+    }
 
     public void setPersonaje(Tanque personaje) {
         this.personaje = personaje;

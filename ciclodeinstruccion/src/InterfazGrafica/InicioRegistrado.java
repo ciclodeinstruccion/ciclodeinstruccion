@@ -31,31 +31,60 @@ public class InicioRegistrado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        unirse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("aaa");
+        jButton1.setText("Crear Partida");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                crearPartida(evt);
+            }
+        });
+
+        unirse.setText("Unirse a partida");
+        unirse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                unirse(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(231, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(151, 151, 151))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(unirse)
+                    .addComponent(jButton1))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel1)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addComponent(jButton1)
+                .addGap(26, 26, 26)
+                .addComponent(unirse)
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void crearPartida(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearPartida
+        CrearPartida cp=new CrearPartida(this, true, resgistrado);
+        cp.mostrar();
+        cp.setVisible(true);
+    }//GEN-LAST:event_crearPartida
+
+    private void unirse(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirse
+        UnirseAPartida uap=new UnirseAPartida(this, true, resgistrado);
+        uap.mostrar();
+        uap.setVisible(true);
+    }//GEN-LAST:event_unirse
 
     /**
      * @param args the command line arguments
@@ -93,6 +122,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton unirse;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,7 +29,7 @@ public class Partida {
     private float vidaPersonaje1;
     private float vidaPersonaje2;
     private int identificador;
-    private final int COSTE_PARTIDA=0;
+    private final int COSTE_PARTIDA=100;
     private int partidasJ1;
     private int partidasJ2;
     private final int LIMITE=10;
@@ -41,6 +41,7 @@ public class Partida {
         this.personaje1 = personaje1;
         this.finalizada=false;
         this.texto=new ArrayList();
+        System.out.println("constructor de partida");
         this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
         this.partidasJ1=this.jugador1.getPartidasJugadas();
         this.jugador1.gastarPuntosOro(COSTE_PARTIDA);
@@ -353,5 +354,58 @@ public class Partida {
     public float getVidaPersonaje2() {
         return vidaPersonaje2;
     }
+
+    public void setJugador1(Registrado jugador1) {
+        this.jugador1 = jugador1;
+    }
+
+    public void setJugador2(Registrado jugador2) {
+        this.jugador2 = jugador2;
+    }
+
+    public void setPersonaje1(MiPersonaje personaje1) {
+        this.personaje1 = personaje1;
+    }
+
+    public void setPersonaje2(MiPersonaje personaje2) {
+        this.personaje2 = personaje2;
+    }
+
+    public void setGanador(Registrado ganador) {
+        this.ganador = ganador;
+    }
+
+    public void setpGanador(MiPersonaje pGanador) {
+        this.pGanador = pGanador;
+    }
+
+    public void setFinalizada(boolean finalizada) {
+        this.finalizada = finalizada;
+    }
+
+    public void setTexto(ArrayList<String> texto) {
+        this.texto = texto;
+    }
+
+    public void setVidaPersonaje1(float vidaPersonaje1) {
+        this.vidaPersonaje1 = vidaPersonaje1;
+    }
+
+    public void setVidaPersonaje2(float vidaPersonaje2) {
+        this.vidaPersonaje2 = vidaPersonaje2;
+    }
+
+    public void setIdentificador(int identificador) {
+        this.identificador = identificador;
+    }
+
+    public void setPartidasJ1(int partidasJ1) {
+        this.partidasJ1 = partidasJ1;
+    }
+
+    public void setPartidasJ2(int partidasJ2) {
+        this.partidasJ2 = partidasJ2;
+    }
+    
     
 }

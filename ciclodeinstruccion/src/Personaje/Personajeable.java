@@ -25,4 +25,6 @@ public interface Personajeable {
     public Habilidad elegirHabilidad(int inteligencia);
     
     public String getNombre();
+    
+    public String getTipo();
 }

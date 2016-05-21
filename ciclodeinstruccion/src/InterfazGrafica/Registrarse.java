@@ -72,6 +72,11 @@ public class Registrarse extends javax.swing.JDialog {
                 registrarse(evt);
             }
         });
+        registrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,6 +149,10 @@ public class Registrarse extends javax.swing.JDialog {
             ir.setVisible(true);
         }
     }//GEN-LAST:event_registrarse
+
+    private void registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registrarseActionPerformed
     public boolean comprobarRegistro(String nombre, String correo, String contraseña){
         boolean correcto=true;
         if(nombre.equals("")||correo.equals("")||contraseña.equals("")){
