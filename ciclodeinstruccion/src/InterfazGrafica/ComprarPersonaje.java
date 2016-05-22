@@ -75,8 +75,6 @@ public class ComprarPersonaje extends javax.swing.JDialog {
         comprar.setBorderPainted(false);
         comprar.setContentAreaFilled(false);
         comprar.setFocusPainted(false);
-        comprar.setMaximumSize(new java.awt.Dimension(260, 65));
-        comprar.setMinimumSize(new java.awt.Dimension(260, 65));
         comprar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 comprarMouseEntered(evt);
