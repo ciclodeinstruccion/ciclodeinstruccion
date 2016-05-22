@@ -35,8 +35,15 @@ public class Inicio extends javax.swing.JFrame {
 
         sesion = new javax.swing.JButton();
         registrarse = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
 
         sesion.setText("Iniciar sesion");
         sesion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -49,6 +56,8 @@ public class Inicio extends javax.swing.JFrame {
                 sesionActionPerformed(evt);
             }
         });
+        getContentPane().add(sesion);
+        sesion.setBounds(161, 77, 97, 23);
 
         registrarse.setText("Registrarse");
         registrarse.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -56,29 +65,12 @@ public class Inicio extends javax.swing.JFrame {
                 registrarse(evt);
             }
         });
+        getContentPane().add(registrarse);
+        registrarse.setBounds(156, 154, 89, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(sesion)
-                .addContainerGap(142, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(registrarse)
-                .addGap(155, 155, 155))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(sesion)
-                .addGap(54, 54, 54)
-                .addComponent(registrarse)
-                .addContainerGap(123, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_claro.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -146,6 +138,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton registrarse;
     private javax.swing.JButton sesion;
     // End of variables declaration//GEN-END:variables
