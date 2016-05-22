@@ -76,8 +76,9 @@ public class Partida {
         float vidaMax1=vidaPersonaje1;
         float vidaMax2=vidaPersonaje2;
         boolean bandera=true;
-        texto.add(personaje1.getNombre()+" ("+jugador1.getNombre()+") con "+vidaPersonaje1+" puntos de vida y "+dañoPersonaje1+" puntos de daño contra "+personaje2.getNombre()+" ("+jugador2.getNombre()+") con "+vidaPersonaje2+" puntos de vida y "+dañoPersonaje2+" puntos de daño.");
-        texto.add("Que comience la batalla.");
+        texto.add(personaje1.getNombre()+" ("+jugador1.getNombre()+") con "+vidaPersonaje1+" puntos de vida y "+dañoPersonaje1+" puntos de daño contra ");
+        texto.add(personaje2.getNombre()+" ("+jugador2.getNombre()+") con "+vidaPersonaje2+" puntos de vida y "+dañoPersonaje2+" puntos de daño.");
+        texto.add("¡Que comience la batalla!.");
         while(vidaPersonaje1>0&&vidaPersonaje2>0){
             if(bandera){
                 boolean esquivar2=personaje2.esquiva(jugador2.getEspecial());

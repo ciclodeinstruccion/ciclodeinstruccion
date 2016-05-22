@@ -7,8 +7,11 @@ package InterfazGrafica;
 
 import BaseDeDatos.*;
 import Excepciones.ErrorConexionBD;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Timer;
 
 /**
  *
@@ -35,7 +38,7 @@ public class Inicio extends javax.swing.JFrame {
 
         sesion = new javax.swing.JButton();
         registrarse = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 720));
@@ -45,8 +48,22 @@ public class Inicio extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        sesion.setText("Iniciar sesion");
+        sesion.setVisible(false);
+        sesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/iniciar_sesion.png"))); // NOI18N
+        sesion.setBorder(null);
+        sesion.setBorderPainted(false);
+        sesion.setContentAreaFilled(false);
+        sesion.setFocusPainted(false);
         sesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                sesionhover(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                sesionnormal(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                iniciosesioncambio(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 iniciosesion(evt);
             }
@@ -57,20 +74,38 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(sesion);
-        sesion.setBounds(161, 77, 97, 23);
+        sesion.setBounds(520, 270, 260, 65);
+        Timer timer = new Timer(0, taskPerformer);
+        timer.setInitialDelay(5000);
+        timer.setRepeats(false);
+        timer.start();
 
-        registrarse.setText("Registrarse");
+        registrarse.setVisible(false);
+        registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/registrarse2.png"))); // NOI18N
+        registrarse.setBorder(null);
+        registrarse.setBorderPainted(false);
+        registrarse.setContentAreaFilled(false);
+        registrarse.setFocusPainted(false);
         registrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registrarseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registrarseMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                registrarsepressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 registrarse(evt);
             }
         });
         getContentPane().add(registrarse);
-        registrarse.setBounds(156, 154, 89, 23);
+        registrarse.setBounds(520, 370, 260, 65);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_inicio.gif"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1280, 720);
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_inicio.gif"))); // NOI18N
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -87,7 +122,7 @@ public class Inicio extends javax.swing.JFrame {
             System.out.println("mal");
         }
         
-        IniciarSesion is=new IniciarSesion(this, true);
+        IniciarSesion is=new IniciarSesion(this, true,this);
         is.setVisible(true);
     }//GEN-LAST:event_iniciosesion
 
@@ -98,10 +133,41 @@ public class Inicio extends javax.swing.JFrame {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("mal");
         }
-        Registrarse r=new Registrarse(this, true);
+        Registrarse r=new Registrarse(this, true,this);
         r.setVisible(true);
     }//GEN-LAST:event_registrarse
 
+    private void iniciosesioncambio(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciosesioncambio
+        sesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/iniciar_sesion.png")));
+    }//GEN-LAST:event_iniciosesioncambio
+
+    private void sesionhover(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sesionhover
+        sesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/iniciar_sesion.png")));
+    }//GEN-LAST:event_sesionhover
+
+    private void sesionnormal(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sesionnormal
+        sesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/iniciar_sesion.png")));
+    }//GEN-LAST:event_sesionnormal
+
+    private void registrarsepressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarsepressed
+        registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/registrarse2.png")));
+    }//GEN-LAST:event_registrarsepressed
+
+    private void registrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarseMouseEntered
+        registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/registrarse2.png")));
+    }//GEN-LAST:event_registrarseMouseEntered
+
+    private void registrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarseMouseExited
+        registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/registrarse2.png")));
+    }//GEN-LAST:event_registrarseMouseExited
+    ActionListener taskPerformer = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            sesion.setVisible(true);
+            registrarse.setVisible(true);
+            fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_claro.jpg")));
+        }
+    };
     /**
      * @param args the command line arguments
      */
@@ -138,7 +204,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel fondo;
     private javax.swing.JButton registrarse;
     private javax.swing.JButton sesion;
     // End of variables declaration//GEN-END:variables

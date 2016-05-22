@@ -15,6 +15,8 @@ import Personaje.Tanque;
 import ciclodeinstruccion.Usuarios.Registrado;
 import javax.swing.JOptionPane;
 import BaseDeDatos.consultasBD;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -43,97 +45,165 @@ public class ComprarPersonaje extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        comprar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        tipo = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        especial = new javax.swing.JLabel();
         labelEspecial = new javax.swing.JLabel();
-        tipo = new javax.swing.JTextField();
-        nombre = new javax.swing.JTextField();
-        precio = new javax.swing.JTextField();
-        vida = new javax.swing.JTextField();
-        daño = new javax.swing.JTextField();
-        especial = new javax.swing.JTextField();
-        comprar = new javax.swing.JButton();
+        vida = new javax.swing.JLabel();
+        daño = new javax.swing.JLabel();
+        precio = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        imagenP = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
 
-        jLabel1.setText("Nombre");
-
-        jLabel2.setText("Tipo");
-
-        jLabel3.setText("Precio");
-
-        jLabel4.setText("Vida");
-
-        jLabel5.setText("Daño");
-
-        labelEspecial.setText("Especial");
-
-        comprar.setText("Comprar");
+        comprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/comprar_personaje.png"))); // NOI18N
+        comprar.setBorder(null);
+        comprar.setBorderPainted(false);
+        comprar.setContentAreaFilled(false);
+        comprar.setFocusPainted(false);
+        comprar.setMaximumSize(new java.awt.Dimension(260, 65));
+        comprar.setMinimumSize(new java.awt.Dimension(260, 65));
         comprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                comprarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                comprarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                comprarMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 comprar(evt);
             }
         });
+        getContentPane().add(comprar);
+        comprar.setBounds(300, 560, 260, 65);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(labelEspecial))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(especial, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                    .addComponent(daño, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(vida, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tipo)
-                    .addComponent(nombre)
-                    .addComponent(precio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(comprar)
-                .addGap(48, 48, 48))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1))
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comprar))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(vida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(daño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelEspecial)
-                    .addComponent(especial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0,200));
+        jPanel1.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel2.setText("Tipo");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(60, 40, 70, 40);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("Nombre");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(60, 100, 96, 40);
+
+        tipo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        tipo.setForeground(new java.awt.Color(255, 51, 51));
+        tipo.setText("tipo");
+        jPanel1.add(tipo);
+        tipo.setBounds(310, 40, 250, 40);
+
+        nombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nombre.setForeground(new java.awt.Color(255, 51, 51));
+        nombre.setText("nombre");
+        jPanel1.add(nombre);
+        nombre.setBounds(310, 100, 250, 40);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel3.setText("Precio");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(60, 160, 75, 40);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel4.setText("Vida");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(60, 220, 52, 40);
+
+        especial.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        especial.setForeground(new java.awt.Color(255, 51, 51));
+        especial.setText("especial");
+        jPanel1.add(especial);
+        especial.setBounds(310, 340, 230, 40);
+
+        labelEspecial.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        labelEspecial.setForeground(new java.awt.Color(255, 51, 51));
+        labelEspecial.setText("Especial");
+        jPanel1.add(labelEspecial);
+        labelEspecial.setBounds(60, 340, 190, 40);
+
+        vida.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        vida.setForeground(new java.awt.Color(255, 51, 51));
+        vida.setText("vida");
+        jPanel1.add(vida);
+        vida.setBounds(310, 220, 250, 40);
+
+        daño.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        daño.setForeground(new java.awt.Color(255, 51, 51));
+        daño.setText("daño");
+        jPanel1.add(daño);
+        daño.setBounds(310, 280, 250, 40);
+
+        precio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        precio.setForeground(new java.awt.Color(255, 51, 51));
+        precio.setText("precio");
+        jPanel1.add(precio);
+        precio.setBounds(310, 160, 250, 40);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel5.setText("Daño");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(60, 280, 62, 40);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(580, 30, 550, 510);
+
+        imagenP.setText("jLabel7");
+        imagenP.setMaximumSize(new java.awt.Dimension(300, 450));
+        imagenP.setMinimumSize(new java.awt.Dimension(300, 450));
+        imagenP.setPreferredSize(new java.awt.Dimension(300, 450));
+        getContentPane().add(imagenP);
+        imagenP.setBounds(160, 60, 300, 450);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(700, 560, 260, 65);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -174,6 +244,34 @@ public class ComprarPersonaje extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "No tienes oro sificiente para comprar este personaje", "Comprar personaje", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_comprar
+
+    private void comprarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarMousePressed
+        comprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/comprar_personaje.png")));
+    }//GEN-LAST:event_comprarMousePressed
+
+    private void comprarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarMouseExited
+        comprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/comprar_personaje.png")));
+    }//GEN-LAST:event_comprarMouseExited
+
+    private void comprarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarMouseEntered
+        comprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/comprar_personaje.png")));
+    }//GEN-LAST:event_comprarMouseEntered
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_jButton1MouseEntered
     public void mostrar(){
         this.daño.setText(Float.toString(personaje.getDaño()));
         this.vida.setText(Float.toString(personaje.getVida()));
@@ -195,6 +293,8 @@ public class ComprarPersonaje extends javax.swing.JDialog {
             this.labelEspecial.setText("Critico");
             this.especial.setText(Float.toString(f.getCritico()));
         }
+        Image img=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.personaje.getNombre()+".jpg")).getImage();
+        imagenP.setIcon(new ImageIcon(img));
     }
     /**
      * @param args the command line arguments
@@ -240,17 +340,21 @@ public class ComprarPersonaje extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton comprar;
-    private javax.swing.JTextField daño;
-    private javax.swing.JTextField especial;
+    private javax.swing.JLabel daño;
+    private javax.swing.JLabel especial;
+    private javax.swing.JLabel imagenP;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelEspecial;
-    private javax.swing.JTextField nombre;
-    private javax.swing.JTextField precio;
-    private javax.swing.JTextField tipo;
-    private javax.swing.JTextField vida;
+    private javax.swing.JLabel nombre;
+    private javax.swing.JLabel precio;
+    private javax.swing.JLabel tipo;
+    private javax.swing.JLabel vida;
     // End of variables declaration//GEN-END:variables
 }

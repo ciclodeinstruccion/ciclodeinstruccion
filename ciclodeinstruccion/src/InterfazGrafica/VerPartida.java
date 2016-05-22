@@ -6,6 +6,8 @@
 package InterfazGrafica;
 
 import ciclodeinstruccion.Partida;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,11 +20,13 @@ public class VerPartida extends javax.swing.JDialog {
      */
     Partida partida;
     int cont;
-    public VerPartida(java.awt.Frame parent, boolean modal,Partida p) {
+    InicioRegistrado ir;
+    public VerPartida(java.awt.Frame parent, boolean modal,Partida p, InicioRegistrado ir) {
         super(parent, modal);
         initComponents();
         this.partida=p;
         this.cont=1;
+        this.ir=ir;
     }
 
     /**
@@ -37,41 +41,94 @@ public class VerPartida extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
         siguiente = new javax.swing.JButton();
+        imagenP1 = new javax.swing.JLabel();
+        imagenP2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
 
+        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
+
+        texto.setEditable(false);
+        texto.setBackground(new java.awt.Color(0, 0, 0,200));
         texto.setColumns(20);
+        texto.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        texto.setForeground(new java.awt.Color(255, 51, 0));
         texto.setRows(5);
         jScrollPane1.setViewportView(texto);
 
-        siguiente.setText("siguiente");
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(340, 115, 600, 290);
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setViewportBorder(null);
+
+        siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/siguiente.png"))); // NOI18N
+        siguiente.setBorder(null);
+        siguiente.setBorderPainted(false);
+        siguiente.setContentAreaFilled(false);
+        siguiente.setFocusPainted(false);
         siguiente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                siguienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                siguienteMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                siguienteMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 siguiente(evt);
             }
         });
+        getContentPane().add(siguiente);
+        siguiente.setBounds(350, 480, 260, 65);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(siguiente)
-                .addContainerGap(251, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(siguiente)
-                .addGap(84, 84, 84))
-        );
+        imagenP1.setMaximumSize(new java.awt.Dimension(300, 450));
+        imagenP1.setMinimumSize(new java.awt.Dimension(300, 450));
+        imagenP1.setPreferredSize(new java.awt.Dimension(300, 450));
+        getContentPane().add(imagenP1);
+        imagenP1.setBounds(30, 70, 300, 450);
+
+        imagenP2.setMaximumSize(new java.awt.Dimension(300, 450));
+        imagenP2.setMinimumSize(new java.awt.Dimension(300, 450));
+        imagenP2.setPreferredSize(new java.awt.Dimension(300, 450));
+        getContentPane().add(imagenP2);
+        imagenP2.setBounds(950, 70, 300, 450);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(680, 480, 260, 65);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -85,8 +142,45 @@ public class VerPartida extends javax.swing.JDialog {
             siguiente.setEnabled(false);
         }
     }//GEN-LAST:event_siguiente
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        this.setVisible(false);
+        ir.mostrar();
+        ir.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void siguienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguienteMousePressed
+        siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/siguiente.png")));
+    }//GEN-LAST:event_siguienteMousePressed
+
+    private void siguienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguienteMouseExited
+        siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/siguiente.png")));
+    }//GEN-LAST:event_siguienteMouseExited
+
+    private void siguienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguienteMouseEntered
+        siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/siguiente.png")));
+    }//GEN-LAST:event_siguienteMouseEntered
     public void mostrar(){
+        
+        Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+        imagenP1.setIcon(new ImageIcon(img1));
+        Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+        imagenP2.setIcon(new ImageIcon(img2));
         texto.setText(partida.getTexto().get(0));
+        texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
+        cont++;
     }
     /**
      * @param args the command line arguments
@@ -118,7 +212,7 @@ public class VerPartida extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerPartida dialog = new VerPartida(new javax.swing.JFrame(), true,null);
+                VerPartida dialog = new VerPartida(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -131,6 +225,10 @@ public class VerPartida extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imagenP1;
+    private javax.swing.JLabel imagenP2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton siguiente;
     private javax.swing.JTextArea texto;

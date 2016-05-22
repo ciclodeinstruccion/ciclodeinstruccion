@@ -23,10 +23,12 @@ public class CrearPartida extends javax.swing.JDialog {
     String cabecera []={"Nombre","Tipo","Vida","Daño","Especial","Nivel","Experiencia","Puntos de nivel"};
     DefaultTableModel tabla;
     Registrado registrado;
-    public CrearPartida(java.awt.Frame parent, boolean modal, Registrado r) {
+    InicioRegistrado ir;
+    public CrearPartida(java.awt.Frame parent, boolean modal, Registrado r,InicioRegistrado ir) {
         super(parent, modal);
         initComponents();
         this.registrado=r;
+        this.ir=ir;
     }
 
     /**
@@ -41,41 +43,84 @@ public class CrearPartida extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMisPersonajes = new javax.swing.JTable();
         Seleccionar = new javax.swing.JButton();
+        volver = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
 
+        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,70));
+
+        tablaMisPersonajes.setBackground(new java.awt.Color(0, 0, 0,200));
+        tablaMisPersonajes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tablaMisPersonajes.setForeground(new java.awt.Color(255, 102, 0));
         jScrollPane1.setViewportView(tablaMisPersonajes);
 
-        Seleccionar.setText("Seleccionar");
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(180, 170, 970, 230);
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setViewportBorder(null);
+
+        Seleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/crear_partida.png"))); // NOI18N
+        Seleccionar.setToolTipText("");
+        Seleccionar.setBorder(null);
+        Seleccionar.setBorderPainted(false);
+        Seleccionar.setContentAreaFilled(false);
+        Seleccionar.setFocusPainted(false);
         Seleccionar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                SeleccionarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                SeleccionarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                SeleccionarMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 crearPartida(evt);
             }
         });
+        getContentPane().add(Seleccionar);
+        Seleccionar.setBounds(310, 460, 260, 65);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(Seleccionar)))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(Seleccionar)
-                .addContainerGap(68, Short.MAX_VALUE))
-        );
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        volver.setBorder(null);
+        volver.setBorderPainted(false);
+        volver.setContentAreaFilled(false);
+        volver.setFocusPainted(false);
+        volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                volverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                volverMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                volverMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                volverMouseReleased(evt);
+            }
+        });
+        getContentPane().add(volver);
+        volver.setBounds(750, 460, 260, 65);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel2.setText("Selecciona un personaje");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(240, 120, 340, 50);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -93,9 +138,39 @@ public class CrearPartida extends javax.swing.JDialog {
                 consultasBD.instancia().modificarRegistrado(registrado);
                 JOptionPane.showMessageDialog(rootPane, "Partida creada con éxito", "Crear partida", JOptionPane.INFORMATION_MESSAGE);
                 this.setVisible(false);
+                ir.mostrar();
+                ir.setVisible(true);
             }
         }    
     }//GEN-LAST:event_crearPartida
+
+    private void SeleccionarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleccionarMousePressed
+        Seleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/crear_partida.png")));
+    }//GEN-LAST:event_SeleccionarMousePressed
+
+    private void SeleccionarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleccionarMouseEntered
+        Seleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/crear_partida.png")));
+    }//GEN-LAST:event_SeleccionarMouseEntered
+
+    private void SeleccionarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleccionarMouseExited
+        Seleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/crear_partida.png")));
+    }//GEN-LAST:event_SeleccionarMouseExited
+
+    private void volverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMousePressed
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_volverMousePressed
+
+    private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
+        this.setVisible(false);
+    }//GEN-LAST:event_volverMouseReleased
+
+    private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_volverMouseEntered
+
+    private void volverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseExited
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_volverMouseExited
     public void mostrar(){
         tabla=new DefaultTableModel(this.registrado.tablaMisPersonajes(), cabecera);
         tablaMisPersonajes.setModel(tabla); 
@@ -130,7 +205,7 @@ public class CrearPartida extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CrearPartida dialog = new CrearPartida(new javax.swing.JFrame(), true,null);
+                CrearPartida dialog = new CrearPartida(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -144,7 +219,10 @@ public class CrearPartida extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Seleccionar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaMisPersonajes;
+    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }

@@ -36,81 +36,124 @@ public class InicioRegistrado extends javax.swing.JFrame {
         unirsePartida = new javax.swing.JButton();
         historial = new javax.swing.JButton();
         comprar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
 
-        crearPartida.setText("Crear Partida");
+        crearPartida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/crear_partida.png"))); // NOI18N
+        crearPartida.setBorder(null);
+        crearPartida.setBorderPainted(false);
+        crearPartida.setContentAreaFilled(false);
+        crearPartida.setFocusPainted(false);
         crearPartida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                crearPartidaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                crearPartidaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                crearPartidaMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 crearPartida(evt);
             }
         });
+        getContentPane().add(crearPartida);
+        crearPartida.setBounds(520, 130, 260, 65);
 
-        unirsePartida.setText("Unirse a partida");
+        unirsePartida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/unirse_a_partida.png"))); // NOI18N
+        unirsePartida.setBorder(null);
+        unirsePartida.setBorderPainted(false);
+        unirsePartida.setContentAreaFilled(false);
+        unirsePartida.setFocusPainted(false);
         unirsePartida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                unirsePartidaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                unirsePartidaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                unirsePartidaMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 unirse(evt);
             }
         });
+        getContentPane().add(unirsePartida);
+        unirsePartida.setBounds(520, 240, 260, 65);
 
-        historial.setText("Ver historial de partidas");
+        historial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/historial_de_partidas.png"))); // NOI18N
+        historial.setBorder(null);
+        historial.setBorderPainted(false);
+        historial.setContentAreaFilled(false);
+        historial.setFocusPainted(false);
         historial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                historialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                historialMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                historialMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 verHistorial(evt);
             }
         });
+        getContentPane().add(historial);
+        historial.setBounds(520, 350, 260, 65);
 
-        comprar.setText("Comprar personaje");
+        comprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/comprar_personaje.png"))); // NOI18N
+        comprar.setBorder(null);
+        comprar.setBorderPainted(false);
+        comprar.setContentAreaFilled(false);
+        comprar.setFocusPainted(false);
         comprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                comprarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                comprarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                comprarMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 abrirTienda(evt);
             }
         });
+        getContentPane().add(comprar);
+        comprar.setBounds(520, 460, 260, 65);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comprar)
-                    .addComponent(historial)
-                    .addComponent(unirsePartida)
-                    .addComponent(crearPartida))
-                .addContainerGap(105, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(crearPartida)
-                .addGap(38, 38, 38)
-                .addComponent(unirsePartida)
-                .addGap(38, 38, 38)
-                .addComponent(historial)
-                .addGap(31, 31, 31)
-                .addComponent(comprar)
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearPartida(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearPartida
-        CrearPartida cp=new CrearPartida(this, true, resgistrado);
+        CrearPartida cp=new CrearPartida(this, true, resgistrado,this);
         cp.mostrar();
         cp.setVisible(true);
     }//GEN-LAST:event_crearPartida
 
     private void unirse(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirse
-        UnirsePartida up= new UnirsePartida(this, true, resgistrado);
+        UnirsePartida up= new UnirsePartida(this, true, resgistrado,this);
         up.mostrar();
         up.setVisible(true);
     }//GEN-LAST:event_unirse
 
     private void verHistorial(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verHistorial
-        VerHistorial vh=new VerHistorial(this, true, resgistrado);
+        VerHistorial vh=new VerHistorial(this, true, resgistrado,this);
         vh.mostrar();
         vh.setVisible(true);
     }//GEN-LAST:event_verHistorial
@@ -120,6 +163,54 @@ public class InicioRegistrado extends javax.swing.JFrame {
         t.mostrar();
         t.setVisible(true);
     }//GEN-LAST:event_abrirTienda
+
+    private void crearPartidaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearPartidaMousePressed
+        crearPartida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/crear_partida.png")));
+    }//GEN-LAST:event_crearPartidaMousePressed
+
+    private void crearPartidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearPartidaMouseEntered
+        crearPartida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/crear_partida.png")));
+    }//GEN-LAST:event_crearPartidaMouseEntered
+
+    private void crearPartidaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearPartidaMouseExited
+        crearPartida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/crear_partida.png")));
+    }//GEN-LAST:event_crearPartidaMouseExited
+
+    private void unirsePartidaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirsePartidaMousePressed
+        unirsePartida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/unirse_a_partida.png")));
+    }//GEN-LAST:event_unirsePartidaMousePressed
+
+    private void unirsePartidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirsePartidaMouseEntered
+        unirsePartida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/unirse_a_partida.png")));
+    }//GEN-LAST:event_unirsePartidaMouseEntered
+
+    private void unirsePartidaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirsePartidaMouseExited
+        unirsePartida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/unirse_a_partida.png")));
+    }//GEN-LAST:event_unirsePartidaMouseExited
+
+    private void historialMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialMousePressed
+        historial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/historial_de_partidas.png")));
+    }//GEN-LAST:event_historialMousePressed
+
+    private void historialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialMouseEntered
+        historial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/historial_de_partidas.png")));
+    }//GEN-LAST:event_historialMouseEntered
+
+    private void historialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialMouseExited
+        historial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/historial_de_partidas.png")));
+    }//GEN-LAST:event_historialMouseExited
+
+    private void comprarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarMousePressed
+        comprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/comprar_personaje.png")));
+    }//GEN-LAST:event_comprarMousePressed
+
+    private void comprarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarMouseEntered
+        comprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/comprar_personaje.png")));
+    }//GEN-LAST:event_comprarMouseEntered
+
+    private void comprarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarMouseExited
+        comprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/comprar_personaje.png")));
+    }//GEN-LAST:event_comprarMouseExited
     public void mostrar(){
         if(this.resgistrado.getPartidasJugadas()>=Registrado.getLIMITE_PARTIDAS()){
             crearPartida.setEnabled(false);
@@ -166,6 +257,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
     private javax.swing.JButton comprar;
     private javax.swing.JButton crearPartida;
     private javax.swing.JButton historial;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton unirsePartida;
     // End of variables declaration//GEN-END:variables
 }

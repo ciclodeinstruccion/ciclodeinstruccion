@@ -25,10 +25,12 @@ public class UnirsePartida extends javax.swing.JDialog {
     String cabecera2 []={"Nombre","Tipo","Vida","Daño","Especial","Nivel","Experiencia","Puntos de nivel"};
     DefaultTableModel tabla2;
     Registrado registrado;
-    public UnirsePartida(java.awt.Frame parent, boolean modal, Registrado r) {
+    InicioRegistrado ir;
+    public UnirsePartida(java.awt.Frame parent, boolean modal, Registrado r, InicioRegistrado ir) {
         super(parent, modal);
         initComponents();
         this.registrado=r;
+        this.ir=ir;
     }
 
     /**
@@ -112,7 +114,7 @@ public class UnirsePartida extends javax.swing.JDialog {
                 consultasBD.instancia().unirsePartida(p);
                 consultasBD.instancia().modificarRegistrado(p.getGanador());
                 consultasBD.instancia().modificarMiPersonaje(p.getpGanador(), p.getGanador());
-                VerPartida vp=new VerPartida(null, true, p);
+                VerPartida vp=new VerPartida(null, true, p,ir);
                 vp.mostrar();
                 this.setVisible(false);
                 vp.setVisible(true);
@@ -156,7 +158,7 @@ public class UnirsePartida extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                UnirsePartida dialog = new UnirsePartida(new javax.swing.JFrame(), true,null);
+                UnirsePartida dialog = new UnirsePartida(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

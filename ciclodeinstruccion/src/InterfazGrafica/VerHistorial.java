@@ -22,10 +22,12 @@ public class VerHistorial extends javax.swing.JDialog {
     String cabecera []={"Identificador","Jugador 1","Personaje 1","Jugador 2","Personaje 2","Jugador ganador","Personaje ganador"};
     DefaultTableModel tabla;
     Registrado registrado;
-    public VerHistorial(java.awt.Frame parent, boolean modal,Registrado r) {
+    InicioRegistrado ir;
+    public VerHistorial(java.awt.Frame parent, boolean modal,Registrado r,InicioRegistrado ir) {
         super(parent, modal);
         initComponents();
         this.registrado=r;
+        this.ir=ir;
     }
 
     /**
@@ -83,7 +85,7 @@ public class VerHistorial extends javax.swing.JDialog {
         if(tablaPartidas.getSelectedRow()>-1){
             ver.setEnabled(false);
             Partida p= consultasBD.instancia().buscarUnaPartidaFinalizadaPorId(Integer.parseInt(tablaPartidas.getValueAt(tablaPartidas.getSelectedRow(), 0).toString()));
-            VerPartida vp=new VerPartida(null, true, p);
+            VerPartida vp=new VerPartida(null, true, p,ir);
             vp.mostrar();
             this.setVisible(false);
             vp.setVisible(true);
@@ -123,7 +125,7 @@ public class VerHistorial extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerHistorial dialog = new VerHistorial(new javax.swing.JFrame(), true,null);
+                VerHistorial dialog = new VerHistorial(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

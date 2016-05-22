@@ -24,9 +24,11 @@ public class Registrarse extends javax.swing.JDialog {
     /**
      * Creates new form Registrarse
      */
-    public Registrarse(java.awt.Frame parent, boolean modal) {
+    private Inicio ini;
+    public Registrarse(java.awt.Frame parent, boolean modal, Inicio ini) {
         super(parent, modal);
         initComponents();
+        this.ini=ini;
     }
 
     /**
@@ -145,6 +147,7 @@ public class Registrarse extends javax.swing.JDialog {
             }
             JOptionPane.showMessageDialog(rootPane, "Registro realizado con exito. Bienvenido a Ciclo De Instruccion "+name, "Registrarse", JOptionPane.INFORMATION_MESSAGE);
             InicioRegistrado ir=new InicioRegistrado(r);
+            ini.setVisible(false);
             this.setVisible(false);
             ir.setVisible(true);
         }
@@ -213,7 +216,7 @@ public class Registrarse extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Registrarse dialog = new Registrarse(new javax.swing.JFrame(), true);
+                Registrarse dialog = new Registrarse(new javax.swing.JFrame(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
