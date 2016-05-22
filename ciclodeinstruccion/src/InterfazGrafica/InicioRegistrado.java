@@ -6,6 +6,7 @@
 package InterfazGrafica;
 
 import ciclodeinstruccion.Usuarios.Registrado;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,21 +32,22 @@ public class InicioRegistrado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        crearPartida = new javax.swing.JButton();
+        unirsePartida = new javax.swing.JButton();
         historial = new javax.swing.JButton();
+        comprar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Crear Partida");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        crearPartida.setText("Crear Partida");
+        crearPartida.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 crearPartida(evt);
             }
         });
 
-        jButton2.setText("Unirse a partida");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        unirsePartida.setText("Unirse a partida");
+        unirsePartida.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 unirse(evt);
             }
@@ -58,6 +60,13 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
 
+        comprar.setText("Comprar personaje");
+        comprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                abrirTienda(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,21 +74,24 @@ public class InicioRegistrado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(148, 148, 148)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comprar)
                     .addComponent(historial)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(unirsePartida)
+                    .addComponent(crearPartida))
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
-                .addComponent(jButton1)
+                .addComponent(crearPartida)
                 .addGap(38, 38, 38)
-                .addComponent(jButton2)
+                .addComponent(unirsePartida)
                 .addGap(38, 38, 38)
                 .addComponent(historial)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(comprar)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -103,6 +115,18 @@ public class InicioRegistrado extends javax.swing.JFrame {
         vh.setVisible(true);
     }//GEN-LAST:event_verHistorial
 
+    private void abrirTienda(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirTienda
+        Tienda t=new Tienda(this, true, resgistrado);
+        t.mostrar();
+        t.setVisible(true);
+    }//GEN-LAST:event_abrirTienda
+    public void mostrar(){
+        if(this.resgistrado.getPartidasJugadas()>=Registrado.getLIMITE_PARTIDAS()){
+            crearPartida.setEnabled(false);
+            unirsePartida.setEnabled(false);
+            JOptionPane.showMessageDialog(rootPane, "Has alcanzado el número de partidas máximas permitidas. Vuelve mañana para seguir jugando", "Limite alcanzado", JOptionPane.WARNING_MESSAGE);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -139,8 +163,9 @@ public class InicioRegistrado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton comprar;
+    private javax.swing.JButton crearPartida;
     private javax.swing.JButton historial;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton unirsePartida;
     // End of variables declaration//GEN-END:variables
 }

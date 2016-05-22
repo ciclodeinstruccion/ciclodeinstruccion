@@ -32,10 +32,12 @@ public class Registrado extends Usuario{
     private int especial;
     private int inteligencia;
     private final int EXPERIENCIA_NECESARIA=1000;
+    private static final int ORO_DIARIO=50;
     private int puntosNivel;
     private ArrayList <MiPersonaje> misPersonajes;
     private int partidasJugadas;
     private Date ultimaEntrada;
+    private final static int LIMITE_PARTIDAS=10;
     
 
     public Registrado(int partidasJugadas, int nivel, int oro, int experiencia, int vitalidad, int fuerza, int especial, int inteligencia, int puntosNivel, String nombre, String correo, String contraseña,Date ultimaEntrada) {
@@ -51,19 +53,18 @@ public class Registrado extends Usuario{
         this.puntosNivel = puntosNivel;
         this.misPersonajes = new ArrayList();
         this.ultimaEntrada=ultimaEntrada;
-        
+        this.partidasJugadas=partidasJugadas;
+             
+    }
+    public void login(){
         Date hoy=new Date();
         if(this.ultimaEntrada.getDay()!=hoy.getDay()){
             this.partidasJugadas=0;
-            this.oro=oro+50;
+            this.aumentarOro(ORO_DIARIO);
             this.ultimaEntrada=hoy;
         }
-        else{
-            this.partidasJugadas=partidasJugadas;
-            this.ultimaEntrada=hoy;
-        }
-       
     }
+    
     public Registrado(String nombre){
         super(nombre);
     }
@@ -102,12 +103,7 @@ public class Registrado extends Usuario{
     }
     
     public void gastarPuntosOro(int oroGastado){
-        
-        if(this.oro>oroGastado){
-            oro-=oroGastado;
-        } else {
-            System.out.println("no hay suficiente oro");
-        }
+        oro-=oroGastado;    
     }
     
     public void aumentarExperiencia(int sumaExperiencia){
@@ -136,6 +132,7 @@ public class Registrado extends Usuario{
         
          
     }
+    
     public String[][] tablaMisPersonajes(){
         String arrayPersonajes[][]=new String [misPersonajes.size()][8];
         for(int i=0;i<arrayPersonajes.length;i++){
@@ -191,6 +188,18 @@ public class Registrado extends Usuario{
         return arrayPartidas;
     }
     
+    public String [][] tablaPersonajesComprables(){
+        ArrayList <Personaje> comprables=new ArrayList();
+        comprables=consultasBD.instancia().buscarPersonajesComprables(this);
+        String arrayComprables[][]=new String [comprables.size()][3];
+        for(int i=0;i<arrayComprables.length;i++){
+            arrayComprables[i][0]=comprables.get(i).getTipo();
+            arrayComprables[i][1]=comprables.get(i).getNombre();
+            arrayComprables[i][2]=Integer.toString(comprables.get(i).getPrecio());
+        }
+        return arrayComprables;
+    }
+    
     public MiPersonaje elegirPersonaje(){
         Scanner teclado =new Scanner(System.in);
         MiPersonaje elegido;
@@ -205,7 +214,7 @@ public class Registrado extends Usuario{
     
     public void aumentarOro(int orosumado){
         
-        oro+=orosumado;
+        this.oro=this.oro+orosumado;
     }
     
     @Override
@@ -268,6 +277,10 @@ public class Registrado extends Usuario{
 
     public int getPartidasJugadas() {
         return partidasJugadas;
+    }
+
+    public static int getLIMITE_PARTIDAS() {
+        return LIMITE_PARTIDAS;
     }
     
 

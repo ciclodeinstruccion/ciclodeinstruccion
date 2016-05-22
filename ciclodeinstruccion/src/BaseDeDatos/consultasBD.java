@@ -222,7 +222,25 @@ public class consultasBD {
         }
         return p;
     }
-
+    
+    public ArrayList <Personaje> buscarPersonajesComprables(Registrado r){
+        ArrayList <Personaje> comprables=new ArrayList();
+        ArrayList <String> nombres=new ArrayList(); 
+        try{
+            ResultSet rs=ConexionBD.instancia().getStatement().executeQuery("Select nombre from Personajes where nombre not in (Select nombreDePersonaje from miPersonaje where nombreDeUsuario='"+r.getNombre()+"')");
+            while(rs.next()){
+                nombres.add(rs.getString(1));
+            }
+        }
+        catch (SQLException e){
+            
+        }
+        for(String n:nombres){
+            comprables.add(this.buscarPersonaje(n));
+        }
+        return comprables;
+    }
+    
     public void modificarPersonaje(Personaje p) throws ErrorModificarPersonaje{
         
         float especial = 0;
@@ -280,7 +298,7 @@ public class consultasBD {
         }
     
         try{
-            ConexionBD.instancia().getStatement().execute("INSERT INTO miPersonaje VALUES ('"+r.getNombre()+"','"+mp.getNombre()+"','"+Float.toString(mp.getBonusVida())+"','"+Float.toString(mp.getBonusDaño())+"','"+Float.toString(bonusEspecial)+"','"+Integer.toString(mp.getNivel())+"','"+Integer.toString(mp.getExperiencia())+"','"+Integer.toString(mp.getPuntosNivel())+"')");
+            ConexionBD.instancia().getStatement().execute("INSERT INTO miPersonaje VALUES ('"+r.getNombre()+"','"+mp.getNombre()+"',"+Float.toString(mp.getBonusVida())+","+Float.toString(mp.getBonusDaño())+","+Float.toString(bonusEspecial)+","+Integer.toString(mp.getNivel())+","+Integer.toString(mp.getExperiencia())+","+Integer.toString(mp.getPuntosNivel())+")");
         } catch (SQLException e){
             
         }    
@@ -438,7 +456,7 @@ public class consultasBD {
         for (String s:p.getTexto()){
             try{
                 ConexionBD.instancia().getStatement().execute(
-                "INSERT INTO Texto VALUES("+Integer.toString(p.getIdentificador())+",'"+s+"','"+p.getTexto().indexOf(s)+"')");
+                "INSERT INTO Texto (identificador, resumen) VALUES("+Integer.toString(p.getIdentificador())+",'"+s+"')");
             }catch(SQLException e){
             
            }

@@ -30,9 +30,9 @@ public abstract class MiPersonaje implements Personajeable{
     }
     public void aumentarExperiencia(int sumaExperiencia){
         experiencia+=sumaExperiencia;
-        if (experiencia>=EXPERIENCIA_NECESARIA*nivel){
+        if (experiencia>=EXPERIENCIA_NECESARIA*nivel){         
+            experiencia=experiencia - EXPERIENCIA_NECESARIA * nivel;
             this.subeNivel();
-            experiencia-=EXPERIENCIA_NECESARIA*nivel;
         }
     }
     public void gastarPuntosNivel(){

@@ -43,10 +43,8 @@ public class Partida {
         this.texto=new ArrayList();
         this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
         this.partidasJ1=this.jugador1.getPartidasJugadas();
-        this.jugador1.gastarPuntosOro(COSTE_PARTIDA);
-        this.jugador1.setPartidasJugadas(partidasJ1+1);
     }
-
+    
     public Partida(int identificador, Registrado jugador1, Registrado jugador2, MiPersonaje personaje1, MiPersonaje personaje2, int partidasJ1, int partidasJ2, Registrado ganador, MiPersonaje pGanador) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
@@ -59,7 +57,10 @@ public class Partida {
         this.partidasJ1 = partidasJ1;
         this.partidasJ2 = partidasJ2;
     }
-    
+    public void comprarPartida(){
+        this.jugador1.setPartidasJugadas(partidasJ1+1);
+        this.jugador1.gastarPuntosOro(COSTE_PARTIDA);
+    }
     public void unirsePartida(Registrado jugador2, MiPersonaje personaje2){
         this.jugador2=jugador2;
         this.personaje2=personaje2;
@@ -259,9 +260,9 @@ public class Partida {
     public void finalizarPartida(Registrado ganador, MiPersonaje personaje){
         this.ganador=ganador;
         this.pGanador=personaje;
-        ganador.aumentarExperiencia(EXP);
-        ganador.aumentarOro(this.oroGanado());
-        personaje.aumentarExperiencia(EXP);
+        this.ganador.aumentarExperiencia(EXP);
+        this.ganador.aumentarOro(this.oroGanado());
+        this.pGanador.aumentarExperiencia(EXP);
     }
     public int oroGanado(){
         int oro=0;
@@ -274,7 +275,7 @@ public class Partida {
             }
         }
         else{
-            if(this.partidasJ1<=LIMITE/2){
+            if(this.partidasJ2<=LIMITE/2){
                 oro=this.ORO;
             }
             else{
