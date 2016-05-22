@@ -26,9 +26,10 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="comprar" min="-2" max="-2" attributes="0"/>
                   <Component id="historial" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="unirsePartida" min="-2" max="-2" attributes="0"/>
+                  <Component id="crearPartida" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="105" max="32767" attributes="0"/>
           </Group>
@@ -38,18 +39,20 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="crearPartida" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <Component id="unirsePartida" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="historial" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="93" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Component id="comprar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="crearPartida">
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear Partida"/>
       </Properties>
@@ -57,7 +60,7 @@
         <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crearPartida"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="unirsePartida">
       <Properties>
         <Property name="text" type="java.lang.String" value="Unirse a partida"/>
       </Properties>
@@ -71,6 +74,14 @@
       </Properties>
       <Events>
         <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="verHistorial"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="comprar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Comprar personaje"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="abrirTienda"/>
       </Events>
     </Component>
   </SubComponents>

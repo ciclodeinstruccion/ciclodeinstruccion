@@ -124,9 +124,11 @@ public class IniciarSesion extends javax.swing.JDialog {
         }
         if(consultasBD.instancia().encuentraRegistrado(name, pass)){
             this.registrado=consultasBD.instancia().buscarRegistrado(name);
+            this.registrado.login();
             consultasBD.instancia().modificarRegistrado(registrado);
             InicioRegistrado ir=new InicioRegistrado(registrado);
             this.setVisible(false);
+            ir.mostrar();
             ir.setVisible(true);
         }
         else if (consultasBD.instancia().encuentraAdministrador(name,pass)){
