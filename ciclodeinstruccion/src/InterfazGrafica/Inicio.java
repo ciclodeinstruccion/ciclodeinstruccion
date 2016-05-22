@@ -68,7 +68,7 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().add(registrarse);
         registrarse.setBounds(156, 154, 89, 23);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_claro.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_inicio.gif"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1280, 720);
 
