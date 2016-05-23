@@ -56,7 +56,7 @@ public class CrearPartida extends javax.swing.JDialog {
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,70));
 
-        tablaMisPersonajes.setBackground(new java.awt.Color(0, 0, 0,200));
+        tablaMisPersonajes.setBackground(new java.awt.Color(0, 0, 0,140));
         tablaMisPersonajes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tablaMisPersonajes.setForeground(new java.awt.Color(255, 102, 0));
         jScrollPane1.setViewportView(tablaMisPersonajes);
