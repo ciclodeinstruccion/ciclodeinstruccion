@@ -616,4 +616,42 @@ public class consultasBD {
         
         return id;
     }
+    
+    public ArrayList <Registrado> todosRegistrados(){
+        ArrayList <Registrado> usuarios = new ArrayList();
+        try {
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
+                "select * from Registrados"              
+                );   
+            if (rs.next()) {
+                Registrado r = new Registrado(Integer.parseInt(rs.getString(13)),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(12)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),Integer.parseInt(rs.getString(8)),Integer.parseInt(rs.getString(11)),Integer.parseInt(rs.getString(9)),Integer.parseInt(rs.getString(10)),rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4));
+                
+   
+                ResultSet rsi = ConexionBD.instancia().getStatement().executeQuery(
+                    "select * from miPersonaje where nombreDeUsuario='"+ (r.getNombre())+"'");
+                
+                while (rsi.next()) {
+                    //Personaje p=juego.getPersonajes().get(juego.buscarPersonaje(rsi.getString(2)));
+                    Personaje p=this.buscarPersonaje(rsi.getString(2));
+                    if (p instanceof Tanque){
+                        Tanque t=(Tanque) p;
+                        r.añadirPersonajes(new MiTanque(Integer.parseInt(rsi.getString(3)),Integer.parseInt(rsi.getString(4)),Integer.parseInt(rsi.getString(6)),Integer.parseInt(rsi.getString(7)),Integer.parseInt(rsi.getString(8)),t,Integer.parseInt(rsi.getString(5))));
+                    }
+                    else if (p instanceof Asesino){
+                        Asesino a=(Asesino) p;
+                        r.añadirPersonajes(new MiAsesino(Integer.parseInt(rsi.getString(3)),Integer.parseInt(rsi.getString(4)),Integer.parseInt(rsi.getString(6)),Integer.parseInt(rsi.getString(7)),Integer.parseInt(rsi.getString(8)),a,Integer.parseInt(rsi.getString(5))));
+                    }
+                    else{
+                        Fighter f=(Fighter) p;
+                        r.añadirPersonajes(new MiFighter(Integer.parseInt(rsi.getString(3)),Integer.parseInt(rsi.getString(4)),Integer.parseInt(rsi.getString(6)),Integer.parseInt(rsi.getString(7)),Integer.parseInt(rsi.getString(8)),f,Integer.parseInt(rsi.getString(5))));
+                    }
+                }
+                usuarios.add(r);
+            }           
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return usuarios;
+    }
 }
