@@ -616,4 +616,21 @@ public class consultasBD {
         
         return id;
     }
+    
+    public ArrayList<Partida> todasLasPartidas(){
+        ArrayList <Partida> partidas=new ArrayList();
+        try {
+            ResultSet rs= ConexionBD.instancia().getStatement().executeQuery("select * from Partida ");
+            
+            while(rs.next()){
+                Registrado r = this.buscarRegistrado(rs.getString(2));
+                Registrado r1 = this.buscarRegistrado(rs.getString(3));
+                Partida p=new Partida(Integer.parseInt(rs.getString(1)),r,r1,this.buscarMiPersonaje(rs.getString(4), r),this.buscarMiPersonaje(rs.getString(5), r1),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),this.buscarRegistrado(rs.getString(8)),this.buscarMiPersonaje(rs.getString(9), this.buscarRegistrado(rs.getString(8))));
+                partidas.add(p);
+            }
+        } catch(SQLException e){
+            
+        }
+        return partidas;
+    }
 }

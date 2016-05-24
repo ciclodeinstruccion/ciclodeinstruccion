@@ -64,6 +64,11 @@ public class InicioRegistrado extends javax.swing.JFrame {
                 crearPartida(evt);
             }
         });
+        crearPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearPartidaActionPerformed(evt);
+            }
+        });
         getContentPane().add(crearPartida);
         crearPartida.setBounds(520, 130, 260, 65);
 
@@ -211,6 +216,10 @@ public class InicioRegistrado extends javax.swing.JFrame {
     private void comprarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarMouseExited
         comprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/comprar_personaje.png")));
     }//GEN-LAST:event_comprarMouseExited
+
+    private void crearPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPartidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crearPartidaActionPerformed
     public void mostrar(){
         if(this.resgistrado.getPartidasJugadas()>=Registrado.getLIMITE_PARTIDAS()){
             crearPartida.setEnabled(false);

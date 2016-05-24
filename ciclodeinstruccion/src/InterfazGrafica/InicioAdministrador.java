@@ -31,21 +31,100 @@ public class InicioAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        historialPartidas = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        gestionarUsuarios = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
+
+        historialPartidas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/historial_de_partidas.png"))); // NOI18N
+        historialPartidas.setBorderPainted(false);
+        historialPartidas.setContentAreaFilled(false);
+        historialPartidas.setFocusPainted(false);
+        historialPartidas.setMaximumSize(new java.awt.Dimension(260, 65));
+        historialPartidas.setMinimumSize(new java.awt.Dimension(260, 65));
+        historialPartidas.setPreferredSize(new java.awt.Dimension(260, 65));
+        historialPartidas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                historialPartidasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                historialPartidasMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                historialPartidasMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                historialPartidasMouseReleased(evt);
+            }
+        });
+        historialPartidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historialPartidasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(historialPartidas);
+        historialPartidas.setBounds(372, 160, 260, 65);
+
+        jButton2.setText("jButton2");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(110, 410, 73, 23);
+
+        gestionarUsuarios.setText("Gestionar Usuarios");
+        gestionarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionarUsuariosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(gestionarUsuarios);
+        gestionarUsuarios.setBounds(380, 80, 170, 23);
+
+        jButton4.setText("jButton4");
+        getContentPane().add(jButton4);
+        jButton4.setBounds(340, 440, 73, 23);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        jLabel1.setAutoscrolls(true);
+        jLabel1.setMaximumSize(new java.awt.Dimension(1280, 720));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1280, 720));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void gestionarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gestionarUsuariosActionPerformed
+
+    private void historialPartidasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialPartidasMouseReleased
+        VerHistorialAdministrador va = new VerHistorialAdministrador((this), true, admin);
+        va.setVisible(true);
+    }//GEN-LAST:event_historialPartidasMouseReleased
+
+    private void historialPartidasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialPartidasMousePressed
+        historialPartidas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/historial_de_partidas.png")));
+    }//GEN-LAST:event_historialPartidasMousePressed
+
+    private void historialPartidasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialPartidasMouseExited
+         historialPartidas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/historial_de_partidas.png")));
+    }//GEN-LAST:event_historialPartidasMouseExited
+
+    private void historialPartidasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialPartidasMouseEntered
+        historialPartidas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/historial_de_partidas.png")));
+    }//GEN-LAST:event_historialPartidasMouseEntered
+
+    private void historialPartidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialPartidasActionPerformed
+        
+    }//GEN-LAST:event_historialPartidasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,5 +162,10 @@ public class InicioAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton gestionarUsuarios;
+    private javax.swing.JButton historialPartidas;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
