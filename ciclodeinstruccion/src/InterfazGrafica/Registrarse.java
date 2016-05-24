@@ -40,36 +40,39 @@ public class Registrarse extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        registrarse = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         correo = new javax.swing.JTextField();
         contraseña = new javax.swing.JPasswordField();
-        registrarse = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
 
-        jLabel1.setText("Nombre de usuario");
-
-        jLabel2.setText("Correo electrónico");
-
-        jLabel3.setText("Contraseña");
-
-        nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreActionPerformed(evt);
-            }
-        });
-
-        correo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                correoActionPerformed(evt);
-            }
-        });
-
-        registrarse.setText("Registrarse");
+        registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/registrarse2.png"))); // NOI18N
+        registrarse.setBorder(null);
+        registrarse.setBorderPainted(false);
+        registrarse.setContentAreaFilled(false);
+        registrarse.setFocusPainted(false);
         registrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registrarseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registrarseMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                registrarseMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 registrarse(evt);
             }
@@ -79,46 +82,91 @@ public class Registrarse extends javax.swing.JDialog {
                 registrarseActionPerformed(evt);
             }
         });
+        getContentPane().add(registrarse);
+        registrarse.setBounds(310, 480, 260, 65);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(registrarse)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(correo, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                            .addComponent(nombre)
-                            .addComponent(contraseña))))
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addComponent(registrarse)
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(720, 480, 260, 65);
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0,200));
+        jPanel1.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel1.setText("Nombre de usuario");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(90, 60, 260, 40);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel2.setText("Correo electrónico");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(90, 120, 260, 40);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel3.setText("Contraseña");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(90, 180, 260, 40);
+
+        nombre.setBackground(new java.awt.Color(0, 0, 0,0));
+        nombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nombre.setForeground(new java.awt.Color(255, 51, 0));
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nombre);
+        nombre.setBounds(430, 60, 260, 40);
+
+        correo.setBackground(new java.awt.Color(0, 0, 0,0));
+        correo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        correo.setForeground(new java.awt.Color(255, 51, 0));
+        correo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                correoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(correo);
+        correo.setBounds(430, 120, 260, 40);
+
+        contraseña.setBackground(new java.awt.Color(0, 0, 0,0));
+        contraseña.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        contraseña.setForeground(new java.awt.Color(255, 51, 0));
+        jPanel1.add(contraseña);
+        contraseña.setBounds(430, 180, 260, 40);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(250, 150, 790, 280);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,6 +204,38 @@ public class Registrarse extends javax.swing.JDialog {
     private void registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_registrarseActionPerformed
+
+    private void registrarseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarseMousePressed
+        registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/registrarse2.png")));
+    }//GEN-LAST:event_registrarseMousePressed
+
+    private void registrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarseMouseExited
+        registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/registrarse2.png")));
+    }//GEN-LAST:event_registrarseMouseExited
+
+    private void registrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarseMouseEntered
+        registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/registrarse2.png")));
+    }//GEN-LAST:event_registrarseMouseEntered
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_jButton1MouseEntered
     public boolean comprobarRegistro(String nombre, String correo, String contraseña){
         boolean correcto=true;
         if(nombre.equals("")||correo.equals("")||contraseña.equals("")){
@@ -231,9 +311,12 @@ public class Registrarse extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField contraseña;
     private javax.swing.JTextField correo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nombre;
     private javax.swing.JButton registrarse;
     // End of variables declaration//GEN-END:variables

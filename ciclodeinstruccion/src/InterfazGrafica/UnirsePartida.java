@@ -47,9 +47,22 @@ public class UnirsePartida extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaPartidas = new javax.swing.JTable();
         unirse = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
 
+        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
+
+        tablaMisPersonajes.setBackground(new java.awt.Color(0, 0, 0,130));
+        tablaMisPersonajes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tablaMisPersonajes.setForeground(new java.awt.Color(255, 102, 51));
         tablaMisPersonajes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -60,42 +73,72 @@ public class UnirsePartida extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tablaMisPersonajes);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(135, 320, 1010, 170);
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setViewportBorder(null);
+
+        jScrollPane2.setBackground(new java.awt.Color(0, 0, 0,0));
+
+        tablaPartidas.setBackground(new java.awt.Color(0, 0, 0,130));
+        tablaPartidas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tablaPartidas.setForeground(new java.awt.Color(255, 102, 51));
         jScrollPane2.setViewportView(tablaPartidas);
 
-        unirse.setText("Unirse");
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(135, 84, 1010, 170);
+        jScrollPane2.getViewport().setOpaque(false);
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setViewportBorder(null);
+
+        unirse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/unirse_a_partida.png"))); // NOI18N
+        unirse.setBorder(null);
+        unirse.setBorderPainted(false);
+        unirse.setContentAreaFilled(false);
+        unirse.setFocusPainted(false);
         unirse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                unirseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                unirseMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                unirseMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 unirse(evt);
             }
         });
+        getContentPane().add(unirse);
+        unirse.setBounds(300, 540, 260, 65);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(unirse)))
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(unirse)
-                .addGap(9, 9, 9))
-        );
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(710, 540, 260, 65);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -121,6 +164,34 @@ public class UnirsePartida extends javax.swing.JDialog {
             }
          }
     }//GEN-LAST:event_unirse
+
+    private void unirseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirseMousePressed
+        unirse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/unirse_a_partida.png")));
+    }//GEN-LAST:event_unirseMousePressed
+
+    private void unirseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirseMouseExited
+        unirse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/unirse_a_partida.png")));
+    }//GEN-LAST:event_unirseMouseExited
+
+    private void unirseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirseMouseEntered
+        unirse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/unirse_a_partida.png")));
+    }//GEN-LAST:event_unirseMouseEntered
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_jButton1MouseEntered
     public void mostrar(){
         tabla2=new DefaultTableModel(this.registrado.tablaMisPersonajes(), cabecera2);
         tablaMisPersonajes.setModel(tabla2);
@@ -171,6 +242,8 @@ public class UnirsePartida extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaMisPersonajes;

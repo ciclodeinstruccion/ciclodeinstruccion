@@ -42,41 +42,76 @@ public class VerHistorial extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPartidas = new javax.swing.JTable();
         ver = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
 
+        jScrollPane1.setBackground(new java.awt.Color(0,0 ,0,0 ));
+
+        tablaPartidas.setBackground(new java.awt.Color(0, 0, 0,130));
+        tablaPartidas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tablaPartidas.setForeground(new java.awt.Color(255, 51, 51));
         jScrollPane1.setViewportView(tablaPartidas);
 
-        ver.setText("ver");
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(215, 160, 840, 200);
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setViewportBorder(null);
+
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/ver_partida.png"))); // NOI18N
+        ver.setBorder(null);
+        ver.setBorderPainted(false);
+        ver.setContentAreaFilled(false);
+        ver.setFocusPainted(false);
         ver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                verMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                verMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                verMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 ver(evt);
             }
         });
+        getContentPane().add(ver);
+        ver.setBounds(300, 450, 260, 65);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(ver)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(ver)
-                .addContainerGap(96, Short.MAX_VALUE))
-        );
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(710, 450, 260, 65);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -91,6 +126,34 @@ public class VerHistorial extends javax.swing.JDialog {
             vp.setVisible(true);
         }
     }//GEN-LAST:event_ver
+
+    private void verMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMousePressed
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/ver_partida.png")));
+    }//GEN-LAST:event_verMousePressed
+
+    private void verMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMouseExited
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/ver_partida.png")));
+    }//GEN-LAST:event_verMouseExited
+
+    private void verMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMouseEntered
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/ver_partida.png")));
+    }//GEN-LAST:event_verMouseEntered
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_jButton1MouseEntered
     public void mostrar(){
         tabla=new DefaultTableModel(this.registrado.tablaHistorialPartidas(), cabecera);
         tablaPartidas.setModel(tabla);
@@ -138,6 +201,8 @@ public class VerHistorial extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaPartidas;
     private javax.swing.JButton ver;
