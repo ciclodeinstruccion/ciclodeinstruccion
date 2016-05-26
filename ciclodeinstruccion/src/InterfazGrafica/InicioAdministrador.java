@@ -93,8 +93,6 @@ public class InicioAdministrador extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         jLabel1.setAutoscrolls(true);
-        jLabel1.setMaximumSize(new java.awt.Dimension(1280, 720));
-        jLabel1.setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1280, 720);
 
