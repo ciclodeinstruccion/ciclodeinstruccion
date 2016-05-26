@@ -5,6 +5,10 @@
  */
 package InterfazGrafica;
 
+import ciclodeinstruccion.Usuarios.Administrador;
+import BaseDeDatos.consultasBD;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author alumno
@@ -14,9 +18,13 @@ public class VerUsuarios extends javax.swing.JDialog {
     /**
      * Creates new form VerUsuarios
      */
-    public VerUsuarios(java.awt.Frame parent, boolean modal) {
+    private Administrador admin;
+    String cabecera []={"Nombre","Correo","Contraseña"};
+    DefaultTableModel tabla;
+    public VerUsuarios(java.awt.Frame parent, boolean modal, Administrador admin) {
         super(parent, modal);
         initComponents();
+        this.admin=admin;
     }
 
     /**
@@ -29,11 +37,13 @@ public class VerUsuarios extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaUsuarios = new javax.swing.JTable();
+        masInformacion = new javax.swing.JButton();
+        volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -41,7 +51,16 @@ public class VerUsuarios extends javax.swing.JDialog {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaUsuarios);
+
+        masInformacion.setText("masInformacion");
+
+        volver.setText("Volver");
+        volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                volverMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,18 +70,36 @@ public class VerUsuarios extends javax.swing.JDialog {
                 .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(masInformacion)
+                .addGap(79, 79, 79)
+                .addComponent(volver)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(168, 168, 168))
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(masInformacion)
+                    .addComponent(volver))
+                .addGap(92, 92, 92))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
+        this.setVisible(false);
+    }//GEN-LAST:event_volverMouseReleased
+    public void mostrar(){
+        String [][] t=admin.tablaUsuarios();
+        tabla=new DefaultTableModel(t, cabecera);
+        tablaUsuarios.setModel(tabla);
+    }
     /**
      * @param args the command line arguments
      */
@@ -93,7 +130,7 @@ public class VerUsuarios extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerUsuarios dialog = new VerUsuarios(new javax.swing.JFrame(), true);
+                VerUsuarios dialog = new VerUsuarios(new javax.swing.JFrame(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -107,6 +144,8 @@ public class VerUsuarios extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton masInformacion;
+    private javax.swing.JTable tablaUsuarios;
+    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }

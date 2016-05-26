@@ -84,6 +84,7 @@
         <Property name="text" type="java.lang.String" value="Gestionar Usuarios"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="gestionarUsuariosMouseReleased"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gestionarUsuariosActionPerformed"/>
       </Events>
       <Constraints>

@@ -180,7 +180,7 @@ public class consultasBD {
         Administrador admin=null;
         try {
             ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
-                "SELECT * FROM Administradores WHERE nombre='"+nombre+"')");
+                "SELECT * FROM Administradores WHERE nombre='"+nombre+"'");
                 
             if(rs.next()){
                 admin=new Administrador(rs.getString(1), rs.getString(2), rs.getString(3));
@@ -623,7 +623,7 @@ public class consultasBD {
             ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
                 "select * from Registrados"              
                 );   
-            if (rs.next()) {
+            while (rs.next()) {
                 Registrado r = new Registrado(Integer.parseInt(rs.getString(13)),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(12)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),Integer.parseInt(rs.getString(8)),Integer.parseInt(rs.getString(11)),Integer.parseInt(rs.getString(9)),Integer.parseInt(rs.getString(10)),rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4));
                 
    
@@ -653,6 +653,7 @@ public class consultasBD {
             e.printStackTrace();
         }
         return usuarios;
+    }
     public ArrayList<Partida> todasLasPartidas(){
         ArrayList <Partida> partidas=new ArrayList();
         try {

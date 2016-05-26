@@ -79,6 +79,11 @@ public class InicioAdministrador extends javax.swing.JFrame {
         jButton2.setBounds(110, 410, 73, 23);
 
         gestionarUsuarios.setText("Gestionar Usuarios");
+        gestionarUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                gestionarUsuariosMouseReleased(evt);
+            }
+        });
         gestionarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gestionarUsuariosActionPerformed(evt);
@@ -123,6 +128,12 @@ public class InicioAdministrador extends javax.swing.JFrame {
     private void historialPartidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialPartidasActionPerformed
         
     }//GEN-LAST:event_historialPartidasActionPerformed
+
+    private void gestionarUsuariosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionarUsuariosMouseReleased
+        VerUsuarios vu= new VerUsuarios(this, true, admin);
+        vu.mostrar();
+        vu.setVisible(true);
+    }//GEN-LAST:event_gestionarUsuariosMouseReleased
 
     /**
      * @param args the command line arguments

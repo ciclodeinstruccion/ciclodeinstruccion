@@ -12,7 +12,7 @@ import java.util.Arrays;
 import static java.util.Collections.list;
 import java.util.Iterator;
 import java.util.Scanner;
-
+import BaseDeDatos.consultasBD;
 
 public class Administrador extends Usuario{
     
@@ -24,7 +24,17 @@ public class Administrador extends Usuario{
     public Administrador(String nombre){
         super(nombre);
     }
-    
+    public String [][] tablaUsuarios(){
+        ArrayList <Registrado> usuarios =new ArrayList();
+        usuarios=consultasBD.instancia().todosRegistrados();
+        String arrayUsuarios [][]=new String [usuarios.size()][3];
+        for(int i=0; i<arrayUsuarios.length;i++){
+            arrayUsuarios[i][0]=usuarios.get(i).getNombre();
+            arrayUsuarios[i][1]=usuarios.get(i).getCorreo();
+            arrayUsuarios[i][2]=usuarios.get(i).getContraseña();
+        }
+        return arrayUsuarios;
+    }
     public Registrado elegirRegistrado(ArrayList <Registrado> registrados){
         
         Scanner teclado = new Scanner(System.in);
