@@ -84,6 +84,11 @@ public class VerHistorial extends javax.swing.JDialog {
                 ver(evt);
             }
         });
+        ver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verActionPerformed(evt);
+            }
+        });
         getContentPane().add(ver);
         ver.setBounds(300, 450, 260, 65);
 
@@ -124,7 +129,7 @@ public class VerHistorial extends javax.swing.JDialog {
             vp.mostrar();
             this.setVisible(false);
             vp.setVisible(true);
-        }
+        }      
     }//GEN-LAST:event_ver
 
     private void verMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMousePressed
@@ -154,6 +159,10 @@ public class VerHistorial extends javax.swing.JDialog {
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
     }//GEN-LAST:event_jButton1MouseEntered
+
+    private void verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verActionPerformed
     public void mostrar(){
         tabla=new DefaultTableModel(this.registrado.tablaHistorialPartidas(), cabecera);
         tablaPartidas.setModel(tabla);

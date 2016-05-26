@@ -172,7 +172,7 @@ public class Registrado extends Usuario{
         return arrayPartidas;
     }
     
-    public String [][]tablaHistorialPartidas(){
+    public String [][] tablaHistorialPartidas(){
         ArrayList <Partida> historial=new ArrayList();
         historial=consultasBD.instancia().buscarPartidasAcabadas(this);
         String arrayPartidas[][]=new String [historial.size()][7];

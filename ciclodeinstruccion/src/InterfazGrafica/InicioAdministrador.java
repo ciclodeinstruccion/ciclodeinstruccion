@@ -110,6 +110,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
 
     private void historialPartidasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialPartidasMouseReleased
         VerHistorialAdministrador va = new VerHistorialAdministrador((this), true, admin);
+        va.mostrar();
         va.setVisible(true);
     }//GEN-LAST:event_historialPartidasMouseReleased
 

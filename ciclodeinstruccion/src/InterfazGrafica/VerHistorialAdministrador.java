@@ -5,7 +5,11 @@
  */
 package InterfazGrafica;
 
+import BaseDeDatos.consultasBD;
+import ciclodeinstruccion.Partida;
 import ciclodeinstruccion.Usuarios.Administrador;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,7 +20,10 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
     /**
      * Creates new form VerHistorialAdministrador
      */
+    DefaultTableModel tabla1;
+    String cabecera []={"Identificador","Jugador 1","Personaje 1","Jugador 2","Personaje 2","Jugador ganador","Personaje ganador"};
     Administrador admin;
+    
     public VerHistorialAdministrador(java.awt.Frame parent, boolean modal, Administrador admin) {
         super(parent, modal);
         initComponents();
@@ -32,21 +39,90 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        volver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
+
+        jScrollPane1.setForeground(new java.awt.Color(0, 0, 0, 0));
+
+        tabla.setBackground(new java.awt.Color(0, 0, 0, 130));
+        tabla.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tabla.setForeground(new java.awt.Color(255, 51, 51));
+        jScrollPane1.setViewportView(tabla);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(130, 210, 820, 240);
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setViewportBorder(null);
+
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        volver.setBorderPainted(false);
+        volver.setContentAreaFilled(false);
+        volver.setFocusPainted(false);
+        volver.setMaximumSize(new java.awt.Dimension(260, 65));
+        volver.setMinimumSize(new java.awt.Dimension(260, 65));
+        volver.setPreferredSize(new java.awt.Dimension(260, 65));
+        volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                volverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                volverMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                volverMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                volverMouseReleased(evt);
+            }
+        });
+        volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(volver);
+        volver.setBounds(420, 490, 260, 65);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(1280, 720));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1280, 720));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1280, 720));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_volverActionPerformed
+
+    private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
+        this.setVisible(false);
+    }//GEN-LAST:event_volverMouseReleased
+
+    private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_volverMouseEntered
+
+    private void volverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseExited
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_volverMouseExited
+
+    private void volverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMousePressed
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_volverMousePressed
 
     /**
      * @param args the command line arguments
@@ -89,7 +165,20 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
             }
         });
     }
+    
+    public void mostrar(){
+        
+        tabla1 = new DefaultTableModel(admin.tablaHistorialPartidas(), cabecera);
+        tabla.setModel(tabla1);
+    }
+    
+                   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabla;
+    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
