@@ -23,6 +23,7 @@ public class MiTanque extends MiPersonaje{
         this.personaje=personaje;
         this.bonusArmadura=bonusArmadura;
     }
+    
     public void aumentarArmadura(){
         this.bonusArmadura+=AUMENTAR_ARMADURA;
         this.gastarPuntosNivel();

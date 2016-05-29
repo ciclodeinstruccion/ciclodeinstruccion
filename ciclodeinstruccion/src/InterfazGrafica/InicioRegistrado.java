@@ -36,6 +36,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
         unirsePartida = new javax.swing.JButton();
         historial = new javax.swing.JButton();
         comprar = new javax.swing.JButton();
+        atributosreg = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,6 +139,15 @@ public class InicioRegistrado extends javax.swing.JFrame {
         getContentPane().add(comprar);
         comprar.setBounds(520, 460, 260, 65);
 
+        atributosreg.setText("atributos registrado");
+        atributosreg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                atributosregMouseReleased(evt);
+            }
+        });
+        getContentPane().add(atributosreg);
+        atributosreg.setBounds(540, 560, 129, 23);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1280, 720);
@@ -146,15 +156,19 @@ public class InicioRegistrado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearPartida(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearPartida
-        CrearPartida cp=new CrearPartida(this, true, resgistrado,this);
-        cp.mostrar();
-        cp.setVisible(true);
+        if(crearPartida.isEnabled()){
+            CrearPartida cp=new CrearPartida(this, true, resgistrado,this);
+            cp.mostrar();
+            cp.setVisible(true);
+        }
     }//GEN-LAST:event_crearPartida
 
     private void unirse(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirse
-        UnirsePartida up= new UnirsePartida(this, true, resgistrado,this);
-        up.mostrar();
-        up.setVisible(true);
+        if(unirsePartida.isEnabled()){
+            UnirsePartida up= new UnirsePartida(this, true, resgistrado,this);
+            up.mostrar();
+            up.setVisible(true);
+        }
     }//GEN-LAST:event_unirse
 
     private void verHistorial(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verHistorial
@@ -220,6 +234,12 @@ public class InicioRegistrado extends javax.swing.JFrame {
     private void crearPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPartidaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_crearPartidaActionPerformed
+
+    private void atributosregMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atributosregMouseReleased
+       AtributosRegistrado ar =new AtributosRegistrado(this, true, resgistrado);
+       ar.mostrar();
+       ar.setVisible(true);
+    }//GEN-LAST:event_atributosregMouseReleased
     public void mostrar(){
         if(this.resgistrado.getPartidasJugadas()>=Registrado.getLIMITE_PARTIDAS()){
             crearPartida.setEnabled(false);
@@ -263,6 +283,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atributosreg;
     private javax.swing.JButton comprar;
     private javax.swing.JButton crearPartida;
     private javax.swing.JButton historial;

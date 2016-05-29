@@ -11,7 +11,7 @@ import Personaje.Personajeable;
  *
  * @author alumno
  */
-public abstract class MiPersonaje implements Personajeable{
+public abstract class MiPersonaje implements Personajeable,Comparable <MiPersonaje>{
     private float bonusVida;
     private float bonusDaño;
     private int nivel;
@@ -90,7 +90,10 @@ public abstract class MiPersonaje implements Personajeable{
         this.puntosNivel = puntosNivel;
     }
     
-    
+    @Override
+    public int compareTo(MiPersonaje p) {
+        return this.getNombre().compareTo(p.getNombre());
+    }
     
     
     

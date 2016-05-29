@@ -35,6 +35,77 @@ public class Administrador extends Usuario{
         }
         return arrayUsuarios;
     }
+    
+    public String [][] tablaEstadisticas(){
+        ArrayList <String> nombres =new ArrayList();
+        nombres=consultasBD.instancia().nombreTodosPersonajes();
+        String nombresPj []=new String [nombres.size()];
+        float winratio [][]=new float [nombres.size()][nombres.size()];
+        for(int i=0;i<nombresPj.length;i++){
+            nombresPj[i]=nombres.get(i);
+        }
+        String nombresPj2 []=nombresPj;
+        
+        for(int i=0;i<nombresPj.length;i++){
+            for(int j=0;j<nombresPj2.length;j++){
+                float pJugadas=consultasBD.instancia().partidasJugadas2Personajes(nombresPj[i], nombresPj2[j]) + consultasBD.instancia().partidasJugadas2Personajes(nombresPj2[j], nombresPj[i]);
+                float pGanadas=consultasBD.instancia().partidasGanadasPersonaje(nombresPj[i], nombresPj2[j], nombresPj[i]) + consultasBD.instancia().partidasGanadasPersonaje(nombresPj2[j], nombresPj[i], nombresPj[i]);
+                if(pJugadas==0){
+                    winratio[i][j]=0;
+                }
+                else{
+                    winratio[i][j]=(pGanadas/pJugadas)*100;
+                }
+            }
+        }
+        
+        float ganadasTotales []=new float [nombres.size()];
+        int jugadasTotales []=new int [nombres.size()];
+        for(int i=0;i<ganadasTotales.length;i++){
+            float pJugadasT=consultasBD.instancia().partidasJugadas1Personaje1(nombresPj[i])+consultasBD.instancia().partidasJugadas1Personaje2(nombresPj[i]);
+            jugadasTotales[i]=(int)pJugadasT;
+            float pGanadasT=consultasBD.instancia().partidasGanadas1Personaje(nombresPj[i]);
+            if(pJugadasT==0){
+                ganadasTotales[i]=0;
+            }
+            else{
+                ganadasTotales[i]=(pGanadasT/pJugadasT)*100;
+            }
+        }
+        
+        String estadisticas [][]=new String[winratio.length][winratio.length+3];
+        for(int i=0;i<estadisticas.length;i++){
+            for(int j=0;j<estadisticas[i].length;j++){
+                if(j==0){
+                    estadisticas[i][j]= nombresPj[i];
+                }
+                else if(j==estadisticas[i].length-1){
+                    estadisticas[i][j]= Float.toString(ganadasTotales[i]);
+                }
+                else if(j==estadisticas[i].length-2){
+                    estadisticas[i][j]=Integer.toString(jugadasTotales[i]);
+                }
+                else{
+                    estadisticas[i][j]=Float.toString(winratio[i][j-1]);
+                }
+            }
+        }
+        return estadisticas;
+    }
+    
+    public String [] cabeceraEstadisticas(){
+        ArrayList <String> nombres =new ArrayList();
+        nombres=consultasBD.instancia().nombreTodosPersonajes();
+        String nombresPj []=new String [nombres.size()+3];
+        nombresPj[0]="PERSONAJES";
+        nombresPj[nombresPj.length-2]="P.TOTALES";
+        nombresPj[nombresPj.length-1]="% TOTAL";
+        for (int i=1;i<nombresPj.length-2;i++){
+            nombresPj[i]=nombres.get(i-1);
+        }
+        return nombresPj;
+    }
+    
     public Registrado elegirRegistrado(ArrayList <Registrado> registrados){
         
         Scanner teclado = new Scanner(System.in);

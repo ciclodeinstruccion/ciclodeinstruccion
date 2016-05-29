@@ -24,6 +24,7 @@ public class Registrarse extends javax.swing.JDialog {
     /**
      * Creates new form Registrarse
      */
+    private final int ORO_INICIAL=10000;
     private Inicio ini;
     public Registrarse(java.awt.Frame parent, boolean modal, Inicio ini) {
         super(parent, modal);
@@ -187,7 +188,7 @@ public class Registrarse extends javax.swing.JDialog {
             pass+=contraseña.getPassword()[i];
         }
         if(comprobarRegistro(name,email,pass)){
-            Registrado r =new Registrado(0, 1, 500, 0, 0, 0, 0, 0, 0, name, email, pass, new Date());
+            Registrado r =new Registrado(0, 1, ORO_INICIAL, 0, 0, 0, 0, 0, 0, name, email, pass, new Date());
             try {
                 consultasBD.instancia().añadirRegistrado(r);
             } catch (ErrorAñadirRegistrado ex) {
