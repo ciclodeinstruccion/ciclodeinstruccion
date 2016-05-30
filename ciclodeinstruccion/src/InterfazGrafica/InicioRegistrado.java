@@ -37,6 +37,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
         historial = new javax.swing.JButton();
         comprar = new javax.swing.JButton();
         atributosreg = new javax.swing.JButton();
+        misPersonajes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -148,6 +149,15 @@ public class InicioRegistrado extends javax.swing.JFrame {
         getContentPane().add(atributosreg);
         atributosreg.setBounds(540, 560, 129, 23);
 
+        misPersonajes.setText("mis personajes");
+        misPersonajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                misPersonajesMouseReleased(evt);
+            }
+        });
+        getContentPane().add(misPersonajes);
+        misPersonajes.setBounds(550, 610, 105, 23);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1280, 720);
@@ -240,6 +250,12 @@ public class InicioRegistrado extends javax.swing.JFrame {
        ar.mostrar();
        ar.setVisible(true);
     }//GEN-LAST:event_atributosregMouseReleased
+
+    private void misPersonajesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_misPersonajesMouseReleased
+        MisPersonajes mp = new MisPersonajes(this, true, resgistrado);
+        mp.mostrar();
+        mp.setVisible(true);
+    }//GEN-LAST:event_misPersonajesMouseReleased
     public void mostrar(){
         if(this.resgistrado.getPartidasJugadas()>=Registrado.getLIMITE_PARTIDAS()){
             crearPartida.setEnabled(false);
@@ -288,6 +304,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
     private javax.swing.JButton crearPartida;
     private javax.swing.JButton historial;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton misPersonajes;
     private javax.swing.JButton unirsePartida;
     // End of variables declaration//GEN-END:variables
 }

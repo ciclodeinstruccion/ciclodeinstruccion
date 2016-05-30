@@ -28,6 +28,10 @@ public class MiTanque extends MiPersonaje{
         this.bonusArmadura+=AUMENTAR_ARMADURA;
         this.gastarPuntosNivel();
     }
+    public void disminuirArmadura(){
+        this.bonusArmadura-=AUMENTAR_ARMADURA;
+        this.aumentarPuntosNivel();
+    }
     public Tanque getPersonaje() {
         return personaje;
     }
