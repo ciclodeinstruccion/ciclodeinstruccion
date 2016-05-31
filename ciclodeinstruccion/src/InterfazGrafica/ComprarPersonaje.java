@@ -59,6 +59,10 @@ public class ComprarPersonaje extends javax.swing.JDialog {
         daño = new javax.swing.JLabel();
         precio = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        habilidad3 = new javax.swing.JLabel();
+        habilidad1 = new javax.swing.JLabel();
+        habilidad2 = new javax.swing.JLabel();
         imagenP = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -90,7 +94,7 @@ public class ComprarPersonaje extends javax.swing.JDialog {
             }
         });
         getContentPane().add(comprar);
-        comprar.setBounds(300, 560, 260, 65);
+        comprar.setBounds(300, 600, 260, 65);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0,200));
         jPanel1.setLayout(null);
@@ -99,76 +103,100 @@ public class ComprarPersonaje extends javax.swing.JDialog {
         jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setText("Tipo");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(60, 40, 70, 40);
+        jLabel2.setBounds(60, 10, 70, 40);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("Nombre");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(60, 100, 96, 40);
+        jLabel1.setBounds(60, 70, 96, 40);
 
         tipo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         tipo.setForeground(new java.awt.Color(255, 51, 51));
         tipo.setText("tipo");
         jPanel1.add(tipo);
-        tipo.setBounds(310, 40, 250, 40);
+        tipo.setBounds(310, 10, 250, 40);
 
         nombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         nombre.setForeground(new java.awt.Color(255, 51, 51));
         nombre.setText("nombre");
         jPanel1.add(nombre);
-        nombre.setBounds(310, 100, 250, 40);
+        nombre.setBounds(310, 70, 250, 40);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 51, 51));
         jLabel3.setText("Precio");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(60, 160, 75, 40);
+        jLabel3.setBounds(60, 130, 75, 40);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 51, 51));
         jLabel4.setText("Vida");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(60, 220, 52, 40);
+        jLabel4.setBounds(60, 190, 52, 40);
 
         especial.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         especial.setForeground(new java.awt.Color(255, 51, 51));
         especial.setText("especial");
         jPanel1.add(especial);
-        especial.setBounds(310, 340, 230, 40);
+        especial.setBounds(310, 310, 230, 40);
 
         labelEspecial.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         labelEspecial.setForeground(new java.awt.Color(255, 51, 51));
         labelEspecial.setText("Especial");
         jPanel1.add(labelEspecial);
-        labelEspecial.setBounds(60, 340, 190, 40);
+        labelEspecial.setBounds(60, 310, 190, 40);
 
         vida.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         vida.setForeground(new java.awt.Color(255, 51, 51));
         vida.setText("vida");
         jPanel1.add(vida);
-        vida.setBounds(310, 220, 250, 40);
+        vida.setBounds(310, 190, 250, 40);
 
         daño.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         daño.setForeground(new java.awt.Color(255, 51, 51));
         daño.setText("daño");
         jPanel1.add(daño);
-        daño.setBounds(310, 280, 250, 40);
+        daño.setBounds(310, 250, 250, 40);
 
         precio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         precio.setForeground(new java.awt.Color(255, 51, 51));
         precio.setText("precio");
         jPanel1.add(precio);
-        precio.setBounds(310, 160, 250, 40);
+        precio.setBounds(310, 130, 250, 40);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 51, 51));
         jLabel5.setText("Daño");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(60, 280, 62, 40);
+        jLabel5.setBounds(60, 250, 62, 40);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel7.setText("Habilidades");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(60, 380, 138, 40);
+
+        habilidad3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        habilidad3.setForeground(new java.awt.Color(255, 51, 51));
+        habilidad3.setText("habilidad 3");
+        jPanel1.add(habilidad3);
+        habilidad3.setBounds(310, 460, 230, 30);
+
+        habilidad1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        habilidad1.setForeground(new java.awt.Color(255, 51, 51));
+        habilidad1.setText("habilidad 1");
+        jPanel1.add(habilidad1);
+        habilidad1.setBounds(310, 380, 230, 30);
+
+        habilidad2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        habilidad2.setForeground(new java.awt.Color(255, 51, 51));
+        habilidad2.setText("habilidad 2");
+        jPanel1.add(habilidad2);
+        habilidad2.setBounds(310, 420, 230, 30);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(580, 30, 550, 510);
+        jPanel1.setBounds(580, 30, 550, 530);
 
         imagenP.setText("jLabel7");
         imagenP.setMaximumSize(new java.awt.Dimension(300, 450));
@@ -197,7 +225,7 @@ public class ComprarPersonaje extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(700, 560, 260, 65);
+        jButton1.setBounds(700, 600, 260, 65);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel6);
@@ -276,6 +304,12 @@ public class ComprarPersonaje extends javax.swing.JDialog {
         this.nombre.setText(personaje.getNombre());
         this.tipo.setText(personaje.getTipo());
         this.precio.setText(Integer.toString(personaje.getPrecio()));
+        this.habilidad1.setText(personaje.getHabilidades().get(0).getNombre());
+        this.habilidad1.setToolTipText(personaje.getHabilidades().get(0).getDescripcion());
+        this.habilidad2.setText(personaje.getHabilidades().get(1).getNombre());
+        this.habilidad2.setToolTipText(personaje.getHabilidades().get(1).getDescripcion());
+        this.habilidad3.setText(personaje.getHabilidades().get(2).getNombre());
+        this.habilidad3.setToolTipText(personaje.getHabilidades().get(2).getDescripcion());
         if(personaje instanceof Tanque){
             Tanque t=(Tanque)personaje;
             this.labelEspecial.setText("Armadura");
@@ -340,6 +374,9 @@ public class ComprarPersonaje extends javax.swing.JDialog {
     private javax.swing.JButton comprar;
     private javax.swing.JLabel daño;
     private javax.swing.JLabel especial;
+    private javax.swing.JLabel habilidad1;
+    private javax.swing.JLabel habilidad2;
+    private javax.swing.JLabel habilidad3;
     private javax.swing.JLabel imagenP;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -348,6 +385,7 @@ public class ComprarPersonaje extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelEspecial;
     private javax.swing.JLabel nombre;

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.*;
 import BaseDeDatos.consultasBD;
+import Personaje.Tanque;
 
 /**
  *
@@ -37,7 +38,7 @@ public class Registrado extends Usuario{
     private ArrayList <MiPersonaje> misPersonajes;
     private int partidasJugadas;
     private Date ultimaEntrada;
-    private final static int LIMITE_PARTIDAS=10;
+    private final static int LIMITE_PARTIDAS=1000;
     
 
     public Registrado(int partidasJugadas, int nivel, int oro, int experiencia, int vitalidad, int fuerza, int especial, int inteligencia, int puntosNivel, String nombre, String correo, String contraseña,Date ultimaEntrada) {
@@ -75,11 +76,20 @@ public class Registrado extends Usuario{
         this.gastarPuntosExp();
     }
     
+    public void disminuirVidalidad(){
+        this.vitalidad--;
+        this.puntosNivel++;
+    }
     
     public void modificarFuerza(){
         
         this.fuerza++;
         this.gastarPuntosExp();
+    }
+    
+    public void disminuirFuerza(){
+        this.fuerza--;
+        this.puntosNivel++;
     }
     
     public void modificarEspecial(){
@@ -88,10 +98,20 @@ public class Registrado extends Usuario{
         this.gastarPuntosExp();
     }
     
+    public void disminuirEspecial(){
+        this.especial--;
+        this.puntosNivel++;
+    }
+    
     public void modificarInteligencia(){
         
         this.inteligencia++;
         this.gastarPuntosExp();
+    }
+    
+    public void disminuirInteligencia(){
+        this.inteligencia--;
+        this.puntosNivel++;
     }
     
     public void añadirPersonajes(MiPersonaje p){
@@ -101,6 +121,7 @@ public class Registrado extends Usuario{
     public void gastarPuntosExp(){
         puntosNivel--;
     }
+    
     
     public void gastarPuntosOro(int oroGastado){
         oro-=oroGastado;    
@@ -116,6 +137,30 @@ public class Registrado extends Usuario{
         
     }
     
+    public int buscarMiPersonaje(String nombre){
+        misPersonajes.sort(null);
+        int inicio=0;
+        int fin=misPersonajes.size()-1;
+        int medio;
+        int posicion=-1;
+        
+        while (inicio<=fin){
+            Tanque t=new Tanque(nombre);
+            MiTanque mt =new MiTanque(0, 0, 0, 0, 0, t, 0);
+            medio=(inicio+fin)/2;
+            if ((misPersonajes.get(medio).compareTo(mt))<0){
+                inicio=medio+1;
+            }
+            else if((misPersonajes.get(medio).compareTo(mt))>0){
+                fin=medio-1;
+            }
+            else{
+                posicion=medio;
+                inicio=fin+1;
+            }
+        }
+        return posicion;
+    }
     public void mostrarPersonajes(){
         
         String [][] tablaDeMisPersonajes = new String [misPersonajes.size()][3];

@@ -35,6 +35,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         gestionarUsuarios = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        estadisticas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,7 +77,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
 
         jButton2.setText("jButton2");
         getContentPane().add(jButton2);
-        jButton2.setBounds(110, 410, 73, 23);
+        jButton2.setBounds(110, 410, 75, 23);
 
         gestionarUsuarios.setText("Gestionar Usuarios");
         gestionarUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,7 +95,16 @@ public class InicioAdministrador extends javax.swing.JFrame {
 
         jButton4.setText("jButton4");
         getContentPane().add(jButton4);
-        jButton4.setBounds(340, 440, 73, 23);
+        jButton4.setBounds(340, 440, 75, 23);
+
+        estadisticas.setText("estadisticas");
+        estadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                estadisticasMouseReleased(evt);
+            }
+        });
+        getContentPane().add(estadisticas);
+        estadisticas.setBounds(120, 80, 180, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         jLabel1.setAutoscrolls(true);
@@ -136,6 +146,12 @@ public class InicioAdministrador extends javax.swing.JFrame {
         vu.setVisible(true);
     }//GEN-LAST:event_gestionarUsuariosMouseReleased
 
+    private void estadisticasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estadisticasMouseReleased
+        EstadisticasAvanzadas ea= new EstadisticasAvanzadas(this, true, admin);
+        ea.mostrar();
+        ea.setVisible(true);
+    }//GEN-LAST:event_estadisticasMouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -172,6 +188,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton estadisticas;
     private javax.swing.JButton gestionarUsuarios;
     private javax.swing.JButton historialPartidas;
     private javax.swing.JButton jButton2;

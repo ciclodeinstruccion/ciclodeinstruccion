@@ -261,9 +261,22 @@ public class Partida {
     public void finalizarPartida(Registrado ganador, MiPersonaje personaje){
         this.ganador=ganador;
         this.pGanador=personaje;
-        this.ganador.aumentarExperiencia(EXP);
-        this.ganador.aumentarOro(this.oroGanado());
-        this.pGanador.aumentarExperiencia(EXP);
+        if(ganador.getNombre().equals(this.jugador1.getNombre())){
+            this.jugador1.aumentarExperiencia(EXP);
+            this.jugador1.aumentarOro(this.oroGanado());
+            this.jugador1.getMisPersonajes().get(this.jugador1.buscarMiPersonaje(this.personaje1.getNombre())).aumentarExperiencia(EXP);
+            this.personaje1.aumentarExperiencia(EXP);
+            this.ganador=this.jugador1;
+            this.pGanador=this.personaje1;
+        }
+        else {
+            this.jugador2.aumentarExperiencia(EXP);
+            this.jugador2.aumentarOro(this.oroGanado());
+            this.jugador2.getMisPersonajes().get(this.jugador2.buscarMiPersonaje(this.personaje2.getNombre())).aumentarExperiencia(EXP);
+            this.personaje2.aumentarExperiencia(EXP);
+            this.ganador=this.jugador2;
+            this.pGanador=this.personaje2;
+        }
     }
     public int oroGanado(){
         int oro=0;

@@ -361,7 +361,7 @@ public class consultasBD {
                     mp1=new MiTanque(Float.parseFloat(rs.getString(3)),Float.parseFloat(rs.getString(4)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),Integer.parseInt(rs.getString(8)),(Tanque)this.buscarPersonaje(rs.getString(2)),Float.parseFloat(rs.getString(5)));
                 } else if(this.buscarPersonaje(rs.getString(2)).getTipo().equalsIgnoreCase("Asesino")){
                     mp1=new MiAsesino(Float.parseFloat(rs.getString(3)),Float.parseFloat(rs.getString(4)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),Integer.parseInt(rs.getString(8)),(Asesino)this.buscarPersonaje(rs.getString(2)),Float.parseFloat(rs.getString(5)));
-                } else if(this.buscarPersonaje(rs.getString(2)).getTipo().equalsIgnoreCase("Tanque")){
+                } else if(this.buscarPersonaje(rs.getString(2)).getTipo().equalsIgnoreCase("Fighter")){
                     mp1=new MiFighter(Float.parseFloat(rs.getString(3)),Float.parseFloat(rs.getString(4)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),Integer.parseInt(rs.getString(8)),(Fighter)this.buscarPersonaje(rs.getString(2)),Float.parseFloat(rs.getString(5)));
                 }
             }
@@ -669,5 +669,84 @@ public class consultasBD {
         }
         
         return partidas;
+    }
+    
+    public int partidasJugadas2Personajes(String personaje1, String personaje2){
+        int npartidas=0;
+        try{
+            ResultSet rs=  ConexionBD.instancia().getStatement().executeQuery("SELECT COUNT(identificador),personaje1,personaje2 FROM Partida GROUP BY personaje1,personaje2 HAVING personaje1='"+personaje1+"' AND personaje2='"+personaje2+"'");
+            if (rs.next()){
+                npartidas=Integer.parseInt(rs.getString(1));
+            }
+        }catch (SQLException e){
+            
+        }
+        return npartidas;
+    }
+    
+    public int partidasGanadasPersonaje(String personaje1, String personaje2, String ganador){
+        int npartidas=0;
+        try{
+            ResultSet rs=  ConexionBD.instancia().getStatement().executeQuery("SELECT COUNT(identificador),personajeGanador,personaje1,personaje2 FROM Partida GROUP BY personaje1,personaje2,personajeGanador HAVING personajeGanador='"+ganador+"' AND personaje1='"+personaje1+"' and personaje2='"+personaje2+"'");
+            if (rs.next()){
+                npartidas=Integer.parseInt(rs.getString(1));
+            }
+        }catch (SQLException e){
+            
+        }
+        return npartidas;
+    }
+    
+    public int partidasJugadas1Personaje1(String personaje){
+        int npartidas=0;
+        try{
+            ResultSet rs=  ConexionBD.instancia().getStatement().executeQuery("SELECT COUNT(identificador) FROM Partida GROUP BY personaje1,finalizada HAVING personaje1='"+personaje+"' and finalizada=1");
+            if (rs.next()){
+                npartidas=Integer.parseInt(rs.getString(1));
+            }
+        }catch (SQLException e){
+            
+        }
+        return npartidas;
+    }
+    
+    public int partidasJugadas1Personaje2 (String personaje){
+        int npartidas=0;
+        try{
+            ResultSet rs=  ConexionBD.instancia().getStatement().executeQuery("SELECT COUNT(identificador) FROM Partida GROUP BY personaje2 HAVING personaje2='"+personaje+"'");
+            if (rs.next()){
+                npartidas=Integer.parseInt(rs.getString(1));
+            }
+        }catch (SQLException e){
+            
+        }
+        return npartidas;
+    }
+    
+    public int partidasGanadas1Personaje (String personaje){
+        int npartidas=0;
+        try{
+            ResultSet rs=  ConexionBD.instancia().getStatement().executeQuery("SELECT COUNT(identificador) FROM Partida GROUP BY personajeGanador HAVING personajeGanador='"+personaje+"'");
+            if (rs.next()){
+                npartidas=Integer.parseInt(rs.getString(1));
+            }
+        }catch (SQLException e){
+            
+        }
+        return npartidas;
+    }
+    
+    
+    public ArrayList <String> nombreTodosPersonajes(){
+        ArrayList <String> nombres=new ArrayList();
+            try{
+                ResultSet rs= ConexionBD.instancia().getStatement().executeQuery("Select nombre from Personajes order by nombre");
+                while(rs.next()){
+                    nombres.add(rs.getString(1));
+                }
+            } catch (SQLException e){
+                
+            }
+        return  nombres;
     }
 }

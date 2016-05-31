@@ -27,6 +27,10 @@ public class MiAsesino extends MiPersonaje{
         this.bonusEsquivar+=AUMENTAR_ESQUIVAR;
         this.gastarPuntosNivel();
     }
+    public void disminuirEsquivar(){
+        this.bonusEsquivar-=AUMENTAR_ESQUIVAR;
+        this.aumentarPuntosNivel();
+    }
     public Asesino getPersonaje() {
         return personaje;
     }

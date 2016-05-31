@@ -11,7 +11,7 @@ import Personaje.Personajeable;
  *
  * @author alumno
  */
-public abstract class MiPersonaje implements Personajeable{
+public abstract class MiPersonaje implements Personajeable,Comparable <MiPersonaje>{
     private float bonusVida;
     private float bonusDaño;
     private int nivel;
@@ -38,13 +38,24 @@ public abstract class MiPersonaje implements Personajeable{
     public void gastarPuntosNivel(){
         this.puntosNivel--;
     }
+    public void aumentarPuntosNivel(){
+        this.puntosNivel++;
+    }
     public void aumentarBonusVida(){
         this.bonusVida+=AUMENTA_VIDA;
         this.gastarPuntosNivel();
     }
+    public void disminuirBonusVida(){
+        this.bonusVida-=AUMENTA_VIDA;
+        puntosNivel++;
+    }
     public void aumentarBonusDaño(){
         this.bonusDaño+=AUMENTA_DAÑO;
         this.gastarPuntosNivel();
+    }
+    public void disminuirBonusDaño(){
+        this.bonusDaño-=AUMENTA_DAÑO;
+        puntosNivel++;
     }
     public void subeNivel(){
         nivel++;
@@ -90,7 +101,10 @@ public abstract class MiPersonaje implements Personajeable{
         this.puntosNivel = puntosNivel;
     }
     
-    
+    @Override
+    public int compareTo(MiPersonaje p) {
+        return this.getNombre().compareTo(p.getNombre());
+    }
     
     
     

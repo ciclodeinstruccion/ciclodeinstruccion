@@ -28,6 +28,10 @@ public class MiFighter extends MiPersonaje{
         this.bonusCritico+=this.AUMENTAR_CRITICO;
         this.gastarPuntosNivel();
     }
+    public void disminuirCritico(){
+        this.bonusCritico-=this.AUMENTAR_CRITICO;
+        this.aumentarPuntosNivel();
+    }
     public Fighter getPersonaje() {
         return personaje;
     }
