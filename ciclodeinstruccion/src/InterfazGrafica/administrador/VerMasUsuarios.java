@@ -5,18 +5,26 @@
  */
 package InterfazGrafica.administrador;
 
+import ciclodeinstruccion.Usuarios.Registrado;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author alumno
  */
-public class VerMasUsuarios extends javax.swing.JDialog {
+public class VerMasUsuarios extends javax.swing.JDialog{
 
     /**
      * Creates new form VerMasUsuarios
      */
-    public VerMasUsuarios(java.awt.Frame parent, boolean modal) {
+    
+    String cabecera []={"Nombre","Tipo","Vida","Daño","Especial","Nivel","Experiencia","Puntos de nivel"};
+    Registrado r;
+    DefaultTableModel tabla;
+    public VerMasUsuarios(java.awt.Frame parent, boolean modal, Registrado r) {
         super(parent, modal);
         initComponents();
+        this.r=r;
     }
 
     /**
@@ -28,25 +36,80 @@ public class VerMasUsuarios extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        misPersonajes = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        nombreUsuario = new javax.swing.JTextField();
+        volver = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        misPersonajes.setEditingColumn(0);
+        misPersonajes.setEditingRow(0);
+        misPersonajes.setFocusable(false);
+        jScrollPane1.setViewportView(misPersonajes);
+
+        jLabel1.setText("Usuario");
+
+        volver.setText("Volver");
+        volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                volverMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel1)
+                        .addGap(93, 93, 93)
+                        .addComponent(nombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(volver)))
+                .addContainerGap(215, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(nombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addComponent(volver)
+                .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
+        this.setVisible(false);
+    }//GEN-LAST:event_volverMouseReleased
+
     /**
      * @param args the command line arguments
      */
+    
+    public void mostrar(){
+        nombreUsuario.setEditable(false);
+        nombreUsuario.setText(r.getNombre());
+        
+        tabla=new DefaultTableModel(this.r.tablaMisPersonajes(), cabecera);
+        misPersonajes.setModel(tabla); 
+    }
+    
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -74,7 +137,7 @@ public class VerMasUsuarios extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerMasUsuarios dialog = new VerMasUsuarios(new javax.swing.JFrame(), true);
+                VerMasUsuarios dialog = new VerMasUsuarios(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -87,5 +150,10 @@ public class VerMasUsuarios extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable misPersonajes;
+    private javax.swing.JTextField nombreUsuario;
+    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }

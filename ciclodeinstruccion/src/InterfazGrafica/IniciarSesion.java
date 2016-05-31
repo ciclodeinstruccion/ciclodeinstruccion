@@ -6,7 +6,7 @@
 package InterfazGrafica;
 
 import InterfazGrafica.registrado.InicioRegistrado;
-import InterfazGrafica.registrado.InicioAdministrador;
+import InterfazGrafica.administrador.InicioAdministrador;
 import ciclodeinstruccion.Usuarios.Administrador;
 import ciclodeinstruccion.Usuarios.Registrado;
 import BaseDeDatos.*;

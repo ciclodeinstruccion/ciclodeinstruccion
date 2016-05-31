@@ -5,8 +5,10 @@
  */
 package InterfazGrafica.administrador;
 
+import BaseDeDatos.ConexionBD;
 import ciclodeinstruccion.Usuarios.Administrador;
 import BaseDeDatos.consultasBD;
+import ciclodeinstruccion.Usuarios.Registrado;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,6 +28,10 @@ public class VerUsuarios extends javax.swing.JDialog {
         initComponents();
         this.admin=admin;
     }
+    
+    public void mostrar(java.awt.event.MouseEvent evt){
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,6 +46,7 @@ public class VerUsuarios extends javax.swing.JDialog {
         tablaUsuarios = new javax.swing.JTable();
         masInformacion = new javax.swing.JButton();
         volver = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,20 +79,28 @@ public class VerUsuarios extends javax.swing.JDialog {
             }
         });
 
+        jButton1.setText("Modificar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(masInformacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(61, 61, 61)
+                        .addComponent(volver))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(masInformacion)
-                .addGap(79, 79, 79)
-                .addComponent(volver)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,7 +110,8 @@ public class VerUsuarios extends javax.swing.JDialog {
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(masInformacion)
-                    .addComponent(volver))
+                    .addComponent(volver)
+                    .addComponent(jButton1))
                 .addGap(92, 92, 92))
         );
 
@@ -111,8 +127,20 @@ public class VerUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_masInformacionActionPerformed
 
     private void masInformacionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masInformacionMouseReleased
-        
+        if(tablaUsuarios.getSelectedRow()>=-1){
+            Registrado r = consultasBD.instancia().buscarRegistrado(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0).toString());
+            VerMasUsuarios vmu = new VerMasUsuarios(null, true, r);
+            vmu.mostrar();
+            vmu.setVisible(true);
+        }
     }//GEN-LAST:event_masInformacionMouseReleased
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        
+        Registrado r = consultasBD.instancia().buscarRegistrado(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0).toString()); 
+        ModificarRegistrado mr = new ModificarRegistrado(null, true, r);
+        mr.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseReleased
     public void mostrar(){
         String [][] t=admin.tablaUsuarios();
         tabla=new DefaultTableModel(t, cabecera);
@@ -161,6 +189,7 @@ public class VerUsuarios extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton masInformacion;
     private javax.swing.JTable tablaUsuarios;
