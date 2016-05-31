@@ -257,7 +257,7 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
         nombreP.setForeground(new java.awt.Color(255, 102, 51));
         nombreP.setText("mi nombre");
         jPanel1.add(nombreP);
-        nombreP.setBounds(340, 20, 129, 60);
+        nombreP.setBounds(340, 20, 250, 60);
 
         nivel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         nivel.setForeground(new java.awt.Color(255, 102, 51));
@@ -580,6 +580,7 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
         experienciaP.setText(Integer.toString(miPersonaje.getExperiencia()));
         vidaP.setText(Float.toString(miPersonaje.getVidaBase()));
         dañoP.setText(Float.toString(miPersonaje.getDañoBase()));
+        this.repaint();
         Image img=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.miPersonaje.getNombre()+".jpg")).getImage();
         imagenPersonaje.setIcon(new ImageIcon(img));
         float aEspecial=0;

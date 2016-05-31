@@ -50,11 +50,11 @@ public class InicioRegistrado extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
-        oro = new javax.swing.JLabel();
         nivel = new javax.swing.JLabel();
         experiencia = new javax.swing.JLabel();
         puntos = new javax.swing.JLabel();
         pJugadas = new javax.swing.JLabel();
+        oro = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -251,12 +251,6 @@ public class InicioRegistrado extends javax.swing.JFrame {
         jPanel1.add(nombre);
         nombre.setBounds(290, 10, 220, 60);
 
-        oro.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        oro.setForeground(new java.awt.Color(255, 102, 51));
-        oro.setText("Oro");
-        jPanel1.add(oro);
-        oro.setBounds(290, 90, 210, 60);
-
         nivel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         nivel.setForeground(new java.awt.Color(255, 102, 51));
         nivel.setText("Nivel");
@@ -280,6 +274,13 @@ public class InicioRegistrado extends javax.swing.JFrame {
         pJugadas.setText("Jugadas");
         jPanel1.add(pJugadas);
         pJugadas.setBounds(290, 450, 97, 60);
+
+        oro.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        oro.setForeground(new java.awt.Color(255, 102, 51));
+        oro.setText("Oro");
+        oro.setToolTipText("");
+        jPanel1.add(oro);
+        oro.setBounds(290, 90, 210, 60);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(180, 90, 520, 530);
@@ -420,8 +421,10 @@ public class InicioRegistrado extends javax.swing.JFrame {
         nivel.setText(Integer.toString(resgistrado.getNivel()));
         experiencia.setText(Integer.toString(resgistrado.getExperiencia()));
         oro.setText(Integer.toString(resgistrado.getOro()));
+
         puntos.setText(Integer.toString(resgistrado.getPuntosNivel()));
         pJugadas.setText(Integer.toString(resgistrado.getPartidasJugadas()));
+        this.repaint();
     }
     /**
      * @param args the command line arguments

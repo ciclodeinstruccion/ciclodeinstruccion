@@ -53,6 +53,11 @@ public class VerHistorial extends javax.swing.JDialog {
         getContentPane().setLayout(null);
 
         jScrollPane1.setBackground(new java.awt.Color(0,0 ,0,0 ));
+        jScrollPane1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jScrollPane1MouseWheelMoved(evt);
+            }
+        });
 
         tablaPartidas.setBackground(new java.awt.Color(0, 0, 0,130));
         tablaPartidas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -163,6 +168,10 @@ public class VerHistorial extends javax.swing.JDialog {
     private void verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_verActionPerformed
+
+    private void jScrollPane1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane1MouseWheelMoved
+        jScrollPane1.repaint();
+    }//GEN-LAST:event_jScrollPane1MouseWheelMoved
     public void mostrar(){
         tabla=new DefaultTableModel(this.registrado.tablaHistorialPartidas(), cabecera);
         tablaPartidas.setModel(tabla);
