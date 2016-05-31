@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfazGrafica;
+package InterfazGrafica.registrado;
 
+import InterfazGrafica.registrado.Tienda;
+import InterfazGrafica.registrado.UnirsePartida;
+import InterfazGrafica.registrado.VerHistorial;
+import InterfazGrafica.registrado.MisPersonajes;
 import ciclodeinstruccion.Usuarios.Registrado;
 import javax.swing.JOptionPane;
 
@@ -41,7 +45,6 @@ public class InicioRegistrado extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
@@ -147,7 +150,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(atributosreg);
-        atributosreg.setBounds(540, 560, 129, 23);
+        atributosreg.setBounds(540, 560, 127, 23);
 
         misPersonajes.setText("mis personajes");
         misPersonajes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -156,7 +159,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(misPersonajes);
-        misPersonajes.setBounds(550, 610, 105, 23);
+        misPersonajes.setBounds(550, 610, 103, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel1);

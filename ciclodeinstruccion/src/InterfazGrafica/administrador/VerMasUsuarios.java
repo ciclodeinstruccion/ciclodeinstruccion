@@ -3,27 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfazGrafica;
-
-import ciclodeinstruccion.Usuarios.Administrador;
-import javax.swing.table.DefaultTableModel;
+package InterfazGrafica.administrador;
 
 /**
  *
- * @author Rubén
+ * @author alumno
  */
-public class EstadisticasAvanzadas extends javax.swing.JDialog {
+public class VerMasUsuarios extends javax.swing.JDialog {
 
     /**
-     * Creates new form EstadisticasAvanzadas
+     * Creates new form VerMasUsuarios
      */
-    String cabecera [];
-    DefaultTableModel tabla;
-    Administrador admin;
-    public EstadisticasAvanzadas(java.awt.Frame parent, boolean modal,Administrador a) {
+    public VerMasUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.admin=a;
     }
 
     /**
@@ -35,37 +28,22 @@ public class EstadisticasAvanzadas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        estadisticas = new javax.swing.JTable();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jScrollPane1.setViewportView(estadisticas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 877, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void mostrar(){
-        cabecera=admin.cabeceraEstadisticas();
-        tabla=new DefaultTableModel(this.admin.tablaEstadisticas(), cabecera);
-        estadisticas.setModel(tabla);
-    }
+
     /**
      * @param args the command line arguments
      */
@@ -83,20 +61,20 @@ public class EstadisticasAvanzadas extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EstadisticasAvanzadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerMasUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EstadisticasAvanzadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerMasUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EstadisticasAvanzadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerMasUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EstadisticasAvanzadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerMasUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                EstadisticasAvanzadas dialog = new EstadisticasAvanzadas(new javax.swing.JFrame(), true,null);
+                VerMasUsuarios dialog = new VerMasUsuarios(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -109,7 +87,5 @@ public class EstadisticasAvanzadas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable estadisticas;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

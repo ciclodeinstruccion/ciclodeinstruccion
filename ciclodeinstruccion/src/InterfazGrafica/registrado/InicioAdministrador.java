@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfazGrafica;
+package InterfazGrafica.registrado;
 
+import InterfazGrafica.administrador.EstadisticasAvanzadas;
+import InterfazGrafica.administrador.VerHistorialAdministrador;
+import InterfazGrafica.administrador.VerUsuarios;
 import ciclodeinstruccion.Usuarios.Administrador;
 
 /**
@@ -39,9 +42,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
@@ -77,7 +78,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
 
         jButton2.setText("jButton2");
         getContentPane().add(jButton2);
-        jButton2.setBounds(110, 410, 75, 23);
+        jButton2.setBounds(110, 410, 73, 23);
 
         gestionarUsuarios.setText("Gestionar Usuarios");
         gestionarUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -95,12 +96,17 @@ public class InicioAdministrador extends javax.swing.JFrame {
 
         jButton4.setText("jButton4");
         getContentPane().add(jButton4);
-        jButton4.setBounds(340, 440, 75, 23);
+        jButton4.setBounds(340, 440, 73, 23);
 
         estadisticas.setText("estadisticas");
         estadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 estadisticasMouseReleased(evt);
+            }
+        });
+        estadisticas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estadisticasActionPerformed(evt);
             }
         });
         getContentPane().add(estadisticas);
@@ -151,6 +157,10 @@ public class InicioAdministrador extends javax.swing.JFrame {
         ea.mostrar();
         ea.setVisible(true);
     }//GEN-LAST:event_estadisticasMouseReleased
+
+    private void estadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadisticasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_estadisticasActionPerformed
 
     /**
      * @param args the command line arguments

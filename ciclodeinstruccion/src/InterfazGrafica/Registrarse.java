@@ -5,6 +5,7 @@
  */
 package InterfazGrafica;
 
+import InterfazGrafica.registrado.InicioRegistrado;
 import javax.swing.JOptionPane;
 import BaseDeDatos.consultasBD;
 import Excepciones.ErrorAñadirRegistrado;

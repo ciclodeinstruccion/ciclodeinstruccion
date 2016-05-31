@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfazGrafica;
+package InterfazGrafica.administrador;
 
 import ciclodeinstruccion.Usuarios.Administrador;
 import BaseDeDatos.consultasBD;
@@ -54,6 +54,16 @@ public class VerUsuarios extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tablaUsuarios);
 
         masInformacion.setText("masInformacion");
+        masInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                masInformacionMouseReleased(evt);
+            }
+        });
+        masInformacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                masInformacionActionPerformed(evt);
+            }
+        });
 
         volver.setText("Volver");
         volver.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -95,6 +105,14 @@ public class VerUsuarios extends javax.swing.JDialog {
     private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
         this.setVisible(false);
     }//GEN-LAST:event_volverMouseReleased
+
+    private void masInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masInformacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_masInformacionActionPerformed
+
+    private void masInformacionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masInformacionMouseReleased
+        
+    }//GEN-LAST:event_masInformacionMouseReleased
     public void mostrar(){
         String [][] t=admin.tablaUsuarios();
         tabla=new DefaultTableModel(t, cabecera);

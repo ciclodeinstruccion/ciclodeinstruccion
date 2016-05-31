@@ -3,29 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfazGrafica;
+package InterfazGrafica.registrado;
 
+import InterfazGrafica.registrado.VerPartida;
 import ciclodeinstruccion.Usuarios.Registrado;
 import javax.swing.table.DefaultTableModel;
 import BaseDeDatos.consultasBD;
-import Personaje.Personaje;
+import ciclodeinstruccion.Partida;
 
 /**
  *
  * @author Rubén
  */
-public class Tienda extends javax.swing.JDialog {
+public class VerHistorial extends javax.swing.JDialog {
 
     /**
-     * Creates new form Tienda
+     * Creates new form VerHistorial
      */
-    String cabecera []={"Tipo","Nombre","Precio"};
+    String cabecera []={"Identificador","Jugador 1","Personaje 1","Jugador 2","Personaje 2","Jugador ganador","Personaje ganador"};
     DefaultTableModel tabla;
     Registrado registrado;
-    public Tienda(java.awt.Frame parent, boolean modal,Registrado r) {
+    InicioRegistrado ir;
+    public VerHistorial(java.awt.Frame parent, boolean modal,Registrado r,InicioRegistrado ir) {
         super(parent, modal);
         initComponents();
         this.registrado=r;
+        this.ir=ir;
     }
 
     /**
@@ -38,57 +41,56 @@ public class Tienda extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaPersonajes = new javax.swing.JTable();
-        info = new javax.swing.JButton();
+        tablaPartidas = new javax.swing.JTable();
+        ver = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
+        jScrollPane1.setBackground(new java.awt.Color(0,0 ,0,0 ));
 
-        tablaPersonajes.setBackground(new java.awt.Color(0, 0, 0,140));
-        tablaPersonajes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        tablaPersonajes.setForeground(new java.awt.Color(255, 102, 102));
-        jScrollPane1.setViewportView(tablaPersonajes);
+        tablaPartidas.setBackground(new java.awt.Color(0, 0, 0,130));
+        tablaPartidas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tablaPartidas.setForeground(new java.awt.Color(255, 51, 51));
+        jScrollPane1.setViewportView(tablaPartidas);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(250, 190, 770, 220);
+        jScrollPane1.setBounds(215, 160, 840, 200);
         jScrollPane1.getViewport().setOpaque(false);
         jScrollPane1.setBorder(null);
         jScrollPane1.setViewportBorder(null);
 
-        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas_informacion.png"))); // NOI18N
-        info.setBorder(null);
-        info.setBorderPainted(false);
-        info.setContentAreaFilled(false);
-        info.setFocusPainted(false);
-        info.addMouseListener(new java.awt.event.MouseAdapter() {
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/ver_partida.png"))); // NOI18N
+        ver.setBorder(null);
+        ver.setBorderPainted(false);
+        ver.setContentAreaFilled(false);
+        ver.setFocusPainted(false);
+        ver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                infoMouseEntered(evt);
+                verMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                infoMouseExited(evt);
+                verMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                infoMousePressed(evt);
+                verMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                masInfo(evt);
+                ver(evt);
             }
         });
-        info.addActionListener(new java.awt.event.ActionListener() {
+        ver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                infoActionPerformed(evt);
+                verActionPerformed(evt);
             }
         });
-        getContentPane().add(info);
-        info.setBounds(330, 480, 260, 65);
+        getContentPane().add(ver);
+        ver.setBounds(300, 450, 260, 65);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
         jButton1.setBorder(null);
@@ -110,7 +112,7 @@ public class Tienda extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(670, 480, 260, 65);
+        jButton1.setBounds(710, 450, 260, 65);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -119,31 +121,28 @@ public class Tienda extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void masInfo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masInfo
-        if(tablaPersonajes.getSelectedRow()>-1){
-            Personaje p=consultasBD.instancia().buscarPersonaje(tablaPersonajes.getValueAt(tablaPersonajes.getSelectedRow(), 1).toString());
-            ComprarPersonaje cp=new ComprarPersonaje(null, true, registrado, p);
-            cp.mostrar();
+    private void ver(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ver
+        if(tablaPartidas.getSelectedRow()>-1){
+            ver.setEnabled(false);
+            Partida p= consultasBD.instancia().buscarUnaPartidaFinalizadaPorId(Integer.parseInt(tablaPartidas.getValueAt(tablaPartidas.getSelectedRow(), 0).toString()));
+            VerPartida vp=new VerPartida(null, true, p,ir);
+            vp.mostrar();
             this.setVisible(false);
-            cp.setVisible(true);
-        }
-    }//GEN-LAST:event_masInfo
+            vp.setVisible(true);
+        }      
+    }//GEN-LAST:event_ver
 
-    private void infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_infoActionPerformed
+    private void verMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMousePressed
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/ver_partida.png")));
+    }//GEN-LAST:event_verMousePressed
 
-    private void infoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoMousePressed
-        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/mas_informacion.png")));
-    }//GEN-LAST:event_infoMousePressed
+    private void verMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMouseExited
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/ver_partida.png")));
+    }//GEN-LAST:event_verMouseExited
 
-    private void infoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoMouseExited
-        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas_informacion.png")));
-    }//GEN-LAST:event_infoMouseExited
-
-    private void infoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoMouseEntered
-        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/mas_informacion.png")));
-    }//GEN-LAST:event_infoMouseEntered
+    private void verMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMouseEntered
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/ver_partida.png")));
+    }//GEN-LAST:event_verMouseEntered
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         this.setVisible(false);
@@ -160,9 +159,13 @@ public class Tienda extends javax.swing.JDialog {
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
     }//GEN-LAST:event_jButton1MouseEntered
+
+    private void verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verActionPerformed
     public void mostrar(){
-        tabla=new DefaultTableModel(this.registrado.tablaPersonajesComprables(), cabecera);
-        tablaPersonajes.setModel(tabla);
+        tabla=new DefaultTableModel(this.registrado.tablaHistorialPartidas(), cabecera);
+        tablaPartidas.setModel(tabla);
     }
     /**
      * @param args the command line arguments
@@ -181,20 +184,20 @@ public class Tienda extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Tienda dialog = new Tienda(new javax.swing.JFrame(), true,null);
+                VerHistorial dialog = new VerHistorial(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -207,10 +210,10 @@ public class Tienda extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton info;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaPersonajes;
+    private javax.swing.JTable tablaPartidas;
+    private javax.swing.JButton ver;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfazGrafica;
+package InterfazGrafica.administrador;
 
 import BaseDeDatos.consultasBD;
 import ciclodeinstruccion.Partida;
@@ -45,9 +45,7 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
@@ -95,9 +93,6 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
         volver.setBounds(420, 490, 260, 65);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(1280, 720));
-        jLabel1.setMinimumSize(new java.awt.Dimension(1280, 720));
-        jLabel1.setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1280, 720);
 

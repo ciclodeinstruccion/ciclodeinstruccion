@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfazGrafica;
+package InterfazGrafica.registrado;
 
 import MiPersonaje.MiPersonaje;
 import ciclodeinstruccion.Usuarios.Registrado;
