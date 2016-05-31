@@ -42,124 +42,56 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        imagenPersonaje = new javax.swing.JLabel();
+        volver = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        labelEspecialP = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        menosVida = new javax.swing.JButton();
+        menosDaño = new javax.swing.JButton();
+        menosEspecial = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         labelEspecial = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        nombreP = new javax.swing.JLabel();
+        nivel = new javax.swing.JLabel();
+        experienciaP = new javax.swing.JLabel();
+        vidaP = new javax.swing.JLabel();
+        especialP = new javax.swing.JLabel();
+        dañoP = new javax.swing.JLabel();
+        puntosNivel = new javax.swing.JLabel();
         vida = new javax.swing.JLabel();
         daño = new javax.swing.JLabel();
         especial = new javax.swing.JLabel();
         masVida = new javax.swing.JButton();
         masDaño = new javax.swing.JButton();
         masEspecial = new javax.swing.JButton();
-        menosVida = new javax.swing.JButton();
-        menosDaño = new javax.swing.JButton();
-        menosEspecial = new javax.swing.JButton();
-        puntosNivel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        labelEspecialP = new javax.swing.JLabel();
-        nombreP = new javax.swing.JLabel();
-        nivel = new javax.swing.JLabel();
-        dañoP = new javax.swing.JLabel();
-        vidaP = new javax.swing.JLabel();
-        especialP = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        experienciaP = new javax.swing.JLabel();
-        imagenPersonaje = new javax.swing.JLabel();
-        volver = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel1.setText("Bonus de vida");
-
-        jLabel2.setText("Bonus de daño");
-
-        labelEspecial.setText("Especial");
-
-        jLabel4.setText("Puntos de nivel");
-
-        vida.setText("miVida");
-
-        daño.setText("miDaño");
-
-        especial.setText("miEspecial");
-
-        masVida.setText("+");
-        masVida.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                masVidaMouseReleased(evt);
-            }
-        });
-
-        masDaño.setText("+");
-        masDaño.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                masDañoMouseReleased(evt);
-            }
-        });
-
-        masEspecial.setText("+");
-        masEspecial.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                masEspecialMouseReleased(evt);
-            }
-        });
-
-        menosVida.setText("-");
-        menosVida.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                menosVidaMouseReleased(evt);
-            }
-        });
-
-        menosDaño.setText("-");
-        menosDaño.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                menosDañoMouseReleased(evt);
-            }
-        });
-
-        menosEspecial.setText("-");
-        menosEspecial.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                menosEspecialMouseReleased(evt);
-            }
-        });
-
-        puntosNivel.setText("puntos nivel");
-
-        jLabel3.setText("Nombre");
-
-        jLabel5.setText("Nivel");
-
-        jLabel6.setText("Daño");
-
-        jLabel7.setText("Vida");
-
-        labelEspecialP.setText("Especial");
-
-        nombreP.setText("mi nombre");
-
-        nivel.setText("mi nivel");
-
-        dañoP.setText("mi daño");
-
-        vidaP.setText("mi vida");
-
-        especialP.setText("mi especial");
-
-        jLabel8.setText("Experiencia");
-
-        experienciaP.setText("mi experiencia");
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
 
         imagenPersonaje.setMaximumSize(new java.awt.Dimension(300, 450));
         imagenPersonaje.setMinimumSize(new java.awt.Dimension(300, 450));
         imagenPersonaje.setPreferredSize(new java.awt.Dimension(300, 450));
+        getContentPane().add(imagenPersonaje);
+        imagenPersonaje.setBounds(169, 92, 300, 450);
 
-        volver.setText("Volver");
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        volver.setBorder(null);
+        volver.setBorderPainted(false);
+        volver.setContentAreaFilled(false);
+        volver.setFocusPainted(false);
         volver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 volverMouseReleased(evt);
@@ -170,132 +102,226 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
                 volverActionPerformed(evt);
             }
         });
+        getContentPane().add(volver);
+        volver.setBounds(190, 590, 260, 65);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addComponent(imagenPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(menosVida)
-                            .addComponent(menosDaño)
-                            .addComponent(menosEspecial))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labelEspecial)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(especial))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(daño))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(87, 87, 87)
-                                        .addComponent(vida)))
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(masVida)
-                                    .addComponent(masDaño)
-                                    .addComponent(masEspecial)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(34, 34, 34)
-                                .addComponent(puntosNivel)))
-                        .addGap(136, 136, 136))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5))
-                                .addGap(37, 37, 37))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel6)
-                                    .addComponent(labelEspecialP))
-                                .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(experienciaP)
-                            .addComponent(nivel)
-                            .addComponent(nombreP)
-                            .addComponent(vidaP)
-                            .addComponent(dañoP)
-                            .addComponent(especialP))
-                        .addGap(264, 264, 264))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(451, 451, 451)
-                .addComponent(volver)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(nombreP))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(nivel))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(experienciaP))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(vidaP))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(dañoP))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelEspecialP)
-                            .addComponent(especialP))
-                        .addGap(130, 130, 130)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(puntosNivel))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(vida)
-                            .addComponent(masVida)
-                            .addComponent(menosVida))
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(daño)
-                            .addComponent(masDaño)
-                            .addComponent(menosDaño))
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelEspecial)
-                            .addComponent(especial)
-                            .addComponent(masEspecial)
-                            .addComponent(menosEspecial)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(imagenPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(volver)
-                .addGap(73, 73, 73))
-        );
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0,200));
+        jPanel1.setLayout(null);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel3.setText("Nombre");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(130, 20, 96, 60);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel5.setText("Nivel");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(130, 70, 61, 60);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel8.setText("Experiencia");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(130, 120, 139, 60);
+
+        labelEspecialP.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        labelEspecialP.setForeground(new java.awt.Color(255, 102, 51));
+        labelEspecialP.setText("Especial");
+        jPanel1.add(labelEspecialP);
+        labelEspecialP.setBounds(130, 270, 140, 60);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel6.setText("Daño");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(130, 220, 62, 60);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel7.setText("Vida");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(130, 170, 52, 60);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel4.setText("Puntos de nivel");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(130, 320, 183, 60);
+
+        menosVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png"))); // NOI18N
+        menosVida.setBorder(null);
+        menosVida.setBorderPainted(false);
+        menosVida.setContentAreaFilled(false);
+        menosVida.setFocusPainted(false);
+        menosVida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                menosVidaMouseReleased(evt);
+            }
+        });
+        menosVida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menosVidaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(menosVida);
+        menosVida.setBounds(30, 380, 80, 65);
+
+        menosDaño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png"))); // NOI18N
+        menosDaño.setBorder(null);
+        menosDaño.setBorderPainted(false);
+        menosDaño.setContentAreaFilled(false);
+        menosDaño.setFocusPainted(false);
+        menosDaño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                menosDañoMouseReleased(evt);
+            }
+        });
+        menosDaño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menosDañoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(menosDaño);
+        menosDaño.setBounds(30, 460, 80, 65);
+
+        menosEspecial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png"))); // NOI18N
+        menosEspecial.setBorder(null);
+        menosEspecial.setBorderPainted(false);
+        menosEspecial.setContentAreaFilled(false);
+        menosEspecial.setFocusPainted(false);
+        menosEspecial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                menosEspecialMouseReleased(evt);
+            }
+        });
+        jPanel1.add(menosEspecial);
+        menosEspecial.setBounds(30, 540, 80, 65);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel1.setText("Bonus de vida");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(140, 390, 166, 60);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel2.setText("Bonus de daño");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(140, 470, 175, 60);
+
+        labelEspecial.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        labelEspecial.setForeground(new java.awt.Color(255, 102, 51));
+        labelEspecial.setText("Especial");
+        jPanel1.add(labelEspecial);
+        labelEspecial.setBounds(140, 550, 270, 60);
+
+        nombreP.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nombreP.setForeground(new java.awt.Color(255, 102, 51));
+        nombreP.setText("mi nombre");
+        jPanel1.add(nombreP);
+        nombreP.setBounds(340, 20, 129, 60);
+
+        nivel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nivel.setForeground(new java.awt.Color(255, 102, 51));
+        nivel.setText("mi nivel");
+        jPanel1.add(nivel);
+        nivel.setBounds(340, 70, 94, 60);
+
+        experienciaP.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        experienciaP.setForeground(new java.awt.Color(255, 102, 51));
+        experienciaP.setText("mi experiencia");
+        jPanel1.add(experienciaP);
+        experienciaP.setBounds(340, 120, 175, 60);
+
+        vidaP.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        vidaP.setForeground(new java.awt.Color(255, 102, 51));
+        vidaP.setText("mi vida");
+        jPanel1.add(vidaP);
+        vidaP.setBounds(340, 170, 87, 60);
+
+        especialP.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        especialP.setForeground(new java.awt.Color(255, 102, 51));
+        especialP.setText("mi especial");
+        jPanel1.add(especialP);
+        especialP.setBounds(340, 270, 133, 60);
+
+        dañoP.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        dañoP.setForeground(new java.awt.Color(255, 102, 51));
+        dañoP.setText("mi daño");
+        jPanel1.add(dañoP);
+        dañoP.setBounds(340, 220, 96, 60);
+
+        puntosNivel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        puntosNivel.setForeground(new java.awt.Color(255, 102, 51));
+        puntosNivel.setText("puntos nivel");
+        jPanel1.add(puntosNivel);
+        puntosNivel.setBounds(340, 320, 146, 60);
+
+        vida.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        vida.setForeground(new java.awt.Color(255, 102, 51));
+        vida.setText("miVida");
+        jPanel1.add(vida);
+        vida.setBounds(410, 390, 82, 60);
+
+        daño.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        daño.setForeground(new java.awt.Color(255, 102, 51));
+        daño.setText("miDaño");
+        jPanel1.add(daño);
+        daño.setBounds(410, 470, 92, 60);
+
+        especial.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        especial.setForeground(new java.awt.Color(255, 102, 51));
+        especial.setText("miEspecial");
+        jPanel1.add(especial);
+        especial.setBounds(410, 550, 127, 60);
+
+        masVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png"))); // NOI18N
+        masVida.setBorder(null);
+        masVida.setBorderPainted(false);
+        masVida.setContentAreaFilled(false);
+        masVida.setFocusPainted(false);
+        masVida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                masVidaMouseReleased(evt);
+            }
+        });
+        jPanel1.add(masVida);
+        masVida.setBounds(520, 380, 80, 65);
+
+        masDaño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png"))); // NOI18N
+        masDaño.setBorder(null);
+        masDaño.setBorderPainted(false);
+        masDaño.setContentAreaFilled(false);
+        masDaño.setFocusPainted(false);
+        masDaño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                masDañoMouseReleased(evt);
+            }
+        });
+        jPanel1.add(masDaño);
+        masDaño.setBounds(520, 460, 80, 65);
+
+        masEspecial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png"))); // NOI18N
+        masEspecial.setBorder(null);
+        masEspecial.setBorderPainted(false);
+        masEspecial.setContentAreaFilled(false);
+        masEspecial.setFocusPainted(false);
+        masEspecial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                masEspecialMouseReleased(evt);
+            }
+        });
+        jPanel1.add(masEspecial);
+        masEspecial.setBounds(520, 540, 80, 65);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(590, 40, 630, 620);
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -389,6 +415,14 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
         mp.mostrar();
         mp.setVisible(true);
     }//GEN-LAST:event_volverMouseReleased
+
+    private void menosVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosVidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menosVidaActionPerformed
+
+    private void menosDañoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosDañoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menosDañoActionPerformed
     public void mostrar(){
         vida.setText(Float.toString(miPersonaje.getBonusVida()));
         daño.setText(Float.toString(miPersonaje.getBonusDaño()));
@@ -523,6 +557,8 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelEspecial;
     private javax.swing.JLabel labelEspecialP;
     private javax.swing.JButton masDaño;
