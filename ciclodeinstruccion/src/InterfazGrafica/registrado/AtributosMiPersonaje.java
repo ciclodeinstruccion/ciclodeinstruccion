@@ -93,6 +93,15 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
         volver.setContentAreaFilled(false);
         volver.setFocusPainted(false);
         volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                volverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                volverMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                volverMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 volverMouseReleased(evt);
             }
@@ -156,6 +165,15 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
         menosVida.setContentAreaFilled(false);
         menosVida.setFocusPainted(false);
         menosVida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                menosVidaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                menosVidaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menosVidaMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 menosVidaMouseReleased(evt);
             }
@@ -174,6 +192,15 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
         menosDaño.setContentAreaFilled(false);
         menosDaño.setFocusPainted(false);
         menosDaño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                menosDañoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                menosDañoMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menosDañoMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 menosDañoMouseReleased(evt);
             }
@@ -192,6 +219,15 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
         menosEspecial.setContentAreaFilled(false);
         menosEspecial.setFocusPainted(false);
         menosEspecial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                menosEspecialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                menosEspecialMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menosEspecialMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 menosEspecialMouseReleased(evt);
             }
@@ -283,6 +319,15 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
         masVida.setContentAreaFilled(false);
         masVida.setFocusPainted(false);
         masVida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                masVidaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                masVidaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                masVidaMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 masVidaMouseReleased(evt);
             }
@@ -296,6 +341,15 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
         masDaño.setContentAreaFilled(false);
         masDaño.setFocusPainted(false);
         masDaño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                masDañoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                masDañoMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                masDañoMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 masDañoMouseReleased(evt);
             }
@@ -309,6 +363,15 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
         masEspecial.setContentAreaFilled(false);
         masEspecial.setFocusPainted(false);
         masEspecial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                masEspecialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                masEspecialMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                masEspecialMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 masEspecialMouseReleased(evt);
             }
@@ -423,6 +486,90 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
     private void menosDañoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosDañoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menosDañoActionPerformed
+
+    private void masVidaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masVidaMousePressed
+        masVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/mas.png")));
+    }//GEN-LAST:event_masVidaMousePressed
+
+    private void masVidaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masVidaMouseExited
+        masVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png")));
+    }//GEN-LAST:event_masVidaMouseExited
+
+    private void masVidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masVidaMouseEntered
+        masVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/mas.png")));
+    }//GEN-LAST:event_masVidaMouseEntered
+
+    private void masDañoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masDañoMousePressed
+        masVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/mas.png")));
+    }//GEN-LAST:event_masDañoMousePressed
+
+    private void masDañoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masDañoMouseExited
+        masVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png")));
+    }//GEN-LAST:event_masDañoMouseExited
+
+    private void masDañoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masDañoMouseEntered
+        masVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/mas.png")));
+    }//GEN-LAST:event_masDañoMouseEntered
+
+    private void masEspecialMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masEspecialMousePressed
+        masVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/mas.png")));
+    }//GEN-LAST:event_masEspecialMousePressed
+
+    private void masEspecialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masEspecialMouseExited
+        masVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png")));
+    }//GEN-LAST:event_masEspecialMouseExited
+
+    private void masEspecialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masEspecialMouseEntered
+        masVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/mas.png")));
+    }//GEN-LAST:event_masEspecialMouseEntered
+
+    private void menosVidaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosVidaMousePressed
+        menosVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/menos.png")));
+    }//GEN-LAST:event_menosVidaMousePressed
+
+    private void menosVidaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosVidaMouseExited
+        menosVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png")));
+    }//GEN-LAST:event_menosVidaMouseExited
+
+    private void menosVidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosVidaMouseEntered
+        menosVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/menos.png")));
+    }//GEN-LAST:event_menosVidaMouseEntered
+
+    private void menosDañoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosDañoMousePressed
+        menosVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/menos.png")));
+    }//GEN-LAST:event_menosDañoMousePressed
+
+    private void menosDañoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosDañoMouseExited
+        menosVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png")));
+    }//GEN-LAST:event_menosDañoMouseExited
+
+    private void menosDañoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosDañoMouseEntered
+        menosVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/menos.png")));
+    }//GEN-LAST:event_menosDañoMouseEntered
+
+    private void menosEspecialMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosEspecialMousePressed
+        menosVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/menos.png")));
+    }//GEN-LAST:event_menosEspecialMousePressed
+
+    private void menosEspecialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosEspecialMouseExited
+        menosVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png")));
+    }//GEN-LAST:event_menosEspecialMouseExited
+
+    private void menosEspecialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosEspecialMouseEntered
+        menosVida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/menos.png")));
+    }//GEN-LAST:event_menosEspecialMouseEntered
+
+    private void volverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMousePressed
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_volverMousePressed
+
+    private void volverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseExited
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_volverMouseExited
+
+    private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_volverMouseEntered
     public void mostrar(){
         vida.setText(Float.toString(miPersonaje.getBonusVida()));
         daño.setText(Float.toString(miPersonaje.getBonusDaño()));
