@@ -13,6 +13,9 @@ import static java.util.Collections.list;
 import java.util.Iterator;
 import java.util.Scanner;
 import BaseDeDatos.consultasBD;
+import Personaje.Asesino;
+import Personaje.Fighter;
+import Personaje.Tanque;
 
 public class Administrador extends Usuario{
     
@@ -104,6 +107,35 @@ public class Administrador extends Usuario{
             nombresPj[i]=nombres.get(i-1);
         }
         return nombresPj;
+    }
+    
+    public String [][] tablaPersonajes(){
+        ArrayList <Personaje> personajes=new ArrayList();
+        personajes=consultasBD.instancia().todosLosPersonajes();
+        String pj [][]= new String [personajes.size()][6];
+        
+        for (int i=0; i<pj.length;i++){
+            pj[i][0]=personajes.get(i).getNombre();
+            pj[i][1]=Float.toString(personajes.get(i).getVida());
+            pj[i][2]=Float.toString(personajes.get(i).getDaño());
+            pj[i][3]=Integer.toString(personajes.get(i).getPrecio());
+            if(personajes.get(i) instanceof Tanque){
+                pj[i][4]="Tanque";
+                Tanque t=(Tanque) personajes.get(i);
+                pj[i][5]=Float.toString(t.getArmadura());
+            }
+            else if(personajes.get(i) instanceof Asesino){
+                pj[i][4]="Asesino";
+                Asesino a=(Asesino) personajes.get(i);
+                pj[i][5]=Float.toString(a.getEsquivar());
+            }
+            else if(personajes.get(i) instanceof Fighter){
+                pj[i][4]="Fighter";
+                Fighter f=(Fighter) personajes.get(i);
+                pj[i][5]=Float.toString(f.getCritico());
+            }
+        }
+        return pj;
     }
     
     public Registrado elegirRegistrado(ArrayList <Registrado> registrados){

@@ -287,7 +287,7 @@ public class consultasBD {
         
         try {
             ConexionBD.instancia().getStatement().execute(
-            "UPDATE Personajes SET vida='"+p.getVida()+"','daño='"+p.getDaño()+"','precio='"+p.getPrecio()+"','especial='"+especial+"WHERE nombre='"+p.getNombre()+"')");
+            "UPDATE Personajes SET vida="+Float.toString(p.getVida())+",daño="+Float.toString(p.getDaño())+",precio="+Integer.toString(p.getPrecio())+",especial="+Float.toString(especial)+" WHERE nombre='"+p.getNombre()+"'");
         } catch (SQLException e){
             throw new ErrorModificarPersonaje();
         }
@@ -831,5 +831,42 @@ public class consultasBD {
         }catch(SQLException e){
             
         }
+    }
+    
+    public ArrayList <Personaje> todosLosPersonajes(){
+        ArrayList <Personaje> personajes=new ArrayList();
+        try {
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery(
+                "select * from Personajes"              
+                );
+                 
+            while (rs.next()) {
+                if(rs.getString(5).equals("Tanque")){
+                    Tanque p=new Tanque(rs.getString(1),Integer.parseInt(rs.getString(2)),Integer.parseInt(rs.getString(3)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(4)),rs.getString(5));
+                    personajes.add(p);
+                }
+                else if(rs.getString(5).equals("Asesino")){
+                    Asesino p=new Asesino(rs.getString(1),Integer.parseInt(rs.getString(2)),Integer.parseInt(rs.getString(3)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(4)),rs.getString(5));
+                    personajes.add(p);
+                }
+                else{
+                    Fighter p=new Fighter(rs.getString(1),Integer.parseInt(rs.getString(2)),Integer.parseInt(rs.getString(3)),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(4)),rs.getString(5));
+                    personajes.add(p);
+                }
+            
+            }
+            for(Personaje p:personajes){
+                ArrayList <Habilidad> Habilidades;
+                Habilidades=this.buscarHabilidades(p);
+                for (Habilidad h:Habilidades){
+                    p.añadirHabilidad(h);
+            
+                }
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return personajes;
     }
 }

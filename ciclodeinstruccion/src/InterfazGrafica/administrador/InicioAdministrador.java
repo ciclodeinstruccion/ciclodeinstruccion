@@ -39,6 +39,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
         gestionarUsuarios = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         estadisticas = new javax.swing.JButton();
+        gestionarPersonajes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,7 +79,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
 
         jButton2.setText("jButton2");
         getContentPane().add(jButton2);
-        jButton2.setBounds(110, 410, 73, 23);
+        jButton2.setBounds(110, 410, 75, 23);
 
         gestionarUsuarios.setText("Gestionar Usuarios");
         gestionarUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,7 +97,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
 
         jButton4.setText("jButton4");
         getContentPane().add(jButton4);
-        jButton4.setBounds(340, 440, 73, 23);
+        jButton4.setBounds(340, 440, 75, 23);
 
         estadisticas.setText("estadisticas");
         estadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -111,6 +112,15 @@ public class InicioAdministrador extends javax.swing.JFrame {
         });
         getContentPane().add(estadisticas);
         estadisticas.setBounds(120, 80, 180, 23);
+
+        gestionarPersonajes.setText("Gestionar personajes");
+        gestionarPersonajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                gestionarPersonajesMouseReleased(evt);
+            }
+        });
+        getContentPane().add(gestionarPersonajes);
+        gestionarPersonajes.setBounds(750, 80, 137, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         jLabel1.setAutoscrolls(true);
@@ -162,6 +172,12 @@ public class InicioAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_estadisticasActionPerformed
 
+    private void gestionarPersonajesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionarPersonajesMouseReleased
+        VerPersonajes vp = new VerPersonajes(this, true, admin);
+        vp.mostrar();
+        vp.setVisible(true);
+    }//GEN-LAST:event_gestionarPersonajesMouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -199,6 +215,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton estadisticas;
+    private javax.swing.JButton gestionarPersonajes;
     private javax.swing.JButton gestionarUsuarios;
     private javax.swing.JButton historialPartidas;
     private javax.swing.JButton jButton2;
