@@ -23,8 +23,15 @@ public class ModificarRegistrado extends javax.swing.JDialog {
     Registrado r;
     public ModificarRegistrado(java.awt.Frame parent, boolean modal, Registrado r) {
         super(parent, modal);
+        
         this.r=r;
         initComponents();
+        
+        if(consultasBD.instancia().estaBaneado(r)){
+            banear.setSelected(true);
+        }else{
+            banear.setSelected(false);
+        }
         
     }
     
@@ -50,6 +57,7 @@ public class ModificarRegistrado extends javax.swing.JDialog {
         nombreNuevo = new javax.swing.JTextField();
         correoNuevo = new javax.swing.JTextField();
         contraseñaNueva = new javax.swing.JTextField();
+        banear = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -112,8 +120,17 @@ public class ModificarRegistrado extends javax.swing.JDialog {
         jPanel1.add(contraseñaNueva);
         contraseñaNueva.setBounds(310, 160, 260, 40);
 
+        banear.setText("Esta baneado");
+        banear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                banearActionPerformed(evt);
+            }
+        });
+        jPanel1.add(banear);
+        banear.setBounds(240, 230, 91, 23);
+
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(250, 170, 630, 270);
+        jPanel1.setBounds(250, 170, 630, 280);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -154,6 +171,14 @@ public class ModificarRegistrado extends javax.swing.JDialog {
     private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
         this.setVisible(false);
     }//GEN-LAST:event_volverMouseReleased
+
+    private void banearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_banearActionPerformed
+        if(banear.isSelected()){
+            consultasBD.instancia().desbanearRegistrado(r);
+        }else{
+            consultasBD.instancia().banearRegistrado(r);
+        }
+    }//GEN-LAST:event_banearActionPerformed
 
     public boolean comprobarActu(String nombre, String correo, String contraseña){
         boolean correcto=true;
@@ -229,6 +254,7 @@ public class ModificarRegistrado extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton banear;
     private javax.swing.JTextField contraseñaNueva;
     private javax.swing.JTextField correoNuevo;
     private javax.swing.JLabel jLabel1;

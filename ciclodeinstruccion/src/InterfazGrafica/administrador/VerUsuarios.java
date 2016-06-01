@@ -47,7 +47,6 @@ public class VerUsuarios extends javax.swing.JDialog {
         masInformacion = new javax.swing.JButton();
         volver = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -92,8 +91,6 @@ public class VerUsuarios extends javax.swing.JDialog {
             }
         });
 
-        jCheckBox1.setText("jCheckBox1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,10 +106,6 @@ public class VerUsuarios extends javax.swing.JDialog {
                         .addComponent(volver))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jCheckBox1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,9 +117,7 @@ public class VerUsuarios extends javax.swing.JDialog {
                     .addComponent(masInformacion)
                     .addComponent(volver)
                     .addComponent(jButton1))
-                .addGap(45, 45, 45)
-                .addComponent(jCheckBox1)
-                .addGap(24, 24, 24))
+                .addGap(92, 92, 92))
         );
 
         pack();
@@ -210,7 +201,6 @@ public class VerUsuarios extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton masInformacion;
     private javax.swing.JTable tablaUsuarios;
