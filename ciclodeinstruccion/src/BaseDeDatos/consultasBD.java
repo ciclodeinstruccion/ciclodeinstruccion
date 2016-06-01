@@ -749,4 +749,48 @@ public class consultasBD {
             }
         return  nombres;
     }
+    
+    public void cambiarNombreRegistrado(Registrado r, String nombreViejo){
+        
+        try{
+            ConexionBD.instancia().getStatement().execute("UPDATE registrados SET nombre='"+r.getNombre()+"'WHERE nombre='"+nombreViejo+"'");
+            
+            
+            
+        }catch(SQLException e){
+            
+        }
+        
+        this.cambiarNombreGanador(r, nombreViejo);
+        
+    }
+    
+    public void cambiarNombreGanador(Registrado r, String nombreViejo){
+        
+        try{
+            ConexionBD.instancia().getStatement().execute("UPDATE partida SET ganador='"+r.getNombre()+"' WHERE ganandor='"+nombreViejo+"'");
+            
+        
+        }catch(SQLException e){
+            
+        }
+    }
+    
+    public void cambiarNombreJugador1(Registrado r, String nombreViejo){
+        
+        try{
+            ConexionBD.instancia().getStatement().execute("UPDATE partida SET jugador1='"+r.getNombre()+"' WHERE jugador1='"+nombreViejo+"'");
+        }catch(SQLException e){
+            
+        }
+    }
+    
+    public void cambiarNombreJugador2(Registrado r, String nombreViejo){
+        
+        try{
+            ConexionBD.instancia().getStatement().execute("UPDATE partida SET jugador2='"+r.getNombre()+"' WHERE jugador2='"+nombreViejo+"'");
+        }catch(SQLException e){
+            
+        }
+    }
 }
