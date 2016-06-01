@@ -44,6 +44,8 @@ public class VerPartida extends javax.swing.JDialog {
         imagenP1 = new javax.swing.JLabel();
         imagenP2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jugador1 = new javax.swing.JLabel();
+        jugador2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -94,13 +96,13 @@ public class VerPartida extends javax.swing.JDialog {
         imagenP1.setMinimumSize(new java.awt.Dimension(300, 450));
         imagenP1.setPreferredSize(new java.awt.Dimension(300, 450));
         getContentPane().add(imagenP1);
-        imagenP1.setBounds(30, 70, 300, 450);
+        imagenP1.setBounds(30, 110, 300, 450);
 
         imagenP2.setMaximumSize(new java.awt.Dimension(300, 450));
         imagenP2.setMinimumSize(new java.awt.Dimension(300, 450));
         imagenP2.setPreferredSize(new java.awt.Dimension(300, 450));
         getContentPane().add(imagenP2);
-        imagenP2.setBounds(950, 70, 300, 450);
+        imagenP2.setBounds(950, 110, 300, 450);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
         jButton1.setBorder(null);
@@ -123,6 +125,18 @@ public class VerPartida extends javax.swing.JDialog {
         });
         getContentPane().add(jButton1);
         jButton1.setBounds(680, 480, 260, 65);
+
+        jugador1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jugador1.setForeground(new java.awt.Color(255, 102, 51));
+        jugador1.setText("JUGADOR1");
+        getContentPane().add(jugador1);
+        jugador1.setBounds(30, 60, 270, 60);
+
+        jugador2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jugador2.setForeground(new java.awt.Color(255, 102, 51));
+        jugador2.setText("JUGADOR2");
+        getContentPane().add(jugador2);
+        jugador2.setBounds(950, 60, 270, 60);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -171,7 +185,8 @@ public class VerPartida extends javax.swing.JDialog {
         siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/siguiente.png")));
     }//GEN-LAST:event_siguienteMouseEntered
     public void mostrar(){
-        
+        jugador1.setText(partida.getJugador1().getNombre());
+        jugador2.setText(partida.getJugador2().getNombre());
         Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
         imagenP1.setIcon(new ImageIcon(img1));
         Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
@@ -228,6 +243,8 @@ public class VerPartida extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jugador1;
+    private javax.swing.JLabel jugador2;
     private javax.swing.JButton siguiente;
     private javax.swing.JTextArea texto;
     // End of variables declaration//GEN-END:variables

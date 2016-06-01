@@ -47,6 +47,7 @@ public class VerUsuarios extends javax.swing.JDialog {
         masInformacion = new javax.swing.JButton();
         volver = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -85,6 +86,13 @@ public class VerUsuarios extends javax.swing.JDialog {
                 jButton1MouseReleased(evt);
             }
         });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox1.setText("jCheckBox1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,6 +109,10 @@ public class VerUsuarios extends javax.swing.JDialog {
                         .addComponent(volver))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(jCheckBox1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +124,9 @@ public class VerUsuarios extends javax.swing.JDialog {
                     .addComponent(masInformacion)
                     .addComponent(volver)
                     .addComponent(jButton1))
-                .addGap(92, 92, 92))
+                .addGap(45, 45, 45)
+                .addComponent(jCheckBox1)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -127,7 +141,7 @@ public class VerUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_masInformacionActionPerformed
 
     private void masInformacionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masInformacionMouseReleased
-        if(tablaUsuarios.getSelectedRow()>=-1){
+        if(tablaUsuarios.getSelectedRow()>-1){
             Registrado r = consultasBD.instancia().buscarRegistrado(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0).toString());
             VerMasUsuarios vmu = new VerMasUsuarios(null, true, r);
             vmu.mostrar();
@@ -136,11 +150,17 @@ public class VerUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_masInformacionMouseReleased
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        
-        Registrado r = consultasBD.instancia().buscarRegistrado(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0).toString()); 
-        ModificarRegistrado mr = new ModificarRegistrado(null, true, r);
-        mr.setVisible(true);
+        if(tablaUsuarios.getSelectedRow()>-1){
+            
+            Registrado r = consultasBD.instancia().buscarRegistrado(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0).toString()); 
+            ModificarRegistrado mr = new ModificarRegistrado(null, true, r);
+            mr.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void mostrar(){
         String [][] t=admin.tablaUsuarios();
         tabla=new DefaultTableModel(t, cabecera);
@@ -190,6 +210,7 @@ public class VerUsuarios extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton masInformacion;
     private javax.swing.JTable tablaUsuarios;

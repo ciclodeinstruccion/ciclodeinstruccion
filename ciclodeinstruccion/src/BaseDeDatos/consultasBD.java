@@ -750,18 +750,28 @@ public class consultasBD {
         return  nombres;
     }
     
+    public void cambiarJugadorMisPersonajes(Registrado r, String nombre){
+        try{
+            ConexionBD.instancia().getStatement().execute("Update miPersonaje set nombreDeUsuario='"+r.getNombre()+"' where nombreDeUsuario='"+nombre+"'");
+        } catch (SQLException e){
+            
+        }
+    }
+    
+    
     public void cambiarNombreRegistrado(Registrado r, String nombreViejo){
         
         try{
             ConexionBD.instancia().getStatement().execute("UPDATE registrados SET nombre='"+r.getNombre()+"'WHERE nombre='"+nombreViejo+"'");
-            
-            
-            
+
         }catch(SQLException e){
             
         }
         
         this.cambiarNombreGanador(r, nombreViejo);
+        this.cambiarJugadorMisPersonajes(r, nombreViejo);
+        this.cambiarNombreJugador1(r, nombreViejo);
+        this.cambiarNombreJugador2(r, nombreViejo);
         
     }
     

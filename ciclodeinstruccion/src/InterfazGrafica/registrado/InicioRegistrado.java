@@ -42,6 +42,19 @@ public class InicioRegistrado extends javax.swing.JFrame {
         comprar = new javax.swing.JButton();
         atributosreg = new javax.swing.JButton();
         misPersonajes = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
+        nivel = new javax.swing.JLabel();
+        experiencia = new javax.swing.JLabel();
+        puntos = new javax.swing.JLabel();
+        pJugadas = new javax.swing.JLabel();
+        oro = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,7 +88,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(crearPartida);
-        crearPartida.setBounds(520, 130, 260, 65);
+        crearPartida.setBounds(830, 70, 260, 65);
 
         unirsePartida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/unirse_a_partida.png"))); // NOI18N
         unirsePartida.setBorder(null);
@@ -97,7 +110,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(unirsePartida);
-        unirsePartida.setBounds(520, 240, 260, 65);
+        unirsePartida.setBounds(830, 170, 260, 65);
 
         historial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/historial_de_partidas.png"))); // NOI18N
         historial.setBorder(null);
@@ -118,8 +131,13 @@ public class InicioRegistrado extends javax.swing.JFrame {
                 verHistorial(evt);
             }
         });
+        historial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historialActionPerformed(evt);
+            }
+        });
         getContentPane().add(historial);
-        historial.setBounds(520, 350, 260, 65);
+        historial.setBounds(830, 270, 260, 65);
 
         comprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/comprar_personaje.png"))); // NOI18N
         comprar.setBorder(null);
@@ -141,25 +159,131 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comprar);
-        comprar.setBounds(520, 460, 260, 65);
+        comprar.setBounds(830, 360, 260, 65);
 
-        atributosreg.setText("atributos registrado");
+        atributosreg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/modificar_propiedades.png"))); // NOI18N
+        atributosreg.setBorder(null);
+        atributosreg.setBorderPainted(false);
+        atributosreg.setContentAreaFilled(false);
+        atributosreg.setFocusPainted(false);
         atributosreg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                atributosregMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                atributosregMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                atributosregMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 atributosregMouseReleased(evt);
             }
         });
         getContentPane().add(atributosreg);
-        atributosreg.setBounds(540, 560, 127, 23);
+        atributosreg.setBounds(830, 460, 260, 65);
 
-        misPersonajes.setText("mis personajes");
+        misPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mis_personajes.png"))); // NOI18N
+        misPersonajes.setBorder(null);
+        misPersonajes.setBorderPainted(false);
+        misPersonajes.setContentAreaFilled(false);
+        misPersonajes.setFocusPainted(false);
         misPersonajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                misPersonajesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                misPersonajesMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                misPersonajesMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 misPersonajesMouseReleased(evt);
             }
         });
         getContentPane().add(misPersonajes);
-        misPersonajes.setBounds(550, 610, 103, 23);
+        misPersonajes.setBounds(830, 560, 260, 65);
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0,200));
+        jPanel1.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel2.setText("Nombre de usuario");
+        jLabel2.setToolTipText("");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(10, 10, 227, 60);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel3.setText("Oro");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(10, 90, 43, 60);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel4.setText("Nivel");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(10, 180, 61, 60);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel5.setText("Experiencia");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(10, 270, 139, 60);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel6.setText("Puntos de nivel");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(10, 360, 183, 60);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel7.setText("Partidas jugadas");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(10, 450, 199, 60);
+
+        nombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nombre.setForeground(new java.awt.Color(255, 102, 51));
+        nombre.setText("Nombre");
+        jPanel1.add(nombre);
+        nombre.setBounds(290, 10, 220, 60);
+
+        nivel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nivel.setForeground(new java.awt.Color(255, 102, 51));
+        nivel.setText("Nivel");
+        jPanel1.add(nivel);
+        nivel.setBounds(290, 180, 200, 60);
+
+        experiencia.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        experiencia.setForeground(new java.awt.Color(255, 102, 51));
+        experiencia.setText("Experiencia");
+        jPanel1.add(experiencia);
+        experiencia.setBounds(290, 270, 210, 60);
+
+        puntos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        puntos.setForeground(new java.awt.Color(255, 102, 51));
+        puntos.setText("Puntos");
+        jPanel1.add(puntos);
+        puntos.setBounds(290, 360, 210, 60);
+
+        pJugadas.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        pJugadas.setForeground(new java.awt.Color(255, 102, 51));
+        pJugadas.setText("Jugadas");
+        jPanel1.add(pJugadas);
+        pJugadas.setBounds(290, 450, 97, 60);
+
+        oro.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        oro.setForeground(new java.awt.Color(255, 102, 51));
+        oro.setText("Oro");
+        oro.setToolTipText("");
+        jPanel1.add(oro);
+        oro.setBounds(290, 90, 210, 60);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(180, 90, 520, 530);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -259,12 +383,48 @@ public class InicioRegistrado extends javax.swing.JFrame {
         mp.mostrar();
         mp.setVisible(true);
     }//GEN-LAST:event_misPersonajesMouseReleased
+
+    private void historialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_historialActionPerformed
+
+    private void atributosregMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atributosregMousePressed
+        atributosreg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/modificar_propiedades.png")));
+    }//GEN-LAST:event_atributosregMousePressed
+
+    private void atributosregMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atributosregMouseExited
+        atributosreg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/modificar_propiedades.png")));
+    }//GEN-LAST:event_atributosregMouseExited
+
+    private void atributosregMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atributosregMouseEntered
+        atributosreg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/modificar_propiedades.png")));
+    }//GEN-LAST:event_atributosregMouseEntered
+
+    private void misPersonajesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_misPersonajesMousePressed
+        misPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/mis_personajes.png")));
+    }//GEN-LAST:event_misPersonajesMousePressed
+
+    private void misPersonajesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_misPersonajesMouseExited
+        misPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mis_personajes.png")));
+    }//GEN-LAST:event_misPersonajesMouseExited
+
+    private void misPersonajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_misPersonajesMouseEntered
+        misPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/mis_personajes.png")));
+    }//GEN-LAST:event_misPersonajesMouseEntered
     public void mostrar(){
         if(this.resgistrado.getPartidasJugadas()>=Registrado.getLIMITE_PARTIDAS()){
             crearPartida.setEnabled(false);
             unirsePartida.setEnabled(false);
             JOptionPane.showMessageDialog(rootPane, "Has alcanzado el número de partidas máximas permitidas. Vuelve mañana para seguir jugando", "Limite alcanzado", JOptionPane.WARNING_MESSAGE);
         }
+        nombre.setText(resgistrado.getNombre());
+        nivel.setText(Integer.toString(resgistrado.getNivel()));
+        experiencia.setText(Integer.toString(resgistrado.getExperiencia()));
+        oro.setText(Integer.toString(resgistrado.getOro()));
+
+        puntos.setText(Integer.toString(resgistrado.getPuntosNivel()));
+        pJugadas.setText(Integer.toString(resgistrado.getPartidasJugadas()));
+        this.repaint();
     }
     /**
      * @param args the command line arguments
@@ -305,9 +465,22 @@ public class InicioRegistrado extends javax.swing.JFrame {
     private javax.swing.JButton atributosreg;
     private javax.swing.JButton comprar;
     private javax.swing.JButton crearPartida;
+    private javax.swing.JLabel experiencia;
     private javax.swing.JButton historial;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton misPersonajes;
+    private javax.swing.JLabel nivel;
+    private javax.swing.JLabel nombre;
+    private javax.swing.JLabel oro;
+    private javax.swing.JLabel pJugadas;
+    private javax.swing.JLabel puntos;
     private javax.swing.JButton unirsePartida;
     // End of variables declaration//GEN-END:variables
 }

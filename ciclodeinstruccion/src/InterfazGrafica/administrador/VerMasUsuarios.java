@@ -36,20 +36,47 @@ public class VerMasUsuarios extends javax.swing.JDialog{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         misPersonajes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         nombreUsuario = new javax.swing.JTextField();
         volver = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
+
+        jPanel1.setLayout(null);
 
         misPersonajes.setEditingColumn(0);
         misPersonajes.setEditingRow(0);
         misPersonajes.setFocusable(false);
         jScrollPane1.setViewportView(misPersonajes);
 
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 60, 523, 143);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Usuario");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(94, 20, 91, 29);
+
+        nombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nombreUsuario);
+        nombreUsuario.setBounds(240, 20, 150, 30);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(320, 80, 570, 250);
 
         volver.setText("Volver");
         volver.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -57,37 +84,12 @@ public class VerMasUsuarios extends javax.swing.JDialog{
                 volverMouseReleased(evt);
             }
         });
+        getContentPane().add(volver);
+        volver.setBounds(550, 450, 63, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(jLabel1)
-                        .addGap(93, 93, 93)
-                        .addComponent(nombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(volver)))
-                .addContainerGap(215, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                .addComponent(volver)
-                .addGap(35, 35, 35))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -95,6 +97,10 @@ public class VerMasUsuarios extends javax.swing.JDialog{
     private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
         this.setVisible(false);
     }//GEN-LAST:event_volverMouseReleased
+
+    private void nombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,6 +157,8 @@ public class VerMasUsuarios extends javax.swing.JDialog{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable misPersonajes;
     private javax.swing.JTextField nombreUsuario;
