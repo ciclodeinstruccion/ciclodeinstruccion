@@ -749,4 +749,14 @@ public class consultasBD {
             }
         return  nombres;
     }
+    
+    public void cambiarJugadorMisPersonajes(Registrado r, String nombre){
+        try{
+            ConexionBD.instancia().getStatement().execute("Update miPersonaje set nombreDeUsuario='"+r.getNombre()+"' where nombreDeUsuario='"+nombre+"'");
+        } catch (SQLException e){
+            
+        }
+    }
+    
+    
 }
