@@ -58,12 +58,41 @@ public class consultasBD {
                 r.getNombre() + "', '" + r.getCorreo()+ "', '" +r.getContraseña()+ "', '" + sdf.format(r.getUltimaEntrada())+ "', " +
                 Integer.toString(r.getNivel())+","+Integer.toString(r.getExperiencia())+","+Integer.toString(r.getVitalidad())+","+Integer.toString(r.getFuerza())+","+
                 Integer.toString(r.getInteligencia())+","+ Integer.toString(r.getPuntosNivel())+","+Integer.toString(r.getEspecial())+","+Integer.toString(r.getOro())+","+
-                Integer.toString(r.getPartidasJugadas())+")"               
+                Integer.toString(r.getPartidasJugadas())+",1)"               
                 );
             
         } catch (SQLException e) {
             throw new ErrorAñadirRegistrado();
         }
+    }
+    
+    public void banearRegistrado(Registrado r){
+        try{
+            ConexionBD.instancia().getStatement().execute("Update into Registrados set baneado=1 where nombre='"+r.getNombre()+"'");
+        } catch (SQLException e){
+            
+        }
+    }
+    
+    public void desbanearRegistrado(Registrado r){
+        try{
+            ConexionBD.instancia().getStatement().execute("Update into Registrados set baneado=0 where nombre='"+r.getNombre()+"'");
+        } catch (SQLException e){
+            
+        }
+    }
+    
+    public boolean estaBaneado(Registrado r){
+        boolean baneado=false;
+        try{
+            ResultSet rs=ConexionBD.instancia().getStatement().executeQuery("Select * from Registrados where nombre='"+r.getNombre()+"' and baneado=1");
+            if (rs.next()){
+                baneado=true;
+            }
+        } catch (SQLException e){
+            
+        }
+        return baneado;
     }
     
     public void eliminarRegistrado(Registrado r) throws ErrorEliminarRegistrado{

@@ -184,13 +184,19 @@ public class IniciarSesion extends javax.swing.JDialog {
         }
         if(consultasBD.instancia().encuentraRegistrado(name, pass)){
             this.registrado=consultasBD.instancia().buscarRegistrado(name);
-            this.registrado.login();
-            consultasBD.instancia().modificarRegistrado(registrado);
-            InicioRegistrado ir=new InicioRegistrado(registrado);
-            this.setVisible(false);
-            ini.setVisible(false);
-            ir.mostrar();
-            ir.setVisible(true);
+            if(consultasBD.instancia().estaBaneado(registrado)){
+                JOptionPane.showMessageDialog(rootPane, "Esta cuenta ha sido baneada.", "Iniciar sesión", JOptionPane.WARNING_MESSAGE);
+            }
+            else{
+                this.registrado.login();
+                consultasBD.instancia().modificarRegistrado(registrado);
+                InicioRegistrado ir=new InicioRegistrado(registrado);
+                this.setVisible(false);
+                ini.setVisible(false);
+                ir.mostrar();
+                ir.setVisible(true);
+            }
+            
         }
         else if (consultasBD.instancia().encuentraAdministrador(name,pass)){
             this.admin=consultasBD.instancia().buscarAministrador(name);
