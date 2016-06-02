@@ -105,7 +105,7 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().add(registrarse);
         registrarse.setBounds(520, 370, 260, 65);
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_inicio.gif"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gif2.gif"))); // NOI18N
         getContentPane().add(fondo);
         fondo.setBounds(0, 0, 1280, 720);
 
@@ -167,7 +167,7 @@ public class Inicio extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent evt) {
             sesion.setVisible(true);
             registrarse.setVisible(true);
-            fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_claro.jpg")));
+            fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg")));
         }
     };
     /**
