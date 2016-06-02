@@ -40,52 +40,86 @@ public class MisPersonajes extends javax.swing.JDialog {
         tablaMisPersonajes = new javax.swing.JTable();
         atributos = new javax.swing.JButton();
         volver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
 
+        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
+
+        tablaMisPersonajes.setBackground(new java.awt.Color(0, 0, 0,130));
+        tablaMisPersonajes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tablaMisPersonajes.setForeground(new java.awt.Color(255, 51, 51));
         jScrollPane1.setViewportView(tablaMisPersonajes);
 
-        atributos.setText("modificar atributos");
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(150, 100, 990, 290);
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setViewportBorder(null);
+
+        atributos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/modificar_propiedades.png"))); // NOI18N
+        atributos.setBorder(null);
+        atributos.setBorderPainted(false);
+        atributos.setContentAreaFilled(false);
+        atributos.setFocusPainted(false);
         atributos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                atributosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                atributosMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                atributosMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 atributosMouseReleased(evt);
             }
         });
+        atributos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atributosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(atributos);
+        atributos.setBounds(260, 550, 260, 65);
 
-        volver.setText("Volver");
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        volver.setBorder(null);
+        volver.setBorderPainted(false);
+        volver.setContentAreaFilled(false);
+        volver.setFocusPainted(false);
         volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                volverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                volverMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                volverMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 volverMouseReleased(evt);
             }
         });
+        volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(volver);
+        volver.setBounds(770, 550, 260, 65);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(atributos)
-                        .addGap(64, 64, 64)
-                        .addComponent(volver)))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(atributos)
-                    .addComponent(volver))
-                .addContainerGap(79, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -102,6 +136,38 @@ public class MisPersonajes extends javax.swing.JDialog {
     private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
         this.setVisible(false);
     }//GEN-LAST:event_volverMouseReleased
+
+    private void atributosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atributosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_atributosActionPerformed
+
+    private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_volverActionPerformed
+
+    private void volverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMousePressed
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_volverMousePressed
+
+    private void volverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseExited
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_volverMouseExited
+
+    private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_volverMouseEntered
+
+    private void atributosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atributosMousePressed
+        atributos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/modificar_propiedades.png")));
+    }//GEN-LAST:event_atributosMousePressed
+
+    private void atributosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atributosMouseExited
+        atributos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/modificar_propiedades.png")));
+    }//GEN-LAST:event_atributosMouseExited
+
+    private void atributosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atributosMouseEntered
+        atributos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/modificar_propiedades.png")));
+    }//GEN-LAST:event_atributosMouseEntered
     public void mostrar(){
         tabla=new DefaultTableModel(this.registrado.tablaMisPersonajes(), cabecera);
         tablaMisPersonajes.setModel(tabla); 
@@ -150,6 +216,7 @@ public class MisPersonajes extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atributos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaMisPersonajes;
     private javax.swing.JButton volver;
