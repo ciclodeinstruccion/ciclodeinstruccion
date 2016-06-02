@@ -31,6 +31,7 @@ public class Registrarse extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.ini=ini;
+        this.repaint();
     }
 
     /**
@@ -197,6 +198,7 @@ public class Registrarse extends javax.swing.JDialog {
             }
             JOptionPane.showMessageDialog(rootPane, "Registro realizado con exito. Bienvenido a Ciclo De Instruccion "+name, "Registrarse", JOptionPane.INFORMATION_MESSAGE);
             InicioRegistrado ir=new InicioRegistrado(r);
+            ir.mostrar();
             ini.setVisible(false);
             this.setVisible(false);
             ir.setVisible(true);

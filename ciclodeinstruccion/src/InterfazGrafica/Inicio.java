@@ -41,6 +41,7 @@ public class Inicio extends javax.swing.JFrame {
         sesion = new javax.swing.JButton();
         registrarse = new javax.swing.JButton();
         salir = new javax.swing.JButton();
+        probarJuego = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -128,6 +129,17 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().add(salir);
         salir.setBounds(520, 410, 260, 65);
 
+        probarJuego.setVisible(false);
+        probarJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/probar_juego.png"))); // NOI18N
+        probarJuego.setBorderPainted(false);
+        probarJuego.setContentAreaFilled(false);
+        probarJuego.setFocusPainted(false);
+        probarJuego.setMaximumSize(new java.awt.Dimension(260, 65));
+        probarJuego.setMinimumSize(new java.awt.Dimension(260, 65));
+        probarJuego.setPreferredSize(new java.awt.Dimension(260, 65));
+        getContentPane().add(probarJuego);
+        probarJuego.setBounds(520, 100, 260, 65);
+
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gif2.gif"))); // NOI18N
         getContentPane().add(fondo);
         fondo.setBounds(0, 0, 1280, 720);
@@ -207,6 +219,7 @@ public class Inicio extends javax.swing.JFrame {
             sesion.setVisible(true);
             registrarse.setVisible(true);
             salir.setVisible(true);
+            probarJuego.setVisible(true);
             fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg")));
         }
     };
@@ -247,6 +260,7 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton probarJuego;
     private javax.swing.JButton registrarse;
     private javax.swing.JButton salir;
     private javax.swing.JButton sesion;

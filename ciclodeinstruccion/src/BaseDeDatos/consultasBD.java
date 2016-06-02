@@ -58,7 +58,7 @@ public class consultasBD {
                 r.getNombre() + "', '" + r.getCorreo()+ "', '" +r.getContraseña()+ "', '" + sdf.format(r.getUltimaEntrada())+ "', " +
                 Integer.toString(r.getNivel())+","+Integer.toString(r.getExperiencia())+","+Integer.toString(r.getVitalidad())+","+Integer.toString(r.getFuerza())+","+
                 Integer.toString(r.getInteligencia())+","+ Integer.toString(r.getPuntosNivel())+","+Integer.toString(r.getEspecial())+","+Integer.toString(r.getOro())+","+
-                Integer.toString(r.getPartidasJugadas())+",1)"               
+                Integer.toString(r.getPartidasJugadas())+",0)"               
                 );
             
         } catch (SQLException e) {
