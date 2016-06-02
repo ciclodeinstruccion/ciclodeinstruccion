@@ -40,6 +40,7 @@ public class Inicio extends javax.swing.JFrame {
 
         sesion = new javax.swing.JButton();
         registrarse = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,7 +77,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(sesion);
-        sesion.setBounds(520, 270, 260, 65);
+        sesion.setBounds(520, 200, 260, 65);
         Timer timer = new Timer(0, taskPerformer);
         timer.setInitialDelay(5000);
         timer.setRepeats(false);
@@ -103,7 +104,29 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(registrarse);
-        registrarse.setBounds(520, 370, 260, 65);
+        registrarse.setBounds(520, 300, 260, 65);
+
+        salir.setVisible(false);
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/salir.png"))); // NOI18N
+        salir.setMaximumSize(new java.awt.Dimension(260, 65));
+        salir.setMinimumSize(new java.awt.Dimension(260, 65));
+        salir.setPreferredSize(new java.awt.Dimension(260, 65));
+        salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                salirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                salirMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                salirMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                salirMouseReleased(evt);
+            }
+        });
+        getContentPane().add(salir);
+        salir.setBounds(520, 410, 260, 65);
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gif2.gif"))); // NOI18N
         getContentPane().add(fondo);
@@ -162,11 +185,28 @@ public class Inicio extends javax.swing.JFrame {
     private void registrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarseMouseExited
         registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/registrarse2.png")));
     }//GEN-LAST:event_registrarseMouseExited
+
+    private void salirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseReleased
+        System.exit(0);
+    }//GEN-LAST:event_salirMouseReleased
+
+    private void salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMousePressed
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/salir.png")));
+    }//GEN-LAST:event_salirMousePressed
+
+    private void salirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseExited
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/salir.png")));
+    }//GEN-LAST:event_salirMouseExited
+
+    private void salirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseEntered
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/salir.png")));
+    }//GEN-LAST:event_salirMouseEntered
     ActionListener taskPerformer = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {
             sesion.setVisible(true);
             registrarse.setVisible(true);
+            salir.setVisible(true);
             fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg")));
         }
     };
@@ -208,6 +248,7 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;
     private javax.swing.JButton registrarse;
+    private javax.swing.JButton salir;
     private javax.swing.JButton sesion;
     // End of variables declaration//GEN-END:variables
 }

@@ -158,6 +158,7 @@
             <Property name="text" type="java.lang.String" value="Esta baneado"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="banearMouseReleased"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="banearActionPerformed"/>
           </Events>
           <Constraints>
