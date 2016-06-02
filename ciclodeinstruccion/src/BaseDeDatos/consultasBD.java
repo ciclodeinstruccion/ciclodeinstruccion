@@ -68,7 +68,7 @@ public class consultasBD {
     
     public void banearRegistrado(Registrado r){
         try{
-            ConexionBD.instancia().getStatement().execute("Update into Registrados set baneado=1 where nombre='"+r.getNombre()+"'");
+            ConexionBD.instancia().getStatement().execute("Update Registrados set baneado=1 where nombre='"+r.getNombre()+"'");
         } catch (SQLException e){
             
         }
@@ -76,7 +76,7 @@ public class consultasBD {
     
     public void desbanearRegistrado(Registrado r){
         try{
-            ConexionBD.instancia().getStatement().execute("Update into Registrados set baneado=0 where nombre='"+r.getNombre()+"'");
+            ConexionBD.instancia().getStatement().execute("Update Registrados set baneado=0 where nombre='"+r.getNombre()+"'");
         } catch (SQLException e){
             
         }

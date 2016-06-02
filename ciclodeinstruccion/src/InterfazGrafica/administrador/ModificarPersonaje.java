@@ -43,17 +43,20 @@ public class ModificarPersonaje extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        imgP = new javax.swing.JLabel();
+        modificar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         especialLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        nombre = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         vida = new javax.swing.JTextField();
         daño = new javax.swing.JTextField();
         especial = new javax.swing.JTextField();
         precio = new javax.swing.JTextField();
-        imgP = new javax.swing.JLabel();
-        modificar = new javax.swing.JButton();
+        nombre = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 720));
@@ -62,56 +65,86 @@ public class ModificarPersonaje extends javax.swing.JDialog {
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        jLabel1.setText("Vida");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(690, 140, 20, 14);
-
-        jLabel2.setText("Daño");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(690, 200, 25, 14);
-
-        especialLabel.setText("Especial");
-        getContentPane().add(especialLabel);
-        especialLabel.setBounds(690, 260, 38, 14);
-
-        jLabel4.setText("Precio");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(690, 320, 29, 14);
-
-        nombre.setText("Nombre");
-        getContentPane().add(nombre);
-        nombre.setBounds(690, 100, 37, 14);
-
-        vida.setText("vida");
-        getContentPane().add(vida);
-        vida.setBounds(790, 140, 110, 40);
-
-        daño.setText("daño");
-        getContentPane().add(daño);
-        daño.setBounds(790, 190, 110, 40);
-
-        especial.setText("especial");
-        getContentPane().add(especial);
-        especial.setBounds(790, 250, 100, 50);
-
-        precio.setText("precio");
-        getContentPane().add(precio);
-        precio.setBounds(790, 320, 110, 40);
-
         imgP.setMaximumSize(new java.awt.Dimension(300, 450));
         imgP.setMinimumSize(new java.awt.Dimension(300, 450));
         imgP.setPreferredSize(new java.awt.Dimension(300, 450));
         getContentPane().add(imgP);
         imgP.setBounds(150, 110, 300, 450);
 
-        modificar.setText("Modificar");
+        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/modificar.png"))); // NOI18N
+        modificar.setMaximumSize(new java.awt.Dimension(260, 65));
+        modificar.setMinimumSize(new java.awt.Dimension(260, 65));
+        modificar.setPreferredSize(new java.awt.Dimension(260, 65));
         modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                modificarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                modificarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                modificarMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 modificarMouseReleased(evt);
             }
         });
         getContentPane().add(modificar);
-        modificar.setBounds(700, 460, 110, 40);
+        modificar.setBounds(510, 480, 260, 65);
+
+        jPanel1.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("Daño");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(70, 130, 70, 70);
+
+        especialLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        especialLabel.setText("Especial");
+        jPanel1.add(especialLabel);
+        especialLabel.setBounds(70, 210, 130, 50);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setText("Precio");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(70, 280, 110, 60);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Vida");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(70, 70, 60, 50);
+
+        vida.setText("vida");
+        jPanel1.add(vida);
+        vida.setBounds(230, 80, 110, 40);
+
+        daño.setText("daño");
+        jPanel1.add(daño);
+        daño.setBounds(230, 150, 110, 40);
+
+        especial.setText("especial");
+        jPanel1.add(especial);
+        especial.setBounds(230, 210, 100, 50);
+
+        precio.setText("precio");
+        jPanel1.add(precio);
+        precio.setBounds(230, 300, 110, 40);
+
+        nombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nombre.setText("Nombre");
+        jPanel1.add(nombre);
+        nombre.setBounds(130, 20, 130, 40);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(440, 50, 430, 400);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, 0, 1280, 720);
+
+        jToggleButton1.setText("jToggleButton1");
+        getContentPane().add(jToggleButton1);
+        jToggleButton1.setBounds(870, 150, 105, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -147,6 +180,18 @@ public class ModificarPersonaje extends javax.swing.JDialog {
         }
         
     }//GEN-LAST:event_modificarMouseReleased
+
+    private void modificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMousePressed
+        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/iniciar_sesion.png")));
+    }//GEN-LAST:event_modificarMousePressed
+
+    private void modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseExited
+        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/iniciar_sesion.png")));
+    }//GEN-LAST:event_modificarMouseExited
+
+    private void modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseEntered
+        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/hHover/iniciar_sesion.png")));
+    }//GEN-LAST:event_modificarMouseEntered
     public void mostrar(){
         nombre.setText(personaje.getNombre());
         vida.setText(Float.toString(personaje.getVida()));
@@ -285,7 +330,10 @@ public class ModificarPersonaje extends javax.swing.JDialog {
     private javax.swing.JLabel imgP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton modificar;
     private javax.swing.JLabel nombre;
     private javax.swing.JTextField precio;

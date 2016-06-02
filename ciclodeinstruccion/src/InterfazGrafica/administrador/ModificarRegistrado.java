@@ -121,6 +121,11 @@ public class ModificarRegistrado extends javax.swing.JDialog {
         contraseñaNueva.setBounds(310, 160, 260, 40);
 
         banear.setText("Esta baneado");
+        banear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                banearMouseReleased(evt);
+            }
+        });
         banear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 banearActionPerformed(evt);
@@ -173,12 +178,28 @@ public class ModificarRegistrado extends javax.swing.JDialog {
     }//GEN-LAST:event_volverMouseReleased
 
     private void banearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_banearActionPerformed
-        if(banear.isSelected()){
+    /*    if(banear.isSelected()==true){
             consultasBD.instancia().desbanearRegistrado(r);
+            System.out.println("hh");
         }else{
             consultasBD.instancia().banearRegistrado(r);
+            System.out.println("ggg");
         }
+        System.out.println("fdgdg");*/
+        
     }//GEN-LAST:event_banearActionPerformed
+
+    private void banearMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_banearMouseReleased
+        if(!banear.isSelected()){
+            consultasBD.instancia().desbanearRegistrado(r);
+            
+        }else{
+            consultasBD.instancia().banearRegistrado(r);
+            
+        }
+        
+    
+    }//GEN-LAST:event_banearMouseReleased
 
     public boolean comprobarActu(String nombre, String correo, String contraseña){
         boolean correcto=true;

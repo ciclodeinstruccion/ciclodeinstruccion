@@ -35,9 +35,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
     private void initComponents() {
 
         historialPartidas = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         gestionarUsuarios = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         estadisticas = new javax.swing.JButton();
         gestionarPersonajes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -75,14 +73,25 @@ public class InicioAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(historialPartidas);
-        historialPartidas.setBounds(372, 160, 260, 65);
+        historialPartidas.setBounds(480, 140, 260, 65);
 
-        jButton2.setText("jButton2");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(110, 410, 75, 23);
-
-        gestionarUsuarios.setText("Gestionar Usuarios");
+        gestionarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/gestionar_usuarios.png"))); // NOI18N
+        gestionarUsuarios.setBorderPainted(false);
+        gestionarUsuarios.setContentAreaFilled(false);
+        gestionarUsuarios.setFocusPainted(false);
+        gestionarUsuarios.setMaximumSize(new java.awt.Dimension(260, 65));
+        gestionarUsuarios.setMinimumSize(new java.awt.Dimension(260, 65));
+        gestionarUsuarios.setPreferredSize(new java.awt.Dimension(260, 65));
         gestionarUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gestionarUsuariosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gestionarUsuariosMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                gestionarUsuariosMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 gestionarUsuariosMouseReleased(evt);
             }
@@ -93,14 +102,25 @@ public class InicioAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(gestionarUsuarios);
-        gestionarUsuarios.setBounds(380, 80, 170, 23);
+        gestionarUsuarios.setBounds(480, 240, 260, 65);
 
-        jButton4.setText("jButton4");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(340, 440, 75, 23);
-
-        estadisticas.setText("estadisticas");
+        estadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/estadisticas.png"))); // NOI18N
+        estadisticas.setBorderPainted(false);
+        estadisticas.setContentAreaFilled(false);
+        estadisticas.setFocusPainted(false);
+        estadisticas.setMaximumSize(new java.awt.Dimension(260, 65));
+        estadisticas.setMinimumSize(new java.awt.Dimension(260, 65));
+        estadisticas.setPreferredSize(new java.awt.Dimension(260, 65));
         estadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                estadisticasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                estadisticasMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                estadisticasMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 estadisticasMouseReleased(evt);
             }
@@ -111,16 +131,36 @@ public class InicioAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(estadisticas);
-        estadisticas.setBounds(120, 80, 180, 23);
+        estadisticas.setBounds(480, 340, 260, 65);
 
-        gestionarPersonajes.setText("Gestionar personajes");
+        gestionarPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/gestionar_personajes.png"))); // NOI18N
+        gestionarPersonajes.setBorderPainted(false);
+        gestionarPersonajes.setContentAreaFilled(false);
+        gestionarPersonajes.setFocusPainted(false);
+        gestionarPersonajes.setMaximumSize(new java.awt.Dimension(260, 65));
+        gestionarPersonajes.setMinimumSize(new java.awt.Dimension(260, 65));
+        gestionarPersonajes.setPreferredSize(new java.awt.Dimension(260, 65));
         gestionarPersonajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gestionarPersonajesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gestionarPersonajesMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                gestionarPersonajesMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 gestionarPersonajesMouseReleased(evt);
             }
         });
+        gestionarPersonajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionarPersonajesActionPerformed(evt);
+            }
+        });
         getContentPane().add(gestionarPersonajes);
-        gestionarPersonajes.setBounds(750, 80, 137, 23);
+        gestionarPersonajes.setBounds(480, 450, 260, 65);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         jLabel1.setAutoscrolls(true);
@@ -178,6 +218,46 @@ public class InicioAdministrador extends javax.swing.JFrame {
         vp.setVisible(true);
     }//GEN-LAST:event_gestionarPersonajesMouseReleased
 
+    private void gestionarPersonajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarPersonajesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gestionarPersonajesActionPerformed
+
+    private void gestionarUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionarUsuariosMousePressed
+        gestionarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/gestionar_usuarios.png")));
+    }//GEN-LAST:event_gestionarUsuariosMousePressed
+
+    private void gestionarUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionarUsuariosMouseExited
+        gestionarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/gestionar_usuarios.png")));
+    }//GEN-LAST:event_gestionarUsuariosMouseExited
+
+    private void gestionarUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionarUsuariosMouseEntered
+        gestionarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/gestionar_usuarios.png")));
+    }//GEN-LAST:event_gestionarUsuariosMouseEntered
+
+    private void estadisticasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estadisticasMousePressed
+        estadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/estadisticas.png")));
+    }//GEN-LAST:event_estadisticasMousePressed
+
+    private void estadisticasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estadisticasMouseExited
+        estadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/estadisticas.png")));
+    }//GEN-LAST:event_estadisticasMouseExited
+
+    private void estadisticasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estadisticasMouseEntered
+        estadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/estadisticas.png")));
+    }//GEN-LAST:event_estadisticasMouseEntered
+
+    private void gestionarPersonajesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionarPersonajesMousePressed
+        gestionarPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/gestionar_personajes.png")));
+    }//GEN-LAST:event_gestionarPersonajesMousePressed
+
+    private void gestionarPersonajesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionarPersonajesMouseExited
+        gestionarPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/gestionar_personajes.png")));
+    }//GEN-LAST:event_gestionarPersonajesMouseExited
+
+    private void gestionarPersonajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionarPersonajesMouseEntered
+        gestionarPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/gestionar_personajes.png")));
+    }//GEN-LAST:event_gestionarPersonajesMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -218,8 +298,6 @@ public class InicioAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton gestionarPersonajes;
     private javax.swing.JButton gestionarUsuarios;
     private javax.swing.JButton historialPartidas;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
