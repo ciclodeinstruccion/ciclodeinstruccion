@@ -96,12 +96,15 @@ public class as extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.addValue(50, "as", "bs");
-        dataset.addValue(100, "as", "cs");
-        JFreeChart aa = ChartFactory.createBarChart("uno", "dos", "tres", dataset, PlotOrientation.VERTICAL, false, true, false);
         
+        dataset.addValue(100, "ab", "cs");
+        
+        JFreeChart aa = ChartFactory.createBarChart3D("aa", "ss", "dd", dataset);
         CategoryPlot p = aa.getCategoryPlot();
         p.setRangeGridlinePaint(Color.BLACK);
+        
         ChartPanel pan = new ChartPanel(aa);
+        
         pan.removeAll();
         panel.add(pan, BorderLayout.CENTER);
         panel.validate();
