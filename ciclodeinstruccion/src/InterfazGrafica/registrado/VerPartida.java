@@ -152,6 +152,18 @@ public class VerPartida extends javax.swing.JDialog {
         }
         if(cont>=partida.getTexto().size()){
             siguiente.setEnabled(false);
+            if(partida.getJugador1().getNombre().equals(partida.getGanador().getNombre())){
+                Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Ganador/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+                imagenP1.setIcon(new ImageIcon(img1));
+                Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Perdedor/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+                imagenP2.setIcon(new ImageIcon(img2));
+            }
+            else{
+                Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Perdedor/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+                imagenP1.setIcon(new ImageIcon(img1));
+                Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Ganador/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+                imagenP2.setIcon(new ImageIcon(img2));
+            }
         }
     }//GEN-LAST:event_siguiente
 
