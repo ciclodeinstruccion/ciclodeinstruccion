@@ -40,6 +40,7 @@ public class VerHistorial extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPartidas = new javax.swing.JTable();
         ver = new javax.swing.JButton();
@@ -51,6 +52,15 @@ public class VerHistorial extends javax.swing.JDialog {
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
+
+        jButton2.setText("jButton2");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton2MouseReleased(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(70, 40, 75, 23);
 
         jScrollPane1.setBackground(new java.awt.Color(0,0 ,0,0 ));
         jScrollPane1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
@@ -172,6 +182,12 @@ public class VerHistorial extends javax.swing.JDialog {
     private void jScrollPane1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane1MouseWheelMoved
         jScrollPane1.repaint();
     }//GEN-LAST:event_jScrollPane1MouseWheelMoved
+
+    private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
+        Estadisticas e=new Estadisticas(null, true, registrado);
+        e.mostrar();
+        e.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseReleased
     public void mostrar(){
         tabla=new DefaultTableModel(this.registrado.tablaHistorialPartidas(), cabecera);
         tablaPartidas.setModel(tabla);
@@ -220,6 +236,7 @@ public class VerHistorial extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaPartidas;

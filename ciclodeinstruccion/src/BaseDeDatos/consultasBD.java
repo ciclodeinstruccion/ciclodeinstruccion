@@ -869,4 +869,55 @@ public class consultasBD {
         }
         return personajes;
     }
+    public int jugadasMiPersonaje1(Registrado r, MiPersonaje mp, String rival ){
+        int jugadas=0;
+        try{
+            ResultSet rs =ConexionBD.instancia().getStatement().executeQuery("Select count(identificador) from Partida group by jugador1,personaje1,personaje2,finalizada having jugador1='"+r.getNombre()+"' and personaje1='"+mp.getNombre()+"' and personaje2='"+rival+"' and finalizada=1");
+            if(rs.next()){
+                jugadas=Integer.parseInt(rs.getString(1));
+            }
+        } catch(SQLException e){
+            
+        }
+        return jugadas;
+    }
+    
+    public int jugadasMiPersonaje2(Registrado r, MiPersonaje mp, String rival ){
+        int jugadas=0;
+        try{
+            ResultSet rs =ConexionBD.instancia().getStatement().executeQuery("Select count(identificador) from Partida group by jugador2,personaje2,personaje1,finalizada having jugador2='"+r.getNombre()+"' and personaje2='"+mp.getNombre()+"' and personaje1='"+rival+"' and finalizada=1");
+            if(rs.next()){
+                jugadas=Integer.parseInt(rs.getString(1));
+            }
+        } catch(SQLException e){
+            
+        }
+        return jugadas;
+    }
+    
+    public int ganadasMiPersonaje1(Registrado r, MiPersonaje mp, String rival ){
+        int jugadas=0;
+        try{
+            ResultSet rs =ConexionBD.instancia().getStatement().executeQuery("Select count(identificador) from Partida group by jugador1,personaje1,personaje2,ganador having ganador='"+r.getNombre()+"' and personaje1='"+mp.getNombre()+"' and personaje2='"+rival+"' and jugador1='"+r.getNombre()+"'");
+            if(rs.next()){
+                jugadas=Integer.parseInt(rs.getString(1));
+            }
+        } catch(SQLException e){
+            
+        }
+        return jugadas;
+    }
+    
+    public int ganadasMiPersonaje2(Registrado r, MiPersonaje mp, String rival ){
+        int jugadas=0;
+        try{
+            ResultSet rs =ConexionBD.instancia().getStatement().executeQuery("Select count(identificador) from Partida group by jugador2,personaje2,personaje1,ganador having ganador='"+r.getNombre()+"' and personaje2='"+mp.getNombre()+"' and personaje1='"+rival+"' and jugador2='"+r.getNombre()+"'");
+            if(rs.next()){
+                jugadas=Integer.parseInt(rs.getString(1));
+            }
+        } catch(SQLException e){
+            
+        }
+        return jugadas;
+    }
 }

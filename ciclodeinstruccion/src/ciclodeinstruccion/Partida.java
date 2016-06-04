@@ -42,7 +42,7 @@ public class Partida {
         this.finalizada=false;
         this.texto=new ArrayList();
         this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
-        this.partidasJ1=this.jugador1.getPartidasJugadas();
+        this.partidasJ1=this.jugador1.getPartidasJugadas()+1;
     }
     
     public Partida(int identificador, Registrado jugador1, Registrado jugador2, MiPersonaje personaje1, MiPersonaje personaje2, int partidasJ1, int partidasJ2, Registrado ganador, MiPersonaje pGanador) {
@@ -58,7 +58,7 @@ public class Partida {
         this.partidasJ2 = partidasJ2;
     }
     public void comprarPartida(){
-        this.jugador1.setPartidasJugadas(partidasJ1+1);
+        this.jugador1.setPartidasJugadas(partidasJ1);
         this.jugador1.gastarPuntosOro(COSTE_PARTIDA);
     }
     public void unirsePartida(Registrado jugador2, MiPersonaje personaje2){
@@ -66,8 +66,8 @@ public class Partida {
         this.personaje2=personaje2;
         this.vidaPersonaje2=personaje2.getVidaBase()+personaje2.getBonusVida()+jugador2.getVitalidad();
         this.jugador2.gastarPuntosOro(COSTE_PARTIDA);
+        this.jugador2.setPartidasJugadas(this.jugador2.getPartidasJugadas()+1);
         this.partidasJ2=this.jugador2.getPartidasJugadas();
-        this.jugador2.setPartidasJugadas(partidasJ2+1);
     }
     public void jugarPartida(){
         float dañoPersonaje1=personaje1.getDañoBase()+personaje1.getBonusDaño()+jugador1.getFuerza();
