@@ -44,6 +44,15 @@ public class Partida {
         this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
         this.partidasJ1=this.jugador1.getPartidasJugadas()+1;
     }
+    public Partida(int identificador, Registrado jugador1, MiPersonaje personaje1, int partidasJ1) {
+        this.identificador = identificador;
+        this.jugador1 = jugador1;
+        this.personaje1 = personaje1;
+        this.finalizada=false;
+        this.texto=new ArrayList();
+        this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
+        this.partidasJ1=partidasJ1;
+    }
     
     public Partida(int identificador, Registrado jugador1, Registrado jugador2, MiPersonaje personaje1, MiPersonaje personaje2, int partidasJ1, int partidasJ2, Registrado ganador, MiPersonaje pGanador) {
         this.jugador1 = jugador1;

@@ -450,11 +450,11 @@ public class consultasBD {
     public ArrayList <Partida> buscarPartidasUnirte(Registrado r){
         ArrayList <Partida> partidas=new ArrayList();
         try {
-            ResultSet rs= ConexionBD.instancia().getStatement().executeQuery("select identificador,jugador1,personaje1 from Partida where jugador1!='"+r.getNombre()+"' and finalizada=0");
+            ResultSet rs= ConexionBD.instancia().getStatement().executeQuery("select identificador,jugador1,personaje1,nPartidas1 from Partida where jugador1!='"+r.getNombre()+"' and finalizada=0");
             
             while(rs.next()){
                 Registrado j=this.buscarRegistrado(rs.getString(2));
-                Partida p=new Partida(Integer.parseInt(rs.getString(1)), j, this.buscarMiPersonaje(rs.getString(3), j));
+                Partida p=new Partida(Integer.parseInt(rs.getString(1)), j, this.buscarMiPersonaje(rs.getString(3), j),Integer.parseInt(rs.getString(4)));
                 partidas.add(p);
             }
         } catch(SQLException e){
