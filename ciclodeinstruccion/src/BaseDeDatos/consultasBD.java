@@ -424,9 +424,9 @@ public class consultasBD {
     public Partida buscarUnaPartidaUnirsePorId(int id){
         Partida p=null;
         try{
-            ResultSet rs=ConexionBD.instancia().getStatement().executeQuery("SELECT identificador,jugador1,personaje1 FROM Partida where identificador="+Integer.toString(id));
+            ResultSet rs=ConexionBD.instancia().getStatement().executeQuery("SELECT identificador,jugador1,personaje1,nPartidas1 FROM Partida where identificador="+Integer.toString(id));
             if(rs.next()){
-                p=new Partida(Integer.parseInt(rs.getString(1)), this.buscarRegistrado(rs.getString(2)), this.buscarMiPersonaje(rs.getString(3), this.buscarRegistrado(rs.getString(2))));
+                p=new Partida(Integer.parseInt(rs.getString(1)), this.buscarRegistrado(rs.getString(2)), this.buscarMiPersonaje(rs.getString(3), this.buscarRegistrado(rs.getString(2))),Integer.parseInt(rs.getString(4)));
             }
         }catch(SQLException e){
             
