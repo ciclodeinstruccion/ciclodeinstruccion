@@ -156,7 +156,6 @@ public class Inicio extends javax.swing.JFrame {
             ConexionBD.crearConexion();
         } catch (ErrorConexionBD ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("mal");
         }
         
         IniciarSesion is=new IniciarSesion(this, true,this);
