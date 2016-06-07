@@ -649,6 +649,10 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
         }
         
     }
+    public void cerrar(){
+        this.mp.mostrar();
+        this.mp.setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */

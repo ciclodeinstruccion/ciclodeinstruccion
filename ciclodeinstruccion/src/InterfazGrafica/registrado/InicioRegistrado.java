@@ -379,7 +379,8 @@ public class InicioRegistrado extends javax.swing.JFrame {
     }//GEN-LAST:event_atributosregMouseReleased
 
     private void misPersonajesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_misPersonajesMouseReleased
-        MisPersonajes mp = new MisPersonajes(this, true, resgistrado);
+        MisPersonajes mp = new MisPersonajes(this, true, resgistrado,this);
+        this.setVisible(false);
         mp.mostrar();
         mp.setVisible(true);
     }//GEN-LAST:event_misPersonajesMouseReleased

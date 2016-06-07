@@ -21,10 +21,12 @@ public class MisPersonajes extends javax.swing.JDialog {
     Registrado registrado;
     String cabecera []={"Nombre","Tipo","Vida","Daño","Especial","Nivel","Experiencia","Puntos de nivel"};
     DefaultTableModel tabla;
-    public MisPersonajes(java.awt.Frame parent, boolean modal,Registrado r) {
+    InicioRegistrado ir;
+    public MisPersonajes(java.awt.Frame parent, boolean modal,Registrado r, InicioRegistrado ir) {
         super(parent, modal);
         initComponents();
         this.registrado=r;
+        this.ir=ir;
     }
 
     /**
@@ -128,6 +130,7 @@ public class MisPersonajes extends javax.swing.JDialog {
         if(tablaMisPersonajes.getSelectedRow()>-1){
             MiPersonaje mp=registrado.getMisPersonajes().get(registrado.buscarMiPersonaje(tablaMisPersonajes.getValueAt(tablaMisPersonajes.getSelectedRow(), 0).toString()));
             AtributosMiPersonaje amp= new AtributosMiPersonaje(null, true, mp, registrado,this);
+            this.setVisible(false);
             amp.mostrar();
             amp.setVisible(true);
         }
@@ -135,6 +138,8 @@ public class MisPersonajes extends javax.swing.JDialog {
 
     private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
         this.setVisible(false);
+        ir.mostrar();
+        ir.setVisible(true);
     }//GEN-LAST:event_volverMouseReleased
 
     private void atributosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atributosActionPerformed
@@ -202,7 +207,7 @@ public class MisPersonajes extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                MisPersonajes dialog = new MisPersonajes(new javax.swing.JFrame(), true,null);
+                MisPersonajes dialog = new MisPersonajes(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

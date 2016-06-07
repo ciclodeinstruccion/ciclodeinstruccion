@@ -167,8 +167,8 @@ public class Inicio extends javax.swing.JFrame {
             ConexionBD.crearConexion();
         } catch (ErrorConexionBD ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("mal");
         }
+        this.setVisible(false);
         Registrarse r=new Registrarse(this, true,this);
         r.setVisible(true);
     }//GEN-LAST:event_registrarse
