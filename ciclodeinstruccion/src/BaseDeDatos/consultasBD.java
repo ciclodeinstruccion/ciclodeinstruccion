@@ -937,5 +937,37 @@ public class consultasBD {
         return ganadas;
     }
     
+    public String [][] clasificacion(){
+        
+        ArrayList<Registrado> clasi = new ArrayList();
+        ArrayList<Integer> ganadas = new ArrayList();
+        int g;
+        Registrado r;
+        
+        try{
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT ganador, COUNT(ganador) AS patata FROM Partida GROUP BY ganador ORDER BY patata DESC LIMIT 10");
+            
+            while(rs.next()){
+                g = Integer.parseInt(rs.getString(2));
+                ganadas.add(g);
+                r = this.buscarRegistrado(rs.getString(1));
+                clasi.add(r);
+            }
+        }catch(SQLException e){
+            
+        }
+        
+        String arrayUsuarios [][]=new String [clasi.size()][3];
+        for(int i=0; i<arrayUsuarios.length;i++){
+            arrayUsuarios[i][0]=clasi.get(i).getNombre();
+            arrayUsuarios[i][1]=Integer.toString(clasi.get(i).getNivel());
+            arrayUsuarios[i][2]=Integer.toString(ganadas.get(i));
+        }
+        return arrayUsuarios;
+    }
+        
+        
+    }
+    
     
 }
