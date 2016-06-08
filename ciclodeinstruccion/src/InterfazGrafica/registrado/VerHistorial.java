@@ -59,8 +59,13 @@ public class VerHistorial extends javax.swing.JDialog {
                 jButton2MouseReleased(evt);
             }
         });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
-        jButton2.setBounds(70, 40, 75, 23);
+        jButton2.setBounds(70, 40, 73, 23);
 
         jScrollPane1.setBackground(new java.awt.Color(0,0 ,0,0 ));
         jScrollPane1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
@@ -186,8 +191,13 @@ public class VerHistorial extends javax.swing.JDialog {
     private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
         Estadisticas e=new Estadisticas(null, true, registrado);
         e.mostrar2();
+        e.mostrar3();
         e.setVisible(true);
     }//GEN-LAST:event_jButton2MouseReleased
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
     public void mostrar(){
         tabla=new DefaultTableModel(this.registrado.tablaHistorialPartidas(), cabecera);
         tablaPartidas.setModel(tabla);

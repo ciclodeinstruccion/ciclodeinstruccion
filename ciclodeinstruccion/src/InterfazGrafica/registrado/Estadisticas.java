@@ -14,12 +14,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Locale;
+import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.general.DefaultPieDataset;
+import BaseDeDatos.*;
 
 /**
  *
@@ -31,6 +33,8 @@ public class Estadisticas extends javax.swing.JDialog {
      * Creates new form Estadisticas
      */
     Registrado registrado;
+    DefaultTableModel tablaClasi;
+    String [] cabecera={"Nombre","Nivel","Partidas ganadas"};
     public Estadisticas(java.awt.Frame parent, boolean modal, Registrado r) {
         super(parent, modal);
         initComponents();
@@ -60,6 +64,9 @@ public class Estadisticas extends javax.swing.JDialog {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 720));
@@ -197,10 +204,22 @@ public class Estadisticas extends javax.swing.JDialog {
         jButton9.setBounds(990, 10, 100, 100);
 
         jTabbedPane1.addTab("Estadisticas de mis personajes", barritas);
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0, 130));
+
+        tabla.setBackground(new java.awt.Color(255, 255, 245));
+        jScrollPane1.setViewportView(tabla);
+
+        jPanel1.add(jScrollPane1);
+
         jTabbedPane1.addTab("Clasificación general", jPanel1);
 
         getContentPane().add(jTabbedPane1);
         jTabbedPane1.setBounds(100, 150, 1140, 520);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -271,6 +290,12 @@ public class Estadisticas extends javax.swing.JDialog {
         tarta.add(pan,BorderLayout.CENTER);
         tarta.validate();
     }
+    
+    public void mostrar3(){
+        tablaClasi = new DefaultTableModel(consultasBD.instancia().clasificacion(), cabecera);
+        
+        tabla.setModel(tablaClasi);
+    }
     /**
      * @param args the command line arguments
      */
@@ -325,8 +350,11 @@ public class Estadisticas extends javax.swing.JDialog {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable tabla;
     private javax.swing.JPanel tarta;
     // End of variables declaration//GEN-END:variables
 }
