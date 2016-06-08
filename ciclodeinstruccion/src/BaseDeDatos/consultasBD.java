@@ -937,5 +937,30 @@ public class consultasBD {
         return ganadas;
     }
     
+    public int jugadasJ1(Registrado r){
+        int jugadas=0;
+        try{
+            ResultSet rs=ConexionBD.instancia().getStatement().executeQuery("Select count(identificador) from Partida group by jugador1,finalizada having jugador1='"+r.getNombre()+"' and finalizada=1");
+            if(rs.next()){
+                jugadas=Integer.parseInt(rs.getString(1));
+            }
+        } catch (SQLException e){
+            
+        }
+        return jugadas;
+    }
+    
+    public int jugadasJ2(Registrado r){
+        int jugadas=0;
+        try{
+            ResultSet rs=ConexionBD.instancia().getStatement().executeQuery("Select count(identificador) from Partida group by jugador2,finalizada having jugador2='"+r.getNombre()+"' and finalizada=1");
+            if(rs.next()){
+                jugadas=Integer.parseInt(rs.getString(1));
+            }
+        } catch (SQLException e){
+            
+        }
+        return jugadas;
+    }
     
 }

@@ -185,7 +185,7 @@ public class VerHistorial extends javax.swing.JDialog {
 
     private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
         Estadisticas e=new Estadisticas(null, true, registrado);
-        e.mostrar();
+        e.mostrar2();
         e.setVisible(true);
     }//GEN-LAST:event_jButton2MouseReleased
     public void mostrar(){
