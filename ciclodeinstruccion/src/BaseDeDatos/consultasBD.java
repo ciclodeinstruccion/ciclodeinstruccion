@@ -920,4 +920,22 @@ public class consultasBD {
         }
         return jugadas;
     }
+    
+    public int partidasGanadas(Registrado r){
+        
+        int ganadas = 0;
+        
+        try{
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT count(ganador) FROM partida GROUP BY ganador HAVING ganador='"+r.getNombre()+"'");
+            if(rs.next()){
+                ganadas = Integer.parseInt(rs.getString(1));
+            }
+        }catch(SQLException e){
+            
+        }
+        
+        return ganadas;
+    }
+    
+    
 }
