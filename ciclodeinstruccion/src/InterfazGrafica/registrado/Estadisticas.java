@@ -57,7 +57,10 @@ public class Estadisticas extends javax.swing.JDialog {
 
         jButton10 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        tarta = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaHisto = new javax.swing.JTable();
+        ver = new javax.swing.JButton();
         barritas = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         barrasPersonajes = new javax.swing.JPanel();
@@ -72,16 +75,11 @@ public class Estadisticas extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablaHisto = new javax.swing.JTable();
-        ver = new javax.swing.JButton();
+        tarta = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
@@ -108,7 +106,52 @@ public class Estadisticas extends javax.swing.JDialog {
         getContentPane().add(jButton10);
         jButton10.setBounds(460, 50, 260, 65);
 
-        jTabbedPane1.addTab("Ganadas/Perdidas", tarta);
+        jPanel2.setLayout(null);
+
+        tablaHisto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tablaHisto);
+
+        jPanel2.add(jScrollPane2);
+        jScrollPane2.setBounds(90, 50, 452, 360);
+
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/ver_partida.png"))); // NOI18N
+        ver.setBorder(null);
+        ver.setBorderPainted(false);
+        ver.setContentAreaFilled(false);
+        ver.setFocusPainted(false);
+        ver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                verMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                verMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                verMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                ver(evt);
+            }
+        });
+        ver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ver);
+        ver.setBounds(650, 120, 260, 65);
+
+        jTabbedPane1.addTab("Historial partidas", jPanel2);
 
         barritas.setLayout(null);
 
@@ -246,52 +289,8 @@ public class Estadisticas extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Clasificación general", jPanel1);
 
-        jPanel2.setLayout(null);
-
-        tablaHisto.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane2.setViewportView(tablaHisto);
-
-        jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(60, 30, 452, 360);
-
-        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/ver_partida.png"))); // NOI18N
-        ver.setBorder(null);
-        ver.setBorderPainted(false);
-        ver.setContentAreaFilled(false);
-        ver.setFocusPainted(false);
-        ver.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                verMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                verMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                verMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                ver(evt);
-            }
-        });
-        ver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verActionPerformed(evt);
-            }
-        });
-        jPanel2.add(ver);
-        ver.setBounds(620, 140, 260, 65);
-
-        jTabbedPane1.addTab("Historial partidas", jPanel2);
+        tarta.setLayout(null);
+        jTabbedPane1.addTab("Ganadas/Perdidas", tarta);
 
         getContentPane().add(jTabbedPane1);
         jTabbedPane1.setBounds(100, 150, 1140, 520);
@@ -409,8 +408,8 @@ public class Estadisticas extends javax.swing.JDialog {
         JFreeChart queso= ChartFactory.createPieChart3D("Paridas ganadas y perdidas", pie, true, true, Locale.FRENCH);
         PiePlot3D p=(PiePlot3D) queso.getPlot();
         ChartPanel pan= new ChartPanel(queso);
-        tarta.add(pan,BorderLayout.CENTER);
-        tarta.validate();
+        jPanel2.add(pan,BorderLayout.CENTER);
+        jPanel2.validate();
     }
     
     public void mostrar3(){
