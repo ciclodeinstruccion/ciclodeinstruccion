@@ -156,7 +156,7 @@ public class UnirsePartida extends javax.swing.JDialog {
                 consultasBD.instancia().unirsePartida(p);
                 consultasBD.instancia().modificarRegistrado(p.getGanador());
                 consultasBD.instancia().modificarMiPersonaje(p.getpGanador(), p.getGanador());
-                VerPartida vp=new VerPartida(null, true, p,ir);
+                VerPartida vp=new VerPartida(ir, true, p, true, ir, false, null);
                 vp.mostrar();
                 this.setVisible(false);
                 vp.setVisible(true);
