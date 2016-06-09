@@ -7,8 +7,21 @@ package InterfazGrafica;
 
 import BaseDeDatos.*;
 import Excepciones.ErrorConexionBD;
+import InterfazGrafica.registrado.VerPartida;
+import MiPersonaje.MiAsesino;
+import MiPersonaje.MiFighter;
+import MiPersonaje.MiTanque;
+import Personaje.Asesino;
+import Personaje.Fighter;
+import Personaje.Personaje;
+import Personaje.Tanque;
+import ciclodeinstruccion.GeneradorAleatorios;
+import ciclodeinstruccion.Partida;
+import ciclodeinstruccion.Usuarios.Registrado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
@@ -137,6 +150,11 @@ public class Inicio extends javax.swing.JFrame {
         probarJuego.setMaximumSize(new java.awt.Dimension(260, 65));
         probarJuego.setMinimumSize(new java.awt.Dimension(260, 65));
         probarJuego.setPreferredSize(new java.awt.Dimension(260, 65));
+        probarJuego.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                probarJuegoMouseReleased(evt);
+            }
+        });
         getContentPane().add(probarJuego);
         probarJuego.setBounds(520, 100, 260, 65);
 
@@ -212,6 +230,60 @@ public class Inicio extends javax.swing.JFrame {
     private void salirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseEntered
         salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/salir.png")));
     }//GEN-LAST:event_salirMouseEntered
+
+    private void probarJuegoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_probarJuegoMouseReleased
+        try {
+            ConexionBD.crearConexion();
+        } catch (ErrorConexionBD ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Registrado r1= new Registrado(0, 1, 500, 0, 0, 0, 0, 0, 0, "Jero", "jero", "aaa", new Date());
+        Registrado r2= new Registrado(0, 1, 500, 0, 0, 0, 0, 0, 0, "Jose Luis", "Jose Luis", "aaa", new Date());
+        ArrayList <Personaje> personajes=consultasBD.instancia().todosLosPersonajes();
+        Personaje p1=personajes.get(GeneradorAleatorios.generarAleatorio(9));
+        Personaje p2=personajes.get(GeneradorAleatorios.generarAleatorio(9));
+        Partida partida=null;
+        if(p1 instanceof Tanque){
+            Tanque t=(Tanque) p1;
+            MiTanque mp=new MiTanque(0, 0, 1, 0, 0, t, 0);
+            r1.añadirPersonajes(mp);
+            partida=new Partida(1, r1, mp);
+        }
+        else if(p1 instanceof Asesino){
+            Asesino a=(Asesino) p1;
+            MiAsesino mp=new MiAsesino(0, 0, 1, 0, 0, a, 0);
+            r1.añadirPersonajes(mp);
+            partida=new Partida(1, r1, mp);
+        }
+        else if(p1 instanceof Fighter){
+            Fighter f=(Fighter) p1;
+            MiFighter mp=new MiFighter(0, 0, 1, 0, 0, f, 0);
+            r1.añadirPersonajes(mp);
+            partida=new Partida(1, r1, mp);
+        }
+        if(p2 instanceof Tanque){
+            Tanque t=(Tanque) p2;
+            MiTanque mp2=new MiTanque(0, 0, 1, 0, 0, t, 0);
+            r2.añadirPersonajes(mp2);
+            partida.unirsePartida(r2, mp2);
+        }
+        else if(p2 instanceof Asesino){
+            Asesino a=(Asesino) p2;
+            MiAsesino mp2=new MiAsesino(0, 0, 1, 0, 0, a, 0);
+            r2.añadirPersonajes(mp2);
+            partida.unirsePartida(r2, mp2);
+        }
+        else if(p2 instanceof Fighter){
+            Fighter f=(Fighter) p2;
+            MiFighter mp2=new MiFighter(0, 0, 1, 0, 0, f, 0);
+            r2.añadirPersonajes(mp2);
+            partida.unirsePartida(r2, mp2);
+        }
+        partida.jugarPartida();
+        VerPartida vp=new VerPartida(this, true, partida, false, null, true, this,false,null);
+        vp.mostrar();
+        vp.setVisible(true);
+    }//GEN-LAST:event_probarJuegoMouseReleased
     ActionListener taskPerformer = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {

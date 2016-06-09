@@ -5,6 +5,7 @@
  */
 package InterfazGrafica.registrado;
 
+import InterfazGrafica.Inicio;
 import ciclodeinstruccion.Partida;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -18,15 +19,26 @@ public class VerPartida extends javax.swing.JDialog {
     /**
      * Creates new form VerPartida
      */
-    Partida partida;
-    int cont;
-    InicioRegistrado ir;
-    public VerPartida(java.awt.Frame parent, boolean modal,Partida p, InicioRegistrado ir) {
+    private Partida partida;
+    private int cont;
+    private boolean jugar;
+    private InicioRegistrado ir;
+    private boolean prueba;
+    private Inicio i;
+    private boolean repeticion;
+    private Estadisticas e;
+    
+    public VerPartida(java.awt.Frame parent, boolean modal,Partida p,boolean jugar ,InicioRegistrado ir,boolean prueba, Inicio i, boolean repeticion, Estadisticas e) {
         super(parent, modal);
         initComponents();
         this.partida=p;
         this.cont=1;
+        this.jugar=jugar;
         this.ir=ir;
+        this.prueba=prueba;
+        this.i=i;
+        this.repeticion=repeticion;
+        this.e=e;
     }
 
     /**
@@ -169,8 +181,19 @@ public class VerPartida extends javax.swing.JDialog {
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         this.setVisible(false);
-        ir.mostrar();
-        ir.setVisible(true);
+        if(jugar){
+            ir.mostrar();
+            ir.setVisible(true);
+        }
+        else if(prueba){
+            i.setVisible(true);
+        }
+        else if(repeticion){
+            e.mostrar2();
+            e.mostrar3();
+            e.mostrar4();
+            e.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
@@ -237,7 +260,7 @@ public class VerPartida extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerPartida dialog = new VerPartida(new javax.swing.JFrame(), true,null,null);
+                VerPartida dialog = new VerPartida(new javax.swing.JFrame(), true,null,true,null,true,null,true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
