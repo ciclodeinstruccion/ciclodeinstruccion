@@ -970,7 +970,7 @@ public class consultasBD {
         Registrado r;
         
         try{
-            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT ganador, COUNT(ganador) AS patata FROM Partida GROUP BY ganador ORDER BY patata DESC LIMIT 10");
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT ganador, COUNT(ganador) AS patata FROM Partida GROUP BY ganador,finalizada having finalizada=1 ORDER BY patata DESC LIMIT 10");
             
             while(rs.next()){
                 g = Integer.parseInt(rs.getString(2));

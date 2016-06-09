@@ -240,7 +240,7 @@ public class ModificarPersonaje extends javax.swing.JDialog {
             }
             
         } catch (Exception e){
-            JOptionPane.showMessageDialog(rootPane, "El daño no es correcta", "Modificar personaje", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "El daño no es correcto", "Modificar personaje", JOptionPane.WARNING_MESSAGE);
             daño=0;
         }
         return daño;

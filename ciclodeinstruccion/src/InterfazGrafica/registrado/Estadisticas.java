@@ -55,7 +55,7 @@ public class Estadisticas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton10 = new javax.swing.JButton();
+        volver = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -84,27 +84,27 @@ public class Estadisticas extends javax.swing.JDialog {
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
-        jButton10.setBorder(null);
-        jButton10.setBorderPainted(false);
-        jButton10.setContentAreaFilled(false);
-        jButton10.setFocusPainted(false);
-        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        volver.setBorder(null);
+        volver.setBorderPainted(false);
+        volver.setContentAreaFilled(false);
+        volver.setFocusPainted(false);
+        volver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton10MouseEntered(evt);
+                volverMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton10MouseExited(evt);
+                volverMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton10MousePressed(evt);
+                volverMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jButton10MouseReleased(evt);
+                volverMouseReleased(evt);
             }
         });
-        getContentPane().add(jButton10);
-        jButton10.setBounds(460, 50, 260, 65);
+        getContentPane().add(volver);
+        volver.setBounds(460, 50, 260, 65);
 
         jPanel2.setLayout(null);
 
@@ -367,21 +367,21 @@ public class Estadisticas extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_verActionPerformed
 
-    private void jButton10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseEntered
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
-    }//GEN-LAST:event_jButton10MouseEntered
+    private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_volverMouseEntered
 
-    private void jButton10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseExited
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
-    }//GEN-LAST:event_jButton10MouseExited
+    private void volverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseExited
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_volverMouseExited
 
-    private void jButton10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MousePressed
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
-    }//GEN-LAST:event_jButton10MousePressed
+    private void volverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMousePressed
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_volverMousePressed
 
-    private void jButton10MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseReleased
+    private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
         this.setVisible(false);
-    }//GEN-LAST:event_jButton10MouseReleased
+    }//GEN-LAST:event_volverMouseReleased
     public void mostrar(String nombre){
         ArrayList <Personaje> personajes=new ArrayList();
         personajes=consultasBD.instancia().todosLosPersonajes();
@@ -410,8 +410,8 @@ public class Estadisticas extends javax.swing.JDialog {
         JFreeChart queso= ChartFactory.createPieChart3D("Paridas ganadas y perdidas", pie, true, true, Locale.FRENCH);
         PiePlot3D p=(PiePlot3D) queso.getPlot();
         ChartPanel pan= new ChartPanel(queso);
-        jPanel2.add(pan,BorderLayout.CENTER);
-        jPanel2.validate();
+        tarta.add(pan,BorderLayout.CENTER);
+        tarta.validate();
     }
     
     public void mostrar3(){
@@ -474,7 +474,6 @@ public class Estadisticas extends javax.swing.JDialog {
     private javax.swing.JPanel barrasPersonajes;
     private javax.swing.JPanel barritas;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -493,5 +492,6 @@ public class Estadisticas extends javax.swing.JDialog {
     private javax.swing.JTable tablaHisto;
     private javax.swing.JPanel tarta;
     private javax.swing.JButton ver;
+    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
