@@ -468,7 +468,7 @@ public class consultasBD {
         ArrayList <Partida> partidas = new ArrayList();
         
         try{
-            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT * FROM Partida WHERE (jugador1='"+r.getNombre()+"'OR jugador2='"+r.getNombre()+"') AND finalizada=1");
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT * FROM Partida WHERE (jugador1='"+r.getNombre()+"'OR jugador2='"+r.getNombre()+"') AND finalizada=1 ORDER BY identificador DESC LIMIT 20");
             while(rs.next()){
                 Partida p = new Partida(Integer.parseInt(rs.getString(1)),this.buscarRegistrado(rs.getString(2)),this.buscarRegistrado(rs.getString(3)),this.buscarMiPersonaje(rs.getString(4),this.buscarRegistrado(rs.getString(2))),this.buscarMiPersonaje(rs.getString(5),this.buscarRegistrado(rs.getString(3))),Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),this.buscarRegistrado(rs.getString(8)),this.buscarMiPersonaje(rs.getString(9),this.buscarRegistrado(rs.getString(8))));
                 this.buscarTextoPartida(p);
@@ -962,5 +962,37 @@ public class consultasBD {
         }
         return jugadas;
     }
+    public String [][] clasificacion(){
+        
+        ArrayList<Registrado> clasi = new ArrayList();
+        ArrayList<Integer> ganadas = new ArrayList();
+        int g;
+        Registrado r;
+        
+        try{
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT ganador, COUNT(ganador) AS patata FROM Partida GROUP BY ganador ORDER BY patata DESC LIMIT 10");
+            
+            while(rs.next()){
+                g = Integer.parseInt(rs.getString(2));
+                ganadas.add(g);
+                r = this.buscarRegistrado(rs.getString(1));
+                clasi.add(r);
+            }
+        }catch(SQLException e){
+            
+        }
+        
+        String arrayUsuarios [][]=new String [clasi.size()][3];
+        for(int i=0; i<arrayUsuarios.length;i++){
+            arrayUsuarios[i][0]=clasi.get(i).getNombre();
+            arrayUsuarios[i][1]=Integer.toString(clasi.get(i).getNivel());
+            arrayUsuarios[i][2]=Integer.toString(ganadas.get(i));
+        }
+        return arrayUsuarios;
+    }
+        
+        
+    
+    
     
 }
