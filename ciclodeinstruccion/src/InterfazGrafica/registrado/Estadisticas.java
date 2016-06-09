@@ -22,6 +22,7 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.general.DefaultPieDataset;
 import BaseDeDatos.*;
+import ciclodeinstruccion.Partida;
 
 /**
  *
@@ -35,10 +36,14 @@ public class Estadisticas extends javax.swing.JDialog {
     Registrado registrado;
     DefaultTableModel tablaClasi;
     String [] cabecera={"Nombre","Nivel","Partidas ganadas"};
-    public Estadisticas(java.awt.Frame parent, boolean modal, Registrado r) {
+    String cabecera1 []={"Identificador","Jugador 1","Personaje 1","Jugador 2","Personaje 2","Jugador ganador","Personaje ganador"};
+    DefaultTableModel tablaHistorial;
+    InicioRegistrado ir;
+    public Estadisticas(java.awt.Frame parent, boolean modal, Registrado r, InicioRegistrado ir) {
         super(parent, modal);
         initComponents();
         this.registrado=r;
+        this.ir=ir;
     }
 
     /**
@@ -50,6 +55,7 @@ public class Estadisticas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton10 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         tarta = new javax.swing.JPanel();
         barritas = new javax.swing.JPanel();
@@ -66,6 +72,10 @@ public class Estadisticas extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaHisto = new javax.swing.JTable();
+        ver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -75,6 +85,28 @@ public class Estadisticas extends javax.swing.JDialog {
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
+
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        jButton10.setBorder(null);
+        jButton10.setBorderPainted(false);
+        jButton10.setContentAreaFilled(false);
+        jButton10.setFocusPainted(false);
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton10MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton10MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton10MouseReleased(evt);
+            }
+        });
+        getContentPane().add(jButton10);
+        jButton10.setBounds(460, 50, 260, 65);
 
         jTabbedPane1.addTab("Ganadas/Perdidas", tarta);
 
@@ -205,7 +237,7 @@ public class Estadisticas extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Estadisticas de mis personajes", barritas);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0, 130));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0, 250));
 
         tabla.setBackground(new java.awt.Color(255, 255, 245));
         jScrollPane1.setViewportView(tabla);
@@ -213,6 +245,53 @@ public class Estadisticas extends javax.swing.JDialog {
         jPanel1.add(jScrollPane1);
 
         jTabbedPane1.addTab("Clasificación general", jPanel1);
+
+        jPanel2.setLayout(null);
+
+        tablaHisto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tablaHisto);
+
+        jPanel2.add(jScrollPane2);
+        jScrollPane2.setBounds(60, 30, 452, 360);
+
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/ver_partida.png"))); // NOI18N
+        ver.setBorder(null);
+        ver.setBorderPainted(false);
+        ver.setContentAreaFilled(false);
+        ver.setFocusPainted(false);
+        ver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                verMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                verMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                verMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                ver(evt);
+            }
+        });
+        ver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ver);
+        ver.setBounds(620, 140, 260, 65);
+
+        jTabbedPane1.addTab("Historial partidas", jPanel2);
 
         getContentPane().add(jTabbedPane1);
         jTabbedPane1.setBounds(100, 150, 1140, 520);
@@ -259,6 +338,49 @@ public class Estadisticas extends javax.swing.JDialog {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         this.mostrar("Sonic");
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void verMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMouseEntered
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/ver_partida.png")));
+    }//GEN-LAST:event_verMouseEntered
+
+    private void verMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMouseExited
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/ver_partida.png")));
+    }//GEN-LAST:event_verMouseExited
+
+    private void verMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMousePressed
+        ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/ver_partida.png")));
+    }//GEN-LAST:event_verMousePressed
+
+    private void ver(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ver
+        if(tablaHisto.getSelectedRow()>-1){
+            ver.setEnabled(false);
+            Partida p= consultasBD.instancia().buscarUnaPartidaFinalizadaPorId(Integer.parseInt(tablaHisto.getValueAt(tablaHisto.getSelectedRow(), 0).toString()));
+            VerPartida vp=new VerPartida(null, true, p,ir);
+            vp.mostrar();
+            this.setVisible(false);
+            vp.setVisible(true);
+        }
+    }//GEN-LAST:event_ver
+
+    private void verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verActionPerformed
+
+    private void jButton10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseEntered
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_jButton10MouseEntered
+
+    private void jButton10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseExited
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_jButton10MouseExited
+
+    private void jButton10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MousePressed
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_jButton10MousePressed
+
+    private void jButton10MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseReleased
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton10MouseReleased
     public void mostrar(String nombre){
         ArrayList <Personaje> personajes=new ArrayList();
         personajes=consultasBD.instancia().todosLosPersonajes();
@@ -296,6 +418,15 @@ public class Estadisticas extends javax.swing.JDialog {
         
         tabla.setModel(tablaClasi);
     }
+    
+    public void mostrar4(){
+        
+        tablaHistorial=new DefaultTableModel(this.registrado.tablaHistorialPartidas(), cabecera1);
+        tablaHisto.setModel(tablaHistorial);
+    
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -326,7 +457,7 @@ public class Estadisticas extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Estadisticas dialog = new Estadisticas(new javax.swing.JFrame(), true,null);
+                Estadisticas dialog = new Estadisticas(new javax.swing.JFrame(), true,null, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -342,6 +473,7 @@ public class Estadisticas extends javax.swing.JDialog {
     private javax.swing.JPanel barrasPersonajes;
     private javax.swing.JPanel barritas;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -352,9 +484,13 @@ public class Estadisticas extends javax.swing.JDialog {
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tabla;
+    private javax.swing.JTable tablaHisto;
     private javax.swing.JPanel tarta;
+    private javax.swing.JButton ver;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,7 +7,7 @@ package InterfazGrafica.registrado;
 
 import InterfazGrafica.registrado.Tienda;
 import InterfazGrafica.registrado.UnirsePartida;
-import InterfazGrafica.registrado.VerHistorial;
+
 import InterfazGrafica.registrado.MisPersonajes;
 import ciclodeinstruccion.Usuarios.Registrado;
 import javax.swing.JOptionPane;
@@ -309,9 +309,11 @@ public class InicioRegistrado extends javax.swing.JFrame {
     }//GEN-LAST:event_unirse
 
     private void verHistorial(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verHistorial
-        VerHistorial vh=new VerHistorial(this, true, resgistrado,this);
-        vh.mostrar();
-        vh.setVisible(true);
+        Estadisticas esta = new Estadisticas(this, true, resgistrado, this);
+        esta.mostrar2();
+        esta.mostrar3();
+        esta.mostrar4();
+        esta.setVisible(true);
     }//GEN-LAST:event_verHistorial
 
     private void abrirTienda(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirTienda
