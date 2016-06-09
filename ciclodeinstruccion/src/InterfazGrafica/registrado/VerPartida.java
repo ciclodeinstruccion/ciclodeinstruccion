@@ -25,8 +25,10 @@ public class VerPartida extends javax.swing.JDialog {
     private InicioRegistrado ir;
     private boolean prueba;
     private Inicio i;
+    private boolean repeticion;
+    private Estadisticas e;
     
-    public VerPartida(java.awt.Frame parent, boolean modal,Partida p,boolean jugar ,InicioRegistrado ir,boolean prueba, Inicio i) {
+    public VerPartida(java.awt.Frame parent, boolean modal,Partida p,boolean jugar ,InicioRegistrado ir,boolean prueba, Inicio i, boolean repeticion, Estadisticas e) {
         super(parent, modal);
         initComponents();
         this.partida=p;
@@ -35,6 +37,8 @@ public class VerPartida extends javax.swing.JDialog {
         this.ir=ir;
         this.prueba=prueba;
         this.i=i;
+        this.repeticion=repeticion;
+        this.e=e;
     }
 
     /**
@@ -184,6 +188,12 @@ public class VerPartida extends javax.swing.JDialog {
         else if(prueba){
             i.setVisible(true);
         }
+        else if(repeticion){
+            e.mostrar2();
+            e.mostrar3();
+            e.mostrar4();
+            e.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
@@ -250,7 +260,7 @@ public class VerPartida extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerPartida dialog = new VerPartida(new javax.swing.JFrame(), true,null,true,null,true,null);
+                VerPartida dialog = new VerPartida(new javax.swing.JFrame(), true,null,true,null,true,null,true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

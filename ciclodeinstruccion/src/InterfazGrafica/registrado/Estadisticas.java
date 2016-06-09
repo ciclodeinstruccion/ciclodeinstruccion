@@ -352,14 +352,16 @@ public class Estadisticas extends javax.swing.JDialog {
     }//GEN-LAST:event_verMousePressed
 
     private void ver(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ver
-        if(tablaHisto.getSelectedRow()>-1){
-            ver.setEnabled(false);
-            Partida p= consultasBD.instancia().buscarUnaPartidaFinalizadaPorId(Integer.parseInt(tablaHisto.getValueAt(tablaHisto.getSelectedRow(), 0).toString()));
-            VerPartida vp=new VerPartida(null, true, p,ir);
-            vp.mostrar();
-            this.setVisible(false);
-            vp.setVisible(true);
-        }
+        if(ver.isEnabled()){
+           if(tablaHisto.getSelectedRow()>-1){
+                ver.setEnabled(false);
+                Partida p= consultasBD.instancia().buscarUnaPartidaFinalizadaPorId(Integer.parseInt(tablaHisto.getValueAt(tablaHisto.getSelectedRow(), 0).toString()));
+                VerPartida vp=new VerPartida(null, true, p, false, null, false, null, true, this);
+                vp.mostrar();
+                this.setVisible(false);
+                vp.setVisible(true);
+            } 
+        }        
     }//GEN-LAST:event_ver
 
     private void verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verActionPerformed
@@ -423,7 +425,7 @@ public class Estadisticas extends javax.swing.JDialog {
         
         tablaHistorial=new DefaultTableModel(this.registrado.tablaHistorialPartidas(), cabecera1);
         tablaHisto.setModel(tablaHistorial);
-    
+        ver.setEnabled(true);
     }
     
     

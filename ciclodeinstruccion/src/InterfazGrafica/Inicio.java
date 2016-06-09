@@ -280,7 +280,7 @@ public class Inicio extends javax.swing.JFrame {
             partida.unirsePartida(r2, mp2);
         }
         partida.jugarPartida();
-        VerPartida vp=new VerPartida(this, true, partida, false, null, true, this);
+        VerPartida vp=new VerPartida(this, true, partida, false, null, true, this,false,null);
         vp.mostrar();
         vp.setVisible(true);
     }//GEN-LAST:event_probarJuegoMouseReleased
