@@ -175,7 +175,7 @@ public class Inicio extends javax.swing.JFrame {
         } catch (ErrorConexionBD ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        this.setVisible(false);
         IniciarSesion is=new IniciarSesion(this, true,this);
         is.setVisible(true);
     }//GEN-LAST:event_iniciosesion

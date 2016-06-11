@@ -5,6 +5,7 @@
  */
 package InterfazGrafica.registrado;
 
+import InterfazGrafica.Inicio;
 import InterfazGrafica.registrado.Tienda;
 import InterfazGrafica.registrado.UnirsePartida;
 
@@ -22,8 +23,11 @@ public class InicioRegistrado extends javax.swing.JFrame {
      * Creates new form InicioRegistrado
      */
     Registrado resgistrado;
+    Inicio ini=new Inicio();
     public InicioRegistrado(Registrado r) {
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.resgistrado=r;
     }
 
@@ -42,6 +46,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
         comprar = new javax.swing.JButton();
         atributosreg = new javax.swing.JButton();
         misPersonajes = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -88,7 +93,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(crearPartida);
-        crearPartida.setBounds(830, 70, 260, 65);
+        crearPartida.setBounds(830, 40, 260, 65);
 
         unirsePartida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/unirse_a_partida.png"))); // NOI18N
         unirsePartida.setBorder(null);
@@ -110,7 +115,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(unirsePartida);
-        unirsePartida.setBounds(830, 170, 260, 65);
+        unirsePartida.setBounds(830, 130, 260, 65);
 
         historial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/historial_de_partidas.png"))); // NOI18N
         historial.setBorder(null);
@@ -137,7 +142,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(historial);
-        historial.setBounds(830, 270, 260, 65);
+        historial.setBounds(830, 220, 260, 65);
 
         comprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/comprar_personaje.png"))); // NOI18N
         comprar.setBorder(null);
@@ -159,7 +164,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comprar);
-        comprar.setBounds(830, 360, 260, 65);
+        comprar.setBounds(830, 310, 260, 65);
 
         atributosreg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/modificar_propiedades.png"))); // NOI18N
         atributosreg.setBorder(null);
@@ -181,7 +186,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(atributosreg);
-        atributosreg.setBounds(830, 460, 260, 65);
+        atributosreg.setBounds(830, 400, 260, 65);
 
         misPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mis_personajes.png"))); // NOI18N
         misPersonajes.setBorder(null);
@@ -203,7 +208,29 @@ public class InicioRegistrado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(misPersonajes);
-        misPersonajes.setBounds(830, 560, 260, 65);
+        misPersonajes.setBounds(830, 490, 260, 65);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/salir.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(830, 580, 260, 65);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0,200));
         jPanel1.setLayout(null);
@@ -241,9 +268,9 @@ public class InicioRegistrado extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 102, 51));
-        jLabel7.setText("Partidas jugadas");
+        jLabel7.setText("Partidas jugadas hoy");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(10, 450, 199, 60);
+        jLabel7.setBounds(10, 450, 270, 60);
 
         nombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         nombre.setForeground(new java.awt.Color(255, 102, 51));
@@ -295,6 +322,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
     private void crearPartida(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearPartida
         if(crearPartida.isEnabled()){
             CrearPartida cp=new CrearPartida(this, true, resgistrado,this);
+            this.setVisible(false);
             cp.mostrar();
             cp.setVisible(true);
         }
@@ -317,8 +345,9 @@ public class InicioRegistrado extends javax.swing.JFrame {
     }//GEN-LAST:event_verHistorial
 
     private void abrirTienda(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirTienda
-        Tienda t=new Tienda(this, true, resgistrado);
+        Tienda t=new Tienda(this, true, resgistrado,this);
         t.mostrar();
+        this.setVisible(false);
         t.setVisible(true);
     }//GEN-LAST:event_abrirTienda
 
@@ -414,12 +443,32 @@ public class InicioRegistrado extends javax.swing.JFrame {
     private void misPersonajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_misPersonajesMouseEntered
         misPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/mis_personajes.png")));
     }//GEN-LAST:event_misPersonajesMouseEntered
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        this.setVisible(false);
+        this.ini.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/salir.png")));
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/salir.png")));
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/salir.png")));
+    }//GEN-LAST:event_jButton1MouseEntered
     public void mostrar(){
         if(this.resgistrado.getPartidasJugadas()>=Registrado.getLIMITE_PARTIDAS()){
             crearPartida.setEnabled(false);
             unirsePartida.setEnabled(false);
             JOptionPane.showMessageDialog(rootPane, "Has alcanzado el número de partidas máximas permitidas. Vuelve mañana para seguir jugando", "Limite alcanzado", JOptionPane.WARNING_MESSAGE);
         }
+        this.mostrar2();
+    }
+    public void mostrar2(){
         nombre.setText(resgistrado.getNombre());
         nivel.setText(Integer.toString(resgistrado.getNivel()));
         experiencia.setText(Integer.toString(resgistrado.getExperiencia()));
@@ -429,6 +478,11 @@ public class InicioRegistrado extends javax.swing.JFrame {
         pJugadas.setText(Integer.toString(resgistrado.getPartidasJugadas()));
         this.repaint();
     }
+
+    public void setIni(Inicio ini) {
+        this.ini = ini;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -470,6 +524,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
     private javax.swing.JButton crearPartida;
     private javax.swing.JLabel experiencia;
     private javax.swing.JButton historial;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -27,7 +27,9 @@ public class IniciarSesion extends javax.swing.JDialog {
     private Inicio ini;
     public IniciarSesion(java.awt.Frame parent, boolean modal, Inicio ini) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.ini=ini;
         
     }
@@ -191,6 +193,7 @@ public class IniciarSesion extends javax.swing.JDialog {
                 this.registrado.login();
                 consultasBD.instancia().modificarRegistrado(registrado);
                 InicioRegistrado ir=new InicioRegistrado(registrado);
+                ir.setIni(ini);
                 this.setVisible(false);
                 ini.setVisible(false);
                 ir.mostrar();
@@ -239,6 +242,7 @@ public class IniciarSesion extends javax.swing.JDialog {
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         this.setVisible(false);
+        this.ini.setVisible(true);
     }//GEN-LAST:event_jButton1MouseReleased
 
     /**

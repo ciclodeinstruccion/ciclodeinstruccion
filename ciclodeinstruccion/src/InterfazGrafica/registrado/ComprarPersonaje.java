@@ -27,13 +27,17 @@ public class ComprarPersonaje extends javax.swing.JDialog {
     /**
      * Creates new form ComprarPersonaje
      */
-    Personaje personaje;
-    Registrado registrado;
-    public ComprarPersonaje(java.awt.Frame parent, boolean modal, Registrado r, Personaje p) {
+    private Personaje personaje;
+    private Registrado registrado;
+    private Tienda t;
+    public ComprarPersonaje(java.awt.Frame parent, boolean modal, Registrado r, Personaje p,Tienda t) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.registrado=r;
         this.personaje=p;
+        this.t=t;
     }
 
     /**
@@ -261,7 +265,9 @@ public class ComprarPersonaje extends javax.swing.JDialog {
                     consultasBD.instancia().añadirMiPersonaje(mf, registrado);
                 }
                 JOptionPane.showMessageDialog(rootPane, "Personaje comprado con éxito", "Comprar personaje", JOptionPane.INFORMATION_MESSAGE);
+                t.mostrar();
                 this.setVisible(false);
+                t.setVisible(true);
             }
         }
         else{
@@ -286,7 +292,9 @@ public class ComprarPersonaje extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        t.mostrar();
         this.setVisible(false);
+        t.setVisible(true);
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
@@ -356,7 +364,7 @@ public class ComprarPersonaje extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ComprarPersonaje dialog = new ComprarPersonaje(new javax.swing.JFrame(), true,null,null);
+                ComprarPersonaje dialog = new ComprarPersonaje(new javax.swing.JFrame(), true,null,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

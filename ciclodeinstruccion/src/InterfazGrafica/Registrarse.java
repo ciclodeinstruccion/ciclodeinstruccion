@@ -29,7 +29,9 @@ public class Registrarse extends javax.swing.JDialog {
     private Inicio ini;
     public Registrarse(java.awt.Frame parent, boolean modal, Inicio ini) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.ini=ini;
         this.repaint();
     }
@@ -198,8 +200,8 @@ public class Registrarse extends javax.swing.JDialog {
             }
             JOptionPane.showMessageDialog(rootPane, "Registro realizado con exito. Bienvenido a Ciclo De Instruccion "+name, "Registrarse", JOptionPane.INFORMATION_MESSAGE);
             InicioRegistrado ir=new InicioRegistrado(r);
+            ir.setIni(ini);
             ir.mostrar();
-            ini.setVisible(false);
             this.setVisible(false);
             ir.setVisible(true);
         }
@@ -227,6 +229,7 @@ public class Registrarse extends javax.swing.JDialog {
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         this.setVisible(false);
+        this.ini.setVisible(true);
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
