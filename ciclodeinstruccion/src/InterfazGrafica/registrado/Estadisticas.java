@@ -33,15 +33,17 @@ public class Estadisticas extends javax.swing.JDialog {
     /**
      * Creates new form Estadisticas
      */
-    Registrado registrado;
-    DefaultTableModel tablaClasi;
-    String [] cabecera={"Nombre","Nivel","Partidas ganadas"};
-    String cabecera1 []={"Identificador","Jugador 1","Personaje 1","Jugador 2","Personaje 2","Jugador ganador","Personaje ganador"};
-    DefaultTableModel tablaHistorial;
-    InicioRegistrado ir;
+    private Registrado registrado;
+    private DefaultTableModel tablaClasi;
+    private String [] cabecera={"Nombre","Nivel","Partidas ganadas"};
+    private String cabecera1 []={"Identificador","Jugador 1","Personaje 1","Jugador 2","Personaje 2","Jugador ganador","Personaje ganador"};
+    private DefaultTableModel tablaHistorial;
+    private InicioRegistrado ir;
     public Estadisticas(java.awt.Frame parent, boolean modal, Registrado r, InicioRegistrado ir) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.registrado=r;
         this.ir=ir;
     }
@@ -380,7 +382,9 @@ public class Estadisticas extends javax.swing.JDialog {
     }//GEN-LAST:event_volverMousePressed
 
     private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
+        ir.mostrar2();
         this.setVisible(false);
+        ir.setVisible(true);
     }//GEN-LAST:event_volverMouseReleased
     public void mostrar(String nombre){
         ArrayList <Personaje> personajes=new ArrayList();

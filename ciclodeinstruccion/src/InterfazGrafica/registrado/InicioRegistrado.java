@@ -22,8 +22,8 @@ public class InicioRegistrado extends javax.swing.JFrame {
     /**
      * Creates new form InicioRegistrado
      */
-    Registrado resgistrado;
-    Inicio ini=new Inicio();
+    private Registrado resgistrado;
+    private Inicio ini=new Inicio();
     public InicioRegistrado(Registrado r) {
         this.setUndecorated(true);
         initComponents();  
@@ -342,6 +342,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
         esta.mostrar2();
         esta.mostrar3();
         esta.mostrar4();
+        this.setVisible(false);
         esta.setVisible(true);
     }//GEN-LAST:event_verHistorial
 

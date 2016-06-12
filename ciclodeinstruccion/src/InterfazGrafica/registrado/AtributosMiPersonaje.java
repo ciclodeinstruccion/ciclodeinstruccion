@@ -21,10 +21,10 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
     /**
      * Creates new form AtributosMiPersonaje
      */
-    MiPersonaje miPersonaje;
-    Registrado registrado;
+    private MiPersonaje miPersonaje;
+    private Registrado registrado;
     private final int LIMITE_ATRIBUTO=10;
-    MisPersonajes mp;
+    private MisPersonajes mp;
     public AtributosMiPersonaje(java.awt.Frame parent, boolean modal, MiPersonaje mp, Registrado r, MisPersonajes misp) {
         super(parent, modal);
         this.setUndecorated(true);
