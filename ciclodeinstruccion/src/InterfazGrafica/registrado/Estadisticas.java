@@ -62,16 +62,16 @@ public class Estadisticas extends javax.swing.JDialog {
         tablaHisto = new javax.swing.JTable();
         ver = new javax.swing.JButton();
         barritas = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        chuckNorris = new javax.swing.JButton();
         barrasPersonajes = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        donkeyKong = new javax.swing.JButton();
+        gollum = new javax.swing.JButton();
+        lucario = new javax.swing.JButton();
+        luigi = new javax.swing.JButton();
+        maBaracus = new javax.swing.JButton();
+        mario = new javax.swing.JButton();
+        samus = new javax.swing.JButton();
+        sonic = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
@@ -122,7 +122,7 @@ public class Estadisticas extends javax.swing.JDialog {
         jScrollPane2.setViewportView(tablaHisto);
 
         jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(90, 50, 452, 360);
+        jScrollPane2.setBounds(90, 50, 454, 360);
 
         ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/ver_partida.png"))); // NOI18N
         ver.setBorder(null);
@@ -155,128 +155,128 @@ public class Estadisticas extends javax.swing.JDialog {
 
         barritas.setLayout(null);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Chuck Norris.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        chuckNorris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Chuck Norris.png"))); // NOI18N
+        chuckNorris.setBorder(null);
+        chuckNorris.setBorderPainted(false);
+        chuckNorris.setContentAreaFilled(false);
+        chuckNorris.setFocusPainted(false);
+        chuckNorris.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                chuckNorrisActionPerformed(evt);
             }
         });
-        barritas.add(jButton1);
-        jButton1.setBounds(30, 10, 100, 100);
+        barritas.add(chuckNorris);
+        chuckNorris.setBounds(30, 10, 100, 100);
 
         barrasPersonajes.setLayout(new java.awt.BorderLayout());
         barritas.add(barrasPersonajes);
         barrasPersonajes.setBounds(0, 120, 1140, 370);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Donkey Kong.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        donkeyKong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Donkey Kong.png"))); // NOI18N
+        donkeyKong.setBorder(null);
+        donkeyKong.setBorderPainted(false);
+        donkeyKong.setContentAreaFilled(false);
+        donkeyKong.setFocusPainted(false);
+        donkeyKong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                donkeyKongActionPerformed(evt);
             }
         });
-        barritas.add(jButton2);
-        jButton2.setBounds(150, 10, 100, 100);
+        barritas.add(donkeyKong);
+        donkeyKong.setBounds(150, 10, 100, 100);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Gollum.png"))); // NOI18N
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setFocusPainted(false);
-        jButton3.setMaximumSize(new java.awt.Dimension(100, 100));
-        jButton3.setMinimumSize(new java.awt.Dimension(100, 100));
-        jButton3.setPreferredSize(new java.awt.Dimension(100, 100));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        gollum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Gollum.png"))); // NOI18N
+        gollum.setBorderPainted(false);
+        gollum.setContentAreaFilled(false);
+        gollum.setFocusPainted(false);
+        gollum.setMaximumSize(new java.awt.Dimension(100, 100));
+        gollum.setMinimumSize(new java.awt.Dimension(100, 100));
+        gollum.setPreferredSize(new java.awt.Dimension(100, 100));
+        gollum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                gollumActionPerformed(evt);
             }
         });
-        barritas.add(jButton3);
-        jButton3.setBounds(270, 10, 100, 100);
+        barritas.add(gollum);
+        gollum.setBounds(270, 10, 100, 100);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Lucario.png"))); // NOI18N
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setFocusPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        lucario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Lucario.png"))); // NOI18N
+        lucario.setBorder(null);
+        lucario.setBorderPainted(false);
+        lucario.setContentAreaFilled(false);
+        lucario.setFocusPainted(false);
+        lucario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                lucarioActionPerformed(evt);
             }
         });
-        barritas.add(jButton4);
-        jButton4.setBounds(390, 10, 100, 100);
+        barritas.add(lucario);
+        lucario.setBounds(390, 10, 100, 100);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Luigi.png"))); // NOI18N
-        jButton5.setBorder(null);
-        jButton5.setBorderPainted(false);
-        jButton5.setContentAreaFilled(false);
-        jButton5.setFocusPainted(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        luigi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Luigi.png"))); // NOI18N
+        luigi.setBorder(null);
+        luigi.setBorderPainted(false);
+        luigi.setContentAreaFilled(false);
+        luigi.setFocusPainted(false);
+        luigi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                luigiActionPerformed(evt);
             }
         });
-        barritas.add(jButton5);
-        jButton5.setBounds(510, 10, 100, 100);
+        barritas.add(luigi);
+        luigi.setBounds(510, 10, 100, 100);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/M. A. Baracus.png"))); // NOI18N
-        jButton6.setBorder(null);
-        jButton6.setBorderPainted(false);
-        jButton6.setContentAreaFilled(false);
-        jButton6.setFocusPainted(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        maBaracus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/M. A. Baracus.png"))); // NOI18N
+        maBaracus.setBorder(null);
+        maBaracus.setBorderPainted(false);
+        maBaracus.setContentAreaFilled(false);
+        maBaracus.setFocusPainted(false);
+        maBaracus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                maBaracusActionPerformed(evt);
             }
         });
-        barritas.add(jButton6);
-        jButton6.setBounds(630, 10, 100, 100);
+        barritas.add(maBaracus);
+        maBaracus.setBounds(630, 10, 100, 100);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Mario.png"))); // NOI18N
-        jButton7.setBorder(null);
-        jButton7.setBorderPainted(false);
-        jButton7.setContentAreaFilled(false);
-        jButton7.setFocusPainted(false);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        mario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Mario.png"))); // NOI18N
+        mario.setBorder(null);
+        mario.setBorderPainted(false);
+        mario.setContentAreaFilled(false);
+        mario.setFocusPainted(false);
+        mario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                marioActionPerformed(evt);
             }
         });
-        barritas.add(jButton7);
-        jButton7.setBounds(750, 10, 100, 100);
+        barritas.add(mario);
+        mario.setBounds(750, 10, 100, 100);
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Samus.png"))); // NOI18N
-        jButton8.setBorder(null);
-        jButton8.setBorderPainted(false);
-        jButton8.setContentAreaFilled(false);
-        jButton8.setFocusPainted(false);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        samus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Samus.png"))); // NOI18N
+        samus.setBorder(null);
+        samus.setBorderPainted(false);
+        samus.setContentAreaFilled(false);
+        samus.setFocusPainted(false);
+        samus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                samusActionPerformed(evt);
             }
         });
-        barritas.add(jButton8);
-        jButton8.setBounds(870, 10, 100, 100);
+        barritas.add(samus);
+        samus.setBounds(870, 10, 100, 100);
 
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Sonic.png"))); // NOI18N
-        jButton9.setBorder(null);
-        jButton9.setBorderPainted(false);
-        jButton9.setContentAreaFilled(false);
-        jButton9.setFocusPainted(false);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        sonic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Sonic.png"))); // NOI18N
+        sonic.setBorder(null);
+        sonic.setBorderPainted(false);
+        sonic.setContentAreaFilled(false);
+        sonic.setFocusPainted(false);
+        sonic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                sonicActionPerformed(evt);
             }
         });
-        barritas.add(jButton9);
-        jButton9.setBounds(990, 10, 100, 100);
+        barritas.add(sonic);
+        sonic.setBounds(990, 10, 100, 100);
 
         jTabbedPane1.addTab("Estadisticas de mis personajes", barritas);
 
@@ -302,41 +302,41 @@ public class Estadisticas extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void chuckNorrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chuckNorrisActionPerformed
         this.mostrar("Chuck Norris");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_chuckNorrisActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void donkeyKongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donkeyKongActionPerformed
         this.mostrar("Donkey Kong");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_donkeyKongActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void lucarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lucarioActionPerformed
         this.mostrar("Lucario");
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_lucarioActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void gollumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gollumActionPerformed
         this.mostrar("Gollum");
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_gollumActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void luigiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luigiActionPerformed
         this.mostrar("Luigi");
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_luigiActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void maBaracusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maBaracusActionPerformed
         this.mostrar("M. A. Baracus");
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_maBaracusActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void marioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marioActionPerformed
         this.mostrar("Mario");
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_marioActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void samusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samusActionPerformed
         this.mostrar("Samus");
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_samusActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void sonicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sonicActionPerformed
         this.mostrar("Sonic");
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_sonicActionPerformed
 
     private void verMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMouseEntered
         ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/ver_partida.png")));
@@ -416,8 +416,34 @@ public class Estadisticas extends javax.swing.JDialog {
     
     public void mostrar3(){
         tablaClasi = new DefaultTableModel(consultasBD.instancia().clasificacion(), cabecera);
-        
         tabla.setModel(tablaClasi);
+        if(registrado.buscarMiPersonaje("Chuck Norris")==-1){
+            this.chuckNorris.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Donkey Kong")==-1){
+            this.donkeyKong.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Gollum")==-1){
+            this.gollum.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Lucario")==-1){
+            this.lucario.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Luigi")==-1){
+            this.luigi.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("M. A. Baracus")==-1){
+            this.maBaracus.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Mario")==-1){
+            this.mario.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Samus")==-1){
+            this.samus.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Sonic")==-1){
+            this.sonic.setEnabled(false);
+        }
     }
     
     public void mostrar4(){
@@ -473,21 +499,21 @@ public class Estadisticas extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barrasPersonajes;
     private javax.swing.JPanel barritas;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton chuckNorris;
+    private javax.swing.JButton donkeyKong;
+    private javax.swing.JButton gollum;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton lucario;
+    private javax.swing.JButton luigi;
+    private javax.swing.JButton maBaracus;
+    private javax.swing.JButton mario;
+    private javax.swing.JButton samus;
+    private javax.swing.JButton sonic;
     private javax.swing.JTable tabla;
     private javax.swing.JTable tablaHisto;
     private javax.swing.JPanel tarta;
