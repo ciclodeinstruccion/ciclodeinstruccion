@@ -27,7 +27,9 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
     MisPersonajes mp;
     public AtributosMiPersonaje(java.awt.Frame parent, boolean modal, MiPersonaje mp, Registrado r, MisPersonajes misp) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.miPersonaje=mp;
         this.registrado=r;
         this.mp=misp;
@@ -648,10 +650,6 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
             menosEspecial.setEnabled(true);
         }
         
-    }
-    public void cerrar(){
-        this.mp.mostrar();
-        this.mp.setVisible(true);
     }
     /**
      * @param args the command line arguments

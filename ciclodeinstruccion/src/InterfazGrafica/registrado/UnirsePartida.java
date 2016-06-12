@@ -7,8 +7,14 @@ package InterfazGrafica.registrado;
 
 import InterfazGrafica.registrado.VerPartida;
 import BaseDeDatos.consultasBD;
+import MiPersonaje.MiAsesino;
+import MiPersonaje.MiFighter;
+import MiPersonaje.MiPersonaje;
+import MiPersonaje.MiTanque;
 import ciclodeinstruccion.Partida;
 import ciclodeinstruccion.Usuarios.Registrado;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,15 +27,16 @@ public class UnirsePartida extends javax.swing.JDialog {
     /**
      * Creates new form UnirsePartida
      */
-    String cabecera []={"Identificador","Jugador","Personaje","Nivel de la partida"};
-    DefaultTableModel tabla;
-    String cabecera2 []={"Nombre","Tipo","Vida","Daño","Especial","Nivel","Experiencia","Puntos de nivel"};
-    DefaultTableModel tabla2;
-    Registrado registrado;
-    InicioRegistrado ir;
+    private String cabecera []={"Identificador","Jugador","Personaje","Nivel de la partida"};
+    private DefaultTableModel tabla;
+    private Registrado registrado;
+    private InicioRegistrado ir;
+    private MiPersonaje mp=null;
     public UnirsePartida(java.awt.Frame parent, boolean modal, Registrado r, InicioRegistrado ir) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.registrado=r;
         this.ir=ir;
     }
@@ -43,12 +50,33 @@ public class UnirsePartida extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaMisPersonajes = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaPartidas = new javax.swing.JTable();
         unirse = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        chuckNorris = new javax.swing.JButton();
+        donkeyKong = new javax.swing.JButton();
+        gollum = new javax.swing.JButton();
+        Lucario = new javax.swing.JButton();
+        luigi = new javax.swing.JButton();
+        mABaracus = new javax.swing.JButton();
+        mario = new javax.swing.JButton();
+        samus = new javax.swing.JButton();
+        sonic = new javax.swing.JButton();
+        info = new javax.swing.JPanel();
+        imagen = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
+        tipo = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        nivel = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        vida = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        daño = new javax.swing.JLabel();
+        especialL = new javax.swing.JLabel();
+        especial = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -56,27 +84,6 @@ public class UnirsePartida extends javax.swing.JDialog {
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
-
-        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
-
-        tablaMisPersonajes.setBackground(new java.awt.Color(0, 0, 0,130));
-        tablaMisPersonajes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        tablaMisPersonajes.setForeground(new java.awt.Color(255, 102, 51));
-        tablaMisPersonajes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(tablaMisPersonajes);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(135, 320, 1010, 170);
-        jScrollPane1.getViewport().setOpaque(false);
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setViewportBorder(null);
 
         jScrollPane2.setBackground(new java.awt.Color(0, 0, 0,0));
 
@@ -86,7 +93,7 @@ public class UnirsePartida extends javax.swing.JDialog {
         jScrollPane2.setViewportView(tablaPartidas);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(135, 84, 1010, 170);
+        jScrollPane2.setBounds(120, 20, 540, 200);
         jScrollPane2.getViewport().setOpaque(false);
         jScrollPane2.setBorder(null);
         jScrollPane2.setViewportBorder(null);
@@ -111,7 +118,7 @@ public class UnirsePartida extends javax.swing.JDialog {
             }
         });
         getContentPane().add(unirse);
-        unirse.setBounds(300, 540, 260, 65);
+        unirse.setBounds(710, 60, 260, 65);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
         jButton1.setBorder(null);
@@ -133,7 +140,208 @@ public class UnirsePartida extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(710, 540, 260, 65);
+        jButton1.setBounds(1000, 60, 260, 65);
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0,200));
+        jPanel1.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel2.setText("Selecciona un personaje");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(80, 10, 340, 50);
+
+        chuckNorris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Chuck Norris.png"))); // NOI18N
+        chuckNorris.setBorder(null);
+        chuckNorris.setBorderPainted(false);
+        chuckNorris.setContentAreaFilled(false);
+        chuckNorris.setFocusPainted(false);
+        chuckNorris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chuckNorrisActionPerformed(evt);
+            }
+        });
+        jPanel1.add(chuckNorris);
+        chuckNorris.setBounds(60, 70, 100, 100);
+
+        donkeyKong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Donkey Kong.png"))); // NOI18N
+        donkeyKong.setBorder(null);
+        donkeyKong.setBorderPainted(false);
+        donkeyKong.setContentAreaFilled(false);
+        donkeyKong.setFocusPainted(false);
+        donkeyKong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                donkeyKongActionPerformed(evt);
+            }
+        });
+        jPanel1.add(donkeyKong);
+        donkeyKong.setBounds(200, 70, 100, 100);
+
+        gollum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Gollum.png"))); // NOI18N
+        gollum.setBorder(null);
+        gollum.setBorderPainted(false);
+        gollum.setContentAreaFilled(false);
+        gollum.setFocusPainted(false);
+        gollum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gollumActionPerformed(evt);
+            }
+        });
+        jPanel1.add(gollum);
+        gollum.setBounds(340, 70, 100, 100);
+
+        Lucario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Lucario.png"))); // NOI18N
+        Lucario.setBorder(null);
+        Lucario.setBorderPainted(false);
+        Lucario.setContentAreaFilled(false);
+        Lucario.setFocusPainted(false);
+        Lucario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LucarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Lucario);
+        Lucario.setBounds(60, 200, 100, 100);
+
+        luigi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Luigi.png"))); // NOI18N
+        luigi.setBorder(null);
+        luigi.setBorderPainted(false);
+        luigi.setContentAreaFilled(false);
+        luigi.setFocusPainted(false);
+        luigi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                luigiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(luigi);
+        luigi.setBounds(200, 200, 100, 100);
+
+        mABaracus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/M. A. Baracus.png"))); // NOI18N
+        mABaracus.setBorder(null);
+        mABaracus.setBorderPainted(false);
+        mABaracus.setContentAreaFilled(false);
+        mABaracus.setFocusPainted(false);
+        mABaracus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mABaracusActionPerformed(evt);
+            }
+        });
+        jPanel1.add(mABaracus);
+        mABaracus.setBounds(340, 200, 100, 100);
+
+        mario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Mario.png"))); // NOI18N
+        mario.setBorder(null);
+        mario.setBorderPainted(false);
+        mario.setContentAreaFilled(false);
+        mario.setFocusPainted(false);
+        mario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                marioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(mario);
+        mario.setBounds(60, 330, 100, 100);
+
+        samus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Samus.png"))); // NOI18N
+        samus.setBorder(null);
+        samus.setBorderPainted(false);
+        samus.setContentAreaFilled(false);
+        samus.setFocusPainted(false);
+        samus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                samusActionPerformed(evt);
+            }
+        });
+        jPanel1.add(samus);
+        samus.setBounds(200, 330, 100, 100);
+
+        sonic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Sonic.png"))); // NOI18N
+        sonic.setBorder(null);
+        sonic.setBorderPainted(false);
+        sonic.setContentAreaFilled(false);
+        sonic.setFocusPainted(false);
+        sonic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sonicActionPerformed(evt);
+            }
+        });
+        jPanel1.add(sonic);
+        sonic.setBounds(340, 330, 100, 100);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(120, 240, 500, 450);
+
+        info.setBackground(new java.awt.Color(0, 0, 0,200));
+        info.setLayout(null);
+
+        imagen.setMaximumSize(new java.awt.Dimension(150, 225));
+        imagen.setMinimumSize(new java.awt.Dimension(150, 225));
+        imagen.setPreferredSize(new java.awt.Dimension(150, 225));
+        info.add(imagen);
+        imagen.setBounds(50, 150, 150, 225);
+
+        nombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nombre.setForeground(new java.awt.Color(255, 102, 51));
+        nombre.setText("Nombre");
+        info.add(nombre);
+        nombre.setBounds(260, 30, 250, 60);
+
+        tipo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        tipo.setForeground(new java.awt.Color(255, 102, 51));
+        tipo.setText("Tipo");
+        info.add(tipo);
+        tipo.setBounds(260, 100, 230, 60);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel3.setText("Nivel");
+        info.add(jLabel3);
+        jLabel3.setBounds(260, 180, 61, 60);
+
+        nivel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nivel.setForeground(new java.awt.Color(255, 102, 51));
+        nivel.setText("miNivel");
+        info.add(nivel);
+        nivel.setBounds(420, 180, 91, 60);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel4.setText("Vida");
+        info.add(jLabel4);
+        jLabel4.setBounds(260, 260, 52, 60);
+
+        vida.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        vida.setForeground(new java.awt.Color(255, 102, 51));
+        vida.setText("miVida");
+        info.add(vida);
+        vida.setBounds(420, 260, 82, 60);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel5.setText("Daño");
+        info.add(jLabel5);
+        jLabel5.setBounds(260, 350, 62, 60);
+
+        daño.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        daño.setForeground(new java.awt.Color(255, 102, 51));
+        daño.setText("miDaño");
+        info.add(daño);
+        daño.setBounds(420, 350, 92, 60);
+
+        especialL.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        especialL.setForeground(new java.awt.Color(255, 102, 51));
+        especialL.setText("Especial");
+        info.add(especialL);
+        especialL.setBounds(260, 440, 150, 60);
+
+        especial.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        especial.setForeground(new java.awt.Color(255, 102, 51));
+        especial.setText("miEspecial");
+        info.add(especial);
+        especial.setBounds(420, 440, 127, 60);
+
+        getContentPane().add(info);
+        info.setBounds(690, 160, 560, 530);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -143,14 +351,14 @@ public class UnirsePartida extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void unirse(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirse
-         if(tablaMisPersonajes.getSelectedRow()>-1 && tablaPartidas.getSelectedRow()>-1){
+         if(mp!=null && tablaPartidas.getSelectedRow()>-1){
             if(registrado.getOro()<Partida.getCOSTE_PARTIDA()){
                 JOptionPane.showMessageDialog(rootPane, "No tienes oro sificiente para unirte a la partida", "Unirse a partida", JOptionPane.WARNING_MESSAGE);
             }
             else if(JOptionPane.showConfirmDialog(rootPane, "¿Esta seguro que quieres unirte a esta partida?", "Unirse a partida", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE)==0){
                 unirse.setEnabled(false);
                 Partida p=consultasBD.instancia().buscarUnaPartidaUnirsePorId(Integer.parseInt(tablaPartidas.getValueAt(tablaPartidas.getSelectedRow(), 0).toString()));
-                p.unirsePartida(registrado, consultasBD.instancia().buscarMiPersonaje(tablaMisPersonajes.getValueAt(tablaMisPersonajes.getSelectedRow(), 0).toString(), registrado));
+                p.unirsePartida(registrado, mp);
                 consultasBD.instancia().modificarRegistrado(registrado);
                 p.jugarPartida();
                 consultasBD.instancia().unirsePartida(p);
@@ -177,7 +385,9 @@ public class UnirsePartida extends javax.swing.JDialog {
     }//GEN-LAST:event_unirseMouseEntered
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        ir.mostrar2();
         this.setVisible(false);
+        ir.setVisible(true);
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
@@ -191,12 +401,118 @@ public class UnirsePartida extends javax.swing.JDialog {
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
     }//GEN-LAST:event_jButton1MouseEntered
+
+    private void chuckNorrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chuckNorrisActionPerformed
+        this.mp=registrado.getMisPersonajes().get(registrado.buscarMiPersonaje("Chuck Norris"));
+        this.mostrarPersonaje(mp);
+        this.info.setVisible(true);
+    }//GEN-LAST:event_chuckNorrisActionPerformed
+
+    private void donkeyKongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donkeyKongActionPerformed
+        this.mp=registrado.getMisPersonajes().get(registrado.buscarMiPersonaje("Donkey Kong"));
+        this.mostrarPersonaje(mp);
+        this.info.setVisible(true);
+    }//GEN-LAST:event_donkeyKongActionPerformed
+
+    private void gollumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gollumActionPerformed
+        this.mp=registrado.getMisPersonajes().get(registrado.buscarMiPersonaje("Gollum"));
+        this.mostrarPersonaje(mp);
+        this.info.setVisible(true);
+    }//GEN-LAST:event_gollumActionPerformed
+
+    private void LucarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LucarioActionPerformed
+        this.mp=registrado.getMisPersonajes().get(registrado.buscarMiPersonaje("Lucario"));
+        this.mostrarPersonaje(mp);
+        this.info.setVisible(true);
+    }//GEN-LAST:event_LucarioActionPerformed
+
+    private void luigiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luigiActionPerformed
+        this.mp=registrado.getMisPersonajes().get(registrado.buscarMiPersonaje("Luigi"));
+        this.mostrarPersonaje(mp);
+        this.info.setVisible(true);
+    }//GEN-LAST:event_luigiActionPerformed
+
+    private void mABaracusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mABaracusActionPerformed
+        this.mp=registrado.getMisPersonajes().get(registrado.buscarMiPersonaje("M. A. Baracus"));
+        this.mostrarPersonaje(mp);
+        this.info.setVisible(true);
+    }//GEN-LAST:event_mABaracusActionPerformed
+
+    private void marioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marioActionPerformed
+        this.mp=registrado.getMisPersonajes().get(registrado.buscarMiPersonaje("Mario"));
+        this.mostrarPersonaje(mp);
+        this.info.setVisible(true);
+    }//GEN-LAST:event_marioActionPerformed
+
+    private void samusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samusActionPerformed
+        this.mp=registrado.getMisPersonajes().get(registrado.buscarMiPersonaje("Samus"));
+        this.mostrarPersonaje(mp);
+        this.info.setVisible(true);
+    }//GEN-LAST:event_samusActionPerformed
+
+    private void sonicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sonicActionPerformed
+        this.mp=registrado.getMisPersonajes().get(registrado.buscarMiPersonaje("Sonic"));
+        this.mostrarPersonaje(mp);
+        this.info.setVisible(true);
+    }//GEN-LAST:event_sonicActionPerformed
     public void mostrar(){
-        tabla2=new DefaultTableModel(this.registrado.tablaMisPersonajes(), cabecera2);
-        tablaMisPersonajes.setModel(tabla2);
         tabla=new DefaultTableModel(this.registrado.tablaUnirseAPartida(), cabecera);
         tablaPartidas.setModel(tabla);
+        this.info.setVisible(false);
+        if(registrado.buscarMiPersonaje("Chuck Norris")==-1){
+            this.chuckNorris.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Donkey Kong")==-1){
+            this.donkeyKong.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Gollum")==-1){
+            this.gollum.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Lucario")==-1){
+            this.Lucario.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Luigi")==-1){
+            this.luigi.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("M. A. Baracus")==-1){
+            this.mABaracus.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Mario")==-1){
+            this.mario.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Samus")==-1){
+            this.samus.setEnabled(false);
+        }
+        if(registrado.buscarMiPersonaje("Sonic")==-1){
+            this.sonic.setEnabled(false);
+        }
         
+    }
+    
+    public void mostrarPersonaje(MiPersonaje mp){
+        Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/PjPequeños/"+mp.getNombre()+".png")).getImage();
+        this.imagen.setIcon(new ImageIcon(img1));
+        this.nombre.setText(mp.getNombre());
+        this.tipo.setText(mp.getTipo());
+        this.nivel.setText(Integer.toString(mp.getNivel()));
+        this.vida.setText(Float.toString(mp.getVidaBase()+mp.getBonusVida()));
+        this.daño.setText(Float.toString(mp.getDañoBase()+mp.getBonusDaño()));
+        if(mp instanceof MiTanque){
+            this.especialL.setText("Armadura");
+            MiTanque p=(MiTanque) mp;
+            this.especial.setText(Float.toString(p.getPersonaje().getArmadura()+p.getBonusArmadura()));
+        }
+        else if(mp instanceof MiAsesino){
+            this.especialL.setText("Esquivar");
+            MiAsesino p=(MiAsesino) mp;
+            this.especial.setText(Float.toString(p.getPersonaje().getEsquivar()+p.getBonusEsquivar()));
+        }
+        else if(mp instanceof MiFighter){
+            this.especialL.setText("Critico");
+            MiFighter p=(MiFighter) mp;
+            this.especial.setText(Float.toString(p.getPersonaje().getCritico()+p.getBonusCritico()));
+        }
+        this.repaint();
     }
     /**
      * @param args the command line arguments
@@ -241,12 +557,33 @@ public class UnirsePartida extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Lucario;
+    private javax.swing.JButton chuckNorris;
+    private javax.swing.JLabel daño;
+    private javax.swing.JButton donkeyKong;
+    private javax.swing.JLabel especial;
+    private javax.swing.JLabel especialL;
+    private javax.swing.JButton gollum;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JPanel info;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tablaMisPersonajes;
+    private javax.swing.JButton luigi;
+    private javax.swing.JButton mABaracus;
+    private javax.swing.JButton mario;
+    private javax.swing.JLabel nivel;
+    private javax.swing.JLabel nombre;
+    private javax.swing.JButton samus;
+    private javax.swing.JButton sonic;
     private javax.swing.JTable tablaPartidas;
+    private javax.swing.JLabel tipo;
     private javax.swing.JButton unirse;
+    private javax.swing.JLabel vida;
     // End of variables declaration//GEN-END:variables
 }

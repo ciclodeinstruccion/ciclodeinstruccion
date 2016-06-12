@@ -30,7 +30,9 @@ public class VerPartida extends javax.swing.JDialog {
     
     public VerPartida(java.awt.Frame parent, boolean modal,Partida p,boolean jugar ,InicioRegistrado ir,boolean prueba, Inicio i, boolean repeticion, Estadisticas e) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.partida=p;
         this.cont=1;
         this.jugar=jugar;

@@ -331,6 +331,7 @@ public class InicioRegistrado extends javax.swing.JFrame {
     private void unirse(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirse
         if(unirsePartida.isEnabled()){
             UnirsePartida up= new UnirsePartida(this, true, resgistrado,this);
+            this.setVisible(false);
             up.mostrar();
             up.setVisible(true);
         }
