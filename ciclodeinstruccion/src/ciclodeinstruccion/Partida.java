@@ -23,6 +23,12 @@ public class Partida {
     private MiPersonaje pGanador;
     private boolean finalizada;
     private ArrayList <String> texto;
+    private ArrayList <Float> vidaJ1;
+    private ArrayList <Float> vidaJ2;
+    private ArrayList <Boolean> criticoj1;
+    private ArrayList <Boolean> criticoj2;
+    private ArrayList <Boolean> esquivarj1;
+    private ArrayList <Boolean> esquivarj2;
     private final int EXP=100;//
     private final int ORO=200;
     private final int ORO_MEDIO=150;
@@ -40,6 +46,8 @@ public class Partida {
         this.jugador1 = jugador1;
         this.personaje1 = personaje1;
         this.finalizada=false;
+        this.vidaJ1=new ArrayList();
+        this.vidaJ2=new ArrayList();
         this.texto=new ArrayList();
         this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
         this.partidasJ1=this.jugador1.getPartidasJugadas()+1;
@@ -50,6 +58,8 @@ public class Partida {
         this.personaje1 = personaje1;
         this.finalizada=false;
         this.texto=new ArrayList();
+        this.vidaJ1=new ArrayList();
+        this.vidaJ2=new ArrayList();
         this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
         this.partidasJ1=partidasJ1;
     }
@@ -86,8 +96,20 @@ public class Partida {
         float vidaMax2=vidaPersonaje2;
         boolean bandera=true;
         texto.add(personaje1.getNombre()+" ("+jugador1.getNombre()+") con "+vidaPersonaje1+" puntos de vida y "+dañoPersonaje1+" puntos de daño contra ");
+        vidaJ1.add(vidaPersonaje1);
+        vidaJ2.add(vidaPersonaje2);
+        criticoj1.add(false);
+        criticoj2.add(false);
         texto.add(personaje2.getNombre()+" ("+jugador2.getNombre()+") con "+vidaPersonaje2+" puntos de vida y "+dañoPersonaje2+" puntos de daño.");
+        vidaJ1.add(vidaPersonaje1);
+        vidaJ2.add(vidaPersonaje2);
+        criticoj1.add(false);
+        criticoj2.add(false);
         texto.add("¡Que comience la batalla!.");
+        vidaJ1.add(vidaPersonaje1);
+        vidaJ2.add(vidaPersonaje2);
+        criticoj1.add(false);
+        criticoj2.add(false);
         while(vidaPersonaje1>0&&vidaPersonaje2>0){
             if(bandera){
                 boolean esquivar2=personaje2.esquiva(jugador2.getEspecial());
@@ -130,10 +152,18 @@ public class Partida {
         if(vidaPersonaje1<=0){
                 this.finalizarPartida(jugador2, personaje2);
                 texto.add(jugador2.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+this.oroGanado()+" de oro");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
+                criticoj1.add(false);
+                criticoj2.add(false);
         }
         else{
                 this.finalizarPartida(jugador1, personaje1);
                 texto.add(jugador1.getNombre()+" es el ganador y gana "+EXP+" puntos de experiencia y "+this.oroGanado()+" de oro");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
+                criticoj1.add(false);
+                criticoj2.add(false);
         }
         finalizada=true;
         this.ver();
@@ -144,7 +174,11 @@ public class Partida {
     public void hDaño(boolean esquivar, float armadura, boolean critico, Habilidad h, Registrado JAtaca, Registrado JDefiende, MiPersonaje PAtaca, MiPersonaje PDefiende, float dañoPAtaca){
         if(esquivar){
                     texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y "+PDefiende.getNombre()+"("+JDefiende.getNombre()+")"+" la esquivo y no recibio daño.");
-                } 
+                    vidaJ1.add(vidaPersonaje1);
+                    vidaJ2.add(vidaPersonaje2);
+                    criticoj1.add(false);
+                    criticoj2.add(false);
+            } 
         else{
             if(critico){
                 float daño=2*(dañoPAtaca+h.getDaño());
@@ -155,6 +189,8 @@ public class Partida {
                     vidaPersonaje1-=this.dañoRecibido(daño, armadura);
                 }
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(daño, armadura)+" de daño.");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
             }
             else{
                 float daño=(dañoPAtaca+h.getDaño());
@@ -165,13 +201,19 @@ public class Partida {
                     vidaPersonaje1-=this.dañoRecibido(daño, armadura);
                 }
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y realizo "+this.dañoRecibido(daño, armadura)+" de daño.");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
             }
         }
         if(JAtaca==jugador1){
             texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+vidaPersonaje2+" puntos de vida.");
+            vidaJ1.add(vidaPersonaje1);
+            vidaJ2.add(vidaPersonaje2);
         }
         else{
             texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1+" puntos de vida.");
+            vidaJ1.add(vidaPersonaje1);
+            vidaJ2.add(vidaPersonaje2);
         }
     }
     
@@ -180,31 +222,45 @@ public class Partida {
             if(vidaPersonaje1+h.getCura()<=vidaMax){
                 vidaPersonaje1+=h.getCura();
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+h.getCura()+" puntos de vida.");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
             }
             else{
                 float vidaCurada=vidaMax-vidaPersonaje1;
                 vidaPersonaje1=vidaMax;
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+vidaCurada+" puntos de vida.");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
             }
             texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1+" puntos de vida.");
+            vidaJ1.add(vidaPersonaje1);
+            vidaJ2.add(vidaPersonaje2);
         }
         else{
             if(vidaPersonaje2+h.getCura()<=vidaMax){
                 vidaPersonaje2+=h.getCura();
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+h.getCura()+" puntos de vida.");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
             }
             else{
                 float vidaCurada=vidaMax-vidaPersonaje2;
                 vidaPersonaje2=vidaMax;
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y se curo "+vidaCurada+" puntos de vida.");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
             }
             texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+vidaPersonaje2+" puntos de vida.");
+            vidaJ1.add(vidaPersonaje1);
+            vidaJ2.add(vidaPersonaje2);
         }
     }
     
     public void hMixta(boolean esquivar, float armadura, boolean critico, Habilidad h, Registrado JAtaca, Registrado JDefiende, MiPersonaje PAtaca, MiPersonaje PDefiende, float dañoPAtaca, float vidaMax){
         if(esquivar){
                     texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y "+PDefiende.getNombre()+"("+JDefiende.getNombre()+")"+" la esquivo y no recibio daño.");
+                    vidaJ1.add(vidaPersonaje1);
+                    vidaJ2.add(vidaPersonaje2);
                 } 
         else{
             if(critico){
@@ -216,6 +272,8 @@ public class Partida {
                     vidaPersonaje1-=this.dañoRecibido(daño, armadura);
                 }
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" e hizo critico y realizo "+this.dañoRecibido(daño, armadura)+" de daño.");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
             }
             else{
                 float daño=(dañoPAtaca+h.getDaño());
@@ -226,33 +284,51 @@ public class Partida {
                     vidaPersonaje1-=this.dañoRecibido(daño, armadura);
                 }
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" uso "+h.getNombre()+" y realizo "+this.dañoRecibido(daño, armadura)+" de daño.");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
             }
         }
         if(JAtaca==jugador1){
             if(vidaPersonaje1+h.getCura()<=vidaMax){
                 vidaPersonaje1+=h.getCura();
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" tambien se curo "+h.getCura()+" puntos de vida.");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
             }
             else{
                 float vidaCurada=vidaMax-vidaPersonaje1;
                 vidaPersonaje1=vidaMax;
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" también se curo "+vidaCurada+" puntos de vida.");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
             }
             texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+vidaPersonaje2+" puntos de vida.");
+            vidaJ1.add(vidaPersonaje1);
+            vidaJ2.add(vidaPersonaje2);
             texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1+" puntos de vida.");
+            vidaJ1.add(vidaPersonaje1);
+            vidaJ2.add(vidaPersonaje2);
         }
         else{
             if(vidaPersonaje2+h.getCura()<=vidaMax){
                 vidaPersonaje2+=h.getCura();
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" tambien se curo "+h.getCura()+" puntos de vida.");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
             }
             else{
                 float vidaCurada=vidaMax-vidaPersonaje2;
                 vidaPersonaje2=vidaMax;
                 texto.add(PAtaca.getNombre()+"("+JAtaca.getNombre()+")"+" al utilizar "+h.getNombre()+" también se curo "+vidaCurada+" puntos de vida.");
+                vidaJ1.add(vidaPersonaje1);
+                vidaJ2.add(vidaPersonaje2);
             }
             texto.add(personaje1.getNombre()+"("+jugador1.getNombre()+")"+" tiene "+vidaPersonaje1+" puntos de vida.");
+            vidaJ1.add(vidaPersonaje1);
+            vidaJ2.add(vidaPersonaje2);
             texto.add(personaje2.getNombre()+"("+jugador2.getNombre()+")"+" tiene "+vidaPersonaje2+" puntos de vida.");
+            vidaJ1.add(vidaPersonaje1);
+            vidaJ2.add(vidaPersonaje2);
         }
     }
     
@@ -348,6 +424,30 @@ public class Partida {
         return personaje2;
     }
 
+    public ArrayList<Float> getVidaJ1() {
+        return vidaJ1;
+    }
+
+    public ArrayList<Float> getVidaJ2() {
+        return vidaJ2;
+    }
+
+    public ArrayList<Boolean> getCriticoj1() {
+        return criticoj1;
+    }
+
+    public ArrayList<Boolean> getCriticoj2() {
+        return criticoj2;
+    }
+
+    public ArrayList<Boolean> getEsquivarj1() {
+        return esquivarj1;
+    }
+
+    public ArrayList<Boolean> getEsquivarj2() {
+        return esquivarj2;
+    }
+
     public static int getCOSTE_PARTIDA() {
         return COSTE_PARTIDA;
     }
@@ -399,6 +499,30 @@ public class Partida {
 
     public void setPersonaje2(MiPersonaje personaje2) {
         this.personaje2 = personaje2;
+    }
+
+    public void setCriticoj1(ArrayList<Boolean> criticoj1) {
+        this.criticoj1 = criticoj1;
+    }
+
+    public void setCriticoj2(ArrayList<Boolean> criticoj2) {
+        this.criticoj2 = criticoj2;
+    }
+
+    public void setEsquivarj1(ArrayList<Boolean> esquivarj1) {
+        this.esquivarj1 = esquivarj1;
+    }
+
+    public void setEsquivarj2(ArrayList<Boolean> esquivarj2) {
+        this.esquivarj2 = esquivarj2;
+    }
+
+    public void setVidaJ1(ArrayList<Float> vidaJ1) {
+        this.vidaJ1 = vidaJ1;
+    }
+
+    public void setVidaJ2(ArrayList<Float> vidaJ2) {
+        this.vidaJ2 = vidaJ2;
     }
 
     public void setGanador(Registrado ganador) {

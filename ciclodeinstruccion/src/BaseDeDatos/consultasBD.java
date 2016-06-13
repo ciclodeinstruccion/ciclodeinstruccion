@@ -482,10 +482,12 @@ public class consultasBD {
     }
     
     public void añadirTextoParitda(Partida p){
+        int cont=0;
         for (String s:p.getTexto()){
             try{
                 ConexionBD.instancia().getStatement().execute(
-                "INSERT INTO Texto (identificador, resumen) VALUES("+Integer.toString(p.getIdentificador())+",'"+s+"')");
+                "INSERT INTO Texto (identificador, resumen,vidaJ1,vidaJ2) VALUES("+Integer.toString(p.getIdentificador())+",'"+s+"',"+Float.toString(p.getVidaJ1().get(cont))+","+Float.toString(p.getVidaJ2().get(cont))+")");
+            cont++;
             }catch(SQLException e){
             
            }
@@ -494,13 +496,19 @@ public class consultasBD {
     
     public void buscarTextoPartida(Partida p){
         ArrayList <String> resumen=new ArrayList();
+        ArrayList <Float> vidaJ1=new ArrayList();
+        ArrayList <Float> vidaJ2=new ArrayList();
         try{
-        ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT resumen FROM Texto WHERE identificador="+Integer.toString(p.getIdentificador())+" order by orden");
+        ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT resumen,vidaJ1,vidaJ2 FROM Texto WHERE identificador="+Integer.toString(p.getIdentificador())+" order by orden");
         
             while(rs.next()){
                resumen.add(rs.getString(1));
+               vidaJ1.add(Float.parseFloat(rs.getString(2)));
+               vidaJ2.add(Float.parseFloat(rs.getString(3)));
             }
         p.setTexto(resumen);
+        p.setVidaJ1(vidaJ1);
+        p.setVidaJ2(vidaJ2);
         } catch (SQLException e){
             
         }

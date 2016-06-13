@@ -60,6 +60,8 @@ public class VerPartida extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         jugador1 = new javax.swing.JLabel();
         jugador2 = new javax.swing.JLabel();
+        vidaj1 = new javax.swing.JLabel();
+        vidaj2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -152,6 +154,18 @@ public class VerPartida extends javax.swing.JDialog {
         getContentPane().add(jugador2);
         jugador2.setBounds(950, 60, 270, 60);
 
+        vidaj1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        vidaj1.setForeground(new java.awt.Color(255, 0, 51));
+        vidaj1.setText("vidaj1");
+        getContentPane().add(vidaj1);
+        vidaj1.setBounds(80, 600, 100, 50);
+
+        vidaj2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        vidaj2.setForeground(new java.awt.Color(255, 0, 51));
+        vidaj2.setText("vidaj2");
+        getContentPane().add(vidaj2);
+        vidaj2.setBounds(1020, 600, 100, 50);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1280, 720);
@@ -162,6 +176,8 @@ public class VerPartida extends javax.swing.JDialog {
     private void siguiente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguiente
         if(cont<partida.getTexto().size()){
             texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
+            vidaj1.setText(Float.toString(partida.getVidaJ1().get(cont)));
+            vidaj2.setText(Float.toString(partida.getVidaJ2().get(cont)));
             cont++;
         }
         if(cont>=partida.getTexto().size()){
@@ -230,6 +246,8 @@ public class VerPartida extends javax.swing.JDialog {
         imagenP2.setIcon(new ImageIcon(img2));
         texto.setText(partida.getTexto().get(0));
         texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
+        vidaj1.setText(Float.toString(partida.getVidaJ1().get(cont)));
+        vidaj2.setText(Float.toString(partida.getVidaJ2().get(cont)));
         cont++;
     }
     /**
@@ -284,5 +302,7 @@ public class VerPartida extends javax.swing.JDialog {
     private javax.swing.JLabel jugador2;
     private javax.swing.JButton siguiente;
     private javax.swing.JTextArea texto;
+    private javax.swing.JLabel vidaj1;
+    private javax.swing.JLabel vidaj2;
     // End of variables declaration//GEN-END:variables
 }
