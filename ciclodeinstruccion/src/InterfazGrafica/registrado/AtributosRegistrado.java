@@ -33,206 +33,344 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        menosInteligencia = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        puntosDeNivel = new javax.swing.JLabel();
         vitalidad = new javax.swing.JLabel();
         fuerza = new javax.swing.JLabel();
         especial = new javax.swing.JLabel();
         inteligencia = new javax.swing.JLabel();
-        menosVitalidad = new javax.swing.JButton();
-        masVitalidad = new javax.swing.JButton();
-        menosFuerza = new javax.swing.JButton();
-        masFuerza = new javax.swing.JButton();
-        menosEspecial = new javax.swing.JButton();
-        masEspecial = new javax.swing.JButton();
-        menosInteligencia = new javax.swing.JButton();
         masInteligencia = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        puntosDeNivel = new javax.swing.JLabel();
+        masEspecial = new javax.swing.JButton();
+        masFuerza = new javax.swing.JButton();
+        masVitalidad = new javax.swing.JButton();
+        menosVitalidad = new javax.swing.JButton();
+        menosFuerza = new javax.swing.JButton();
+        menosEspecial = new javax.swing.JButton();
         volver = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(null);
 
-        jLabel1.setText("Vitalidad");
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0,200));
+        jPanel1.setMaximumSize(new java.awt.Dimension(630, 620));
+        jPanel1.setMinimumSize(new java.awt.Dimension(630, 620));
+        jPanel1.setPreferredSize(new java.awt.Dimension(630, 620));
+        jPanel1.setLayout(null);
 
-        jLabel2.setText("Fuerza");
-
-        jLabel3.setText("Especial");
-
-        jLabel4.setText("Inteligencia");
-
-        vitalidad.setText("vitalidad");
-
-        fuerza.setText("fuerza");
-
-        especial.setText("especial");
-
-        inteligencia.setText("inteligencia");
-
-        menosVitalidad.setText("-");
-        menosVitalidad.addMouseListener(new java.awt.event.MouseAdapter() {
+        menosInteligencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png"))); // NOI18N
+        menosInteligencia.setBorderPainted(false);
+        menosInteligencia.setContentAreaFilled(false);
+        menosInteligencia.setFocusPainted(false);
+        menosInteligencia.setMaximumSize(new java.awt.Dimension(80, 65));
+        menosInteligencia.setMinimumSize(new java.awt.Dimension(80, 65));
+        menosInteligencia.setPreferredSize(new java.awt.Dimension(80, 65));
+        menosInteligencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                menosInteligenciaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                menosInteligenciaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menosInteligenciaMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                menosVitalidadMouseReleased(evt);
+                menosInteligenciaMouseReleased(evt);
             }
         });
+        menosInteligencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menosInteligenciaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(menosInteligencia);
+        menosInteligencia.setBounds(60, 420, 80, 65);
 
-        masVitalidad.setText("+");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel4.setText("Inteligencia");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(160, 430, 120, 40);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel3.setText("Especial");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(160, 330, 120, 40);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel2.setText("Fuerza");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(160, 230, 120, 40);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel1.setText("Vitalidad");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(160, 130, 120, 40);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel9.setText("Puntos de nivel disponibles:");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(90, 30, 333, 40);
+
+        puntosDeNivel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        puntosDeNivel.setForeground(new java.awt.Color(255, 102, 51));
+        puntosDeNivel.setText("Puntos");
+        jPanel1.add(puntosDeNivel);
+        puntosDeNivel.setBounds(450, 30, 83, 40);
+
+        vitalidad.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        vitalidad.setForeground(new java.awt.Color(255, 102, 51));
+        vitalidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vitalidad.setText("Vitalidad");
+        jPanel1.add(vitalidad);
+        vitalidad.setBounds(350, 130, 120, 40);
+
+        fuerza.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        fuerza.setForeground(new java.awt.Color(255, 102, 51));
+        fuerza.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        fuerza.setText("Fuerza");
+        jPanel1.add(fuerza);
+        fuerza.setBounds(350, 230, 120, 40);
+
+        especial.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        especial.setForeground(new java.awt.Color(255, 102, 51));
+        especial.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        especial.setText("Especial");
+        jPanel1.add(especial);
+        especial.setBounds(350, 330, 120, 40);
+
+        inteligencia.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        inteligencia.setForeground(new java.awt.Color(255, 102, 51));
+        inteligencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        inteligencia.setText("Inteligencia");
+        jPanel1.add(inteligencia);
+        inteligencia.setBounds(350, 430, 120, 40);
+
+        masInteligencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png"))); // NOI18N
+        masInteligencia.setBorderPainted(false);
+        masInteligencia.setContentAreaFilled(false);
+        masInteligencia.setFocusPainted(false);
+        masInteligencia.setMaximumSize(new java.awt.Dimension(80, 65));
+        masInteligencia.setMinimumSize(new java.awt.Dimension(80, 65));
+        masInteligencia.setPreferredSize(new java.awt.Dimension(80, 65));
+        masInteligencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                masInteligenciaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                masInteligenciaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                masInteligenciaMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                masInteligenciaMouseReleased(evt);
+            }
+        });
+        jPanel1.add(masInteligencia);
+        masInteligencia.setBounds(490, 420, 80, 65);
+
+        masEspecial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png"))); // NOI18N
+        masEspecial.setToolTipText("");
+        masEspecial.setBorderPainted(false);
+        masEspecial.setContentAreaFilled(false);
+        masEspecial.setFocusPainted(false);
+        masEspecial.setMaximumSize(new java.awt.Dimension(80, 65));
+        masEspecial.setMinimumSize(new java.awt.Dimension(80, 65));
+        masEspecial.setPreferredSize(new java.awt.Dimension(80, 65));
+        masEspecial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                masEspecialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                masEspecialMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                masEspecialMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                masEspecialMouseReleased(evt);
+            }
+        });
+        jPanel1.add(masEspecial);
+        masEspecial.setBounds(490, 320, 80, 65);
+
+        masFuerza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png"))); // NOI18N
+        masFuerza.setBorderPainted(false);
+        masFuerza.setContentAreaFilled(false);
+        masFuerza.setFocusPainted(false);
+        masFuerza.setMaximumSize(new java.awt.Dimension(80, 65));
+        masFuerza.setMinimumSize(new java.awt.Dimension(80, 65));
+        masFuerza.setPreferredSize(new java.awt.Dimension(80, 65));
+        masFuerza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                masFuerzaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                masFuerzaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                masFuerzaMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                masFuerzaMouseReleased(evt);
+            }
+        });
+        jPanel1.add(masFuerza);
+        masFuerza.setBounds(490, 220, 80, 65);
+
+        masVitalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png"))); // NOI18N
+        masVitalidad.setBorderPainted(false);
+        masVitalidad.setContentAreaFilled(false);
+        masVitalidad.setFocusPainted(false);
+        masVitalidad.setMaximumSize(new java.awt.Dimension(80, 65));
+        masVitalidad.setMinimumSize(new java.awt.Dimension(80, 65));
+        masVitalidad.setPreferredSize(new java.awt.Dimension(80, 65));
         masVitalidad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 masVitalidadMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                masVitalidadMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                masVitalidadMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 masVitalidadMouseReleased(evt);
             }
         });
+        jPanel1.add(masVitalidad);
+        masVitalidad.setBounds(490, 120, 80, 65);
 
-        menosFuerza.setText("-");
+        menosVitalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png"))); // NOI18N
+        menosVitalidad.setBorder(null);
+        menosVitalidad.setBorderPainted(false);
+        menosVitalidad.setContentAreaFilled(false);
+        menosVitalidad.setFocusPainted(false);
+        menosVitalidad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                menosVitalidadMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                menosVitalidadMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menosVitalidadMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                menosVitalidadMouseReleased(evt);
+            }
+        });
+        menosVitalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menosVitalidadActionPerformed(evt);
+            }
+        });
+        jPanel1.add(menosVitalidad);
+        menosVitalidad.setBounds(60, 120, 80, 65);
+
+        menosFuerza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png"))); // NOI18N
+        menosFuerza.setBorderPainted(false);
+        menosFuerza.setContentAreaFilled(false);
+        menosFuerza.setFocusPainted(false);
+        menosFuerza.setMaximumSize(new java.awt.Dimension(80, 65));
+        menosFuerza.setMinimumSize(new java.awt.Dimension(80, 65));
+        menosFuerza.setPreferredSize(new java.awt.Dimension(80, 65));
         menosFuerza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                menosFuerzaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                menosFuerzaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menosFuerzaMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 menosFuerzaMouseReleased(evt);
             }
         });
+        jPanel1.add(menosFuerza);
+        menosFuerza.setBounds(60, 220, 80, 65);
 
-        masFuerza.setText("+");
-        masFuerza.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                masFuerzaMouseReleased(evt);
-            }
-        });
-
-        menosEspecial.setText("-");
+        menosEspecial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png"))); // NOI18N
+        menosEspecial.setBorderPainted(false);
+        menosEspecial.setContentAreaFilled(false);
+        menosEspecial.setFocusPainted(false);
+        menosEspecial.setMaximumSize(new java.awt.Dimension(80, 65));
+        menosEspecial.setMinimumSize(new java.awt.Dimension(80, 65));
+        menosEspecial.setPreferredSize(new java.awt.Dimension(80, 65));
         menosEspecial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                menosEspecialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                menosEspecialMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menosEspecialMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 menosEspecialMouseReleased(evt);
             }
         });
-
-        masEspecial.setText("+");
-        masEspecial.setToolTipText("");
-        masEspecial.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                masEspecialMouseReleased(evt);
+        menosEspecial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menosEspecialActionPerformed(evt);
             }
         });
+        jPanel1.add(menosEspecial);
+        menosEspecial.setBounds(60, 320, 80, 65);
 
-        menosInteligencia.setText("-");
-        menosInteligencia.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                menosInteligenciaMouseReleased(evt);
-            }
-        });
-
-        masInteligencia.setText("+");
-        masInteligencia.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                masInteligenciaMouseReleased(evt);
-            }
-        });
-
-        jLabel9.setText("Puntos de nivel disponibles");
-
-        puntosDeNivel.setText("puntos");
-
-        volver.setText("Volver");
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        volver.setBorderPainted(false);
+        volver.setContentAreaFilled(false);
+        volver.setFocusPainted(false);
+        volver.setMaximumSize(new java.awt.Dimension(260, 65));
+        volver.setMinimumSize(new java.awt.Dimension(260, 65));
+        volver.setPreferredSize(new java.awt.Dimension(260, 65));
         volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                volverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                volverMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                volverMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 volverMouseReleased(evt);
             }
         });
+        jPanel1.add(volver);
+        volver.setBounds(180, 530, 260, 65);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(menosVitalidad)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(menosFuerza)
-                                    .addComponent(menosEspecial))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(60, 60, 60))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(38, 38, 38))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(menosInteligencia)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addGap(43, 43, 43)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(vitalidad)
-                            .addComponent(fuerza)
-                            .addComponent(especial)
-                            .addComponent(inteligencia))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(masVitalidad)
-                            .addComponent(masFuerza)
-                            .addComponent(masEspecial)
-                            .addComponent(masInteligencia)))
-                    .addComponent(puntosDeNivel))
-                .addContainerGap(45, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(volver)
-                .addGap(154, 154, 154))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(puntosDeNivel))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(vitalidad)
-                    .addComponent(menosVitalidad)
-                    .addComponent(masVitalidad))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(fuerza)
-                    .addComponent(menosFuerza)
-                    .addComponent(masFuerza))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(especial)
-                    .addComponent(menosEspecial)
-                    .addComponent(masEspecial))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(inteligencia)
-                            .addComponent(masInteligencia)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(menosInteligencia)))
-                .addGap(18, 18, 18)
-                .addComponent(volver)
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(590, 40, 630, 620);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        jLabel5.setMaximumSize(new java.awt.Dimension(1280, 720));
+        jLabel5.setMinimumSize(new java.awt.Dimension(1280, 720));
+        jLabel5.setPreferredSize(new java.awt.Dimension(1280, 720));
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -332,6 +470,122 @@ public class AtributosRegistrado extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_volverMouseReleased
 
+    private void menosVitalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosVitalidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menosVitalidadActionPerformed
+
+    private void menosEspecialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosEspecialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menosEspecialActionPerformed
+
+    private void menosVitalidadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosVitalidadMousePressed
+      menosVitalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/menos.png")));
+    }//GEN-LAST:event_menosVitalidadMousePressed
+
+    private void menosVitalidadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosVitalidadMouseEntered
+      menosVitalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/menos.png")));
+    }//GEN-LAST:event_menosVitalidadMouseEntered
+    
+    private void menosFuerzaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosFuerzaMouseEntered
+       menosFuerza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/menos.png")));
+    }//GEN-LAST:event_menosFuerzaMouseEntered
+
+    private void menosEspecialMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosEspecialMousePressed
+        menosEspecial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/menos.png"))); 
+    }//GEN-LAST:event_menosEspecialMousePressed
+
+    private void menosEspecialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosEspecialMouseEntered
+        menosEspecial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/menos.png"))); 
+    }//GEN-LAST:event_menosEspecialMouseEntered
+
+    private void menosInteligenciaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosInteligenciaMousePressed
+        menosInteligencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/menos.png")));
+    }//GEN-LAST:event_menosInteligenciaMousePressed
+
+    private void menosInteligenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosInteligenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menosInteligenciaActionPerformed
+
+    private void menosInteligenciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosInteligenciaMouseEntered
+        menosInteligencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/menos.png")));
+    }//GEN-LAST:event_menosInteligenciaMouseEntered
+
+    private void masVitalidadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masVitalidadMousePressed
+        masVitalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/mas.png")));
+    }//GEN-LAST:event_masVitalidadMousePressed
+
+    private void masFuerzaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masFuerzaMouseEntered
+        masFuerza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/mas.png")));
+    }//GEN-LAST:event_masFuerzaMouseEntered
+
+    private void masFuerzaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masFuerzaMousePressed
+        masFuerza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/mas.png")));
+    }//GEN-LAST:event_masFuerzaMousePressed
+
+    private void masEspecialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masEspecialMouseEntered
+        masEspecial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/mas.png")));
+    }//GEN-LAST:event_masEspecialMouseEntered
+
+    private void masEspecialMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masEspecialMousePressed
+        masEspecial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/mas.png")));
+    }//GEN-LAST:event_masEspecialMousePressed
+
+    private void masInteligenciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masInteligenciaMouseEntered
+        masInteligencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/mas.png")));
+    }//GEN-LAST:event_masInteligenciaMouseEntered
+
+    private void masInteligenciaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masInteligenciaMousePressed
+        masInteligencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/mas.png")));
+    }//GEN-LAST:event_masInteligenciaMousePressed
+
+    private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_volverMouseEntered
+
+    private void volverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMousePressed
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_volverMousePressed
+
+    private void menosVitalidadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosVitalidadMouseExited
+       menosVitalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png")));
+    }//GEN-LAST:event_menosVitalidadMouseExited
+
+    private void menosFuerzaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosFuerzaMouseExited
+        menosFuerza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png")));
+    }//GEN-LAST:event_menosFuerzaMouseExited
+
+    private void menosEspecialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosEspecialMouseExited
+        menosEspecial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png")));
+    }//GEN-LAST:event_menosEspecialMouseExited
+
+    private void menosInteligenciaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosInteligenciaMouseExited
+        menosInteligencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/menos.png")));
+    }//GEN-LAST:event_menosInteligenciaMouseExited
+
+    private void masVitalidadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masVitalidadMouseExited
+        masVitalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png")));
+    }//GEN-LAST:event_masVitalidadMouseExited
+
+    private void masFuerzaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masFuerzaMouseExited
+        masFuerza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png")));
+    }//GEN-LAST:event_masFuerzaMouseExited
+
+    private void masEspecialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masEspecialMouseExited
+        masEspecial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png")));
+    }//GEN-LAST:event_masEspecialMouseExited
+
+    private void masInteligenciaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masInteligenciaMouseExited
+        masInteligencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas.png")));
+    }//GEN-LAST:event_masInteligenciaMouseExited
+
+    private void volverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseExited
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_volverMouseExited
+
+    private void menosFuerzaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosFuerzaMousePressed
+        menosFuerza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/menos.png")));
+    }//GEN-LAST:event_menosFuerzaMousePressed
+
     public void mostrar(){
         puntosDeNivel.setText(Integer.toString(registrado.getPuntosNivel()));
         vitalidad.setText(Integer.toString(registrado.getVitalidad()));
@@ -424,6 +678,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(AtributosRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -448,7 +703,9 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton masEspecial;
     private javax.swing.JButton masFuerza;
     private javax.swing.JButton masInteligencia;

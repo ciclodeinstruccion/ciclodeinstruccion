@@ -493,7 +493,7 @@ public class consultasBD {
            }
         }
     }
-    
+    /*sdf*/
     public void buscarTextoPartida(Partida p){
         ArrayList <String> resumen=new ArrayList();
         ArrayList <Float> vidaJ1=new ArrayList();
