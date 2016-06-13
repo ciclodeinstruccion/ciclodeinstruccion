@@ -486,7 +486,7 @@ public class consultasBD {
         for (String s:p.getTexto()){
             try{
                 ConexionBD.instancia().getStatement().execute(
-                "INSERT INTO Texto (identificador, resumen,vidaJ1,vidaJ2) VALUES("+Integer.toString(p.getIdentificador())+",'"+s+"',"+Float.toString(p.getVidaJ1().get(cont))+","+Float.toString(p.getVidaJ2().get(cont))+")");
+                "INSERT INTO Texto (identificador, resumen,vidaJ1,vidaJ2) VALUES("+Integer.toString(p.getIdentificador())+",'"+s+"',"+Float.toString(p.getVidaJ1().get(cont))+","+Float.toString(p.getVidaJ2().get(cont))+","+p.getCriticoj1()+","+p.getCriticoj2()+","+p.getEsquivarj1()+","+p.getEsquivarj2()+")");
             cont++;
             }catch(SQLException e){
             
@@ -498,17 +498,29 @@ public class consultasBD {
         ArrayList <String> resumen=new ArrayList();
         ArrayList <Float> vidaJ1=new ArrayList();
         ArrayList <Float> vidaJ2=new ArrayList();
+        ArrayList <Boolean> criticoJ1 = new ArrayList();
+        ArrayList <Boolean> criticoJ2 = new ArrayList();
+        ArrayList <Boolean> esquivarJ1 = new ArrayList();
+        ArrayList <Boolean> esquivarJ2 = new ArrayList();
         try{
-        ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT resumen,vidaJ1,vidaJ2 FROM Texto WHERE identificador="+Integer.toString(p.getIdentificador())+" order by orden");
+        ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT resumen,vidaJ1,vidaJ2, criticoJ1, criticoJ2, esquivarJ1, esquivarJ2 FROM Texto WHERE identificador="+Integer.toString(p.getIdentificador())+" order by orden");
         
             while(rs.next()){
                resumen.add(rs.getString(1));
                vidaJ1.add(Float.parseFloat(rs.getString(2)));
                vidaJ2.add(Float.parseFloat(rs.getString(3)));
+               criticoJ1.add(Boolean.parseBoolean(rs.getString(4)));
+               criticoJ2.add(Boolean.parseBoolean(rs.getString(5)));
+               esquivarJ1.add(Boolean.parseBoolean(rs.getString(6)));
+               esquivarJ2.add(Boolean.parseBoolean(rs.getString(7)));
             }
         p.setTexto(resumen);
         p.setVidaJ1(vidaJ1);
         p.setVidaJ2(vidaJ2);
+        p.setCriticoj1(criticoJ1);
+        p.setCriticoj2(criticoJ2);
+        p.setEsquivarj1(esquivarJ1);
+        p.setEsquivarj2(esquivarJ2);
         } catch (SQLException e){
             
         }
