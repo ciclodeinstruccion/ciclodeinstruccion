@@ -288,8 +288,6 @@ public class Estadisticas extends javax.swing.JDialog {
         jPanel1.add(jScrollPane1);
 
         jTabbedPane1.addTab("Clasificación general", jPanel1);
-
-        tarta.setLayout(null);
         jTabbedPane1.addTab("Ganadas/Perdidas", tarta);
 
         getContentPane().add(jTabbedPane1);

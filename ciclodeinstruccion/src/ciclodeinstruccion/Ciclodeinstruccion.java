@@ -25,7 +25,7 @@ public class Ciclodeinstruccion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Juego juego=new Juego();
+        /*Juego juego=new Juego();
         Date funo=new Date(2000, 8, 8);
         Date fdos=new Date(2000, 8, 8);
         Date ftres=new Date(2000, 8, 8);
@@ -77,7 +77,7 @@ public class Ciclodeinstruccion {
         juego.añadirRegistrado(tres);
         juego.añadirAdministrador(admin2);
         Partida partida = new Partida(1, uno, miAsesino1);
-        /*partida.unirsePartida(dos, miAsesino2);*/
+        /*partida.unirsePartida(dos, miAsesino2);
         
         
         juego.añadirPartida(partida);
@@ -89,7 +89,7 @@ public class Ciclodeinstruccion {
         
         /*game.añadirRegistrado(uno);
         game.buscarPartida((Registrado) game.iniciarSesion());
-        partida.ver();*/
+        partida.ver();
         
         
         Registrado registrado=null;
@@ -127,7 +127,7 @@ public class Ciclodeinstruccion {
                     bandera=false;
                 break;
             }
-        }
+        }*/
         
     }
     
