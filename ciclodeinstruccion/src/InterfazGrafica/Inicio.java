@@ -175,8 +175,8 @@ public class Inicio extends javax.swing.JFrame {
         } catch (ErrorConexionBD ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         IniciarSesion is=new IniciarSesion(this, true,this);
+        this.setVisible(false);      
         is.setVisible(true);
     }//GEN-LAST:event_iniciosesion
 
@@ -186,8 +186,8 @@ public class Inicio extends javax.swing.JFrame {
         } catch (ErrorConexionBD ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.setVisible(false);
         Registrarse r=new Registrarse(this, true,this);
+        this.setVisible(false);
         r.setVisible(true);
     }//GEN-LAST:event_registrarse
 
