@@ -8,6 +8,12 @@ package InterfazGrafica.registrado;
 import InterfazGrafica.Inicio;
 import ciclodeinstruccion.Partida;
 import java.awt.Image;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 
 /**
@@ -302,6 +308,13 @@ public class VerPartida extends javax.swing.JDialog {
         vida1.setToolTipText(Float.toString(partida.getVidaJ1().get(cont)));
         vida2.setToolTipText(Float.toString(partida.getVidaJ2().get(cont)));
         cont++;
+        playSound("src/Audios/Personajes/Gollum.wav");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(VerPartida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        playSound("src/Audios/Personajes/M. A. Baracus.wav");
     }
     
     public void vida1(){
@@ -405,6 +418,19 @@ public class VerPartida extends javax.swing.JDialog {
             vida2.setIcon(new ImageIcon(img1));
         }
     }
+    public void playSound(String soundName){
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile( ));
+            Clip clip = AudioSystem.getClip( );
+            clip.open(audioInputStream);
+            clip.start( );
+            clip.drain();
+        }
+        catch(Exception ex){
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace( );
+        }
+    }  
     /**
      * @param args the command line arguments
      */
