@@ -62,6 +62,10 @@ public class VerPartida extends javax.swing.JDialog {
         jugador2 = new javax.swing.JLabel();
         vidaj1 = new javax.swing.JLabel();
         vidaj2 = new javax.swing.JLabel();
+        critico1 = new javax.swing.JLabel();
+        critico2 = new javax.swing.JLabel();
+        esquivar1 = new javax.swing.JLabel();
+        esquivar2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -158,13 +162,37 @@ public class VerPartida extends javax.swing.JDialog {
         vidaj1.setForeground(new java.awt.Color(255, 0, 51));
         vidaj1.setText("vidaj1");
         getContentPane().add(vidaj1);
-        vidaj1.setBounds(80, 600, 100, 50);
+        vidaj1.setBounds(70, 580, 100, 50);
 
         vidaj2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         vidaj2.setForeground(new java.awt.Color(255, 0, 51));
         vidaj2.setText("vidaj2");
         getContentPane().add(vidaj2);
-        vidaj2.setBounds(1020, 600, 100, 50);
+        vidaj2.setBounds(1020, 580, 100, 50);
+
+        critico1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        critico1.setForeground(new java.awt.Color(255, 51, 51));
+        critico1.setText("critico1");
+        getContentPane().add(critico1);
+        critico1.setBounds(70, 620, 110, 40);
+
+        critico2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        critico2.setForeground(new java.awt.Color(255, 51, 51));
+        critico2.setText("critico2");
+        getContentPane().add(critico2);
+        critico2.setBounds(1020, 630, 110, 40);
+
+        esquivar1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        esquivar1.setForeground(new java.awt.Color(255, 51, 51));
+        esquivar1.setText("esquivar1");
+        getContentPane().add(esquivar1);
+        esquivar1.setBounds(70, 660, 130, 40);
+
+        esquivar2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        esquivar2.setForeground(new java.awt.Color(255, 51, 51));
+        esquivar2.setText("esquivar2");
+        getContentPane().add(esquivar2);
+        esquivar2.setBounds(1010, 670, 130, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -178,6 +206,26 @@ public class VerPartida extends javax.swing.JDialog {
             texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
             vidaj1.setText(Float.toString(partida.getVidaJ1().get(cont)));
             vidaj2.setText(Float.toString(partida.getVidaJ2().get(cont)));
+            if(partida.getCriticoj1().get(cont)){
+                critico1.setText("criticazo");
+            }else{
+                critico1.setText("no criticazo");
+            }
+            if(partida.getCriticoj2().get(cont)){
+                critico2.setText("criticazo");
+            }else{
+                critico2.setText("no criticazo");
+            }
+            if(partida.getEsquivarj1().get(cont)){
+                esquivar1.setText("te esquivo");
+            }else{
+                esquivar1.setText("no esquivo");
+            }
+            if(partida.getEsquivarj2().get(cont)){
+                esquivar2.setText("te esquivo");
+            }else{
+                esquivar2.setText("no esquivo");
+            }
             cont++;
         }
         if(cont>=partida.getTexto().size()){
@@ -293,6 +341,10 @@ public class VerPartida extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel critico1;
+    private javax.swing.JLabel critico2;
+    private javax.swing.JLabel esquivar1;
+    private javax.swing.JLabel esquivar2;
     private javax.swing.JLabel imagenP1;
     private javax.swing.JLabel imagenP2;
     private javax.swing.JButton jButton1;

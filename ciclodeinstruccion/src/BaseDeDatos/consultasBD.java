@@ -486,7 +486,7 @@ public class consultasBD {
         for (String s:p.getTexto()){
             try{
                 ConexionBD.instancia().getStatement().execute(
-                "INSERT INTO Texto (identificador, resumen,vidaJ1,vidaJ2) VALUES("+Integer.toString(p.getIdentificador())+",'"+s+"',"+Float.toString(p.getVidaJ1().get(cont))+","+Float.toString(p.getVidaJ2().get(cont))+","+p.getCriticoj1()+","+p.getCriticoj2()+","+p.getEsquivarj1()+","+p.getEsquivarj2()+")");
+                "INSERT INTO Texto (identificador, resumen,vidaJ1,vidaJ2,criticoj1,criticoj2,esquivarj1,esquivarj2) VALUES("+Integer.toString(p.getIdentificador())+",'"+s+"',"+Float.toString(p.getVidaJ1().get(cont))+","+Float.toString(p.getVidaJ2().get(cont))+","+p.getCriticoj1().get(cont)+","+p.getCriticoj2().get(cont)+","+p.getEsquivarj1().get(cont)+","+p.getEsquivarj2().get(cont)+")");
             cont++;
             }catch(SQLException e){
             
@@ -509,10 +509,10 @@ public class consultasBD {
                resumen.add(rs.getString(1));
                vidaJ1.add(Float.parseFloat(rs.getString(2)));
                vidaJ2.add(Float.parseFloat(rs.getString(3)));
-               criticoJ1.add(Boolean.parseBoolean(rs.getString(4)));
-               criticoJ2.add(Boolean.parseBoolean(rs.getString(5)));
-               esquivarJ1.add(Boolean.parseBoolean(rs.getString(6)));
-               esquivarJ2.add(Boolean.parseBoolean(rs.getString(7)));
+               criticoJ1.add(rs.getBoolean(4));
+               criticoJ2.add(rs.getBoolean(5));
+               esquivarJ1.add(rs.getBoolean(6));
+               esquivarJ2.add(rs.getBoolean(7));
             }
         p.setTexto(resumen);
         p.setVidaJ1(vidaJ1);
