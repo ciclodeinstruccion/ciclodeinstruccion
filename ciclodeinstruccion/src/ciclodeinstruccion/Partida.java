@@ -39,6 +39,8 @@ public class Partida {
     private int partidasJ1;
     private int partidasJ2;
     private final int LIMITE=10;
+    private float vidamax1;
+    private float vidamax2;
     
 
     public Partida(int identificador, Registrado jugador1, MiPersonaje personaje1) {
@@ -55,6 +57,7 @@ public class Partida {
         this.texto=new ArrayList();
         this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
         this.partidasJ1=this.jugador1.getPartidasJugadas()+1;
+        this.vidamax1=this.vidaPersonaje1;
     }
     public Partida(int identificador, Registrado jugador1, MiPersonaje personaje1, int partidasJ1) {
         this.identificador = identificador;
@@ -70,6 +73,7 @@ public class Partida {
         this.esquivarj2=new ArrayList();
         this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
         this.partidasJ1=partidasJ1;
+        this.vidamax1=this.vidaPersonaje1;
     }
     
     public Partida(int identificador, Registrado jugador1, Registrado jugador2, MiPersonaje personaje1, MiPersonaje personaje2, int partidasJ1, int partidasJ2, Registrado ganador, MiPersonaje pGanador) {
@@ -83,6 +87,10 @@ public class Partida {
         this.identificador = identificador;
         this.partidasJ1 = partidasJ1;
         this.partidasJ2 = partidasJ2;
+        this.vidaPersonaje1=personaje1.getVidaBase()+personaje1.getBonusVida()+jugador1.getVitalidad();
+        this.vidaPersonaje2=personaje2.getVidaBase()+personaje2.getBonusVida()+jugador2.getVitalidad();
+        this.vidamax2=this.vidaPersonaje2;
+        this.vidamax1=this.vidaPersonaje1;
     }
     public void comprarPartida(){
         this.jugador1.setPartidasJugadas(partidasJ1);
@@ -95,6 +103,7 @@ public class Partida {
         this.jugador2.gastarPuntosOro(COSTE_PARTIDA);
         this.jugador2.setPartidasJugadas(this.jugador2.getPartidasJugadas()+1);
         this.partidasJ2=this.jugador2.getPartidasJugadas();
+        this.vidamax2=this.vidaPersonaje2;
     }
     public void jugarPartida(){
         float dañoPersonaje1=personaje1.getDañoBase()+personaje1.getBonusDaño()+jugador1.getFuerza();
@@ -550,6 +559,14 @@ public class Partida {
 
     public ArrayList<Float> getVidaJ2() {
         return vidaJ2;
+    }
+
+    public float getVidamax1() {
+        return vidamax1;
+    }
+
+    public float getVidamax2() {
+        return vidamax2;
     }
 
     public ArrayList<Boolean> getCriticoj1() {

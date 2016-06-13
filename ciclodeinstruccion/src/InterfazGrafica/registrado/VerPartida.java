@@ -27,6 +27,11 @@ public class VerPartida extends javax.swing.JDialog {
     private Inicio i;
     private boolean repeticion;
     private Estadisticas e;
+    private boolean esquivarj1=false;
+    private boolean esquivarj2=false;
+    private boolean criticoj1=false;
+    private boolean criticoj2=false;
+    
     
     public VerPartida(java.awt.Frame parent, boolean modal,Partida p,boolean jugar ,InicioRegistrado ir,boolean prueba, Inicio i, boolean repeticion, Estadisticas e) {
         super(parent, modal);
@@ -60,12 +65,8 @@ public class VerPartida extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         jugador1 = new javax.swing.JLabel();
         jugador2 = new javax.swing.JLabel();
-        vidaj1 = new javax.swing.JLabel();
-        vidaj2 = new javax.swing.JLabel();
-        critico1 = new javax.swing.JLabel();
-        critico2 = new javax.swing.JLabel();
-        esquivar1 = new javax.swing.JLabel();
-        esquivar2 = new javax.swing.JLabel();
+        vida1 = new javax.swing.JLabel();
+        vida2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -158,41 +159,17 @@ public class VerPartida extends javax.swing.JDialog {
         getContentPane().add(jugador2);
         jugador2.setBounds(950, 60, 270, 60);
 
-        vidaj1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        vidaj1.setForeground(new java.awt.Color(255, 0, 51));
-        vidaj1.setText("vidaj1");
-        getContentPane().add(vidaj1);
-        vidaj1.setBounds(70, 580, 100, 50);
+        vida1.setMaximumSize(new java.awt.Dimension(256, 32));
+        vida1.setMinimumSize(new java.awt.Dimension(256, 32));
+        vida1.setPreferredSize(new java.awt.Dimension(256, 32));
+        getContentPane().add(vida1);
+        vida1.setBounds(50, 580, 256, 32);
 
-        vidaj2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        vidaj2.setForeground(new java.awt.Color(255, 0, 51));
-        vidaj2.setText("vidaj2");
-        getContentPane().add(vidaj2);
-        vidaj2.setBounds(1020, 580, 100, 50);
-
-        critico1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        critico1.setForeground(new java.awt.Color(255, 51, 51));
-        critico1.setText("critico1");
-        getContentPane().add(critico1);
-        critico1.setBounds(70, 620, 110, 40);
-
-        critico2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        critico2.setForeground(new java.awt.Color(255, 51, 51));
-        critico2.setText("critico2");
-        getContentPane().add(critico2);
-        critico2.setBounds(1020, 630, 110, 40);
-
-        esquivar1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        esquivar1.setForeground(new java.awt.Color(255, 51, 51));
-        esquivar1.setText("esquivar1");
-        getContentPane().add(esquivar1);
-        esquivar1.setBounds(70, 660, 130, 40);
-
-        esquivar2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        esquivar2.setForeground(new java.awt.Color(255, 51, 51));
-        esquivar2.setText("esquivar2");
-        getContentPane().add(esquivar2);
-        esquivar2.setBounds(1010, 670, 130, 40);
+        vida2.setMaximumSize(new java.awt.Dimension(256, 32));
+        vida2.setMinimumSize(new java.awt.Dimension(256, 32));
+        vida2.setPreferredSize(new java.awt.Dimension(256, 32));
+        getContentPane().add(vida2);
+        vida2.setBounds(970, 580, 256, 32);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -204,27 +181,53 @@ public class VerPartida extends javax.swing.JDialog {
     private void siguiente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguiente
         if(cont<partida.getTexto().size()){
             texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
-            vidaj1.setText(Float.toString(partida.getVidaJ1().get(cont)));
-            vidaj2.setText(Float.toString(partida.getVidaJ2().get(cont)));
+            this.vida1();
+            this.vida2();
+            vida1.setToolTipText(Float.toString(partida.getVidaJ1().get(cont)));
+            vida2.setToolTipText(Float.toString(partida.getVidaJ2().get(cont)));
             if(partida.getCriticoj1().get(cont)){
-                critico1.setText("criticazo");
-            }else{
-                critico1.setText("no criticazo");
+                Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Critico/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+                imagenP1.setIcon(new ImageIcon(img1));
+                this.criticoj1=true;
+            }else {
+                if(this.criticoj1){
+                    Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+                    imagenP1.setIcon(new ImageIcon(img1));
+                    this.criticoj1=false;
+                }       
             }
             if(partida.getCriticoj2().get(cont)){
-                critico2.setText("criticazo");
-            }else{
-                critico2.setText("no criticazo");
+                Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Critico/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+                imagenP2.setIcon(new ImageIcon(img2));
+                this.criticoj2=true;
+            }else {
+                if(this.criticoj2){
+                    Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+                    imagenP2.setIcon(new ImageIcon(img2));
+                    this.criticoj2=false;
+                }   
             }
             if(partida.getEsquivarj1().get(cont)){
-                esquivar1.setText("te esquivo");
-            }else{
-                esquivar1.setText("no esquivo");
+                Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Esquivar/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+                imagenP1.setIcon(new ImageIcon(img1));
+                esquivarj1=true;
+            }else {
+                if(this.esquivarj1){
+                    Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+                    imagenP1.setIcon(new ImageIcon(img1));
+                    esquivarj1=false;
+                }   
             }
             if(partida.getEsquivarj2().get(cont)){
-                esquivar2.setText("te esquivo");
+                Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Esquivar/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+                imagenP2.setIcon(new ImageIcon(img2));
+                esquivarj2=true;
             }else{
-                esquivar2.setText("no esquivo");
+                if(esquivarj2){
+                    Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+                    imagenP2.setIcon(new ImageIcon(img2));
+                    esquivarj2=false;
+                }    
             }
             cont++;
         }
@@ -294,9 +297,113 @@ public class VerPartida extends javax.swing.JDialog {
         imagenP2.setIcon(new ImageIcon(img2));
         texto.setText(partida.getTexto().get(0));
         texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
-        vidaj1.setText(Float.toString(partida.getVidaJ1().get(cont)));
-        vidaj2.setText(Float.toString(partida.getVidaJ2().get(cont)));
+        this.vida1();
+        this.vida2();
+        vida1.setToolTipText(Float.toString(partida.getVidaJ1().get(cont)));
+        vida2.setToolTipText(Float.toString(partida.getVidaJ2().get(cont)));
         cont++;
+    }
+    
+    public void vida1(){
+        if(partida.getVidaJ1().get(cont)/partida.getVidamax1()>=1){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/100.png")).getImage();
+            vida1.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ1().get(cont)/partida.getVidamax1()>=0.9&&partida.getVidaJ1().get(cont)/partida.getVidamax1()<1){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/100.png")).getImage();
+            vida1.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ1().get(cont)/partida.getVidamax1()>=0.8&&partida.getVidaJ1().get(cont)/partida.getVidamax1()<0.9){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/90.png")).getImage();
+            vida1.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ1().get(cont)/partida.getVidamax1()>=0.7&&partida.getVidaJ1().get(cont)/partida.getVidamax1()<0.8){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/80.png")).getImage();
+            vida1.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ1().get(cont)/partida.getVidamax1()>=0.6&&partida.getVidaJ1().get(cont)/partida.getVidamax1()<0.7){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/70.png")).getImage();
+            vida1.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ1().get(cont)/partida.getVidamax1()>=0.5&&partida.getVidaJ1().get(cont)/partida.getVidamax1()<0.6){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/60.png")).getImage();
+            vida1.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ1().get(cont)/partida.getVidamax1()>=0.4&&partida.getVidaJ1().get(cont)/partida.getVidamax1()<0.5){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/50.png")).getImage();
+            vida1.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ1().get(cont)/partida.getVidamax1()>=0.3&&partida.getVidaJ1().get(cont)/partida.getVidamax1()<0.4){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/40.png")).getImage();
+            vida1.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ1().get(cont)/partida.getVidamax1()>=0.2&&partida.getVidaJ1().get(cont)/partida.getVidamax1()<0.3){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/30.png")).getImage();
+            vida1.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ1().get(cont)/partida.getVidamax1()>=0.1&&partida.getVidaJ1().get(cont)/partida.getVidamax1()<0.2){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/20.png")).getImage();
+            vida1.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ1().get(cont)/partida.getVidamax1()>0&&partida.getVidaJ1().get(cont)/partida.getVidamax1()<0.1){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/10.png")).getImage();
+            vida1.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ1().get(cont)/partida.getVidamax1()<=0){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/0.png")).getImage();
+            vida1.setIcon(new ImageIcon(img1));
+        }
+    }
+    
+    public void vida2(){
+        if(partida.getVidaJ2().get(cont)/partida.getVidamax2()>=1){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/100.png")).getImage();
+            vida2.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ2().get(cont)/partida.getVidamax2()>=0.9&&partida.getVidaJ2().get(cont)/partida.getVidamax2()<1){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/100.png")).getImage();
+            vida2.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ2().get(cont)/partida.getVidamax2()>=0.8&&partida.getVidaJ2().get(cont)/partida.getVidamax2()<0.9){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/90.png")).getImage();
+            vida2.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ2().get(cont)/partida.getVidamax2()>=0.7&&partida.getVidaJ2().get(cont)/partida.getVidamax2()<0.8){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/80.png")).getImage();
+            vida2.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ2().get(cont)/partida.getVidamax2()>=0.6&&partida.getVidaJ2().get(cont)/partida.getVidamax2()<0.7){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/70.png")).getImage();
+            vida2.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ2().get(cont)/partida.getVidamax2()>=0.5&&partida.getVidaJ2().get(cont)/partida.getVidamax2()<0.6){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/60.png")).getImage();
+            vida2.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ2().get(cont)/partida.getVidamax2()>=0.4&&partida.getVidaJ2().get(cont)/partida.getVidamax2()<0.5){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/50.png")).getImage();
+            vida2.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ2().get(cont)/partida.getVidamax2()>=0.3&&partida.getVidaJ2().get(cont)/partida.getVidamax2()<0.4){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/40.png")).getImage();
+            vida2.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ2().get(cont)/partida.getVidamax2()>=0.2&&partida.getVidaJ2().get(cont)/partida.getVidamax2()<0.3){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/30.png")).getImage();
+            vida2.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ2().get(cont)/partida.getVidamax2()>=0.1&&partida.getVidaJ2().get(cont)/partida.getVidamax2()<0.2){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/20.png")).getImage();
+            vida2.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ2().get(cont)/partida.getVidamax2()>0&&partida.getVidaJ2().get(cont)/partida.getVidamax2()<0.1){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/10.png")).getImage();
+            vida2.setIcon(new ImageIcon(img1));
+        }
+        else if(partida.getVidaJ2().get(cont)/partida.getVidamax2()<=0){
+            Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/0.png")).getImage();
+            vida2.setIcon(new ImageIcon(img1));
+        }
     }
     /**
      * @param args the command line arguments
@@ -341,10 +448,6 @@ public class VerPartida extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel critico1;
-    private javax.swing.JLabel critico2;
-    private javax.swing.JLabel esquivar1;
-    private javax.swing.JLabel esquivar2;
     private javax.swing.JLabel imagenP1;
     private javax.swing.JLabel imagenP2;
     private javax.swing.JButton jButton1;
@@ -354,7 +457,7 @@ public class VerPartida extends javax.swing.JDialog {
     private javax.swing.JLabel jugador2;
     private javax.swing.JButton siguiente;
     private javax.swing.JTextArea texto;
-    private javax.swing.JLabel vidaj1;
-    private javax.swing.JLabel vidaj2;
+    private javax.swing.JLabel vida1;
+    private javax.swing.JLabel vida2;
     // End of variables declaration//GEN-END:variables
 }
