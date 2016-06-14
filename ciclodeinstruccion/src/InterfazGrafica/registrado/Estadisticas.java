@@ -39,7 +39,6 @@ public class Estadisticas extends javax.swing.JDialog {
     private String cabecera1 []={"Identificador","Jugador 1","Personaje 1","Jugador 2","Personaje 2","Jugador ganador","Personaje ganador"};
     private DefaultTableModel tablaHistorial;
     private InicioRegistrado ir;
-    private static int cont=0;
     public Estadisticas(java.awt.Frame parent, boolean modal, Registrado r, InicioRegistrado ir) {
         super(parent, modal);
         this.setUndecorated(true);
@@ -393,8 +392,7 @@ public class Estadisticas extends javax.swing.JDialog {
     }//GEN-LAST:event_volverMouseReleased
 
     private void jTabbedPane1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseEntered
-        
-        System.out.println(++cont);
+
     }//GEN-LAST:event_jTabbedPane1MouseEntered
     public void mostrar(String nombre){
         barrasPersonajes.removeAll();

@@ -315,7 +315,6 @@ public class VerPartida extends javax.swing.JDialog {
         Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
         imagenP2.setIcon(new ImageIcon(img2));
         texto.setText(partida.getTexto().get(0));
-        texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
         this.vida1();
         this.vida2();
         vida1.setToolTipText(Float.toString(partida.getVidaJ1().get(cont)));
@@ -326,7 +325,6 @@ public class VerPartida extends javax.swing.JDialog {
         timer.setInitialDelay((int)(duracion("src/Audios/Personajes/"+partida.getPersonaje1().getNombre()+".wav")*0.0010)+100);
         timer.setRepeats(false);
         timer.start();
-        cont++;
     }
     
     public void vida1(){
@@ -468,6 +466,8 @@ public class VerPartida extends javax.swing.JDialog {
         @Override
         public void actionPerformed(ActionEvent evt) {
             playSound("src/Audios/Personajes/"+partida.getPersonaje2().getNombre()+".wav");
+            texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
+            cont++;
             Timer timer = new Timer(0, taskPerformer4);
             timer.setInitialDelay((int)(duracion("src/Audios/Personajes/"+partida.getPersonaje2().getNombre()+".wav")*0.0010)+100);
             timer.setRepeats(false);
