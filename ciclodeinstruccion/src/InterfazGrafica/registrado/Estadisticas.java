@@ -39,6 +39,7 @@ public class Estadisticas extends javax.swing.JDialog {
     private String cabecera1 []={"Identificador","Jugador 1","Personaje 1","Jugador 2","Personaje 2","Jugador ganador","Personaje ganador"};
     private DefaultTableModel tablaHistorial;
     private InicioRegistrado ir;
+    private static int cont=0;
     public Estadisticas(java.awt.Frame parent, boolean modal, Registrado r, InicioRegistrado ir) {
         super(parent, modal);
         this.setUndecorated(true);
@@ -108,6 +109,12 @@ public class Estadisticas extends javax.swing.JDialog {
         getContentPane().add(volver);
         volver.setBounds(460, 50, 260, 65);
 
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseEntered(evt);
+            }
+        });
+
         jPanel2.setLayout(null);
 
         tablaHisto.setModel(new javax.swing.table.DefaultTableModel(
@@ -124,7 +131,7 @@ public class Estadisticas extends javax.swing.JDialog {
         jScrollPane2.setViewportView(tablaHisto);
 
         jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(90, 50, 454, 360);
+        jScrollPane2.setBounds(90, 50, 452, 360);
 
         ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/ver_partida.png"))); // NOI18N
         ver.setBorder(null);
@@ -384,7 +391,13 @@ public class Estadisticas extends javax.swing.JDialog {
         this.setVisible(false);
         ir.setVisible(true);
     }//GEN-LAST:event_volverMouseReleased
+
+    private void jTabbedPane1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseEntered
+        
+        System.out.println(++cont);
+    }//GEN-LAST:event_jTabbedPane1MouseEntered
     public void mostrar(String nombre){
+        barrasPersonajes.removeAll();
         ArrayList <Personaje> personajes=new ArrayList();
         personajes=consultasBD.instancia().todosLosPersonajes();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -402,6 +415,7 @@ public class Estadisticas extends javax.swing.JDialog {
         ChartPanel pan = new ChartPanel(aa);
         barrasPersonajes.add(pan, BorderLayout.CENTER);
         barrasPersonajes.validate();
+        
     }
     public void mostrar2(){
         int jugadas=consultasBD.instancia().jugadasJ1(registrado)+consultasBD.instancia().jugadasJ2(registrado);

@@ -33,7 +33,6 @@ public class Registrarse extends javax.swing.JDialog {
         initComponents();  
         this.setLocationRelativeTo(null);
         this.ini=ini;
-        this.repaint();
     }
 
     /**
@@ -141,6 +140,7 @@ public class Registrarse extends javax.swing.JDialog {
         nombre.setBackground(new java.awt.Color(0, 0, 0,0));
         nombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         nombre.setForeground(new java.awt.Color(255, 51, 0));
+        nombre.setOpaque(false);
         nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreActionPerformed(evt);
@@ -152,6 +152,7 @@ public class Registrarse extends javax.swing.JDialog {
         correo.setBackground(new java.awt.Color(0, 0, 0,0));
         correo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         correo.setForeground(new java.awt.Color(255, 51, 0));
+        correo.setOpaque(false);
         correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 correoActionPerformed(evt);
@@ -163,6 +164,12 @@ public class Registrarse extends javax.swing.JDialog {
         contraseña.setBackground(new java.awt.Color(0, 0, 0,0));
         contraseña.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         contraseña.setForeground(new java.awt.Color(255, 51, 0));
+        contraseña.setOpaque(false);
+        contraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contraseñaActionPerformed(evt);
+            }
+        });
         jPanel1.add(contraseña);
         contraseña.setBounds(430, 180, 260, 40);
 
@@ -177,11 +184,11 @@ public class Registrarse extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_nombreActionPerformed
 
     private void correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_correoActionPerformed
 
     private void registrarse(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarse
@@ -243,6 +250,10 @@ public class Registrarse extends javax.swing.JDialog {
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
     }//GEN-LAST:event_jButton1MouseEntered
+
+    private void contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaActionPerformed
+
+    }//GEN-LAST:event_contraseñaActionPerformed
     public boolean comprobarRegistro(String nombre, String correo, String contraseña){
         boolean correcto=true;
         if(nombre.equals("")||correo.equals("")||contraseña.equals("")){
