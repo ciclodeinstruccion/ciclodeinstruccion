@@ -403,7 +403,8 @@ public class Estadisticas extends javax.swing.JDialog {
         for(Personaje p:personajes){
             int jugadas=consultasBD.instancia().jugadasMiPersonaje1(registrado, mp, p.getNombre())+consultasBD.instancia().jugadasMiPersonaje2(registrado, mp, p.getNombre());
             int ganadas=consultasBD.instancia().ganadasMiPersonaje1(registrado, mp, p.getNombre())+consultasBD.instancia().ganadasMiPersonaje2(registrado, mp, p.getNombre());
-            dataset.addValue(jugadas-ganadas, "Perdidas", p.getNombre());
+            int perdidas=jugadas-ganadas;
+            dataset.addValue(perdidas, "Perdidas", p.getNombre());
             dataset.addValue(ganadas, "Ganadas", p.getNombre());
         }
         JFreeChart aa = ChartFactory.createBarChart3D(nombre, "", "Partidas", dataset);
