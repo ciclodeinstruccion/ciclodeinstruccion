@@ -194,6 +194,7 @@ public class VerPartida extends javax.swing.JDialog {
             if(partida.getCriticoj1().get(cont)){
                 Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Critico/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
                 imagenP1.setIcon(new ImageIcon(img1));
+                playSound("src/Audios/Critico/"+partida.getPersonaje1().getNombre()+".wav");
                 this.criticoj1=true;
             }else {
                 if(this.criticoj1){
@@ -205,6 +206,7 @@ public class VerPartida extends javax.swing.JDialog {
             if(partida.getCriticoj2().get(cont)){
                 Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Critico/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
                 imagenP2.setIcon(new ImageIcon(img2));
+                playSound("src/Audios/Critico/"+partida.getPersonaje2().getNombre()+".wav");
                 this.criticoj2=true;
             }else {
                 if(this.criticoj2){
@@ -216,6 +218,7 @@ public class VerPartida extends javax.swing.JDialog {
             if(partida.getEsquivarj1().get(cont)){
                 Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Esquivar/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
                 imagenP1.setIcon(new ImageIcon(img1));
+                playSound("src/Audios/Esquivar/"+partida.getPersonaje1().getNombre()+".wav");
                 esquivarj1=true;
             }else {
                 if(this.esquivarj1){
@@ -227,6 +230,7 @@ public class VerPartida extends javax.swing.JDialog {
             if(partida.getEsquivarj2().get(cont)){
                 Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Esquivar/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
                 imagenP2.setIcon(new ImageIcon(img2));
+                playSound("src/Audios/Esquivar/"+partida.getPersonaje2().getNombre()+".wav");
                 esquivarj2=true;
             }else{
                 if(esquivarj2){
@@ -308,13 +312,13 @@ public class VerPartida extends javax.swing.JDialog {
         vida1.setToolTipText(Float.toString(partida.getVidaJ1().get(cont)));
         vida2.setToolTipText(Float.toString(partida.getVidaJ2().get(cont)));
         cont++;
-        playSound("src/Audios/Personajes/Gollum.wav");
+        playSound("src/Audios/Personajes/"+partida.getPersonaje1().getNombre()+".wav");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException ex) {
             Logger.getLogger(VerPartida.class.getName()).log(Level.SEVERE, null, ex);
         }
-        playSound("src/Audios/Personajes/M. A. Baracus.wav");
+        playSound("src/Audios/Personajes/"+partida.getPersonaje2().getNombre()+".wav");
     }
     
     public void vida1(){
