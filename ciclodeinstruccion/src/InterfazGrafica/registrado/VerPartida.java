@@ -8,6 +8,8 @@ package InterfazGrafica.registrado;
 import InterfazGrafica.Inicio;
 import ciclodeinstruccion.Partida;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +17,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 
 /**
  *
@@ -97,6 +100,7 @@ public class VerPartida extends javax.swing.JDialog {
         jScrollPane1.setBorder(null);
         jScrollPane1.setViewportBorder(null);
 
+        siguiente.setVisible(false);
         siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/siguiente.png"))); // NOI18N
         siguiente.setBorder(null);
         siguiente.setBorderPainted(false);
@@ -131,6 +135,7 @@ public class VerPartida extends javax.swing.JDialog {
         getContentPane().add(imagenP2);
         imagenP2.setBounds(950, 110, 300, 450);
 
+        jButton1.setVisible(false);
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
@@ -185,77 +190,81 @@ public class VerPartida extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void siguiente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguiente
-        if(cont<partida.getTexto().size()){
-            texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
-            this.vida1();
-            this.vida2();
-            vida1.setToolTipText(Float.toString(partida.getVidaJ1().get(cont)));
-            vida2.setToolTipText(Float.toString(partida.getVidaJ2().get(cont)));
-            if(partida.getCriticoj1().get(cont)){
-                Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Critico/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
-                imagenP1.setIcon(new ImageIcon(img1));
-                playSound("src/Audios/Critico/"+partida.getPersonaje1().getNombre()+".wav");
-                this.criticoj1=true;
-            }else {
-                if(this.criticoj1){
-                    Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+        if(siguiente.isEnabled()){
+            if(cont<partida.getTexto().size()){
+                texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
+                this.vida1();
+                this.vida2();
+                vida1.setToolTipText(Float.toString(partida.getVidaJ1().get(cont)));
+                vida2.setToolTipText(Float.toString(partida.getVidaJ2().get(cont)));
+                if(partida.getCriticoj1().get(cont)){
+                    Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Critico/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
                     imagenP1.setIcon(new ImageIcon(img1));
-                    this.criticoj1=false;
-                }       
-            }
-            if(partida.getCriticoj2().get(cont)){
-                Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Critico/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
-                imagenP2.setIcon(new ImageIcon(img2));
-                playSound("src/Audios/Critico/"+partida.getPersonaje2().getNombre()+".wav");
-                this.criticoj2=true;
-            }else {
-                if(this.criticoj2){
-                    Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+                    playSound("src/Audios/Critico/"+partida.getPersonaje1().getNombre()+".wav");
+                    this.criticoj1=true;
+                }else {
+                    if(this.criticoj1){
+                        Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+                        imagenP1.setIcon(new ImageIcon(img1));
+                        this.criticoj1=false;
+                    }       
+                }
+                if(partida.getCriticoj2().get(cont)){
+                    Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Critico/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
                     imagenP2.setIcon(new ImageIcon(img2));
-                    this.criticoj2=false;
-                }   
-            }
-            if(partida.getEsquivarj1().get(cont)){
-                Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Esquivar/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
-                imagenP1.setIcon(new ImageIcon(img1));
-                playSound("src/Audios/Esquivar/"+partida.getPersonaje1().getNombre()+".wav");
-                esquivarj1=true;
-            }else {
-                if(this.esquivarj1){
-                    Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+                    playSound("src/Audios/Critico/"+partida.getPersonaje2().getNombre()+".wav");
+                    this.criticoj2=true;
+                }else {
+                    if(this.criticoj2){
+                        Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+                        imagenP2.setIcon(new ImageIcon(img2));
+                        this.criticoj2=false;
+                    }   
+                }
+                if(partida.getEsquivarj1().get(cont)){
+                    Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Esquivar/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
                     imagenP1.setIcon(new ImageIcon(img1));
-                    esquivarj1=false;
-                }   
-            }
-            if(partida.getEsquivarj2().get(cont)){
-                Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Esquivar/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
-                imagenP2.setIcon(new ImageIcon(img2));
-                playSound("src/Audios/Esquivar/"+partida.getPersonaje2().getNombre()+".wav");
-                esquivarj2=true;
-            }else{
-                if(esquivarj2){
-                    Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+                    playSound("src/Audios/Esquivar/"+partida.getPersonaje1().getNombre()+".wav");
+                    esquivarj1=true;
+                }else {
+                    if(this.esquivarj1){
+                        Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+                        imagenP1.setIcon(new ImageIcon(img1));
+                        esquivarj1=false;
+                    }   
+                }
+                if(partida.getEsquivarj2().get(cont)){
+                    Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Esquivar/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
                     imagenP2.setIcon(new ImageIcon(img2));
-                    esquivarj2=false;
-                }    
+                    playSound("src/Audios/Esquivar/"+partida.getPersonaje2().getNombre()+".wav");
+                    esquivarj2=true;
+                }else{
+                    if(esquivarj2){
+                        Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+                        imagenP2.setIcon(new ImageIcon(img2));
+                        esquivarj2=false;
+                    }    
+                }
+                cont++;
             }
-            cont++;
+            if(cont>=partida.getTexto().size()){
+                siguiente.setEnabled(false);
+                if(partida.getJugador1().getNombre().equals(partida.getGanador().getNombre())){
+                    Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Ganador/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+                    imagenP1.setIcon(new ImageIcon(img1));
+                    Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Perdedor/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+                    imagenP2.setIcon(new ImageIcon(img2));
+                }
+                else{
+                    Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Perdedor/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
+                    imagenP1.setIcon(new ImageIcon(img1));
+                    Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Ganador/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
+                    imagenP2.setIcon(new ImageIcon(img2));
+                }
+            }
         }
-        if(cont>=partida.getTexto().size()){
-            siguiente.setEnabled(false);
-            if(partida.getJugador1().getNombre().equals(partida.getGanador().getNombre())){
-                Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Ganador/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
-                imagenP1.setIcon(new ImageIcon(img1));
-                Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Perdedor/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
-                imagenP2.setIcon(new ImageIcon(img2));
-            }
-            else{
-                Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Perdedor/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
-                imagenP1.setIcon(new ImageIcon(img1));
-                Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Ganador/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
-                imagenP2.setIcon(new ImageIcon(img2));
-            }
-        }
+        
+        
     }//GEN-LAST:event_siguiente
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
@@ -311,14 +320,13 @@ public class VerPartida extends javax.swing.JDialog {
         this.vida2();
         vida1.setToolTipText(Float.toString(partida.getVidaJ1().get(cont)));
         vida2.setToolTipText(Float.toString(partida.getVidaJ2().get(cont)));
-        cont++;
+        
         playSound("src/Audios/Personajes/"+partida.getPersonaje1().getNombre()+".wav");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(VerPartida.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        playSound("src/Audios/Personajes/"+partida.getPersonaje2().getNombre()+".wav");
+        Timer timer = new Timer(0, taskPerformer2);
+        timer.setInitialDelay((int)(duracion("src/Audios/Personajes/"+partida.getPersonaje1().getNombre()+".wav")*0.0010)+100);
+        timer.setRepeats(false);
+        timer.start();
+        cont++;
     }
     
     public void vida1(){
@@ -434,7 +442,60 @@ public class VerPartida extends javax.swing.JDialog {
             System.out.println("Error with playing sound.");
             ex.printStackTrace( );
         }
-    }  
+    }
+    public static long duracion(String soundName){
+         try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile( ));
+            Clip clip = AudioSystem.getClip( );
+            clip.open(audioInputStream);
+            return clip.getMicrosecondLength();
+        }
+        catch(Exception ex){
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace( );
+        }
+         return 0;
+    }
+    ActionListener taskPerformer = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+           siguiente.setVisible(true);
+           jButton1.setVisible(true);
+        }
+    };
+    
+    ActionListener taskPerformer3 = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            playSound("src/Audios/Personajes/"+partida.getPersonaje2().getNombre()+".wav");
+            Timer timer = new Timer(0, taskPerformer4);
+            timer.setInitialDelay((int)(duracion("src/Audios/Personajes/"+partida.getPersonaje2().getNombre()+".wav")*0.0010)+100);
+            timer.setRepeats(false);
+            timer.start();
+        }
+    };
+    ActionListener taskPerformer2 = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            playSound("src/Audios/contra.wav");
+            Timer timer = new Timer(0, taskPerformer3);
+            timer.setInitialDelay((int)(duracion("src/Audios/contra.wav")*0.0010)+100);
+            timer.setRepeats(false);
+            timer.start();
+        }
+    };
+    ActionListener taskPerformer4 = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            playSound("src/Audios/batalla.wav");
+            texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
+            cont++;
+            Timer timer = new Timer(0, taskPerformer);
+            timer.setInitialDelay((int)(duracion("src/Audios/batalla.wav")*0.0010)+100);
+            timer.setRepeats(false);
+            timer.start();
+        }
+    };
     /**
      * @param args the command line arguments
      */
