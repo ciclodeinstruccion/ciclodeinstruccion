@@ -17,13 +17,17 @@ public class EstadisticasAvanzadas extends javax.swing.JDialog {
     /**
      * Creates new form EstadisticasAvanzadas
      */
-    String cabecera [];
-    DefaultTableModel tabla;
-    Administrador admin;
-    public EstadisticasAvanzadas(java.awt.Frame parent, boolean modal,Administrador a) {
+    private String cabecera [];
+    private DefaultTableModel tabla;
+    private Administrador admin;
+    private InicioAdministrador ia;
+    public EstadisticasAvanzadas(java.awt.Frame parent, boolean modal,Administrador a, InicioAdministrador ia) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.admin=a;
+        this.ia=ia;
     }
 
     /**
@@ -92,6 +96,7 @@ public class EstadisticasAvanzadas extends javax.swing.JDialog {
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         this.setVisible(false);
+        ia.setVisible(true);
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
@@ -140,7 +145,7 @@ public class EstadisticasAvanzadas extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                EstadisticasAvanzadas dialog = new EstadisticasAvanzadas(new javax.swing.JFrame(), true,null);
+                EstadisticasAvanzadas dialog = new EstadisticasAvanzadas(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -27,11 +27,15 @@ public class ModificarPersonaje extends javax.swing.JDialog {
     /**
      * Creates new form ModificarPersonaje
      */
-    Personaje personaje;
-    public ModificarPersonaje(java.awt.Frame parent, boolean modal, Personaje p) {
+    private Personaje personaje;
+    private VerPersonajes vp;
+    public ModificarPersonaje(java.awt.Frame parent, boolean modal, Personaje p,VerPersonajes vp) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.personaje=p;
+        this.vp=vp;
     }
 
     /**
@@ -55,8 +59,8 @@ public class ModificarPersonaje extends javax.swing.JDialog {
         especial = new javax.swing.JTextField();
         precio = new javax.swing.JTextField();
         nombre = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 720));
@@ -90,7 +94,7 @@ public class ModificarPersonaje extends javax.swing.JDialog {
             }
         });
         getContentPane().add(modificar);
-        modificar.setBounds(510, 480, 260, 65);
+        modificar.setBounds(300, 490, 260, 65);
 
         jPanel1.setLayout(null);
 
@@ -138,13 +142,31 @@ public class ModificarPersonaje extends javax.swing.JDialog {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(440, 50, 430, 400);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(720, 520, 260, 65);
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 1280, 720);
-
-        jToggleButton1.setText("jToggleButton1");
-        getContentPane().add(jToggleButton1);
-        jToggleButton1.setBounds(870, 150, 105, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -171,7 +193,9 @@ public class ModificarPersonaje extends javax.swing.JDialog {
                 f.setCritico(especial);
             }
             JOptionPane.showMessageDialog(rootPane, "Personaje modificado", "Modificar personaje", JOptionPane.INFORMATION_MESSAGE);
+            vp.mostrar();
             this.setVisible(false);
+            vp.setVisible(true);
         }
         try {
             consultasBD.instancia().modificarPersonaje(this.personaje);
@@ -192,6 +216,23 @@ public class ModificarPersonaje extends javax.swing.JDialog {
     private void modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseEntered
         modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/hHover/iniciar_sesion.png")));
     }//GEN-LAST:event_modificarMouseEntered
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        this.setVisible(false);
+        vp.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_jButton1MouseEntered
     public void mostrar(){
         nombre.setText(personaje.getNombre());
         vida.setText(Float.toString(personaje.getVida()));
@@ -311,7 +352,7 @@ public class ModificarPersonaje extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ModificarPersonaje dialog = new ModificarPersonaje(new javax.swing.JFrame(), true,null);
+                ModificarPersonaje dialog = new ModificarPersonaje(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -328,12 +369,12 @@ public class ModificarPersonaje extends javax.swing.JDialog {
     private javax.swing.JTextField especial;
     private javax.swing.JLabel especialLabel;
     private javax.swing.JLabel imgP;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton modificar;
     private javax.swing.JLabel nombre;
     private javax.swing.JTextField precio;

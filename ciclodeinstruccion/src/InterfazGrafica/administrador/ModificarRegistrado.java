@@ -20,19 +20,22 @@ public class ModificarRegistrado extends javax.swing.JDialog {
     /**
      * Creates new form ModificarRegistrado
      */
-    Registrado r;
-    public ModificarRegistrado(java.awt.Frame parent, boolean modal, Registrado r) {
+    private Registrado r;
+    private VerUsuarios vu;
+    public ModificarRegistrado(java.awt.Frame parent, boolean modal, Registrado r, VerUsuarios vu) {
         super(parent, modal);
         
         this.r=r;
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         
         if(consultasBD.instancia().estaBaneado(r)){
             banear.setSelected(true);
         }else{
             banear.setSelected(false);
         }
-        
+        this.vu=vu;
     }
     
     public void mostrarPredeterminado(){
@@ -68,23 +71,49 @@ public class ModificarRegistrado extends javax.swing.JDialog {
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
-        modificar.setText("Modificar");
+        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/modificar.png"))); // NOI18N
+        modificar.setBorder(null);
+        modificar.setBorderPainted(false);
+        modificar.setContentAreaFilled(false);
+        modificar.setFocusPainted(false);
         modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                modificarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                modificarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                modificarMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 modificarMouseReleased(evt);
             }
         });
         getContentPane().add(modificar);
-        modificar.setBounds(390, 520, 75, 23);
+        modificar.setBounds(230, 530, 260, 65);
 
-        volver.setText("Volver");
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        volver.setBorder(null);
+        volver.setBorderPainted(false);
+        volver.setContentAreaFilled(false);
+        volver.setFocusPainted(false);
         volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                volverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                volverMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                volverMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 volverMouseReleased(evt);
             }
         });
         getContentPane().add(volver);
-        volver.setBounds(620, 530, 63, 23);
+        volver.setBounds(620, 530, 260, 65);
 
         jPanel1.setLayout(null);
 
@@ -168,13 +197,16 @@ public class ModificarRegistrado extends javax.swing.JDialog {
                 r.setContraseña(contraseñaNueva.getText());
                 consultasBD.instancia().modificarRegistrado(r);
             }
+            vu.mostrar();
             this.setVisible(false);
+            vu.setVisible(true);
         }
         
     }//GEN-LAST:event_modificarMouseReleased
 
     private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
         this.setVisible(false);
+        vu.setVisible(true);
     }//GEN-LAST:event_volverMouseReleased
 
     private void banearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_banearActionPerformed
@@ -200,6 +232,30 @@ public class ModificarRegistrado extends javax.swing.JDialog {
         
     
     }//GEN-LAST:event_banearMouseReleased
+
+    private void volverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMousePressed
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_volverMousePressed
+
+    private void volverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseExited
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_volverMouseExited
+
+    private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_volverMouseEntered
+
+    private void modificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMousePressed
+        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/modificar.png")));
+    }//GEN-LAST:event_modificarMousePressed
+
+    private void modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseExited
+        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/modificar.png")));
+    }//GEN-LAST:event_modificarMouseExited
+
+    private void modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseEntered
+        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/modificar.png")));
+    }//GEN-LAST:event_modificarMouseEntered
 
     public boolean comprobarActu(String nombre, String correo, String contraseña){
         boolean correcto=true;
@@ -262,7 +318,7 @@ public class ModificarRegistrado extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ModificarRegistrado dialog = new ModificarRegistrado(new javax.swing.JFrame(), true, null);
+                ModificarRegistrado dialog = new ModificarRegistrado(new javax.swing.JFrame(), true, null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

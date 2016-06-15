@@ -193,10 +193,9 @@ public class IniciarSesion extends javax.swing.JDialog {
                 this.registrado.login();
                 consultasBD.instancia().modificarRegistrado(registrado);
                 InicioRegistrado ir=new InicioRegistrado(registrado);
-                ir.setIni(ini);
-                this.setVisible(false);
-                ini.setVisible(false);
+                ir.setIni(ini);           
                 ir.mostrar();
+                this.setVisible(false);
                 ir.setVisible(true);
             }
             
@@ -204,6 +203,7 @@ public class IniciarSesion extends javax.swing.JDialog {
         else if (consultasBD.instancia().encuentraAdministrador(name,pass)){
             this.admin=consultasBD.instancia().buscarAministrador(name);
             InicioAdministrador ia=new InicioAdministrador(admin);
+            ia.setI(ini);
             this.setVisible(false);
             ia.setVisible(true);
         }

@@ -21,12 +21,17 @@ public class VerUsuarios extends javax.swing.JDialog {
      * Creates new form VerUsuarios
      */
     private Administrador admin;
-    String cabecera []={"Nombre","Correo","Contraseña"};
-    DefaultTableModel tabla;
-    public VerUsuarios(java.awt.Frame parent, boolean modal, Administrador admin) {
+    private String cabecera []={"Nombre","Correo","Contraseña"};
+    private DefaultTableModel tabla;
+    private InicioAdministrador ia;
+    
+    public VerUsuarios(java.awt.Frame parent, boolean modal, Administrador admin, InicioAdministrador ia) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.admin=admin;
+        this.ia=ia;
     }
     
     public void mostrar(java.awt.event.MouseEvent evt){
@@ -162,6 +167,7 @@ public class VerUsuarios extends javax.swing.JDialog {
 
     private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
         this.setVisible(false);
+        ia.setVisible(true);
     }//GEN-LAST:event_volverMouseReleased
 
     private void masInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masInformacionActionPerformed
@@ -171,8 +177,9 @@ public class VerUsuarios extends javax.swing.JDialog {
     private void masInformacionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masInformacionMouseReleased
         if(tablaUsuarios.getSelectedRow()>-1){
             Registrado r = consultasBD.instancia().buscarRegistrado(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0).toString());
-            VerMasUsuarios vmu = new VerMasUsuarios(null, true, r);
+            VerMasUsuarios vmu = new VerMasUsuarios(null, true, r,this);
             vmu.mostrar();
+            this.setVisible(false);
             vmu.setVisible(true);
         }
     }//GEN-LAST:event_masInformacionMouseReleased
@@ -181,7 +188,8 @@ public class VerUsuarios extends javax.swing.JDialog {
         if(tablaUsuarios.getSelectedRow()>-1){
             
             Registrado r = consultasBD.instancia().buscarRegistrado(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0).toString()); 
-            ModificarRegistrado mr = new ModificarRegistrado(null, true, r);
+            ModificarRegistrado mr = new ModificarRegistrado(null, true, r,this);
+            this.setVisible(false);
             mr.setVisible(true);
         }
     }//GEN-LAST:event_jButton1MouseReleased
@@ -260,7 +268,7 @@ public class VerUsuarios extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerUsuarios dialog = new VerUsuarios(new javax.swing.JFrame(), true,null);
+                VerUsuarios dialog = new VerUsuarios(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -5,6 +5,7 @@
  */
 package InterfazGrafica.administrador;
 
+import InterfazGrafica.Inicio;
 import InterfazGrafica.administrador.EstadisticasAvanzadas;
 import InterfazGrafica.administrador.VerHistorialAdministrador;
 import InterfazGrafica.administrador.VerUsuarios;
@@ -19,9 +20,12 @@ public class InicioAdministrador extends javax.swing.JFrame {
     /**
      * Creates new form InicioAdministrador
      */
-    Administrador admin;
+    private Administrador admin;
+    private Inicio i;
     public InicioAdministrador(Administrador a) {
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.admin=a;
     }
 
@@ -38,6 +42,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
         gestionarUsuarios = new javax.swing.JButton();
         estadisticas = new javax.swing.JButton();
         gestionarPersonajes = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,7 +78,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(historialPartidas);
-        historialPartidas.setBounds(480, 140, 260, 65);
+        historialPartidas.setBounds(460, 70, 260, 65);
 
         gestionarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/gestionar_usuarios.png"))); // NOI18N
         gestionarUsuarios.setBorderPainted(false);
@@ -102,7 +107,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(gestionarUsuarios);
-        gestionarUsuarios.setBounds(480, 240, 260, 65);
+        gestionarUsuarios.setBounds(460, 160, 260, 65);
 
         estadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/estadisticas.png"))); // NOI18N
         estadisticas.setBorderPainted(false);
@@ -131,7 +136,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(estadisticas);
-        estadisticas.setBounds(480, 340, 260, 65);
+        estadisticas.setBounds(460, 250, 260, 65);
 
         gestionarPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/gestionar_personajes.png"))); // NOI18N
         gestionarPersonajes.setBorderPainted(false);
@@ -160,7 +165,29 @@ public class InicioAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(gestionarPersonajes);
-        gestionarPersonajes.setBounds(480, 450, 260, 65);
+        gestionarPersonajes.setBounds(460, 340, 260, 65);
+
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/salir.png"))); // NOI18N
+        salir.setBorder(null);
+        salir.setBorderPainted(false);
+        salir.setContentAreaFilled(false);
+        salir.setFocusPainted(false);
+        salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                salirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                salirMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                salirMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                salirMouseReleased(evt);
+            }
+        });
+        getContentPane().add(salir);
+        salir.setBounds(460, 430, 260, 65);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         jLabel1.setAutoscrolls(true);
@@ -175,8 +202,9 @@ public class InicioAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_gestionarUsuariosActionPerformed
 
     private void historialPartidasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialPartidasMouseReleased
-        VerHistorialAdministrador va = new VerHistorialAdministrador((this), true, admin);
+        VerHistorialAdministrador va = new VerHistorialAdministrador(this, true, admin,this);
         va.mostrar();
+        this.setVisible(false);
         va.setVisible(true);
     }//GEN-LAST:event_historialPartidasMouseReleased
 
@@ -197,14 +225,16 @@ public class InicioAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_historialPartidasActionPerformed
 
     private void gestionarUsuariosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionarUsuariosMouseReleased
-        VerUsuarios vu= new VerUsuarios(this, true, admin);
+        VerUsuarios vu= new VerUsuarios(this, true, admin,this);
         vu.mostrar();
+        this.setVisible(false);
         vu.setVisible(true);
     }//GEN-LAST:event_gestionarUsuariosMouseReleased
 
     private void estadisticasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estadisticasMouseReleased
-        EstadisticasAvanzadas ea= new EstadisticasAvanzadas(this, true, admin);
+        EstadisticasAvanzadas ea= new EstadisticasAvanzadas(this, true, admin,this);
         ea.mostrar();
+        this.setVisible(false);
         ea.setVisible(true);
     }//GEN-LAST:event_estadisticasMouseReleased
 
@@ -213,8 +243,9 @@ public class InicioAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_estadisticasActionPerformed
 
     private void gestionarPersonajesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gestionarPersonajesMouseReleased
-        VerPersonajes vp = new VerPersonajes(this, true, admin);
+        VerPersonajes vp = new VerPersonajes(this, true, admin,this);
         vp.mostrar();
+        this.setVisible(false);
         vp.setVisible(true);
     }//GEN-LAST:event_gestionarPersonajesMouseReleased
 
@@ -258,6 +289,27 @@ public class InicioAdministrador extends javax.swing.JFrame {
         gestionarPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/gestionar_personajes.png")));
     }//GEN-LAST:event_gestionarPersonajesMouseEntered
 
+    private void salirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseReleased
+        this.setVisible(false);
+        i.setVisible(true);
+    }//GEN-LAST:event_salirMouseReleased
+
+    private void salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMousePressed
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/salir.png")));
+    }//GEN-LAST:event_salirMousePressed
+
+    private void salirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseExited
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/salir.png")));
+    }//GEN-LAST:event_salirMouseExited
+
+    private void salirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseEntered
+       salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/salir.png")));
+    }//GEN-LAST:event_salirMouseEntered
+
+    public void setI(Inicio i) {
+        this.i = i;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -299,5 +351,6 @@ public class InicioAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton gestionarUsuarios;
     private javax.swing.JButton historialPartidas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

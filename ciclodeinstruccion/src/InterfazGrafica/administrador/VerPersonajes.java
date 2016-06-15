@@ -19,13 +19,17 @@ public class VerPersonajes extends javax.swing.JDialog {
     /**
      * Creates new form VerPersonajes
      */
-    String cabecera []={"Nombre","Vida","Daño","Precio","Tipo","Especial"};
-    DefaultTableModel tabla;
-    Administrador admin;
-    public VerPersonajes(java.awt.Frame parent, boolean modal, Administrador a) {
+    private String cabecera []={"Nombre","Vida","Daño","Precio","Tipo","Especial"};
+    private DefaultTableModel tabla;
+    private Administrador admin;
+    private InicioAdministrador ia;
+    public VerPersonajes(java.awt.Frame parent, boolean modal, Administrador a, InicioAdministrador ia) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.admin=a;
+        this.ia=ia;
     }
 
     /**
@@ -118,14 +122,16 @@ public class VerPersonajes extends javax.swing.JDialog {
     private void modificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseReleased
         if(personajes.getSelectedRow()>-1){
             Personaje p=consultasBD.instancia().buscarPersonaje(personajes.getValueAt(personajes.getSelectedRow(), 0).toString());
-            ModificarPersonaje mp= new ModificarPersonaje(null, true, p);
+            ModificarPersonaje mp= new ModificarPersonaje(null, true, p,this);
             mp.mostrar();
+            this.setVisible(false);
             mp.setVisible(true);
         }
     }//GEN-LAST:event_modificarMouseReleased
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         this.setVisible(false);
+        ia.setVisible(true);
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
@@ -185,7 +191,7 @@ public class VerPersonajes extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerPersonajes dialog = new VerPersonajes(new javax.swing.JFrame(), true,null);
+                VerPersonajes dialog = new VerPersonajes(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

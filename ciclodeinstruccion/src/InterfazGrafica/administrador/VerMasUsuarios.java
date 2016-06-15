@@ -18,13 +18,17 @@ public class VerMasUsuarios extends javax.swing.JDialog{
      * Creates new form VerMasUsuarios
      */
     
-    String cabecera []={"Nombre","Tipo","Vida","Daño","Especial","Nivel","Experiencia","Puntos de nivel"};
-    Registrado r;
-    DefaultTableModel tabla;
-    public VerMasUsuarios(java.awt.Frame parent, boolean modal, Registrado r) {
+    private String cabecera []={"Nombre","Tipo","Vida","Daño","Especial","Nivel","Experiencia","Puntos de nivel"};
+    private Registrado r;
+    private DefaultTableModel tabla;
+    private VerUsuarios vu;
+    public VerMasUsuarios(java.awt.Frame parent, boolean modal, Registrado r, VerUsuarios vu) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.r=r;
+        this.vu=vu;
     }
 
     /**
@@ -78,14 +82,27 @@ public class VerMasUsuarios extends javax.swing.JDialog{
         getContentPane().add(jPanel1);
         jPanel1.setBounds(320, 80, 570, 250);
 
-        volver.setText("Volver");
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
+        volver.setBorder(null);
+        volver.setBorderPainted(false);
+        volver.setContentAreaFilled(false);
+        volver.setFocusPainted(false);
         volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                volverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                volverMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                volverMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 volverMouseReleased(evt);
             }
         });
         getContentPane().add(volver);
-        volver.setBounds(550, 450, 63, 23);
+        volver.setBounds(550, 450, 260, 65);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -96,11 +113,24 @@ public class VerMasUsuarios extends javax.swing.JDialog{
 
     private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
         this.setVisible(false);
+        vu.setVisible(true);
     }//GEN-LAST:event_volverMouseReleased
 
     private void nombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreUsuarioActionPerformed
+
+    private void volverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMousePressed
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
+    }//GEN-LAST:event_volverMousePressed
+
+    private void volverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseExited
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png")));
+    }//GEN-LAST:event_volverMouseExited
+
+    private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
+        volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
+    }//GEN-LAST:event_volverMouseEntered
 
     /**
      * @param args the command line arguments
@@ -143,7 +173,7 @@ public class VerMasUsuarios extends javax.swing.JDialog{
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerMasUsuarios dialog = new VerMasUsuarios(new javax.swing.JFrame(), true, null);
+                VerMasUsuarios dialog = new VerMasUsuarios(new javax.swing.JFrame(), true, null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

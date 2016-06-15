@@ -6,6 +6,7 @@
 package InterfazGrafica.administrador;
 
 import BaseDeDatos.consultasBD;
+import InterfazGrafica.registrado.InicioRegistrado;
 import ciclodeinstruccion.Partida;
 import ciclodeinstruccion.Usuarios.Administrador;
 import javax.swing.JTable;
@@ -20,14 +21,18 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
     /**
      * Creates new form VerHistorialAdministrador
      */
-    DefaultTableModel tabla1;
-    String cabecera []={"Identificador","Jugador 1","Personaje 1","Jugador 2","Personaje 2","Jugador ganador","Personaje ganador"};
-    Administrador admin;
+    private DefaultTableModel tabla1;
+    private String cabecera []={"Identificador","Jugador 1","Personaje 1","Jugador 2","Personaje 2","Jugador ganador","Personaje ganador"};
+    private Administrador admin;
+    private InicioAdministrador ia;
     
-    public VerHistorialAdministrador(java.awt.Frame parent, boolean modal, Administrador admin) {
+    public VerHistorialAdministrador(java.awt.Frame parent, boolean modal, Administrador admin, InicioAdministrador ia) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.admin=admin;
+        this.ia=ia;
     }
 
     /**
@@ -105,6 +110,7 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
 
     private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
         this.setVisible(false);
+        ia.setVisible(true);
     }//GEN-LAST:event_volverMouseReleased
 
     private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
@@ -149,7 +155,7 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerHistorialAdministrador dialog = new VerHistorialAdministrador(new javax.swing.JFrame(), true, null);
+                VerHistorialAdministrador dialog = new VerHistorialAdministrador(new javax.swing.JFrame(), true, null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
