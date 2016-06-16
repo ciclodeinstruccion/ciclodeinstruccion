@@ -5,13 +5,11 @@
  */
 package MiPersonaje;
 
-import Personaje.Personajeable;
-
 /**
  *
  * @author alumno
  */
-public abstract class MiPersonaje implements Personajeable,Comparable <MiPersonaje>{
+public abstract class MiPersonaje implements MiPersonajeable,Comparable <MiPersonaje>{
     private float bonusVida;
     private float bonusDaño;
     private int nivel;

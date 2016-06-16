@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Personaje;
+package MiPersonaje;
 
 import ciclodeinstruccion.Habilidad;
 
@@ -11,7 +11,7 @@ import ciclodeinstruccion.Habilidad;
  *
  * @author alumno
  */
-public interface Personajeable {
+public interface MiPersonajeable {
     public boolean critico(int especial);
     
     public float getVidaBase();
