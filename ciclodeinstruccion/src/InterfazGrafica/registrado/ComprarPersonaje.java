@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import BaseDeDatos.consultasBD;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.ToolTipManager;
 
 /**
  *
@@ -310,12 +311,12 @@ public class ComprarPersonaje extends javax.swing.JDialog {
         this.nombre.setText(personaje.getNombre());
         this.tipo.setText(personaje.getTipo());
         this.precio.setText(Integer.toString(personaje.getPrecio()));
-        this.habilidad1.setText(personaje.getHabilidades().get(0).getNombre());
-        this.habilidad1.setToolTipText(personaje.getHabilidades().get(0).getDescripcion());
-        this.habilidad2.setText(personaje.getHabilidades().get(1).getNombre());
-        this.habilidad2.setToolTipText(personaje.getHabilidades().get(1).getDescripcion());
-        this.habilidad3.setText(personaje.getHabilidades().get(2).getNombre());
-        this.habilidad3.setToolTipText(personaje.getHabilidades().get(2).getDescripcion());
+        this.habilidad1.setText(personaje.getHabilidades().get(0).getNombre().toUpperCase());
+        this.habilidad1.setToolTipText("<html><p width=\"250\">" +personaje.getHabilidades().get(0).getDescripcion()+"</p></html>");
+        this.habilidad2.setText(personaje.getHabilidades().get(1).getNombre().toUpperCase());
+        this.habilidad2.setToolTipText("<html><p width=\"250\">"+personaje.getHabilidades().get(1).getDescripcion()+"</p></html>");
+        this.habilidad3.setText(personaje.getHabilidades().get(2).getNombre().toUpperCase());
+        this.habilidad3.setToolTipText("<html><p width=\"250\">"+personaje.getHabilidades().get(2).getDescripcion()+"</p></html>");
         if(personaje instanceof Tanque){
             Tanque t=(Tanque)personaje;
             this.labelEspecial.setText("Armadura");

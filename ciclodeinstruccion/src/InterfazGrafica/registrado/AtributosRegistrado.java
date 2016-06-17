@@ -18,10 +18,14 @@ public class AtributosRegistrado extends javax.swing.JDialog {
      */
     private Registrado registrado;
     private final int LIMITE_HABILIDAD=10;
-    public AtributosRegistrado(java.awt.Frame parent, boolean modal, Registrado r) {
+    private InicioRegistrado ir;
+    public AtributosRegistrado(java.awt.Frame parent, boolean modal, Registrado r, InicioRegistrado ir) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.registrado=r;
+        this.ir=ir;
     }
 
     /**
@@ -362,7 +366,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
         volver.setBounds(180, 530, 260, 65);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(590, 40, 630, 620);
+        jPanel1.setBounds(330, 40, 630, 620);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
@@ -376,7 +380,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void masVitalidadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masVitalidadMouseEntered
-      
+        masVitalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/mas.png")));
     }//GEN-LAST:event_masVitalidadMouseEntered
 
     private void masFuerzaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masFuerzaMouseReleased
@@ -467,7 +471,9 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     }//GEN-LAST:event_menosInteligenciaMouseReleased
 
     private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
+        ir.mostrar2();
         this.setVisible(false);
+        ir.setVisible(true);
     }//GEN-LAST:event_volverMouseReleased
 
     private void menosVitalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosVitalidadActionPerformed
@@ -592,7 +598,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
         fuerza.setText(Integer.toString(registrado.getFuerza()));
         especial.setText(Integer.toString(registrado.getEspecial()));
         inteligencia.setText(Integer.toString(registrado.getInteligencia()));
-        
+        this.repaint();
         if(registrado.getPuntosNivel()<=0){
             masEspecial.setEnabled(false);
             masVitalidad.setEnabled(false);
@@ -683,7 +689,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AtributosRegistrado dialog = new AtributosRegistrado(new javax.swing.JFrame(), true,null);
+                AtributosRegistrado dialog = new AtributosRegistrado(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

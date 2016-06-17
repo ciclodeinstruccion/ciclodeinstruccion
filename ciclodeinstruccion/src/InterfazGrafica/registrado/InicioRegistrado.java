@@ -406,8 +406,9 @@ public class InicioRegistrado extends javax.swing.JFrame {
     }//GEN-LAST:event_crearPartidaActionPerformed
 
     private void atributosregMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atributosregMouseReleased
-       AtributosRegistrado ar =new AtributosRegistrado(this, true, resgistrado);
+       AtributosRegistrado ar =new AtributosRegistrado(this, true, resgistrado,this);
        ar.mostrar();
+       this.setVisible(false);
        ar.setVisible(true);
     }//GEN-LAST:event_atributosregMouseReleased
 

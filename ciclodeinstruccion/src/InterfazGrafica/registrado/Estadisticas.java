@@ -23,6 +23,7 @@ import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.general.DefaultPieDataset;
 import BaseDeDatos.*;
 import ciclodeinstruccion.Partida;
+import java.awt.Font;
 
 /**
  *
@@ -114,8 +115,14 @@ public class Estadisticas extends javax.swing.JDialog {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0,180));
         jPanel2.setLayout(null);
 
+        jScrollPane2.setBackground(new java.awt.Color(0, 0, 0,0));
+
+        tablaHisto.setBackground(new java.awt.Color(0, 0, 0,0));
+        tablaHisto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tablaHisto.setForeground(new java.awt.Color(255, 102, 51));
         tablaHisto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -130,7 +137,10 @@ public class Estadisticas extends javax.swing.JDialog {
         jScrollPane2.setViewportView(tablaHisto);
 
         jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(90, 50, 452, 360);
+        jScrollPane2.setBounds(30, 40, 780, 360);
+        jScrollPane2.getViewport().setOpaque(false);
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setViewportBorder(null);
 
         ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/ver_partida.png"))); // NOI18N
         ver.setBorder(null);
@@ -157,10 +167,11 @@ public class Estadisticas extends javax.swing.JDialog {
             }
         });
         jPanel2.add(ver);
-        ver.setBounds(650, 120, 260, 65);
+        ver.setBounds(850, 180, 260, 65);
 
         jTabbedPane1.addTab("Historial partidas", jPanel2);
 
+        barritas.setBackground(new java.awt.Color(0, 0, 0,180));
         barritas.setLayout(null);
 
         chuckNorris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Chuck Norris.png"))); // NOI18N
@@ -176,6 +187,7 @@ public class Estadisticas extends javax.swing.JDialog {
         barritas.add(chuckNorris);
         chuckNorris.setBounds(30, 10, 100, 100);
 
+        barrasPersonajes.setBackground(new java.awt.Color(0, 0, 0,0));
         barrasPersonajes.setLayout(new java.awt.BorderLayout());
         barritas.add(barrasPersonajes);
         barrasPersonajes.setBounds(0, 120, 1140, 370);
@@ -288,14 +300,25 @@ public class Estadisticas extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Estadisticas de mis personajes", barritas);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0, 250));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0, 180));
+        jPanel1.setLayout(null);
 
-        tabla.setBackground(new java.awt.Color(255, 255, 245));
+        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
+
+        tabla.setBackground(new java.awt.Color(0, 0, 0,0));
+        tabla.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        tabla.setForeground(new java.awt.Color(255, 102, 51));
         jScrollPane1.setViewportView(tabla);
 
         jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(210, 30, 720, 420);
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setViewportBorder(null);
 
         jTabbedPane1.addTab("Clasificación general", jPanel1);
+
+        tarta.setBackground(new java.awt.Color(0, 0, 0,180));
         jTabbedPane1.addTab("Ganadas/Perdidas", tarta);
 
         getContentPane().add(jTabbedPane1);
@@ -408,12 +431,25 @@ public class Estadisticas extends javax.swing.JDialog {
             dataset.addValue(ganadas, "Ganadas", p.getNombre());
         }
         JFreeChart aa = ChartFactory.createBarChart3D(nombre, "", "Partidas", dataset);
+        aa.getTitle().setPaint(new Color(255,102,51));
+        
+        aa.setBackgroundPaint(new Color(0,0,0,0));
+        aa.setBorderVisible(false);
         CategoryPlot p = aa.getCategoryPlot();
-        p.setRangeGridlinePaint(Color.BLACK);
+        p.getDomainAxis().setLabelPaint(new Color(255,102,51));
+        p.getDomainAxis().setTickLabelPaint(new Color(255,102,51));
+        p.getDomainAxis().setTickLabelFont(new Font("Tahoma", Font.BOLD, 10));
+        p.getRangeAxis().setLabelPaint(new Color(255,102,51));
+        p.getRangeAxis().setTickLabelPaint(new Color(255,102,51));
+        p.getRangeAxis().setTickLabelFont(new Font("Tahoma", Font.BOLD, 12));
+        p.setRangeGridlinePaint(new Color(255,102,51));
+        p.setBackgroundPaint(new Color(0,0,0,0));
         
         ChartPanel pan = new ChartPanel(aa);
+        pan.setBackground(new Color(0,0,0,0));
         barrasPersonajes.add(pan, BorderLayout.CENTER);
         barrasPersonajes.validate();
+        this.repaint();
         
     }
     public void mostrar2(){
@@ -423,8 +459,18 @@ public class Estadisticas extends javax.swing.JDialog {
         pie.setValue("Ganadas", ganadas);
         pie.setValue("Perdidas", jugadas-ganadas);
         JFreeChart queso= ChartFactory.createPieChart3D("Paridas ganadas y perdidas", pie, true, true, Locale.FRENCH);
+        queso.setBackgroundPaint(new Color(0,0,0,0));
+        queso.getTitle().setPaint(new Color(255,102,51));
+        queso.setBorderVisible(false);
         PiePlot3D p=(PiePlot3D) queso.getPlot();
+        p.setBackgroundPaint(new Color(0,0,0,0));
+        p.setLabelLinkPaint(new Color(255,102,51));
+        p.setLabelBackgroundPaint(new Color(0,0,0,0));
+        p.setLabelPaint(new Color(255,102,51));
+        p.setLabelFont(new Font("Tahoma", Font.BOLD, 12));
+        p.setLabelShadowPaint(new Color(0,0,0,0));
         ChartPanel pan= new ChartPanel(queso);
+        pan.setBackground(new Color(0,0,0,0));
         tarta.add(pan,BorderLayout.CENTER);
         tarta.validate();
     }
