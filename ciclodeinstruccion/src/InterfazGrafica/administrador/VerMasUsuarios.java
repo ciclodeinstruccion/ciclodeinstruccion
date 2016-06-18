@@ -6,6 +6,8 @@
 package InterfazGrafica.administrador;
 
 import ciclodeinstruccion.Usuarios.Registrado;
+import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -56,31 +58,58 @@ public class VerMasUsuarios extends javax.swing.JDialog{
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0,180));
         jPanel1.setLayout(null);
 
+        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
+        jScrollPane1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jScrollPane1MouseWheelMoved(evt);
+            }
+        });
+
+        misPersonajes.setBackground(new java.awt.Color(0, 0, 0,0));
+        misPersonajes.setShowGrid(true);
+        misPersonajes.setGridColor(Color.WHITE);
+        misPersonajes.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));
+        misPersonajes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        misPersonajes.setForeground(new java.awt.Color(255, 51, 51));
         misPersonajes.setEditingColumn(0);
         misPersonajes.setEditingRow(0);
         misPersonajes.setFocusable(false);
+        misPersonajes.setRowHeight(24);
+        misPersonajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                misPersonajesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(misPersonajes);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 60, 523, 143);
+        jScrollPane1.setBounds(30, 80, 840, 280);
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setViewportBorder(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("Usuario");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(94, 20, 91, 29);
+        jLabel1.setBounds(210, 20, 91, 29);
 
+        nombreUsuario.setBackground(new java.awt.Color(0, 0, 0,0));
+        nombreUsuario.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nombreUsuario.setForeground(new java.awt.Color(255, 51, 51));
         nombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreUsuarioActionPerformed(evt);
             }
         });
         jPanel1.add(nombreUsuario);
-        nombreUsuario.setBounds(240, 20, 150, 30);
+        nombreUsuario.setBounds(370, 15, 180, 35);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(320, 80, 570, 250);
+        jPanel1.setBounds(210, 60, 900, 400);
 
         volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
         volver.setBorder(null);
@@ -102,7 +131,7 @@ public class VerMasUsuarios extends javax.swing.JDialog{
             }
         });
         getContentPane().add(volver);
-        volver.setBounds(550, 450, 260, 65);
+        volver.setBounds(550, 530, 260, 65);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -131,6 +160,14 @@ public class VerMasUsuarios extends javax.swing.JDialog{
     private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
         volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
     }//GEN-LAST:event_volverMouseEntered
+
+    private void misPersonajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_misPersonajesMouseClicked
+        this.repaint();
+    }//GEN-LAST:event_misPersonajesMouseClicked
+
+    private void jScrollPane1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane1MouseWheelMoved
+        this.repaint();
+    }//GEN-LAST:event_jScrollPane1MouseWheelMoved
 
     /**
      * @param args the command line arguments

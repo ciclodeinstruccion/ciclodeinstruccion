@@ -9,6 +9,8 @@ import ciclodeinstruccion.Usuarios.Administrador;
 import javax.swing.table.DefaultTableModel;
 import BaseDeDatos.consultasBD;
 import Personaje.Personaje;
+import java.awt.Color;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -57,13 +59,22 @@ public class VerPersonajes extends javax.swing.JDialog {
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
 
+        personajes.setShowGrid(true);
+        personajes.setGridColor(Color.WHITE);
+        personajes.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));
         personajes.setBackground(new java.awt.Color(0, 0, 0,130));
         personajes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         personajes.setForeground(new java.awt.Color(255, 51, 51));
+        personajes.setRowHeight(24);
+        personajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                personajesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(personajes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(160, 80, 960, 300);
+        jScrollPane1.setBounds(160, 80, 960, 320);
         jScrollPane1.getViewport().setOpaque(false);
         jScrollPane1.setBorder(null);
         jScrollPane1.setViewportBorder(null);
@@ -157,6 +168,10 @@ public class VerPersonajes extends javax.swing.JDialog {
     private void modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseEntered
         modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/modificar.png")));
     }//GEN-LAST:event_modificarMouseEntered
+
+    private void personajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_personajesMouseClicked
+        this.repaint();
+    }//GEN-LAST:event_personajesMouseClicked
     public void mostrar(){
         tabla=new DefaultTableModel(this.admin.tablaPersonajes(), cabecera);
         personajes.setModel(tabla);

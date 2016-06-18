@@ -6,6 +6,8 @@
 package InterfazGrafica.administrador;
 
 import ciclodeinstruccion.Usuarios.Administrador;
+import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -53,10 +55,18 @@ public class EstadisticasAvanzadas extends javax.swing.JDialog {
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
 
+        estadisticas.setShowGrid(true);
+        estadisticas.setGridColor(Color.WHITE);
+        estadisticas.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));
         estadisticas.setBackground(new java.awt.Color(0, 0, 0,130));
         estadisticas.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         estadisticas.setForeground(new java.awt.Color(255, 102, 51));
         estadisticas.setRowHeight(45);
+        estadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                estadisticasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(estadisticas);
 
         getContentPane().add(jScrollPane1);
@@ -110,6 +120,10 @@ public class EstadisticasAvanzadas extends javax.swing.JDialog {
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
     }//GEN-LAST:event_jButton1MouseEntered
+
+    private void estadisticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estadisticasMouseClicked
+        this.repaint();
+    }//GEN-LAST:event_estadisticasMouseClicked
     public void mostrar(){
         cabecera=admin.cabeceraEstadisticas();
         tabla=new DefaultTableModel(this.admin.tablaEstadisticas(), cabecera);

@@ -9,9 +9,6 @@
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1280, 720]"/>
     </Property>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1280, 720]"/>
-    </Property>
     <Property name="resizable" type="boolean" value="false"/>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1280, 720]"/>
@@ -43,6 +40,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="new java.awt.Color(0, 0, 0,0)" type="code"/>
         </Property>
+        <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jScrollPane1.getViewport().setOpaque(false);&#xa;jScrollPane1.setBorder(null);&#xa;jScrollPane1.setViewportBorder(null);"/>
@@ -50,58 +48,34 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="160" y="80" width="960" height="320"/>
+          <AbsoluteConstraints x="170" y="80" width="990" height="500"/>
         </Constraint>
       </Constraints>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="personajes">
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new java.awt.Color(0, 0, 0,130)" type="code"/>
+              <Connection code="new java.awt.Color(0, 0, 0,200)" type="code"/>
             </Property>
+            <Property name="columns" type="int" value="20"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="18" style="1"/>
+              <Font name="Tahoma" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="ff" type="rgb"/>
             </Property>
-            <Property name="rowHeight" type="int" value="24"/>
+            <Property name="rows" type="int" value="3"/>
+            <Property name="text" type="java.lang.String" value="Cilco de Instruci&#xf3;n es un juego de lucha entre personajes de diferentes tipos. Todos tendr&#xe1;n en com&#xfa;n:&#xa;    -Vida: Puntos de vida de cada personaje. El personaje ir&#xe1; perdiendo puntos de vida conforme reciba da&#xf1;o. Los puntos&#xa;     de vida del personaje durante el juego solo pueden recuperarse mediante habilidades. Cuando se quede sin puntos &#xa;     de vida perder&#xe1;.&#xa;    -Da&#xf1;o: Puntos de da&#xf1;o de cada personaje. El personaje quitar&#xe1; tanta vida al enemigo como puntos de da&#xf1;o tiene.&#xa;&#xa;Adem&#xe1;s, cada tipo de personaje se diferencia del resto por un atributo especial. De este modo los 3 tipos de personajes &#xa;existentes son los siguientes:&#xa;    -Tanque: Este tipo de personaje tendr&#xe1; armadura. La armadura es una propiedad que reduce el da&#xf1;o recibido. &#xa;    Reducir&#xe1; el da&#xf1;o recibido la misma cantidad que puntos de armadura tenga. Por ejemplo, un personaje con 10 &#xa;    armadura recibir&#xe1; 10 de da&#xf1;o menos cuando sea atacado.&#xa;    -Asesino: Este tipo de personaje tendr&#xe1; esquivar. Esta propiedad nos indica la probabilidad que tiene un personaje &#xa;    de no recibir da&#xf1;o cuando sea atacado. Cada punto en esta propiedad ser&#xe1; un 1% de probabilidad de no recibir da&#xf1;o&#xa;    cuando sea atacado. Por ejemplo, un personaje un 10% de esquivar tendr&#xe1; un 10% de probabilidad de no recibir &#xa;    da&#xf1;o cuando sea atacado.&#xa;    -Fighter: Este tipo de personaje tendr&#xe1; cr&#xed;tico. Esta propiedad nos indica la probabilidad que tiene el personaje de &#xa;    realizar el doble de da&#xf1;o cuando ataque. Cada punto en esta propiedad ser&#xe1; un 1% de probabilidad de realizar el &#xa;    doble de da&#xf1;o. Por ejemplo, un personaje con un 5% de probabilidad de cr&#xed;tico tendr&#xe1; un 5% de probabilidad de&#xa;    hacer el doble de da&#xf1;o cuando ataque.&#xa;&#xa;Cada personaje tendr&#xe1; una serie de habilidades que se ejecutar&#xe1;n de manera aleatoria durante los combates y que har&#xe1;n &#xa;da&#xf1;o a su oponente disminuyendo su vida. Estas habilidades propias de cada personaje tendr&#xe1;n una probabilidad de &#xa;usarse siendo las habilidades m&#xe1;s fuertes aquellas con menor probabilidad de ser usadas. Por tanto, si un personaje que &#xa;tiene 20 de da&#xf1;o utiliza una habilidad que hace 10 de da&#xf1;o, ese turno har&#xe1; 30 da&#xf1;o al rival. Estas habilidades podr&#xe1;n ser&#xa;de tres tipos:&#xa;    -De da&#xf1;o: Habilidades que infringen da&#xf1;o a su adversario.&#xa;    -De cura: Habilidad que incrementa la vida del personaje que las usa.&#xa;    -Mixtas: Habilidades que curan y hacen da&#xf1;o en el mismo turno.&#xa;&#xa;Las partidas se jugar&#xe1;n entre dos personajes de dos jugadores distintos que se enfrentar&#xe1;n 1 contra 1 atacando de forma&#xa;alternativa hasta que uno se quede sin vida. Estas partidas Tendr&#xe1;n un coste de inscripci&#xf3;n de 100 de oro por cada &#xa;jugador, y &#xfa;nicamente se podr&#xe1;n jugar 10 partidas al d&#xed;a. La recompensa por ganar una partida ser&#xe1; la siguiente:&#xa;    -200 de oro m&#xe1;s 100 puntos de experiencia para el usuario y el personaje utilizado en las primeras 5 partidas del d&#xed;a.&#xa;    -150 de oro m&#xe1;s 100 puntos de experiencia para el usuario y el personaje utilizado en las primeras 5 partidas del d&#xed;a.&#xa;&#xa;Esta experiencia recibida servir&#xe1; para que tanto usuarios como personajes suban de nivel. La experiencia necesaria para &#xa;subir de nivel ser&#xe1; la siguiente:&#xa;&#x9;&#x9;&#x9;Experiencia necesaria=Nivel actual*1000&#xa;&#xa;Cuando un personaje o un usuario suba de nivel recibir&#xe1; un punto de nivel que podr&#xe1; utilizar para aumentar sus atributos. De esta forma se podr&#xe1;n aumentar los atributos de un personaje gastando sus puntos de nivel de la siguiente forma:&#xa;    -Vida: Cada punto gastado en aumentar la vida aumentar&#xe1; en 10 la vida del personaje.&#xa;    -Da&#xf1;o: Cada punto gastado en aumentar el da&#xf1;o aumentar&#xe1; en 5 el da&#xf1;o del personaje.&#xa;    -Especial: Cada punto gastado en aumentar la propiedad caracter&#xed;stica de cada personaje (armadura, cr&#xed;tico, especial) &#xa;    aumentar&#xe1; en 1 punto dicha propiedad.&#xa;&#xa;Los usuarios tambi&#xe9;n poseer&#xe1;n una serie de atributos que podr&#xe1;n mejorar con sus puntos de nivel y que afectar&#xe1;n a sus &#xa;personajes durante la batalla:&#xa;    -Vitalidad: Cada punto de vitalidad que tenga el usuario aumentar&#xe1; en 10 la vida de los personajes al inicio de la &#xa;    partida.&#xa;    -Fuerza: Cada punto de fuerza que tenga el usuario aumentar&#xe1; en 5 el da&#xf1;o de los personajes al inicio de la partida.&#xa;    -Especial: Cada punto de el atributo especial aumentar&#xe1; en 1 punto el atributo propio de cada personaje (armadura, &#xa;    esquivar, cr&#xed;tico) durante la partida.&#xa;    -Inteligencia: Cada punto de el atributo inteligencia aumentar&#xe1; en 1 la probabilidad de usar la habilidad m&#xe1;s fuerte del &#xa;    personaje durante la partida.&#xa;&#xa;Se podr&#xe1;n gastar un m&#xe1;ximo de 10 puntos de nivel en cada atributo tanto para los usuarios como para los personajes.&#xa;"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="personajesMouseClicked"/>
-          </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="personajes.setShowGrid(true);&#xa;personajes.setGridColor(Color.WHITE);&#xa;personajes.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextArea1.setCaretPosition(0);"/>
           </AuxValues>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="modificar">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagenes/Botones/Normal/modificar.png"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
-        <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="contentAreaFilled" type="boolean" value="false"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificarMouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificarMouseExited"/>
-        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificarMousePressed"/>
-        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificarMouseReleased"/>
-      </Events>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="240" y="480" width="-1" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -119,10 +93,11 @@
         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseExited"/>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MousePressed"/>
         <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseReleased"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="790" y="480" width="-1" height="-1"/>
+          <AbsoluteConstraints x="540" y="620" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

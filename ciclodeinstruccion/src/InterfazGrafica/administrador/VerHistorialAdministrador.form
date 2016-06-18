@@ -38,13 +38,16 @@
           <Connection code="new java.awt.Color(0, 0, 0, 0)" type="code"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseWheelMoved" listener="java.awt.event.MouseWheelListener" parameters="java.awt.event.MouseWheelEvent" handler="jScrollPane1MouseWheelMoved"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jScrollPane1.getViewport().setOpaque(false);&#xa;jScrollPane1.setBorder(null);&#xa;jScrollPane1.setViewportBorder(null);"/>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="130" y="210" width="820" height="240"/>
+          <AbsoluteConstraints x="240" y="130" width="820" height="310"/>
         </Constraint>
       </Constraints>
 
@@ -61,7 +64,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="ff" type="rgb"/>
             </Property>
+            <Property name="rowHeight" type="int" value="24"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tabla.setShowGrid(true);&#xa;tabla.setGridColor(Color.WHITE);&#xa;tabla.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -92,7 +99,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="420" y="490" width="-1" height="-1"/>
+          <AbsoluteConstraints x="520" y="510" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -86,6 +86,11 @@ public class UnirsePartida extends javax.swing.JDialog {
         getContentPane().setLayout(null);
 
         jScrollPane2.setBackground(new java.awt.Color(0, 0, 0,0));
+        jScrollPane2.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jScrollPane2MouseWheelMoved(evt);
+            }
+        });
 
         tablaPartidas.setBackground(new java.awt.Color(0, 0, 0,130));
         tablaPartidas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -455,6 +460,10 @@ public class UnirsePartida extends javax.swing.JDialog {
         this.mostrarPersonaje(mp);
         this.info.setVisible(true);
     }//GEN-LAST:event_sonicActionPerformed
+
+    private void jScrollPane2MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane2MouseWheelMoved
+       this.repaint();
+    }//GEN-LAST:event_jScrollPane2MouseWheelMoved
     public void mostrar(){
         tabla=new DefaultTableModel(this.registrado.tablaUnirseAPartida(), cabecera);
         tablaPartidas.setModel(tabla);

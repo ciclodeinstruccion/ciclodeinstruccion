@@ -9,6 +9,8 @@ import BaseDeDatos.ConexionBD;
 import ciclodeinstruccion.Usuarios.Administrador;
 import BaseDeDatos.consultasBD;
 import ciclodeinstruccion.Usuarios.Registrado;
+import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -62,7 +64,15 @@ public class VerUsuarios extends javax.swing.JDialog {
         getContentPane().setLayout(null);
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
+        jScrollPane1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jScrollPane1MouseWheelMoved(evt);
+            }
+        });
 
+        tablaUsuarios.setShowGrid(true);
+        tablaUsuarios.setGridColor(Color.WHITE);
+        tablaUsuarios.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));
         tablaUsuarios.setBackground(new java.awt.Color(0, 0, 0,130));
         tablaUsuarios.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tablaUsuarios.setForeground(new java.awt.Color(255, 51, 51));
@@ -74,6 +84,12 @@ public class VerUsuarios extends javax.swing.JDialog {
 
             }
         ));
+        tablaUsuarios.setRowHeight(24);
+        tablaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaUsuariosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaUsuarios);
 
         getContentPane().add(jScrollPane1);
@@ -160,7 +176,7 @@ public class VerUsuarios extends javax.swing.JDialog {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 10, 1280, 720);
+        jLabel1.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -233,6 +249,14 @@ public class VerUsuarios extends javax.swing.JDialog {
     private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
         volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
     }//GEN-LAST:event_volverMouseEntered
+
+    private void tablaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsuariosMouseClicked
+        this.repaint();
+    }//GEN-LAST:event_tablaUsuariosMouseClicked
+
+    private void jScrollPane1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane1MouseWheelMoved
+        this.repaint();
+    }//GEN-LAST:event_jScrollPane1MouseWheelMoved
     public void mostrar(){
         String [][] t=admin.tablaUsuarios();
         tabla=new DefaultTableModel(t, cabecera);

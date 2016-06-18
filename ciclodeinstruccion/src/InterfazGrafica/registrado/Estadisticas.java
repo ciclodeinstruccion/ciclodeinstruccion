@@ -24,6 +24,8 @@ import org.jfree.data.general.DefaultPieDataset;
 import BaseDeDatos.*;
 import ciclodeinstruccion.Partida;
 import java.awt.Font;
+import javafx.scene.layout.Border;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -47,6 +49,8 @@ public class Estadisticas extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.registrado=r;
         this.ir=ir;
+        int index=jTabbedPane1.getTabCount()-1;
+        jTabbedPane1.setBackgroundAt(index, Color.BLUE);
     }
 
     /**
@@ -119,9 +123,17 @@ public class Estadisticas extends javax.swing.JDialog {
         jPanel2.setLayout(null);
 
         jScrollPane2.setBackground(new java.awt.Color(0, 0, 0,0));
+        jScrollPane2.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jScrollPane2MouseWheelMoved(evt);
+            }
+        });
 
         tablaHisto.setBackground(new java.awt.Color(0, 0, 0,0));
         tablaHisto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tablaHisto.setShowGrid(true);
+        tablaHisto.setGridColor(Color.WHITE);
+        tablaHisto.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));
         tablaHisto.setForeground(new java.awt.Color(255, 102, 51));
         tablaHisto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -134,6 +146,12 @@ public class Estadisticas extends javax.swing.JDialog {
 
             }
         ));
+        tablaHisto.setRowHeight(28);
+        tablaHisto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaHistoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaHisto);
 
         jPanel2.add(jScrollPane2);
@@ -304,10 +322,24 @@ public class Estadisticas extends javax.swing.JDialog {
         jPanel1.setLayout(null);
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
+        jScrollPane1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jScrollPane1MouseWheelMoved(evt);
+            }
+        });
 
+        tabla.setShowGrid(true);
+        tabla.setGridColor(Color.WHITE);
+        tabla.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));
         tabla.setBackground(new java.awt.Color(0, 0, 0,0));
         tabla.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         tabla.setForeground(new java.awt.Color(255, 102, 51));
+        tabla.setRowHeight(28);
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla);
 
         jPanel1.add(jScrollPane1);
@@ -417,6 +449,22 @@ public class Estadisticas extends javax.swing.JDialog {
     private void jTabbedPane1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseEntered
 
     }//GEN-LAST:event_jTabbedPane1MouseEntered
+
+    private void jScrollPane2MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane2MouseWheelMoved
+       this.repaint();
+    }//GEN-LAST:event_jScrollPane2MouseWheelMoved
+
+    private void tablaHistoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaHistoMouseClicked
+        this.repaint();
+    }//GEN-LAST:event_tablaHistoMouseClicked
+
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+        this.repaint();
+    }//GEN-LAST:event_tablaMouseClicked
+
+    private void jScrollPane1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane1MouseWheelMoved
+        this.repaint();
+    }//GEN-LAST:event_jScrollPane1MouseWheelMoved
     public void mostrar(String nombre){
         barrasPersonajes.removeAll();
         ArrayList <Personaje> personajes=new ArrayList();
