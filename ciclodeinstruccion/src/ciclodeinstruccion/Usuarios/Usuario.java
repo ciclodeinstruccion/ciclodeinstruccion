@@ -1,4 +1,6 @@
-
+/**
+ * Clase base de la que heredan registrado y administrador
+ */
 package ciclodeinstruccion.Usuarios;
 
 

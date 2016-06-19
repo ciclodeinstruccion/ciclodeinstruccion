@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Clase que contiene 2 usuarios registrados y 2 mipersonajes
  */
 package ciclodeinstruccion;
 
@@ -10,10 +8,6 @@ import Personaje.Personaje;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.util.ArrayList;
 
-/**
- *
- * @author alumno
- */
 public class Partida {
     private Registrado jugador1;
     private Registrado jugador2;

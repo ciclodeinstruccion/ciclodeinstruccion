@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Clase heredera de mipersonaje que contiene un objeto asesino
  */
 package MiPersonaje;
 
@@ -9,10 +7,6 @@ import Personaje.Asesino;
 import ciclodeinstruccion.GeneradorAleatorios;
 import ciclodeinstruccion.Habilidad;
 
-/**
- *
- * @author alumno
- */
 public class MiAsesino extends MiPersonaje{
     private Asesino personaje;
     private float bonusEsquivar;

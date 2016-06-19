@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Clase heredera de mipersonaje que contiene un objeto tanque
  */
 package MiPersonaje;
 
@@ -9,10 +7,6 @@ import Personaje.Tanque;
 import ciclodeinstruccion.GeneradorAleatorios;
 import ciclodeinstruccion.Habilidad;
 
-/**
- *
- * @author alumno
- */
 public class MiTanque extends MiPersonaje{
     private Tanque personaje;
     private float bonusArmadura;

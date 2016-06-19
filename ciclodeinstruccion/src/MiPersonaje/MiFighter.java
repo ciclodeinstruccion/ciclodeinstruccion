@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Clase heredera de mipersonaje que contiene un objeto fighter
  */
 package MiPersonaje;
 
@@ -10,10 +8,6 @@ import Personaje.Fighter;
 import ciclodeinstruccion.GeneradorAleatorios;
 import ciclodeinstruccion.Habilidad;
 
-/**
- *
- * @author alumno
- */
 public class MiFighter extends MiPersonaje{
     private Fighter personaje;
     private float bonusCritico;

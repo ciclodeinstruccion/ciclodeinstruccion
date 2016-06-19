@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Clase base de la que heredan asesino, tanque y fighter. Contiene un arraylist
+ * de habilidades de tamaño 3
  */
 package Personaje;
 

@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Clase de la que heredan miasesino, mifighter y mitanque
  */
 package MiPersonaje;
 
-/**
- *
- * @author alumno
- */
 public abstract class MiPersonaje implements MiPersonajeable,Comparable <MiPersonaje>{
     private float bonusVida;
     private float bonusDaño;

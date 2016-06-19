@@ -1,4 +1,6 @@
-
+/**
+ * Clase heredera de administrador
+ */
 package ciclodeinstruccion.Usuarios;
 
 import ciclodeinstruccion.Partida;

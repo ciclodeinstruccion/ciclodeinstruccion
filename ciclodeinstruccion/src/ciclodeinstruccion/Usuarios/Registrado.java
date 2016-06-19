@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Clase heredera de usuario que contiene un arraylist de mipersonaje
  */
 package ciclodeinstruccion.Usuarios;
 
@@ -18,10 +16,7 @@ import java.util.*;
 import BaseDeDatos.ConsultasBD;
 import Personaje.Tanque;
 
-/**
- *
- * @author alumno
- */
+
 public class Registrado extends Usuario{
     
 

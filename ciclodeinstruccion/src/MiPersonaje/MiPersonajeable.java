@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz que implementa mipersonaje y que incluye los método necesario para poder 
+ * aplicar polimorfismo en los métodos de jugar las partidas
  */
 package MiPersonaje;
 
 import ciclodeinstruccion.Habilidad;
 
-/**
- *
- * @author alumno
- */
 public interface MiPersonajeable {
     public boolean critico(int especial);
     
