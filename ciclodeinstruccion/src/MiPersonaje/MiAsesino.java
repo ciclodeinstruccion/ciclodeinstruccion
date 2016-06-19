@@ -69,6 +69,11 @@ public class MiAsesino extends MiPersonaje{
         }
         return esquivar;
     }
+    /**
+     * metodo que calcula una habilidad de forma aleatoria
+     * @param inteligencia del registrado
+     * @return la habilidad
+     */
     public Habilidad elegirHabilidad(int inteligencia){
         Habilidad elegida;
         int random=GeneradorAleatorios.generarAleatorio(100+inteligencia);

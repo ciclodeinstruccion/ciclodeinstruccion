@@ -61,6 +61,11 @@ public class MiFighter extends MiPersonaje{
     public boolean esquiva(int especial){
         return false;
     }
+    /**
+     * metodo que calcula una habilidad de forma aleatoria
+     * @param inteligencia del registrado
+     * @return la habilidad
+     */
     public Habilidad elegirHabilidad(int inteligencia){
         Habilidad elegida;
         int random=GeneradorAleatorios.generarAleatorio(100+inteligencia);
