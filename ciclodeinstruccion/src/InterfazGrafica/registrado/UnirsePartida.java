@@ -89,6 +89,11 @@ public class UnirsePartida extends javax.swing.JDialog {
         tablaPartidas.setBackground(new java.awt.Color(0, 0, 0,130));
         tablaPartidas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tablaPartidas.setForeground(new java.awt.Color(255, 102, 51));
+        tablaPartidas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaPartidasMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaPartidas);
 
         getContentPane().add(jScrollPane2);
@@ -459,6 +464,10 @@ public class UnirsePartida extends javax.swing.JDialog {
     private void jScrollPane2MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane2MouseWheelMoved
        this.repaint();
     }//GEN-LAST:event_jScrollPane2MouseWheelMoved
+
+    private void tablaPartidasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPartidasMouseClicked
+        this.repaint();
+    }//GEN-LAST:event_tablaPartidasMouseClicked
     /**
      * Método inicial que muestra la tabla con las partidas disponibles y activa
      * o desactiva los botones de los personaje en función de si el usuario tiene
