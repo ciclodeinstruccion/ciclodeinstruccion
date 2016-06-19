@@ -28,10 +28,6 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-/**
- *
- * @author alumno
- */
 public class ConsultasBD {
     static ConsultasBD instancia = null;
     
@@ -47,7 +43,11 @@ public class ConsultasBD {
         return instancia;
     }
     
-
+    /**
+     * Añade un registrado a la base de datos
+     * @param r
+     * @throws ErrorAñadirRegistrado 
+     */
     public void añadirRegistrado(Registrado r) throws ErrorAñadirRegistrado{
         SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -63,7 +63,10 @@ public class ConsultasBD {
             throw new ErrorAñadirRegistrado();
         }
     }
-    
+    /**
+     * Pone en true la columna de baneado de un registrado
+     * @param r 
+     */
     public void banearRegistrado(Registrado r){
         try{
             ConexionBD.instancia().getStatement().execute("Update Registrados set baneado=1 where nombre='"+r.getNombre()+"'");
@@ -71,7 +74,10 @@ public class ConsultasBD {
             
         }
     }
-    
+    /**
+     * Pone en false la columna de baneado de un registrado
+     * @param r 
+     */
     public void desbanearRegistrado(Registrado r){
         try{
             ConexionBD.instancia().getStatement().execute("Update Registrados set baneado=0 where nombre='"+r.getNombre()+"'");
@@ -79,7 +85,11 @@ public class ConsultasBD {
             
         }
     }
-    
+    /**
+     * Comprueba si un usuario esta baneado
+     * @param r
+     * @return 
+     */
     public boolean estaBaneado(Registrado r){
         boolean baneado=false;
         try{
@@ -92,7 +102,11 @@ public class ConsultasBD {
         }
         return baneado;
     }
-    
+    /**
+     * Elimina un registrado
+     * @param r
+     * @throws ErrorEliminarRegistrado 
+     */
     public void eliminarRegistrado(Registrado r) throws ErrorEliminarRegistrado{
         try {
             ConexionBD.instancia().getStatement().execute(
@@ -108,7 +122,11 @@ public class ConsultasBD {
             throw new ErrorEliminarRegistrado();
         }
     }
-    
+    /**
+     * Busca un registrado por el nombre y le añade sus personajes
+     * @param nombre
+     * @return 
+     */
     public Registrado buscarRegistrado(String nombre){
         Registrado r=null;
         try {
@@ -145,7 +163,10 @@ public class ConsultasBD {
         }
         return r;
     }
-    
+    /**
+     * Modifica un registrado
+     * @param r 
+     */
     public void modificarRegistrado (Registrado r){
         SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
         try{
@@ -156,7 +177,11 @@ public class ConsultasBD {
             
         }
     }
-    
+    /**
+     * Añade un administrador a la base de datos
+     * @param a
+     * @throws ErrorCrearAdministrador 
+     */
     public void añadirAdministradores(Administrador a) throws ErrorCrearAdministrador{
          
       try{
@@ -166,7 +191,11 @@ public class ConsultasBD {
           throw new ErrorCrearAdministrador();
       }  
     }
-
+    /**
+     * Añade un personaje a la bas e de datos
+     * @param p
+     * @throws ErrorCrearPersonaje 
+     */
     public void añadirPersonajes(Personaje p) throws ErrorCrearPersonaje{
         
         float especial=0;
@@ -218,7 +247,11 @@ public class ConsultasBD {
         }
         return admin;
     }
-    
+    /**
+     * Busca un personaje y añade sus habilidades
+     * @param nombre
+     * @return 
+     */
     public Personaje buscarPersonaje (String nombre){
         Personaje p=null;
         try {
@@ -249,7 +282,11 @@ public class ConsultasBD {
         }
         return p;
     }
-    
+    /**
+     * Devuelve los personajes que no tiene un usuario
+     * @param r
+     * @return 
+     */
     public ArrayList <Personaje> buscarPersonajesComprables(Registrado r){
         ArrayList <Personaje> comprables=new ArrayList();
         ArrayList <String> nombres=new ArrayList(); 
@@ -267,7 +304,11 @@ public class ConsultasBD {
         }
         return comprables;
     }
-    
+    /**
+     * Modifica un personaje
+     * @param p
+     * @throws ErrorModificarPersonaje 
+     */
     public void modificarPersonaje(Personaje p) throws ErrorModificarPersonaje{
         
         float especial = 0;
@@ -290,7 +331,12 @@ public class ConsultasBD {
             throw new ErrorModificarPersonaje();
         }
     }
-    
+    /**
+     * Devuelve las habilidades de un personaje
+     * @param p
+     * @return
+     * @throws SQLException 
+     */
     public ArrayList<Habilidad> buscarHabilidades(Personaje p) throws SQLException{
         
         ArrayList <Habilidad> habilidades = new ArrayList();
@@ -311,7 +357,11 @@ public class ConsultasBD {
         return habilidades;
         
     }
-    
+    /**
+     * Añade un mi personaje a la bas e de datos
+     * @param mp
+     * @param r 
+     */
     public void añadirMiPersonaje(MiPersonaje mp, Registrado r){
         
         float bonusEspecial = 0;
@@ -330,7 +380,11 @@ public class ConsultasBD {
             
         }    
     }
-    
+    /**
+     * Modifica las propiedades de un mipersonaje
+     * @param p
+     * @param r 
+     */
     public void modificarMiPersonaje(MiPersonaje p, Registrado r){
         if(p instanceof MiTanque){
             MiTanque t=(MiTanque)p;
@@ -363,7 +417,10 @@ public class ConsultasBD {
             }
         }
     }
-    
+    /**
+     * Añade las habilidades de un personaje a la base de datos
+     * @param p 
+     */
     public void añadirHabilidad(Personaje p){
         for(Habilidad h:p.getHabilidades()){
 
@@ -375,7 +432,12 @@ public class ConsultasBD {
         }
 
     }
-    
+    /**
+     * Devuelve un mi personaje 
+     * @param nombre
+     * @param r
+     * @return 
+     */
     public MiPersonaje buscarMiPersonaje(String nombre, Registrado r){
         MiPersonaje mp1 = null;
         
@@ -399,7 +461,10 @@ public class ConsultasBD {
         
         return mp1;
     }
-    
+    /**
+     * Añade una partida  la base de datos
+     * @param p 
+     */
     public void añadirPArtida(Partida p){
         
         try{
@@ -408,7 +473,10 @@ public class ConsultasBD {
             
         }
     }
-    
+    /**
+     * Modifica una partida 
+     * @param p 
+     */
     public void unirsePartida(Partida p){
         
         try{
@@ -419,6 +487,11 @@ public class ConsultasBD {
         }
             
     }
+    /**
+     * Busca una partida por id
+     * @param id
+     * @return 
+     */
     public Partida buscarUnaPartidaUnirsePorId(int id){
         Partida p=null;
         try{
@@ -445,6 +518,11 @@ public class ConsultasBD {
         }
         return p;
     }
+    /**
+     * Devuelve las partidas a las que te puedes unir
+     * @param r
+     * @return 
+     */
     public ArrayList <Partida> buscarPartidasUnirte(Registrado r){
         ArrayList <Partida> partidas=new ArrayList();
         try {
@@ -491,7 +569,7 @@ public class ConsultasBD {
            }
         }
     }
-    /*sdf*/
+    
     public void buscarTextoPartida(Partida p){
         ArrayList <String> resumen=new ArrayList();
         ArrayList <Float> vidaJ1=new ArrayList();
@@ -717,7 +795,12 @@ public class ConsultasBD {
         
         return partidas;
     }
-    
+    /**
+     * Partidas jugadas por dos personajes en total
+     * @param personaje1
+     * @param personaje2
+     * @return 
+     */
     public int partidasJugadas2Personajes(String personaje1, String personaje2){
         int npartidas=0;
         try{
@@ -730,7 +813,13 @@ public class ConsultasBD {
         }
         return npartidas;
     }
-    
+    /**
+     * Partidas ganadas por un personaje contra otro
+     * @param personaje1
+     * @param personaje2
+     * @param ganador
+     * @return 
+     */
     public int partidasGanadasPersonaje(String personaje1, String personaje2, String ganador){
         int npartidas=0;
         try{
@@ -743,7 +832,11 @@ public class ConsultasBD {
         }
         return npartidas;
     }
-    
+    /**
+     * Partidas jugadas por un personaje como personaje1
+     * @param personaje
+     * @return 
+     */
     public int partidasJugadas1Personaje1(String personaje){
         int npartidas=0;
         try{
@@ -756,7 +849,11 @@ public class ConsultasBD {
         }
         return npartidas;
     }
-    
+    /**
+     * Partidas jugadas por un personaje como personaje2
+     * @param personaje
+     * @return 
+     */
     public int partidasJugadas1Personaje2 (String personaje){
         int npartidas=0;
         try{
@@ -769,7 +866,11 @@ public class ConsultasBD {
         }
         return npartidas;
     }
-    
+    /**
+     * Partidas totales ganadas por un personaje
+     * @param personaje
+     * @return 
+     */
     public int partidasGanadas1Personaje (String personaje){
         int npartidas=0;
         try{
@@ -832,7 +933,11 @@ public class ConsultasBD {
             
         }
     }
-    
+    /**
+     * Cambia el jugador 1 en las partidas
+     * @param r
+     * @param nombreViejo 
+     */
     public void cambiarNombreJugador1(Registrado r, String nombreViejo){
         
         try{
@@ -841,7 +946,11 @@ public class ConsultasBD {
             
         }
     }
-    
+    /**
+     * Cambia el jugador 2 en las partidas
+     * @param r
+     * @param nombreViejo 
+     */
     public void cambiarNombreJugador2(Registrado r, String nombreViejo){
         
         try{
@@ -887,6 +996,13 @@ public class ConsultasBD {
         }
         return personajes;
     }
+    /**
+     * Partidas jugadas por mi personaje como personaje1 contra otro personaje
+     * @param r
+     * @param mp
+     * @param rival
+     * @return 
+     */
     public int jugadasMiPersonaje1(Registrado r, MiPersonaje mp, String rival ){
         int jugadas=0;
         try{
@@ -899,7 +1015,13 @@ public class ConsultasBD {
         }
         return jugadas;
     }
-    
+    /**
+     * Partidas jugadas por mi personaje como personaje2 contra otro personaje
+     * @param r
+     * @param mp
+     * @param rival
+     * @return 
+     */
     public int jugadasMiPersonaje2(Registrado r, MiPersonaje mp, String rival ){
         int jugadas=0;
         try{
@@ -912,7 +1034,13 @@ public class ConsultasBD {
         }
         return jugadas;
     }
-    
+    /**
+     * Partidas ganadas por mi personaje como personaje1 contra otro personaje
+     * @param r
+     * @param mp
+     * @param rival
+     * @return 
+     */
     public int ganadasMiPersonaje1(Registrado r, MiPersonaje mp, String rival ){
         int jugadas=0;
         try{
@@ -925,7 +1053,13 @@ public class ConsultasBD {
         }
         return jugadas;
     }
-    
+    /**
+     * Partidas ganadas por mi personaje como personaje2
+     * @param r
+     * @param mp
+     * @param rival
+     * @return 
+     */
     public int ganadasMiPersonaje2(Registrado r, MiPersonaje mp, String rival ){
         int jugadas=0;
         try{
@@ -938,7 +1072,11 @@ public class ConsultasBD {
         }
         return jugadas;
     }
-    
+    /**
+     * Partidas totales ganadas por un jugador
+     * @param r
+     * @return 
+     */
     public int partidasGanadas(Registrado r){
         
         int ganadas = 0;
@@ -954,7 +1092,11 @@ public class ConsultasBD {
         
         return ganadas;
     }
-    
+    /**
+     * Partidas jugadas por un jugador como jugador2
+     * @param r
+     * @return 
+     */
     public int jugadasJ1(Registrado r){
         int jugadas=0;
         try{
@@ -967,7 +1109,11 @@ public class ConsultasBD {
         }
         return jugadas;
     }
-    
+    /**
+     * Partidas jugadas por un jugador como jugador2
+     * @param r
+     * @return 
+     */
     public int jugadasJ2(Registrado r){
         int jugadas=0;
         try{
@@ -980,6 +1126,10 @@ public class ConsultasBD {
         }
         return jugadas;
     }
+    /**
+     * Clasificación con los 10 primeros jugadores
+     * @return 
+     */
     public String [][] clasificacion(){
         
         ArrayList<Registrado> clasi = new ArrayList();
