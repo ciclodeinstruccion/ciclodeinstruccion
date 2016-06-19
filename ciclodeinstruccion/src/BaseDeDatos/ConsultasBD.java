@@ -1,5 +1,5 @@
 /**
- * 
+ * Clase
  */
 package BaseDeDatos;
 
