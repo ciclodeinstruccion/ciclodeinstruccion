@@ -717,7 +717,12 @@ public class ConsultasBD {
         
         return partidas;
     }
-    
+    /**
+     * partidas totales jugadas por 2 personajes uno contra otro
+     * @param personaje1
+     * @param personaje2
+     * @return 
+     */
     public int partidasJugadas2Personajes(String personaje1, String personaje2){
         int npartidas=0;
         try{
@@ -730,7 +735,13 @@ public class ConsultasBD {
         }
         return npartidas;
     }
-    
+    /**
+     * Partidas ganadas por un personaje contra otro
+     * @param personaje1
+     * @param personaje2
+     * @param ganador
+     * @return 
+     */
     public int partidasGanadasPersonaje(String personaje1, String personaje2, String ganador){
         int npartidas=0;
         try{
@@ -743,7 +754,11 @@ public class ConsultasBD {
         }
         return npartidas;
     }
-    
+    /**
+     * Partidas jugadas por un personaje como personaje1
+     * @param personaje
+     * @return 
+     */
     public int partidasJugadas1Personaje1(String personaje){
         int npartidas=0;
         try{
@@ -756,7 +771,11 @@ public class ConsultasBD {
         }
         return npartidas;
     }
-    
+    /**
+     * Partidas jugadas por un personaje como personaje2
+     * @param personaje
+     * @return 
+     */
     public int partidasJugadas1Personaje2 (String personaje){
         int npartidas=0;
         try{
@@ -769,7 +788,11 @@ public class ConsultasBD {
         }
         return npartidas;
     }
-    
+    /**
+     * Partidas totales ganadas por un personaje
+     * @param personaje
+     * @return 
+     */
     public int partidasGanadas1Personaje (String personaje){
         int npartidas=0;
         try{
@@ -887,6 +910,13 @@ public class ConsultasBD {
         }
         return personajes;
     }
+    /**
+     * Partidas jugadas por un personaje de un usuario como personaje1
+     * @param r
+     * @param mp
+     * @param rival
+     * @return 
+     */
     public int jugadasMiPersonaje1(Registrado r, MiPersonaje mp, String rival ){
         int jugadas=0;
         try{
@@ -899,7 +929,13 @@ public class ConsultasBD {
         }
         return jugadas;
     }
-    
+    /**
+     * Partidas jugadas por un personaje de un usuario como personaje2
+     * @param r
+     * @param mp
+     * @param rival
+     * @return 
+     */
     public int jugadasMiPersonaje2(Registrado r, MiPersonaje mp, String rival ){
         int jugadas=0;
         try{
@@ -912,7 +948,13 @@ public class ConsultasBD {
         }
         return jugadas;
     }
-    
+    /**
+     * Partidas ganadas por un personaje de un usuario como personaje1
+     * @param r
+     * @param mp
+     * @param rival
+     * @return 
+     */
     public int ganadasMiPersonaje1(Registrado r, MiPersonaje mp, String rival ){
         int jugadas=0;
         try{
@@ -925,7 +967,13 @@ public class ConsultasBD {
         }
         return jugadas;
     }
-    
+    /**
+     * Partidas ganadas por un personaje de un usuario como personaje2
+     * @param r
+     * @param mp
+     * @param rival
+     * @return 
+     */
     public int ganadasMiPersonaje2(Registrado r, MiPersonaje mp, String rival ){
         int jugadas=0;
         try{
@@ -938,7 +986,11 @@ public class ConsultasBD {
         }
         return jugadas;
     }
-    
+    /**
+     * Partidas ganadas por un usuario
+     * @param r
+     * @return 
+     */
     public int partidasGanadas(Registrado r){
         
         int ganadas = 0;
@@ -954,7 +1006,11 @@ public class ConsultasBD {
         
         return ganadas;
     }
-    
+    /**
+     * Partidas jugadas por un usuario como jugador1
+     * @param r
+     * @return 
+     */
     public int jugadasJ1(Registrado r){
         int jugadas=0;
         try{
@@ -967,7 +1023,11 @@ public class ConsultasBD {
         }
         return jugadas;
     }
-    
+    /**
+     * Partidas jugadas por un usuario como jugador2
+     * @param r
+     * @return 
+     */
     public int jugadasJ2(Registrado r){
         int jugadas=0;
         try{
