@@ -15,7 +15,7 @@ import ciclodeinstruccion.Partida;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.*;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import Personaje.Tanque;
 
 /**
@@ -38,7 +38,7 @@ public class Registrado extends Usuario{
     private ArrayList <MiPersonaje> misPersonajes;
     private int partidasJugadas;
     private Date ultimaEntrada;
-    private final static int LIMITE_PARTIDAS=1000;
+    private final static int LIMITE_PARTIDAS=10;
     
 
     public Registrado(int partidasJugadas, int nivel, int oro, int experiencia, int vitalidad, int fuerza, int especial, int inteligencia, int puntosNivel, String nombre, String correo, String contraseña,Date ultimaEntrada) {
@@ -206,7 +206,7 @@ public class Registrado extends Usuario{
     
     public String [][] tablaUnirseAPartida(){
         ArrayList <Partida> jugables=new ArrayList();
-        jugables=consultasBD.instancia().buscarPartidasUnirte(this);
+        jugables=ConsultasBD.instancia().buscarPartidasUnirte(this);
         String arrayPartidas[][]=new String [jugables.size()][4];
         for(int i=0;i<arrayPartidas.length;i++){
             arrayPartidas[i][0]=Integer.toString(jugables.get(i).getIdentificador());
@@ -219,7 +219,7 @@ public class Registrado extends Usuario{
     
     public String [][] tablaHistorialPartidas(){
         ArrayList <Partida> historial=new ArrayList();
-        historial=consultasBD.instancia().buscarPartidasAcabadas(this);
+        historial=ConsultasBD.instancia().buscarPartidasAcabadas(this);
         String arrayPartidas[][]=new String [historial.size()][7];
         for(int i=0;i<arrayPartidas.length;i++){
             arrayPartidas[i][0]=Integer.toString(historial.get(i).getIdentificador());
@@ -235,7 +235,7 @@ public class Registrado extends Usuario{
     
     public String [][] tablaPersonajesComprables(){
         ArrayList <Personaje> comprables=new ArrayList();
-        comprables=consultasBD.instancia().buscarPersonajesComprables(this);
+        comprables=ConsultasBD.instancia().buscarPersonajesComprables(this);
         String arrayComprables[][]=new String [comprables.size()][3];
         for(int i=0;i<arrayComprables.length;i++){
             arrayComprables[i][0]=comprables.get(i).getTipo();

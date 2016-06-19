@@ -1,13 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz usada para registrarse
  */
 package InterfazGrafica;
 
 import InterfazGrafica.registrado.InicioRegistrado;
 import javax.swing.JOptionPane;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import Excepciones.ErrorAñadirRegistrado;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.util.Date;
@@ -16,16 +14,12 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- *
- * @author Rubén
- */
 public class Registrarse extends javax.swing.JDialog {
 
     /**
      * Creates new form Registrarse
      */
-    private final int ORO_INICIAL=10000;
+    private final int ORO_INICIAL=500;
     private Inicio ini;
     public Registrarse(java.awt.Frame parent, boolean modal, Inicio ini) {
         super(parent, modal);
@@ -195,13 +189,14 @@ public class Registrarse extends javax.swing.JDialog {
         String name=nombre.getText();
         String pass="";
         String email=correo.getText();
+        //se pasa la contraseña del array de chars a un string
         for(int i=0;i<contraseña.getPassword().length;i++){
             pass+=contraseña.getPassword()[i];
         }
         if(comprobarRegistro(name,email,pass)){
             Registrado r =new Registrado(0, 1, ORO_INICIAL, 0, 0, 0, 0, 0, 0, name, email, pass, new Date());
             try {
-                consultasBD.instancia().añadirRegistrado(r);
+                ConsultasBD.instancia().añadirRegistrado(r);
             } catch (ErrorAñadirRegistrado ex) {
                 Logger.getLogger(Registrarse.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -254,17 +249,24 @@ public class Registrarse extends javax.swing.JDialog {
     private void contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaActionPerformed
 
     }//GEN-LAST:event_contraseñaActionPerformed
+    /**
+     * Se comprueba si los datos del registro son válidos
+     * @param nombre
+     * @param correo
+     * @param contraseña
+     * @return 
+     */
     public boolean comprobarRegistro(String nombre, String correo, String contraseña){
         boolean correcto=true;
         if(nombre.equals("")||correo.equals("")||contraseña.equals("")){
             correcto=false;
             JOptionPane.showMessageDialog(rootPane, "Los datos de registro no son válidos", "Registrarse", JOptionPane.WARNING_MESSAGE);
         }
-        else if(consultasBD.instancia().existeNombre(nombre)){
+        else if(ConsultasBD.instancia().existeNombre(nombre)){
             correcto=false;
             JOptionPane.showMessageDialog(rootPane, "Ya existe un usuario registrado con este nombre", "Registrarse", JOptionPane.WARNING_MESSAGE);
         }
-        else if(consultasBD.instancia().existeCorreo(correo)){
+        else if(ConsultasBD.instancia().existeCorreo(correo)){
             correcto=false;
             JOptionPane.showMessageDialog(rootPane, "Ya existe un usuario registrado con este correo", "Registrarse", JOptionPane.WARNING_MESSAGE);
         }

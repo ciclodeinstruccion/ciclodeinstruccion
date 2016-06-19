@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz gráfica desde la que unirse a partida
  */
 package InterfazGrafica.registrado;
 
 import InterfazGrafica.registrado.VerPartida;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import MiPersonaje.MiAsesino;
 import MiPersonaje.MiFighter;
 import MiPersonaje.MiPersonaje;
@@ -18,10 +16,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Rubén
- */
 public class UnirsePartida extends javax.swing.JDialog {
 
     /**
@@ -86,10 +80,20 @@ public class UnirsePartida extends javax.swing.JDialog {
         getContentPane().setLayout(null);
 
         jScrollPane2.setBackground(new java.awt.Color(0, 0, 0,0));
+        jScrollPane2.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jScrollPane2MouseWheelMoved(evt);
+            }
+        });
 
         tablaPartidas.setBackground(new java.awt.Color(0, 0, 0,130));
         tablaPartidas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tablaPartidas.setForeground(new java.awt.Color(255, 102, 51));
+        tablaPartidas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaPartidasMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaPartidas);
 
         getContentPane().add(jScrollPane2);
@@ -351,19 +355,20 @@ public class UnirsePartida extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void unirse(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirse
-         if(mp!=null && tablaPartidas.getSelectedRow()>-1){
+        //Si se ha selecionado un personaje y una partida
+        if(mp!=null && tablaPartidas.getSelectedRow()>-1){
             if(registrado.getOro()<Partida.getCOSTE_PARTIDA()){
                 JOptionPane.showMessageDialog(rootPane, "No tienes oro sificiente para unirte a la partida", "Unirse a partida", JOptionPane.WARNING_MESSAGE);
             }
             else if(JOptionPane.showConfirmDialog(rootPane, "¿Esta seguro que quieres unirte a esta partida?", "Unirse a partida", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE)==0){
                 unirse.setEnabled(false);
-                Partida p=consultasBD.instancia().buscarUnaPartidaUnirsePorId(Integer.parseInt(tablaPartidas.getValueAt(tablaPartidas.getSelectedRow(), 0).toString()));
+                Partida p=ConsultasBD.instancia().buscarUnaPartidaUnirsePorId(Integer.parseInt(tablaPartidas.getValueAt(tablaPartidas.getSelectedRow(), 0).toString()));
                 p.unirsePartida(registrado, mp);
-                consultasBD.instancia().modificarRegistrado(registrado);
+                ConsultasBD.instancia().modificarRegistrado(registrado);
                 p.jugarPartida();
-                consultasBD.instancia().unirsePartida(p);
-                consultasBD.instancia().modificarRegistrado(p.getGanador());
-                consultasBD.instancia().modificarMiPersonaje(p.getpGanador(), p.getGanador());
+                ConsultasBD.instancia().unirsePartida(p);
+                ConsultasBD.instancia().modificarRegistrado(p.getGanador());
+                ConsultasBD.instancia().modificarMiPersonaje(p.getpGanador(), p.getGanador());
                 VerPartida vp=new VerPartida(ir, true, p, true, ir, false, null,false,null);
                 vp.mostrar();
                 this.setVisible(false);
@@ -455,6 +460,19 @@ public class UnirsePartida extends javax.swing.JDialog {
         this.mostrarPersonaje(mp);
         this.info.setVisible(true);
     }//GEN-LAST:event_sonicActionPerformed
+
+    private void jScrollPane2MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane2MouseWheelMoved
+       this.repaint();
+    }//GEN-LAST:event_jScrollPane2MouseWheelMoved
+
+    private void tablaPartidasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPartidasMouseClicked
+        this.repaint();
+    }//GEN-LAST:event_tablaPartidasMouseClicked
+    /**
+     * Método inicial que muestra la tabla con las partidas disponibles y activa
+     * o desactiva los botones de los personaje en función de si el usuario tiene
+     * o no tiene los personajes
+     */
     public void mostrar(){
         tabla=new DefaultTableModel(this.registrado.tablaUnirseAPartida(), cabecera);
         tablaPartidas.setModel(tabla);
@@ -488,7 +506,11 @@ public class UnirsePartida extends javax.swing.JDialog {
         }
         
     }
-    
+    /**
+     * Método que muestra en el lateral de la pantalla un panel con información
+     * cobre el personaje seleccionado
+     * @param mp personaje selecionado
+     */
     public void mostrarPersonaje(MiPersonaje mp){
         Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/PjPequeños/"+mp.getNombre()+".png")).getImage();
         this.imagen.setIcon(new ImageIcon(img1));

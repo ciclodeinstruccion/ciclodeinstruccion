@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Panel de inicio
  */
 package InterfazGrafica;
 
@@ -26,10 +24,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
 
-/**
- *
- * @author Rubén
- */
 public class Inicio extends javax.swing.JFrame {
 
     /**
@@ -55,6 +49,7 @@ public class Inicio extends javax.swing.JFrame {
         registrarse = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         probarJuego = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,7 +86,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(sesion);
-        sesion.setBounds(520, 200, 260, 65);
+        sesion.setBounds(520, 110, 260, 65);
         Timer timer = new Timer(0, taskPerformer);
         timer.setInitialDelay(5000);
         timer.setRepeats(false);
@@ -118,7 +113,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(registrarse);
-        registrarse.setBounds(520, 300, 260, 65);
+        registrarse.setBounds(520, 200, 260, 65);
 
         salir.setVisible(false);
         salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/salir.png"))); // NOI18N
@@ -140,7 +135,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(salir);
-        salir.setBounds(520, 410, 260, 65);
+        salir.setBounds(520, 470, 260, 65);
 
         probarJuego.setVisible(false);
         probarJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/probar_juego.png"))); // NOI18N
@@ -151,12 +146,44 @@ public class Inicio extends javax.swing.JFrame {
         probarJuego.setMinimumSize(new java.awt.Dimension(260, 65));
         probarJuego.setPreferredSize(new java.awt.Dimension(260, 65));
         probarJuego.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                probarJuegoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                probarJuegoMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                probarJuegoMousePressed(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 probarJuegoMouseReleased(evt);
             }
         });
         getContentPane().add(probarJuego);
-        probarJuego.setBounds(520, 100, 260, 65);
+        probarJuego.setBounds(520, 290, 260, 65);
+
+        jButton1.setVisible(false);
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas_informacion.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(520, 380, 260, 65);
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gif2.gif"))); // NOI18N
         getContentPane().add(fondo);
@@ -239,7 +266,7 @@ public class Inicio extends javax.swing.JFrame {
         }
         Registrado r1= new Registrado(0, 1, 500, 0, 0, 0, 0, 0, 0, "Jero", "jero", "aaa", new Date());
         Registrado r2= new Registrado(0, 1, 500, 0, 0, 0, 0, 0, 0, "Jose Luis", "Jose Luis", "aaa", new Date());
-        ArrayList <Personaje> personajes=consultasBD.instancia().todosLosPersonajes();
+        ArrayList <Personaje> personajes=ConsultasBD.instancia().todosLosPersonajes();
         Personaje p1=personajes.get(GeneradorAleatorios.generarAleatorio(9));
         Personaje p2=personajes.get(GeneradorAleatorios.generarAleatorio(9));
         Partida partida=null;
@@ -284,6 +311,36 @@ public class Inicio extends javax.swing.JFrame {
         vp.mostrar();
         vp.setVisible(true);
     }//GEN-LAST:event_probarJuegoMouseReleased
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        MasInformacion mi=new MasInformacion(this, true, this);
+        this.setVisible(false);
+        mi.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/mas_informacion.png")));
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/mas_informacion.png")));
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/mas_informacion.png")));
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void probarJuegoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_probarJuegoMousePressed
+        probarJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/probar_juego.png")));
+    }//GEN-LAST:event_probarJuegoMousePressed
+
+    private void probarJuegoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_probarJuegoMouseExited
+        probarJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/probar_juego.png")));
+    }//GEN-LAST:event_probarJuegoMouseExited
+
+    private void probarJuegoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_probarJuegoMouseEntered
+        probarJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/probar_juego.png")));
+    }//GEN-LAST:event_probarJuegoMouseEntered
     ActionListener taskPerformer = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {
@@ -291,6 +348,7 @@ public class Inicio extends javax.swing.JFrame {
             registrarse.setVisible(true);
             salir.setVisible(true);
             probarJuego.setVisible(true);
+            jButton1.setVisible(true);
             fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg")));
         }
     };
@@ -331,6 +389,7 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton probarJuego;
     private javax.swing.JButton registrarse;
     private javax.swing.JButton salir;

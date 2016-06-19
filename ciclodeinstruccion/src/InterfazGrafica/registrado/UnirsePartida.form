@@ -38,6 +38,9 @@
           <Connection code="new java.awt.Color(0, 0, 0,0)" type="code"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseWheelMoved" listener="java.awt.event.MouseWheelListener" parameters="java.awt.event.MouseWheelEvent" handler="jScrollPane2MouseWheelMoved"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jScrollPane2.getViewport().setOpaque(false);&#xa;jScrollPane2.setBorder(null);&#xa;jScrollPane2.setViewportBorder(null);"/>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -62,6 +65,9 @@
               <Color blue="33" green="66" red="ff" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablaPartidasMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -1,21 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz en la que se muestra una lista de todas las partidas jugadas
  */
 package InterfazGrafica.administrador;
 
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import InterfazGrafica.registrado.InicioRegistrado;
 import ciclodeinstruccion.Partida;
 import ciclodeinstruccion.Usuarios.Administrador;
+import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author alumno
- */
 public class VerHistorialAdministrador extends javax.swing.JDialog {
 
     /**
@@ -56,14 +52,23 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
         getContentPane().setLayout(null);
 
         jScrollPane1.setForeground(new java.awt.Color(0, 0, 0, 0));
+        jScrollPane1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jScrollPane1MouseWheelMoved(evt);
+            }
+        });
 
+        tabla.setShowGrid(true);
+        tabla.setGridColor(Color.WHITE);
+        tabla.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));
         tabla.setBackground(new java.awt.Color(0, 0, 0, 130));
         tabla.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tabla.setForeground(new java.awt.Color(255, 51, 51));
+        tabla.setRowHeight(24);
         jScrollPane1.setViewportView(tabla);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(130, 210, 820, 240);
+        jScrollPane1.setBounds(240, 130, 820, 310);
         jScrollPane1.getViewport().setOpaque(false);
         jScrollPane1.setBorder(null);
         jScrollPane1.setViewportBorder(null);
@@ -95,7 +100,7 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
             }
         });
         getContentPane().add(volver);
-        volver.setBounds(420, 490, 260, 65);
+        volver.setBounds(520, 510, 260, 65);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -125,6 +130,17 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
         volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/volver.png")));
     }//GEN-LAST:event_volverMousePressed
 
+    private void jScrollPane1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane1MouseWheelMoved
+       this.repaint();
+    }//GEN-LAST:event_jScrollPane1MouseWheelMoved
+    /**
+     * Muestra una tabla con datos de todas las partidas jugadas
+     */
+    public void mostrar(){
+        
+        tabla1 = new DefaultTableModel(admin.tablaHistorialPartidas(), cabecera);
+        tabla.setModel(tabla1);
+    }
     /**
      * @param args the command line arguments
      */
@@ -167,11 +183,7 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
         });
     }
     
-    public void mostrar(){
-        
-        tabla1 = new DefaultTableModel(admin.tablaHistorialPartidas(), cabecera);
-        tabla.setModel(tabla1);
-    }
+
     
                    
 

@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Panel inicial de un usuario administrador
  */
 package InterfazGrafica.administrador;
 
@@ -11,10 +9,6 @@ import InterfazGrafica.administrador.VerHistorialAdministrador;
 import InterfazGrafica.administrador.VerUsuarios;
 import ciclodeinstruccion.Usuarios.Administrador;
 
-/**
- *
- * @author Rubén
- */
 public class InicioAdministrador extends javax.swing.JFrame {
 
     /**
@@ -78,7 +72,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(historialPartidas);
-        historialPartidas.setBounds(460, 70, 260, 65);
+        historialPartidas.setBounds(530, 110, 260, 65);
 
         gestionarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/gestionar_usuarios.png"))); // NOI18N
         gestionarUsuarios.setBorderPainted(false);
@@ -107,7 +101,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(gestionarUsuarios);
-        gestionarUsuarios.setBounds(460, 160, 260, 65);
+        gestionarUsuarios.setBounds(530, 200, 260, 65);
 
         estadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/estadisticas.png"))); // NOI18N
         estadisticas.setBorderPainted(false);
@@ -136,7 +130,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(estadisticas);
-        estadisticas.setBounds(460, 250, 260, 65);
+        estadisticas.setBounds(530, 290, 260, 65);
 
         gestionarPersonajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/gestionar_personajes.png"))); // NOI18N
         gestionarPersonajes.setBorderPainted(false);
@@ -165,7 +159,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(gestionarPersonajes);
-        gestionarPersonajes.setBounds(460, 340, 260, 65);
+        gestionarPersonajes.setBounds(530, 380, 260, 65);
 
         salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/salir.png"))); // NOI18N
         salir.setBorder(null);
@@ -187,7 +181,7 @@ public class InicioAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(salir);
-        salir.setBounds(460, 430, 260, 65);
+        salir.setBounds(530, 470, 260, 65);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         jLabel1.setAutoscrolls(true);

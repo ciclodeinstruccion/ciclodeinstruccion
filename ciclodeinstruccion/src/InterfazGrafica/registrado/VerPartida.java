@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz gráfica que muestra el desarrollo de la partida
  */
 package InterfazGrafica.registrado;
 
@@ -19,10 +17,6 @@ import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
-/**
- *
- * @author Rubén
- */
 public class VerPartida extends javax.swing.JDialog {
 
     /**
@@ -30,12 +24,16 @@ public class VerPartida extends javax.swing.JDialog {
      */
     private Partida partida;
     private int cont;
-    private boolean jugar;
+    private boolean jugar;//es true cuando se accede a esta interfaz desde la interfaz grafica unirse a una partida
     private InicioRegistrado ir;
-    private boolean prueba;
+    private boolean prueba;//es true cuando se accede desde el menu inicial
     private Inicio i;
-    private boolean repeticion;
+    private boolean repeticion;//es true cuando se accede desde el historial de partidas
     private Estadisticas e;
+    /*Los siguiente atributos seran true cuando el personaje hace critico o esquiva
+    y se usan para cambiar la imagen del personaje en el siguiente turno después de esquivar
+    o de hacer critico
+    */
     private boolean esquivarj1=false;
     private boolean esquivarj2=false;
     private boolean criticoj1=false;
@@ -188,27 +186,37 @@ public class VerPartida extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Cada vez que se pulsa el boton siguiente se avanza en la partida y la imagen mostrada 
+ * irá cambiando en función de lo que pase
+ * @param evt 
+ */
     private void siguiente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguiente
         if(siguiente.isEnabled()){
             if(cont<partida.getTexto().size()){
-                texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));
-                this.vida1();
-                this.vida2();
+                texto.setText(texto.getText()+"\n"+partida.getTexto().get(cont));//Actualiza texto
+                this.vida1();//Actualiza barra de vida del personaje 1
+                this.vida2();//Actualiza barra de vida del personaje 2
                 vida1.setToolTipText(Float.toString(partida.getVidaJ1().get(cont)));
                 vida2.setToolTipText(Float.toString(partida.getVidaJ2().get(cont)));
                 if(partida.getCriticoj1().get(cont)){
+                    /*Si el personaje 1 hace critico se cambia la imagen del personaje
+                    y suena un sonido característico del mismo*/
                     Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Critico/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
                     imagenP1.setIcon(new ImageIcon(img1));
                     playSound("src/Audios/Critico/"+partida.getPersonaje1().getNombre()+".wav");
                     this.criticoj1=true;
                 }else {
                     if(this.criticoj1){
+                        /*El turno siguiente a producirse el critico se retoma la 
+                        imagen inicial del personaje
+                        */
                         Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Personajes/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
                         imagenP1.setIcon(new ImageIcon(img1));
                         this.criticoj1=false;
                     }       
                 }
+                //Ocurre lo mismo cuando el personaje 2 hace critico
                 if(partida.getCriticoj2().get(cont)){
                     Image img2=new ImageIcon(this.getClass().getResource("/Imagenes/Critico/"+this.partida.getPersonaje2().getNombre()+".jpg")).getImage();
                     imagenP2.setIcon(new ImageIcon(img2));
@@ -221,6 +229,7 @@ public class VerPartida extends javax.swing.JDialog {
                         this.criticoj2=false;
                     }   
                 }
+                //Ocurre lo mismo cuando el personaje esquiva
                 if(partida.getEsquivarj1().get(cont)){
                     Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Esquivar/"+this.partida.getPersonaje1().getNombre()+".jpg")).getImage();
                     imagenP1.setIcon(new ImageIcon(img1));
@@ -247,6 +256,9 @@ public class VerPartida extends javax.swing.JDialog {
                 }
                 cont++;
             }
+            /*Cuando la partida acaba se cambian las imagenes de los personajes según
+            cual sea el ganador y el perdedor
+            */
             if(cont>=partida.getTexto().size()){
                 siguiente.setEnabled(false);
                 if(partida.getJugador1().getNombre().equals(partida.getGanador().getNombre())){
@@ -268,6 +280,7 @@ public class VerPartida extends javax.swing.JDialog {
     }//GEN-LAST:event_siguiente
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        //Según el panel desde el que hemos accedido se volverá a un panel o a otro
         this.setVisible(false);
         if(jugar){
             ir.mostrar();
@@ -305,8 +318,12 @@ public class VerPartida extends javax.swing.JDialog {
     }//GEN-LAST:event_siguienteMouseExited
 
     private void siguienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguienteMouseEntered
-        siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/siguiente.png")));
+        siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/siguiente.png")));
     }//GEN-LAST:event_siguienteMouseEntered
+    /**
+     * Método que establece la pantalla inicial.Establece las imagenes de los personajes,
+     * las barras de vida y reproduce el sonido del primer personajes.
+     */
     public void mostrar(){
         jugador1.setText(partida.getJugador1().getNombre());
         jugador2.setText(partida.getJugador2().getNombre());
@@ -326,7 +343,10 @@ public class VerPartida extends javax.swing.JDialog {
         timer.setRepeats(false);
         timer.start();
     }
-    
+
+    /**
+     * Método que cambia la imagen de la barra de vida del personaje 1
+     */
     public void vida1(){
         if(partida.getVidaJ1().get(cont)/partida.getVidamax1()>=1){
             Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida1/100.png")).getImage();
@@ -378,6 +398,9 @@ public class VerPartida extends javax.swing.JDialog {
         }
     }
     
+    /**
+     * Método que cambia la imagen de la barra de vida del personaje 2
+     */
     public void vida2(){
         if(partida.getVidaJ2().get(cont)/partida.getVidamax2()>=1){
             Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/Vida2/100.png")).getImage();
@@ -428,6 +451,10 @@ public class VerPartida extends javax.swing.JDialog {
             vida2.setIcon(new ImageIcon(img1));
         }
     }
+    /**
+     * Método que reproduce sonido
+     * @param soundName direccion del arhivo a reproducir 
+     */
     public void playSound(String soundName){
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile( ));
@@ -441,6 +468,11 @@ public class VerPartida extends javax.swing.JDialog {
             ex.printStackTrace( );
         }
     }
+    /**
+     * Método que calcula la duracción del audio a reproducir
+     * @param soundName direccion del archivo que se va a reproducir
+     * @return la duración del sonido a reproducir
+     */
     public static long duracion(String soundName){
          try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile( ));
@@ -454,6 +486,9 @@ public class VerPartida extends javax.swing.JDialog {
         }
          return 0;
     }
+    /**
+     * Pone visibles el boton siguiente y volver
+     */
     ActionListener taskPerformer = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {
@@ -462,6 +497,9 @@ public class VerPartida extends javax.swing.JDialog {
         }
     };
     
+    /**
+     * Reproduce el audio del segundo personaje y pone la segunda línea del texto
+     */
     ActionListener taskPerformer3 = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {
@@ -474,6 +512,10 @@ public class VerPartida extends javax.swing.JDialog {
             timer.start();
         }
     };
+    
+    /**
+     * Reproduce audio contra
+     */
     ActionListener taskPerformer2 = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {
@@ -484,6 +526,10 @@ public class VerPartida extends javax.swing.JDialog {
             timer.start();
         }
     };
+    
+    /**
+     * Reproduce último audio y pone la tercera línea de texto
+     */
     ActionListener taskPerformer4 = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {

@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz gráfica desde la que se modifican los datos de un personaje
  */
 package InterfazGrafica.administrador;
 
@@ -13,15 +11,11 @@ import Personaje.Tanque;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import Excepciones.ErrorModificarPersonaje;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Rubén
- */
 public class ModificarPersonaje extends javax.swing.JDialog {
 
     /**
@@ -73,7 +67,7 @@ public class ModificarPersonaje extends javax.swing.JDialog {
         imgP.setMinimumSize(new java.awt.Dimension(300, 450));
         imgP.setPreferredSize(new java.awt.Dimension(300, 450));
         getContentPane().add(imgP);
-        imgP.setBounds(150, 110, 300, 450);
+        imgP.setBounds(190, 90, 300, 450);
 
         modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/modificar.png"))); // NOI18N
         modificar.setMaximumSize(new java.awt.Dimension(260, 65));
@@ -94,53 +88,67 @@ public class ModificarPersonaje extends javax.swing.JDialog {
             }
         });
         getContentPane().add(modificar);
-        modificar.setBounds(300, 490, 260, 65);
+        modificar.setBounds(300, 600, 260, 65);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0,180));
         jPanel1.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setText("Daño");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(70, 130, 70, 70);
 
         especialLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        especialLabel.setForeground(new java.awt.Color(255, 51, 51));
         especialLabel.setText("Especial");
         jPanel1.add(especialLabel);
         especialLabel.setBounds(70, 210, 130, 50);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
         jLabel4.setText("Precio");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(70, 280, 110, 60);
+        jLabel4.setBounds(70, 270, 110, 60);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("Vida");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(70, 70, 60, 50);
 
+        vida.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        vida.setForeground(new java.awt.Color(255, 51, 51));
         vida.setText("vida");
         jPanel1.add(vida);
-        vida.setBounds(230, 80, 110, 40);
+        vida.setBounds(230, 70, 110, 40);
 
+        daño.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        daño.setForeground(new java.awt.Color(255, 51, 51));
         daño.setText("daño");
         jPanel1.add(daño);
-        daño.setBounds(230, 150, 110, 40);
+        daño.setBounds(230, 140, 110, 40);
 
+        especial.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        especial.setForeground(new java.awt.Color(255, 51, 51));
         especial.setText("especial");
         jPanel1.add(especial);
-        especial.setBounds(230, 210, 100, 50);
+        especial.setBounds(230, 210, 110, 40);
 
+        precio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        precio.setForeground(new java.awt.Color(255, 51, 51));
         precio.setText("precio");
         jPanel1.add(precio);
-        precio.setBounds(230, 300, 110, 40);
+        precio.setBounds(230, 280, 110, 40);
 
         nombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nombre.setForeground(new java.awt.Color(255, 51, 51));
         nombre.setText("Nombre");
         jPanel1.add(nombre);
         nombre.setBounds(130, 20, 130, 40);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(440, 50, 430, 400);
+        jPanel1.setBounds(660, 100, 430, 400);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
         jButton1.setBorder(null);
@@ -162,7 +170,7 @@ public class ModificarPersonaje extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(720, 520, 260, 65);
+        jButton1.setBounds(740, 600, 260, 65);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel3);
@@ -198,7 +206,7 @@ public class ModificarPersonaje extends javax.swing.JDialog {
             vp.setVisible(true);
         }
         try {
-            consultasBD.instancia().modificarPersonaje(this.personaje);
+            ConsultasBD.instancia().modificarPersonaje(this.personaje);
         } catch (ErrorModificarPersonaje ex) {
             Logger.getLogger(ModificarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -214,7 +222,7 @@ public class ModificarPersonaje extends javax.swing.JDialog {
     }//GEN-LAST:event_modificarMouseExited
 
     private void modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseEntered
-        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/hHover/iniciar_sesion.png")));
+        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/iniciar_sesion.png")));
     }//GEN-LAST:event_modificarMouseEntered
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
@@ -233,6 +241,9 @@ public class ModificarPersonaje extends javax.swing.JDialog {
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
     }//GEN-LAST:event_jButton1MouseEntered
+    /**
+     * Muestra los datos del personaje a modificar
+     */
     public void mostrar(){
         nombre.setText(personaje.getNombre());
         vida.setText(Float.toString(personaje.getVida()));
@@ -256,7 +267,10 @@ public class ModificarPersonaje extends javax.swing.JDialog {
             especial.setText(Float.toString(f.getCritico()));
         }
     }
-    
+    /**
+     * Comprueba si la vida es correcta. Retorna 0 si no lo es
+     * @return vida
+     */
     public float vidaNueva(){
         float vida=0;
         try{
@@ -271,7 +285,10 @@ public class ModificarPersonaje extends javax.swing.JDialog {
         }
         return vida;
     }
-    
+    /**
+     * Comprueba si el daño es correcto.Retorna 0 si no lo es
+     * @return daño
+     */
     public float dañoNuevo(){
         float daño=0;
         try{
@@ -286,7 +303,10 @@ public class ModificarPersonaje extends javax.swing.JDialog {
         }
         return daño;
     }
-    
+    /**
+     * Comprueba si el atributo espeial es correcto. Retorna 0 si no lo es
+     * @return especial
+     */
     public float especialNuevo(){
         float especial=0;
         try{
@@ -308,7 +328,10 @@ public class ModificarPersonaje extends javax.swing.JDialog {
         }
         return especial;  
     }
-    
+    /**
+     * Comprueba si el precio es correcto. Retorna 0 si no lo es
+     * @return precio
+     */
     public int precioNuevo(){
         int precio=0;
         try{

@@ -1,20 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz desde la que se modifican los datos de un registrado
  */
 package InterfazGrafica.administrador;
 
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author alumno
- */
 public class ModificarRegistrado extends javax.swing.JDialog {
 
     /**
@@ -30,7 +24,7 @@ public class ModificarRegistrado extends javax.swing.JDialog {
         initComponents();  
         this.setLocationRelativeTo(null);
         
-        if(consultasBD.instancia().estaBaneado(r)){
+        if(ConsultasBD.instancia().estaBaneado(r)){
             banear.setSelected(true);
         }else{
             banear.setSelected(false);
@@ -91,7 +85,7 @@ public class ModificarRegistrado extends javax.swing.JDialog {
             }
         });
         getContentPane().add(modificar);
-        modificar.setBounds(230, 530, 260, 65);
+        modificar.setBounds(310, 520, 260, 65);
 
         volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/volver.png"))); // NOI18N
         volver.setBorder(null);
@@ -113,25 +107,31 @@ public class ModificarRegistrado extends javax.swing.JDialog {
             }
         });
         getContentPane().add(volver);
-        volver.setBounds(620, 530, 260, 65);
+        volver.setBounds(730, 520, 260, 65);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0,180));
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("Nuevo nombre");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(60, 10, 200, 60);
+        jLabel1.setBounds(40, 10, 200, 60);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setText("Correo nuevo");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(70, 80, 180, 60);
+        jLabel2.setBounds(40, 70, 180, 60);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
         jLabel3.setText("Contraseña nueva");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(50, 150, 240, 60);
+        jLabel3.setBounds(40, 140, 240, 60);
 
+        nombreNuevo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        nombreNuevo.setForeground(new java.awt.Color(255, 51, 51));
         nombreNuevo.setText(r.getNombre());
         nombreNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,16 +139,22 @@ public class ModificarRegistrado extends javax.swing.JDialog {
             }
         });
         jPanel1.add(nombreNuevo);
-        nombreNuevo.setBounds(310, 30, 260, 40);
+        nombreNuevo.setBounds(310, 10, 260, 40);
 
+        correoNuevo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        correoNuevo.setForeground(new java.awt.Color(255, 51, 51));
         correoNuevo.setText(r.getCorreo());
         jPanel1.add(correoNuevo);
-        correoNuevo.setBounds(310, 90, 260, 40);
+        correoNuevo.setBounds(310, 80, 260, 40);
 
+        contraseñaNueva.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        contraseñaNueva.setForeground(new java.awt.Color(255, 51, 51));
         contraseñaNueva.setText(r.getContraseña());
         jPanel1.add(contraseñaNueva);
-        contraseñaNueva.setBounds(310, 160, 260, 40);
+        contraseñaNueva.setBounds(310, 150, 260, 40);
 
+        banear.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        banear.setForeground(new java.awt.Color(255, 51, 51));
         banear.setText("Esta baneado");
         banear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -161,10 +167,10 @@ public class ModificarRegistrado extends javax.swing.JDialog {
             }
         });
         jPanel1.add(banear);
-        banear.setBounds(240, 230, 91, 23);
+        banear.setBounds(220, 220, 250, 40);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(250, 170, 630, 280);
+        jPanel1.setBounds(330, 160, 630, 280);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -181,21 +187,21 @@ public class ModificarRegistrado extends javax.swing.JDialog {
         
         if(comprobarActu(nombreNuevo.getText(),correoNuevo.getText(),contraseñaNueva.getText())){
             if(nombreNuevo.getText()!=r.getNombre()){
-                if(consultasBD.instancia().existeNombre(nombreNuevo.getText())==false){
+                if(ConsultasBD.instancia().existeNombre(nombreNuevo.getText())==false){
                     String nombreViejo = r.getNombre();
                     r.setNombre(nombreNuevo.getText());
-                    consultasBD.instancia().cambiarNombreRegistrado(r, nombreViejo);
+                    ConsultasBD.instancia().cambiarNombreRegistrado(r, nombreViejo);
                 }
             }
             if(correoNuevo.getText()!=r.getCorreo()){ 
-                if(!consultasBD.instancia().existeCorreo(correoNuevo.getText())){
+                if(!ConsultasBD.instancia().existeCorreo(correoNuevo.getText())){
                     r.setCorreo(correoNuevo.getText());
-                    consultasBD.instancia().modificarRegistrado(r);
+                    ConsultasBD.instancia().modificarRegistrado(r);
                 }
             }    
             if(contraseñaNueva.getText()!=r.getContraseña()){
                 r.setContraseña(contraseñaNueva.getText());
-                consultasBD.instancia().modificarRegistrado(r);
+                ConsultasBD.instancia().modificarRegistrado(r);
             }
             vu.mostrar();
             this.setVisible(false);
@@ -223,10 +229,10 @@ public class ModificarRegistrado extends javax.swing.JDialog {
 
     private void banearMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_banearMouseReleased
         if(!banear.isSelected()){
-            consultasBD.instancia().desbanearRegistrado(r);
+            ConsultasBD.instancia().desbanearRegistrado(r);
             
         }else{
-            consultasBD.instancia().banearRegistrado(r);
+            ConsultasBD.instancia().banearRegistrado(r);
             
         }
         
@@ -256,18 +262,24 @@ public class ModificarRegistrado extends javax.swing.JDialog {
     private void modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseEntered
         modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/modificar.png")));
     }//GEN-LAST:event_modificarMouseEntered
-
+    /**
+     * Comprueba si los datos son válidos
+     * @param nombre
+     * @param correo
+     * @param contraseña
+     * @return 
+     */
     public boolean comprobarActu(String nombre, String correo, String contraseña){
         boolean correcto=true;
         if(nombre.equals("")||correo.equals("")||contraseña.equals("")){
             correcto=false;
             JOptionPane.showMessageDialog(rootPane, "Los datos de registro no son válidos", "Registrarse", JOptionPane.WARNING_MESSAGE);
         }
-        else if(consultasBD.instancia().existeNombre(nombre)){
+        else if(ConsultasBD.instancia().existeNombre(nombre)){
             correcto=false;
             JOptionPane.showMessageDialog(rootPane, "Ya existe un usuario registrado con este nombre", "Registrarse", JOptionPane.WARNING_MESSAGE);
         }
-        else if(consultasBD.instancia().existeCorreo(correo)){
+        else if(ConsultasBD.instancia().existeCorreo(correo)){
             correcto=false;
             JOptionPane.showMessageDialog(rootPane, "Ya existe un usuario registrado con este correo", "Registrarse", JOptionPane.WARNING_MESSAGE);
         }

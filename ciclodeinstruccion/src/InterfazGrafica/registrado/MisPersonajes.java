@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz gráfica que muestra los personajes que tiene un usuario y desde la que
+ * se accederá a la interfaz para modificar las propiedades del personajes
  */
 package InterfazGrafica.registrado;
 
@@ -14,10 +13,6 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Rubén
- */
 public class MisPersonajes extends javax.swing.JDialog {
 
     /**
@@ -440,6 +435,10 @@ public class MisPersonajes extends javax.swing.JDialog {
         this.mostrarPersonaje(mp);
         this.info.setVisible(true);
     }//GEN-LAST:event_sonicActionPerformed
+    /**
+     * Método que deshabilita los botones que corresponden con los personajes
+     * que el usuario no tiene
+     */
     public void mostrar(){
         this.info.setVisible(false);
         if(registrado.buscarMiPersonaje("Chuck Norris")==-1){
@@ -470,7 +469,11 @@ public class MisPersonajes extends javax.swing.JDialog {
             this.sonic.setEnabled(false);
         }
     }
-    
+    /**
+     * Método que muestra en el lateral un panel con información sobre el personaje 
+     * seleccionado
+     * @param mp personaje elegido 
+     */
     public void mostrarPersonaje(MiPersonaje mp){
         Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/PjPequeños/"+mp.getNombre()+".png")).getImage();
         this.imagen.setIcon(new ImageIcon(img1));

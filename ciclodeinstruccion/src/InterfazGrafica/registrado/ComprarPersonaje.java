@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz desde la que se compra un personaje
  */
 package InterfazGrafica.registrado;
 
@@ -14,14 +12,11 @@ import Personaje.Personaje;
 import Personaje.Tanque;
 import ciclodeinstruccion.Usuarios.Registrado;
 import javax.swing.JOptionPane;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.ToolTipManager;
 
-/**
- *
- * @author Rubén
- */
 public class ComprarPersonaje extends javax.swing.JDialog {
 
     /**
@@ -245,24 +240,24 @@ public class ComprarPersonaje extends javax.swing.JDialog {
                     MiTanque mt=new MiTanque(0, 0, 1, 0, 0, t, 0);
                     registrado.añadirPersonajes(mt);
                     registrado.gastarPuntosOro(personaje.getPrecio());
-                    consultasBD.instancia().modificarRegistrado(registrado);
-                    consultasBD.instancia().añadirMiPersonaje(mt, registrado);
+                    ConsultasBD.instancia().modificarRegistrado(registrado);
+                    ConsultasBD.instancia().añadirMiPersonaje(mt, registrado);
                 }
                 else if(personaje instanceof Asesino){
                     Asesino a=(Asesino)personaje;
                     MiAsesino ma=new MiAsesino(0, 0, 1, 0, 0, a, 0);
                     registrado.añadirPersonajes(ma);
                     registrado.gastarPuntosOro(personaje.getPrecio());
-                    consultasBD.instancia().modificarRegistrado(registrado);
-                    consultasBD.instancia().añadirMiPersonaje(ma, registrado);
+                    ConsultasBD.instancia().modificarRegistrado(registrado);
+                    ConsultasBD.instancia().añadirMiPersonaje(ma, registrado);
                 }
                 if(personaje instanceof Fighter){
                     Fighter f=(Fighter)personaje;
                     MiFighter mf=new MiFighter(0, 0, 1, 0, 0, f, 0);
                     registrado.añadirPersonajes(mf);
                     registrado.gastarPuntosOro(personaje.getPrecio());
-                    consultasBD.instancia().modificarRegistrado(registrado);
-                    consultasBD.instancia().añadirMiPersonaje(mf, registrado);
+                    ConsultasBD.instancia().modificarRegistrado(registrado);
+                    ConsultasBD.instancia().añadirMiPersonaje(mf, registrado);
                 }
                 JOptionPane.showMessageDialog(rootPane, "Personaje comprado con éxito", "Comprar personaje", JOptionPane.INFORMATION_MESSAGE);
                 t.mostrar();
@@ -304,18 +299,22 @@ public class ComprarPersonaje extends javax.swing.JDialog {
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
     }//GEN-LAST:event_jButton1MouseEntered
+    /**
+     * Muestra la imagen del personaje y un panel en el lateral con información
+     * sobre el mismo
+     */
     public void mostrar(){
         this.daño.setText(Float.toString(personaje.getDaño()));
         this.vida.setText(Float.toString(personaje.getVida()));
         this.nombre.setText(personaje.getNombre());
         this.tipo.setText(personaje.getTipo());
         this.precio.setText(Integer.toString(personaje.getPrecio()));
-        this.habilidad1.setText(personaje.getHabilidades().get(0).getNombre());
-        this.habilidad1.setToolTipText(personaje.getHabilidades().get(0).getDescripcion());
-        this.habilidad2.setText(personaje.getHabilidades().get(1).getNombre());
-        this.habilidad2.setToolTipText(personaje.getHabilidades().get(1).getDescripcion());
-        this.habilidad3.setText(personaje.getHabilidades().get(2).getNombre());
-        this.habilidad3.setToolTipText(personaje.getHabilidades().get(2).getDescripcion());
+        this.habilidad1.setText(personaje.getHabilidades().get(0).getNombre().toUpperCase());
+        this.habilidad1.setToolTipText("<html><p width=\"250\">" +personaje.getHabilidades().get(0).getDescripcion()+"</p></html>");
+        this.habilidad2.setText(personaje.getHabilidades().get(1).getNombre().toUpperCase());
+        this.habilidad2.setToolTipText("<html><p width=\"250\">"+personaje.getHabilidades().get(1).getDescripcion()+"</p></html>");
+        this.habilidad3.setText(personaje.getHabilidades().get(2).getNombre().toUpperCase());
+        this.habilidad3.setToolTipText("<html><p width=\"250\">"+personaje.getHabilidades().get(2).getDescripcion()+"</p></html>");
         if(personaje instanceof Tanque){
             Tanque t=(Tanque)personaje;
             this.labelEspecial.setText("Armadura");

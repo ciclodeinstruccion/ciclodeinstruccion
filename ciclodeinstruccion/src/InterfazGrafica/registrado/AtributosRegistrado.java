@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz desde la que se cambian los atributos de un usuario
  */
 package InterfazGrafica.registrado;
 
 import ciclodeinstruccion.Usuarios.Registrado;
-import BaseDeDatos.consultasBD;
-/**
- *
- * @author Rubén
- */
+import BaseDeDatos.ConsultasBD;
+
 public class AtributosRegistrado extends javax.swing.JDialog {
 
     /**
@@ -18,10 +13,14 @@ public class AtributosRegistrado extends javax.swing.JDialog {
      */
     private Registrado registrado;
     private final int LIMITE_HABILIDAD=10;
-    public AtributosRegistrado(java.awt.Frame parent, boolean modal, Registrado r) {
+    private InicioRegistrado ir;
+    public AtributosRegistrado(java.awt.Frame parent, boolean modal, Registrado r, InicioRegistrado ir) {
         super(parent, modal);
-        initComponents();
+        this.setUndecorated(true);
+        initComponents();  
+        this.setLocationRelativeTo(null);
         this.registrado=r;
+        this.ir=ir;
     }
 
     /**
@@ -362,7 +361,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
         volver.setBounds(180, 530, 260, 65);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(590, 40, 630, 620);
+        jPanel1.setBounds(330, 40, 630, 620);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_normal.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
@@ -376,13 +375,13 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void masVitalidadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masVitalidadMouseEntered
-      
+        masVitalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/mas.png")));
     }//GEN-LAST:event_masVitalidadMouseEntered
 
     private void masFuerzaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masFuerzaMouseReleased
         if(masFuerza.isEnabled()){
             registrado.modificarFuerza();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);
@@ -392,7 +391,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void masVitalidadMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masVitalidadMouseReleased
         if(masVitalidad.isEnabled()){
             registrado.modificarVitalidad();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -403,7 +402,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void masEspecialMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masEspecialMouseReleased
         if(masEspecial.isEnabled()){
             registrado.modificarEspecial();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -414,7 +413,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void masInteligenciaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masInteligenciaMouseReleased
         if(masInteligencia.isEnabled()){
             registrado.modificarInteligencia();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -425,7 +424,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void menosVitalidadMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosVitalidadMouseReleased
         if(menosVitalidad.isEnabled()){
             registrado.disminuirVidalidad();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -436,7 +435,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void menosFuerzaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosFuerzaMouseReleased
         if(menosFuerza.isEnabled()){
             registrado.disminuirFuerza();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -447,7 +446,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void menosEspecialMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosEspecialMouseReleased
         if(menosEspecial.isEnabled()){
             registrado.disminuirEspecial();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -458,7 +457,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void menosInteligenciaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosInteligenciaMouseReleased
         if(menosInteligencia.isEnabled()){
             registrado.disminuirInteligencia();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -467,7 +466,9 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     }//GEN-LAST:event_menosInteligenciaMouseReleased
 
     private void volverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseReleased
+        ir.mostrar2();
         this.setVisible(false);
+        ir.setVisible(true);
     }//GEN-LAST:event_volverMouseReleased
 
     private void menosVitalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosVitalidadActionPerformed
@@ -585,14 +586,17 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void menosFuerzaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosFuerzaMousePressed
         menosFuerza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/menos.png")));
     }//GEN-LAST:event_menosFuerzaMousePressed
-
+    /**
+     * Activa o desactiva los botones +/- en función de si hay puntos desiponibles
+     * o de si se ha alcanzado el límite máximo(10) o mínimo (0) de los atributos
+     */
     public void mostrar(){
         puntosDeNivel.setText(Integer.toString(registrado.getPuntosNivel()));
         vitalidad.setText(Integer.toString(registrado.getVitalidad()));
         fuerza.setText(Integer.toString(registrado.getFuerza()));
         especial.setText(Integer.toString(registrado.getEspecial()));
         inteligencia.setText(Integer.toString(registrado.getInteligencia()));
-        
+        this.repaint();
         if(registrado.getPuntosNivel()<=0){
             masEspecial.setEnabled(false);
             masVitalidad.setEnabled(false);
@@ -683,7 +687,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AtributosRegistrado dialog = new AtributosRegistrado(new javax.swing.JFrame(), true,null);
+                AtributosRegistrado dialog = new AtributosRegistrado(new javax.swing.JFrame(), true,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

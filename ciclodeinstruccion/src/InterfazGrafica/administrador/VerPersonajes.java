@@ -1,19 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz que muestra una lista de todos los personajes
  */
 package InterfazGrafica.administrador;
 
 import ciclodeinstruccion.Usuarios.Administrador;
 import javax.swing.table.DefaultTableModel;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import Personaje.Personaje;
+import java.awt.Color;
+import javax.swing.BorderFactory;
 
-/**
- *
- * @author Rubén
- */
 public class VerPersonajes extends javax.swing.JDialog {
 
     /**
@@ -57,13 +53,22 @@ public class VerPersonajes extends javax.swing.JDialog {
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
 
+        personajes.setShowGrid(true);
+        personajes.setGridColor(Color.WHITE);
+        personajes.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));
         personajes.setBackground(new java.awt.Color(0, 0, 0,130));
         personajes.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         personajes.setForeground(new java.awt.Color(255, 51, 51));
+        personajes.setRowHeight(24);
+        personajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                personajesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(personajes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(160, 80, 960, 300);
+        jScrollPane1.setBounds(160, 80, 960, 320);
         jScrollPane1.getViewport().setOpaque(false);
         jScrollPane1.setBorder(null);
         jScrollPane1.setViewportBorder(null);
@@ -121,7 +126,7 @@ public class VerPersonajes extends javax.swing.JDialog {
 
     private void modificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseReleased
         if(personajes.getSelectedRow()>-1){
-            Personaje p=consultasBD.instancia().buscarPersonaje(personajes.getValueAt(personajes.getSelectedRow(), 0).toString());
+            Personaje p=ConsultasBD.instancia().buscarPersonaje(personajes.getValueAt(personajes.getSelectedRow(), 0).toString());
             ModificarPersonaje mp= new ModificarPersonaje(null, true, p,this);
             mp.mostrar();
             this.setVisible(false);
@@ -157,6 +162,14 @@ public class VerPersonajes extends javax.swing.JDialog {
     private void modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseEntered
         modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/modificar.png")));
     }//GEN-LAST:event_modificarMouseEntered
+
+    private void personajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_personajesMouseClicked
+        this.repaint();
+    }//GEN-LAST:event_personajesMouseClicked
+    
+    /**
+     * Muestra una tabla con todos los personajes
+     */
     public void mostrar(){
         tabla=new DefaultTableModel(this.admin.tablaPersonajes(), cabecera);
         personajes.setModel(tabla);

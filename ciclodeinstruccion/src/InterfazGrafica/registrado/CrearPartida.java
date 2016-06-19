@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz desde la que se crea una partida
  */
 package InterfazGrafica.registrado;
 
@@ -9,7 +7,7 @@ import InterfazGrafica.registrado.InicioRegistrado;
 import ciclodeinstruccion.Partida;
 import ciclodeinstruccion.Usuarios.Registrado;
 import javax.swing.table.DefaultTableModel;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import MiPersonaje.MiAsesino;
 import MiPersonaje.MiFighter;
 import MiPersonaje.MiPersonaje;
@@ -18,10 +16,6 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Rubén
- */
 public class CrearPartida extends javax.swing.JDialog {
 
     /**
@@ -358,10 +352,10 @@ public class CrearPartida extends javax.swing.JDialog {
             }
             else if(JOptionPane.showConfirmDialog(rootPane, "¿Esta seguro que quieres crear la partida?", "Crear partida", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE)==0){
                 Seleccionar.setEnabled(false);
-                Partida p=new Partida(consultasBD.instancia().identificadorPartida()+1, registrado, this.mp);
+                Partida p=new Partida(ConsultasBD.instancia().identificadorPartida()+1, registrado, this.mp);
                 p.comprarPartida();
-                consultasBD.instancia().añadirPArtida(p);
-                consultasBD.instancia().modificarRegistrado(registrado);
+                ConsultasBD.instancia().añadirPArtida(p);
+                ConsultasBD.instancia().modificarRegistrado(registrado);
                 JOptionPane.showMessageDialog(rootPane, "Partida creada con éxito", "Crear partida", JOptionPane.INFORMATION_MESSAGE);
                 this.setVisible(false);
                 ir.mostrar();
@@ -435,6 +429,9 @@ public class CrearPartida extends javax.swing.JDialog {
         this.mostrarPersonaje(mp);
         this.info.setVisible(true);
     }//GEN-LAST:event_sonicActionPerformed
+    /**
+     * Desactiva los botones de los personajes que no tiene el usuario
+     */
     public void mostrar(){
         this.info.setVisible(false);
         if(registrado.buscarMiPersonaje("Chuck Norris")==-1){
@@ -465,7 +462,10 @@ public class CrearPartida extends javax.swing.JDialog {
             this.sonic.setEnabled(false);
         }
     }
-    
+    /**
+     * Muestra un panel en el lateral con información sobre el personaje seleccionado
+     * @param mp personaje elegido 
+     */
     public void mostrarPersonaje(MiPersonaje mp){
         Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/PjPequeños/"+mp.getNombre()+".png")).getImage();
         this.imagen.setIcon(new ImageIcon(img1));

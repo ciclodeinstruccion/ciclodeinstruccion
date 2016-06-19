@@ -66,6 +66,12 @@
             </Property>
             <Property name="rowHeight" type="int" value="45"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="estadisticasMouseClicked"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="estadisticas.setShowGrid(true);&#xa;estadisticas.setGridColor(Color.WHITE);&#xa;estadisticas.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

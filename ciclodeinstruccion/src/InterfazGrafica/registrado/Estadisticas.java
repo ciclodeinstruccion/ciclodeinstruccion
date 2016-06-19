@@ -1,13 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz donde se muestran estadísticas del usuario
  */
 package InterfazGrafica.registrado;
 
 import ciclodeinstruccion.Usuarios.Registrado;
 import org.jfree.data.category.DefaultCategoryDataset;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import MiPersonaje.MiPersonaje;
 import Personaje.Personaje;
 import java.awt.BorderLayout;
@@ -23,11 +21,10 @@ import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.general.DefaultPieDataset;
 import BaseDeDatos.*;
 import ciclodeinstruccion.Partida;
+import java.awt.Font;
+import javafx.scene.layout.Border;
+import javax.swing.BorderFactory;
 
-/**
- *
- * @author Rubén
- */
 public class Estadisticas extends javax.swing.JDialog {
 
     /**
@@ -46,6 +43,8 @@ public class Estadisticas extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.registrado=r;
         this.ir=ir;
+        int index=jTabbedPane1.getTabCount()-1;
+        jTabbedPane1.setBackgroundAt(index, Color.BLUE);
     }
 
     /**
@@ -114,8 +113,22 @@ public class Estadisticas extends javax.swing.JDialog {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0,180));
         jPanel2.setLayout(null);
 
+        jScrollPane2.setBackground(new java.awt.Color(0, 0, 0,0));
+        jScrollPane2.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jScrollPane2MouseWheelMoved(evt);
+            }
+        });
+
+        tablaHisto.setBackground(new java.awt.Color(0, 0, 0,0));
+        tablaHisto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tablaHisto.setShowGrid(true);
+        tablaHisto.setGridColor(Color.WHITE);
+        tablaHisto.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));
+        tablaHisto.setForeground(new java.awt.Color(255, 102, 51));
         tablaHisto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -127,10 +140,19 @@ public class Estadisticas extends javax.swing.JDialog {
 
             }
         ));
+        tablaHisto.setRowHeight(28);
+        tablaHisto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaHistoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaHisto);
 
         jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(90, 50, 452, 360);
+        jScrollPane2.setBounds(30, 40, 780, 360);
+        jScrollPane2.getViewport().setOpaque(false);
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setViewportBorder(null);
 
         ver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Normal/ver_partida.png"))); // NOI18N
         ver.setBorder(null);
@@ -157,10 +179,11 @@ public class Estadisticas extends javax.swing.JDialog {
             }
         });
         jPanel2.add(ver);
-        ver.setBounds(650, 120, 260, 65);
+        ver.setBounds(850, 180, 260, 65);
 
         jTabbedPane1.addTab("Historial partidas", jPanel2);
 
+        barritas.setBackground(new java.awt.Color(0, 0, 0,180));
         barritas.setLayout(null);
 
         chuckNorris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PjCaras/Chuck Norris.png"))); // NOI18N
@@ -176,6 +199,7 @@ public class Estadisticas extends javax.swing.JDialog {
         barritas.add(chuckNorris);
         chuckNorris.setBounds(30, 10, 100, 100);
 
+        barrasPersonajes.setBackground(new java.awt.Color(0, 0, 0,0));
         barrasPersonajes.setLayout(new java.awt.BorderLayout());
         barritas.add(barrasPersonajes);
         barrasPersonajes.setBounds(0, 120, 1140, 370);
@@ -288,14 +312,39 @@ public class Estadisticas extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Estadisticas de mis personajes", barritas);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0, 250));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0, 180));
+        jPanel1.setLayout(null);
 
-        tabla.setBackground(new java.awt.Color(255, 255, 245));
+        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0,0));
+        jScrollPane1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jScrollPane1MouseWheelMoved(evt);
+            }
+        });
+
+        tabla.setShowGrid(true);
+        tabla.setGridColor(Color.WHITE);
+        tabla.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3, true));
+        tabla.setBackground(new java.awt.Color(0, 0, 0,0));
+        tabla.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        tabla.setForeground(new java.awt.Color(255, 102, 51));
+        tabla.setRowHeight(28);
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla);
 
         jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(210, 30, 720, 420);
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setViewportBorder(null);
 
         jTabbedPane1.addTab("Clasificación general", jPanel1);
+
+        tarta.setBackground(new java.awt.Color(0, 0, 0,180));
         jTabbedPane1.addTab("Ganadas/Perdidas", tarta);
 
         getContentPane().add(jTabbedPane1);
@@ -357,10 +406,11 @@ public class Estadisticas extends javax.swing.JDialog {
     }//GEN-LAST:event_verMousePressed
 
     private void ver(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ver
+        //ver repetición de la partida seleccionada
         if(ver.isEnabled()){
            if(tablaHisto.getSelectedRow()>-1){
                 ver.setEnabled(false);
-                Partida p= consultasBD.instancia().buscarUnaPartidaFinalizadaPorId(Integer.parseInt(tablaHisto.getValueAt(tablaHisto.getSelectedRow(), 0).toString()));
+                Partida p= ConsultasBD.instancia().buscarUnaPartidaFinalizadaPorId(Integer.parseInt(tablaHisto.getValueAt(tablaHisto.getSelectedRow(), 0).toString()));
                 VerPartida vp=new VerPartida(null, true, p, false, null, false, null, true, this);
                 vp.mostrar();
                 this.setVisible(false);
@@ -394,43 +444,91 @@ public class Estadisticas extends javax.swing.JDialog {
     private void jTabbedPane1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseEntered
 
     }//GEN-LAST:event_jTabbedPane1MouseEntered
+
+    private void jScrollPane2MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane2MouseWheelMoved
+       this.repaint();
+    }//GEN-LAST:event_jScrollPane2MouseWheelMoved
+
+    private void tablaHistoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaHistoMouseClicked
+        this.repaint();
+    }//GEN-LAST:event_tablaHistoMouseClicked
+
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+        this.repaint();
+    }//GEN-LAST:event_tablaMouseClicked
+
+    private void jScrollPane1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane1MouseWheelMoved
+        this.repaint();
+    }//GEN-LAST:event_jScrollPane1MouseWheelMoved
+    /**
+     * Muestra un gráfico de barras con estadísticas de los personajes
+     * @param nombre del personaje 
+     */
     public void mostrar(String nombre){
         barrasPersonajes.removeAll();
         ArrayList <Personaje> personajes=new ArrayList();
-        personajes=consultasBD.instancia().todosLosPersonajes();
+        personajes=ConsultasBD.instancia().todosLosPersonajes();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         MiPersonaje mp=this.registrado.getMisPersonajes().get(this.registrado.buscarMiPersonaje(nombre));
         for(Personaje p:personajes){
-            int jugadas=consultasBD.instancia().jugadasMiPersonaje1(registrado, mp, p.getNombre())+consultasBD.instancia().jugadasMiPersonaje2(registrado, mp, p.getNombre());
-            int ganadas=consultasBD.instancia().ganadasMiPersonaje1(registrado, mp, p.getNombre())+consultasBD.instancia().ganadasMiPersonaje2(registrado, mp, p.getNombre());
+            int jugadas=ConsultasBD.instancia().jugadasMiPersonaje1(registrado, mp, p.getNombre())+ConsultasBD.instancia().jugadasMiPersonaje2(registrado, mp, p.getNombre());
+            int ganadas=ConsultasBD.instancia().ganadasMiPersonaje1(registrado, mp, p.getNombre())+ConsultasBD.instancia().ganadasMiPersonaje2(registrado, mp, p.getNombre());
             int perdidas=jugadas-ganadas;
             dataset.addValue(perdidas, "Perdidas", p.getNombre());
             dataset.addValue(ganadas, "Ganadas", p.getNombre());
         }
         JFreeChart aa = ChartFactory.createBarChart3D(nombre, "", "Partidas", dataset);
+        aa.getTitle().setPaint(new Color(255,102,51));
+        
+        aa.setBackgroundPaint(new Color(0,0,0,0));
+        aa.setBorderVisible(false);
         CategoryPlot p = aa.getCategoryPlot();
-        p.setRangeGridlinePaint(Color.BLACK);
+        p.getDomainAxis().setLabelPaint(new Color(255,102,51));
+        p.getDomainAxis().setTickLabelPaint(new Color(255,102,51));
+        p.getDomainAxis().setTickLabelFont(new Font("Tahoma", Font.BOLD, 10));
+        p.getRangeAxis().setLabelPaint(new Color(255,102,51));
+        p.getRangeAxis().setTickLabelPaint(new Color(255,102,51));
+        p.getRangeAxis().setTickLabelFont(new Font("Tahoma", Font.BOLD, 12));
+        p.setRangeGridlinePaint(new Color(255,102,51));
+        p.setBackgroundPaint(new Color(0,0,0,0));
         
         ChartPanel pan = new ChartPanel(aa);
+        pan.setBackground(new Color(0,0,0,0));
         barrasPersonajes.add(pan, BorderLayout.CENTER);
         barrasPersonajes.validate();
+        this.repaint();
         
     }
+    /**
+     * Muestra un gráfico tipo queso con informacion sobre las partidas del usuario
+     */
     public void mostrar2(){
-        int jugadas=consultasBD.instancia().jugadasJ1(registrado)+consultasBD.instancia().jugadasJ2(registrado);
-        int ganadas=consultasBD.instancia().partidasGanadas(registrado);
+        int jugadas=ConsultasBD.instancia().jugadasJ1(registrado)+ConsultasBD.instancia().jugadasJ2(registrado);
+        int ganadas=ConsultasBD.instancia().partidasGanadas(registrado);
         DefaultPieDataset pie= new DefaultPieDataset();
         pie.setValue("Ganadas", ganadas);
         pie.setValue("Perdidas", jugadas-ganadas);
         JFreeChart queso= ChartFactory.createPieChart3D("Paridas ganadas y perdidas", pie, true, true, Locale.FRENCH);
+        queso.setBackgroundPaint(new Color(0,0,0,0));
+        queso.getTitle().setPaint(new Color(255,102,51));
+        queso.setBorderVisible(false);
         PiePlot3D p=(PiePlot3D) queso.getPlot();
+        p.setBackgroundPaint(new Color(0,0,0,0));
+        p.setLabelLinkPaint(new Color(255,102,51));
+        p.setLabelBackgroundPaint(new Color(0,0,0,0));
+        p.setLabelPaint(new Color(255,102,51));
+        p.setLabelFont(new Font("Tahoma", Font.BOLD, 12));
+        p.setLabelShadowPaint(new Color(0,0,0,0));
         ChartPanel pan= new ChartPanel(queso);
+        pan.setBackground(new Color(0,0,0,0));
         tarta.add(pan,BorderLayout.CENTER);
         tarta.validate();
     }
-    
+    /**
+     * Desactiva los botones de los personajes que no tiene el usuario
+     */
     public void mostrar3(){
-        tablaClasi = new DefaultTableModel(consultasBD.instancia().clasificacion(), cabecera);
+        tablaClasi = new DefaultTableModel(ConsultasBD.instancia().clasificacion(), cabecera);
         tabla.setModel(tablaClasi);
         if(registrado.buscarMiPersonaje("Chuck Norris")==-1){
             this.chuckNorris.setEnabled(false);
@@ -460,7 +558,9 @@ public class Estadisticas extends javax.swing.JDialog {
             this.sonic.setEnabled(false);
         }
     }
-    
+    /**
+     * Muestra la tabla de clasificación de los usuarios
+     */
     public void mostrar4(){
         
         tablaHistorial=new DefaultTableModel(this.registrado.tablaHistorialPartidas(), cabecera1);

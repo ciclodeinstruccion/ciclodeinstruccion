@@ -1,19 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz gráfica que muestra los personajes disponibles para comprar. Cada vez 
+ * que se selecciona un personaje se abre un nuevo panel con información sobre el personaje
  */
 package InterfazGrafica.registrado;
 
 import ciclodeinstruccion.Usuarios.Registrado;
 import javax.swing.table.DefaultTableModel;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import Personaje.Personaje;
 
-/**
- *
- * @author Rubén
- */
 public class Tienda extends javax.swing.JDialog {
 
     /**
@@ -224,7 +219,7 @@ public class Tienda extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void chuckNorrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chuckNorrisActionPerformed
-        Personaje p=consultasBD.instancia().buscarPersonaje("Chuck Norris");
+        Personaje p=ConsultasBD.instancia().buscarPersonaje("Chuck Norris");
         ComprarPersonaje cp=new ComprarPersonaje(null, true, registrado, p,this);
         cp.mostrar();
         this.setVisible(false);
@@ -232,7 +227,7 @@ public class Tienda extends javax.swing.JDialog {
     }//GEN-LAST:event_chuckNorrisActionPerformed
 
     private void donkeyKongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donkeyKongActionPerformed
-        Personaje p=consultasBD.instancia().buscarPersonaje("Donkey Kong");
+        Personaje p=ConsultasBD.instancia().buscarPersonaje("Donkey Kong");
         ComprarPersonaje cp=new ComprarPersonaje(null, true, registrado, p,this);
         cp.mostrar();
         this.setVisible(false);
@@ -240,7 +235,7 @@ public class Tienda extends javax.swing.JDialog {
     }//GEN-LAST:event_donkeyKongActionPerformed
 
     private void gollumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gollumActionPerformed
-        Personaje p=consultasBD.instancia().buscarPersonaje("Gollum");
+        Personaje p=ConsultasBD.instancia().buscarPersonaje("Gollum");
         ComprarPersonaje cp=new ComprarPersonaje(null, true, registrado, p,this);
         cp.mostrar();
         this.setVisible(false);
@@ -248,7 +243,7 @@ public class Tienda extends javax.swing.JDialog {
     }//GEN-LAST:event_gollumActionPerformed
 
     private void lucarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lucarioActionPerformed
-        Personaje p=consultasBD.instancia().buscarPersonaje("Lucario");
+        Personaje p=ConsultasBD.instancia().buscarPersonaje("Lucario");
         ComprarPersonaje cp=new ComprarPersonaje(null, true, registrado, p,this);
         cp.mostrar();
         this.setVisible(false);
@@ -256,7 +251,7 @@ public class Tienda extends javax.swing.JDialog {
     }//GEN-LAST:event_lucarioActionPerformed
 
     private void luigiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luigiActionPerformed
-        Personaje p=consultasBD.instancia().buscarPersonaje("Luigi");
+        Personaje p=ConsultasBD.instancia().buscarPersonaje("Luigi");
         ComprarPersonaje cp=new ComprarPersonaje(null, true, registrado, p,this);
         cp.mostrar();
         this.setVisible(false);
@@ -264,7 +259,7 @@ public class Tienda extends javax.swing.JDialog {
     }//GEN-LAST:event_luigiActionPerformed
 
     private void maBaracusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maBaracusActionPerformed
-        Personaje p=consultasBD.instancia().buscarPersonaje("M. A. Baracus");
+        Personaje p=ConsultasBD.instancia().buscarPersonaje("M. A. Baracus");
         ComprarPersonaje cp=new ComprarPersonaje(null, true, registrado, p,this);
         cp.mostrar();
         this.setVisible(false);
@@ -272,7 +267,7 @@ public class Tienda extends javax.swing.JDialog {
     }//GEN-LAST:event_maBaracusActionPerformed
 
     private void marioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marioActionPerformed
-        Personaje p=consultasBD.instancia().buscarPersonaje("Mario");
+        Personaje p=ConsultasBD.instancia().buscarPersonaje("Mario");
         ComprarPersonaje cp=new ComprarPersonaje(null, true, registrado, p,this);
         cp.mostrar();
         this.setVisible(false);
@@ -280,7 +275,7 @@ public class Tienda extends javax.swing.JDialog {
     }//GEN-LAST:event_marioActionPerformed
 
     private void samusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samusActionPerformed
-        Personaje p=consultasBD.instancia().buscarPersonaje("Samus");
+        Personaje p=ConsultasBD.instancia().buscarPersonaje("Samus");
         ComprarPersonaje cp=new ComprarPersonaje(null, true, registrado, p,this);
         cp.mostrar();
         this.setVisible(false);
@@ -288,12 +283,17 @@ public class Tienda extends javax.swing.JDialog {
     }//GEN-LAST:event_samusActionPerformed
 
     private void sonicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sonicActionPerformed
-        Personaje p=consultasBD.instancia().buscarPersonaje("Sonic");
+        Personaje p=ConsultasBD.instancia().buscarPersonaje("Sonic");
         ComprarPersonaje cp=new ComprarPersonaje(null, true, registrado, p,this);
         cp.mostrar();
         this.setVisible(false);
         cp.setVisible(true);
     }//GEN-LAST:event_sonicActionPerformed
+    /**
+     * Método que activa o desactiva los botones de los personajes en función de 
+     * si el usuario posee o no los personajes. Serán desactivados cuando el usuario
+     * ya los tenga.
+     */
     public void mostrar(){
         if(registrado.buscarMiPersonaje("Chuck Norris")>-1){
             this.chuckNorris.setEnabled(false);

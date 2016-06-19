@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Panel de inicio de sesion
  */
 package InterfazGrafica;
 
@@ -13,10 +11,6 @@ import BaseDeDatos.*;
 import ciclodeinstruccion.Juego;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Rubén
- */
 public class IniciarSesion extends javax.swing.JDialog {
 
     /**
@@ -184,14 +178,14 @@ public class IniciarSesion extends javax.swing.JDialog {
         for(int i=0;i<contraseña.getPassword().length;i++){
             pass+=contraseña.getPassword()[i];
         }
-        if(consultasBD.instancia().encuentraRegistrado(name, pass)){
-            this.registrado=consultasBD.instancia().buscarRegistrado(name);
-            if(consultasBD.instancia().estaBaneado(registrado)){
+        if(ConsultasBD.instancia().encuentraRegistrado(name, pass)){
+            this.registrado=ConsultasBD.instancia().buscarRegistrado(name);
+            if(ConsultasBD.instancia().estaBaneado(registrado)){
                 JOptionPane.showMessageDialog(rootPane, "Esta cuenta ha sido baneada.", "Iniciar sesión", JOptionPane.WARNING_MESSAGE);
             }
             else{
                 this.registrado.login();
-                consultasBD.instancia().modificarRegistrado(registrado);
+                ConsultasBD.instancia().modificarRegistrado(registrado);
                 InicioRegistrado ir=new InicioRegistrado(registrado);
                 ir.setIni(ini);           
                 ir.mostrar();
@@ -200,8 +194,8 @@ public class IniciarSesion extends javax.swing.JDialog {
             }
             
         }
-        else if (consultasBD.instancia().encuentraAdministrador(name,pass)){
-            this.admin=consultasBD.instancia().buscarAministrador(name);
+        else if (ConsultasBD.instancia().encuentraAdministrador(name,pass)){
+            this.admin=ConsultasBD.instancia().buscarAministrador(name);
             InicioAdministrador ia=new InicioAdministrador(admin);
             ia.setI(ini);
             this.setVisible(false);
