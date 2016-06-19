@@ -92,10 +92,22 @@ public class Partida {
         this.vidamax2=this.vidaPersonaje2;
         this.vidamax1=this.vidaPersonaje1;
     }
+    
+    /**
+     * metodo que se usa cuando un registrado crea una partida
+     */
+    
+    
     public void comprarPartida(){
         this.jugador1.setPartidasJugadas(partidasJ1);
         this.jugador1.gastarPuntosOro(COSTE_PARTIDA);
     }
+    
+    /**
+     * metodo para cuando un registrado quiere unirse a una partida ya creada
+     * @param jugador2 jugador que se une a la partida  
+     * @param personaje2 su personaje
+     */
     public void unirsePartida(Registrado jugador2, MiPersonaje personaje2){
         this.jugador2=jugador2;
         this.personaje2=personaje2;
@@ -105,6 +117,10 @@ public class Partida {
         this.partidasJ2=this.jugador2.getPartidasJugadas();
         this.vidamax2=this.vidaPersonaje2;
     }
+    
+    /**
+     * metodo con el que se juega la partida
+     */
     public void jugarPartida(){
         float dañoPersonaje1=personaje1.getDañoBase()+personaje1.getBonusDaño()+jugador1.getFuerza();
         float dañoPersonaje2=personaje2.getDañoBase()+personaje2.getBonusDaño()+jugador2.getFuerza();
