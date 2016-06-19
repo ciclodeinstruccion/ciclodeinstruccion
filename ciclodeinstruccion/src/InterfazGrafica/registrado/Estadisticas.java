@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz donde se muestran estadísticas del usuario
  */
 package InterfazGrafica.registrado;
 
@@ -27,10 +25,6 @@ import java.awt.Font;
 import javafx.scene.layout.Border;
 import javax.swing.BorderFactory;
 
-/**
- *
- * @author Rubén
- */
 public class Estadisticas extends javax.swing.JDialog {
 
     /**
@@ -412,6 +406,7 @@ public class Estadisticas extends javax.swing.JDialog {
     }//GEN-LAST:event_verMousePressed
 
     private void ver(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ver
+        //ver repetición de la partida seleccionada
         if(ver.isEnabled()){
            if(tablaHisto.getSelectedRow()>-1){
                 ver.setEnabled(false);
@@ -465,6 +460,10 @@ public class Estadisticas extends javax.swing.JDialog {
     private void jScrollPane1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane1MouseWheelMoved
         this.repaint();
     }//GEN-LAST:event_jScrollPane1MouseWheelMoved
+    /**
+     * Muestra un gráfico de barras con estadísticas de los personajes
+     * @param nombre del personaje 
+     */
     public void mostrar(String nombre){
         barrasPersonajes.removeAll();
         ArrayList <Personaje> personajes=new ArrayList();
@@ -500,6 +499,9 @@ public class Estadisticas extends javax.swing.JDialog {
         this.repaint();
         
     }
+    /**
+     * Muestra un gráfico tipo queso con informacion sobre las partidas del usuario
+     */
     public void mostrar2(){
         int jugadas=consultasBD.instancia().jugadasJ1(registrado)+consultasBD.instancia().jugadasJ2(registrado);
         int ganadas=consultasBD.instancia().partidasGanadas(registrado);
@@ -522,7 +524,9 @@ public class Estadisticas extends javax.swing.JDialog {
         tarta.add(pan,BorderLayout.CENTER);
         tarta.validate();
     }
-    
+    /**
+     * Desactiva los botones de los personajes que no tiene el usuario
+     */
     public void mostrar3(){
         tablaClasi = new DefaultTableModel(consultasBD.instancia().clasificacion(), cabecera);
         tabla.setModel(tablaClasi);
@@ -554,7 +558,9 @@ public class Estadisticas extends javax.swing.JDialog {
             this.sonic.setEnabled(false);
         }
     }
-    
+    /**
+     * Muestra la tabla de clasificación de los usuarios
+     */
     public void mostrar4(){
         
         tablaHistorial=new DefaultTableModel(this.registrado.tablaHistorialPartidas(), cabecera1);

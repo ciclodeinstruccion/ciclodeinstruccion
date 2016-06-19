@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz gráfica desde la que unirse a partida
  */
 package InterfazGrafica.registrado;
 
@@ -18,10 +16,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Rubén
- */
 public class UnirsePartida extends javax.swing.JDialog {
 
     /**
@@ -356,7 +350,8 @@ public class UnirsePartida extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void unirse(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unirse
-         if(mp!=null && tablaPartidas.getSelectedRow()>-1){
+        //Si se ha selecionado un personaje y una partida
+        if(mp!=null && tablaPartidas.getSelectedRow()>-1){
             if(registrado.getOro()<Partida.getCOSTE_PARTIDA()){
                 JOptionPane.showMessageDialog(rootPane, "No tienes oro sificiente para unirte a la partida", "Unirse a partida", JOptionPane.WARNING_MESSAGE);
             }
@@ -464,6 +459,11 @@ public class UnirsePartida extends javax.swing.JDialog {
     private void jScrollPane2MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane2MouseWheelMoved
        this.repaint();
     }//GEN-LAST:event_jScrollPane2MouseWheelMoved
+    /**
+     * Método inicial que muestra la tabla con las partidas disponibles y activa
+     * o desactiva los botones de los personaje en función de si el usuario tiene
+     * o no tiene los personajes
+     */
     public void mostrar(){
         tabla=new DefaultTableModel(this.registrado.tablaUnirseAPartida(), cabecera);
         tablaPartidas.setModel(tabla);
@@ -497,7 +497,11 @@ public class UnirsePartida extends javax.swing.JDialog {
         }
         
     }
-    
+    /**
+     * Método que muestra en el lateral de la pantalla un panel con información
+     * cobre el personaje seleccionado
+     * @param mp personaje selecionado
+     */
     public void mostrarPersonaje(MiPersonaje mp){
         Image img1=new ImageIcon(this.getClass().getResource("/Imagenes/PjPequeños/"+mp.getNombre()+".png")).getImage();
         this.imagen.setIcon(new ImageIcon(img1));

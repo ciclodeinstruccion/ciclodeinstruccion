@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz desde la que se modifican los atributos de un personaje
  */
 package InterfazGrafica.registrado;
 
@@ -12,10 +10,6 @@ import BaseDeDatos.consultasBD;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Rubén
- */
 public class AtributosMiPersonaje extends javax.swing.JDialog {
 
     /**
@@ -573,6 +567,10 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
     private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
         volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
     }//GEN-LAST:event_volverMouseEntered
+    /**
+     * Activa o desactiva los botones +/- en función de si hay puntos desiponibles
+     * o de si se ha alcanzado el límite máximo(10) o mínimo (0) de los atributos
+     */
     public void mostrar(){
         vida.setText(Float.toString(miPersonaje.getBonusVida()));
         daño.setText(Float.toString(miPersonaje.getBonusDaño()));

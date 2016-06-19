@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Panel inicial de un usuario registrado
  */
 package InterfazGrafica.registrado;
 
@@ -13,10 +11,6 @@ import InterfazGrafica.registrado.MisPersonajes;
 import ciclodeinstruccion.Usuarios.Registrado;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Rubén
- */
 public class InicioRegistrado extends javax.swing.JFrame {
 
     /**
@@ -463,6 +457,10 @@ public class InicioRegistrado extends javax.swing.JFrame {
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/salir.png")));
     }//GEN-LAST:event_jButton1MouseEntered
+    /**
+     * Método que deshabilita los botones de crear partida y unirse a partida
+     * en caso de que el jugador haya alcanzado el  límite de partidas jugadas
+     */
     public void mostrar(){
         if(this.resgistrado.getPartidasJugadas()>=Registrado.getLIMITE_PARTIDAS()){
             crearPartida.setEnabled(false);
@@ -471,6 +469,9 @@ public class InicioRegistrado extends javax.swing.JFrame {
         }
         this.mostrar2();
     }
+    /**
+     * Muestra un panel en el lateral con información sobre el usuario
+     */
     public void mostrar2(){
         nombre.setText(resgistrado.getNombre());
         nivel.setText(Integer.toString(resgistrado.getNivel()));

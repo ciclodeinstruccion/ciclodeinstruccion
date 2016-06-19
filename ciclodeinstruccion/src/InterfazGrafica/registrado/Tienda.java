@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz gráfica que muestra los personajes disponibles para comprar. Cada vez 
+ * que se selecciona un personaje se abre un nuevo panel con información sobre el personaje
  */
 package InterfazGrafica.registrado;
 
@@ -10,10 +9,6 @@ import javax.swing.table.DefaultTableModel;
 import BaseDeDatos.consultasBD;
 import Personaje.Personaje;
 
-/**
- *
- * @author Rubén
- */
 public class Tienda extends javax.swing.JDialog {
 
     /**
@@ -294,6 +289,11 @@ public class Tienda extends javax.swing.JDialog {
         this.setVisible(false);
         cp.setVisible(true);
     }//GEN-LAST:event_sonicActionPerformed
+    /**
+     * Método que activa o desactiva los botones de los personajes en función de 
+     * si el usuario posee o no los personajes. Serán desactivados cuando el usuario
+     * ya los tenga.
+     */
     public void mostrar(){
         if(registrado.buscarMiPersonaje("Chuck Norris")>-1){
             this.chuckNorris.setEnabled(false);

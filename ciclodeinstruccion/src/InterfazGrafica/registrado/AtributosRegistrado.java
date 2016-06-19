@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz desde la que se cambian los atributos de un usuario
  */
 package InterfazGrafica.registrado;
 
 import ciclodeinstruccion.Usuarios.Registrado;
 import BaseDeDatos.consultasBD;
-/**
- *
- * @author Rubén
- */
+
 public class AtributosRegistrado extends javax.swing.JDialog {
 
     /**
@@ -591,7 +586,10 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void menosFuerzaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosFuerzaMousePressed
         menosFuerza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Pressed/menos.png")));
     }//GEN-LAST:event_menosFuerzaMousePressed
-
+    /**
+     * Activa o desactiva los botones +/- en función de si hay puntos desiponibles
+     * o de si se ha alcanzado el límite máximo(10) o mínimo (0) de los atributos
+     */
     public void mostrar(){
         puntosDeNivel.setText(Integer.toString(registrado.getPuntosNivel()));
         vitalidad.setText(Integer.toString(registrado.getVitalidad()));

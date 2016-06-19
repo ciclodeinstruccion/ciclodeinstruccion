@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz desde la que se compra un personaje
  */
 package InterfazGrafica.registrado;
 
@@ -19,10 +17,6 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.ToolTipManager;
 
-/**
- *
- * @author Rubén
- */
 public class ComprarPersonaje extends javax.swing.JDialog {
 
     /**
@@ -305,6 +299,10 @@ public class ComprarPersonaje extends javax.swing.JDialog {
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
     }//GEN-LAST:event_jButton1MouseEntered
+    /**
+     * Muestra la imagen del personaje y un panel en el lateral con información
+     * sobre el mismo
+     */
     public void mostrar(){
         this.daño.setText(Float.toString(personaje.getDaño()));
         this.vida.setText(Float.toString(personaje.getVida()));
