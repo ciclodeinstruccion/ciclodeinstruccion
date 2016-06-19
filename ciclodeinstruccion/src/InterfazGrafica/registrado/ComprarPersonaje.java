@@ -12,7 +12,7 @@ import Personaje.Personaje;
 import Personaje.Tanque;
 import ciclodeinstruccion.Usuarios.Registrado;
 import javax.swing.JOptionPane;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.ToolTipManager;
@@ -240,24 +240,24 @@ public class ComprarPersonaje extends javax.swing.JDialog {
                     MiTanque mt=new MiTanque(0, 0, 1, 0, 0, t, 0);
                     registrado.añadirPersonajes(mt);
                     registrado.gastarPuntosOro(personaje.getPrecio());
-                    consultasBD.instancia().modificarRegistrado(registrado);
-                    consultasBD.instancia().añadirMiPersonaje(mt, registrado);
+                    ConsultasBD.instancia().modificarRegistrado(registrado);
+                    ConsultasBD.instancia().añadirMiPersonaje(mt, registrado);
                 }
                 else if(personaje instanceof Asesino){
                     Asesino a=(Asesino)personaje;
                     MiAsesino ma=new MiAsesino(0, 0, 1, 0, 0, a, 0);
                     registrado.añadirPersonajes(ma);
                     registrado.gastarPuntosOro(personaje.getPrecio());
-                    consultasBD.instancia().modificarRegistrado(registrado);
-                    consultasBD.instancia().añadirMiPersonaje(ma, registrado);
+                    ConsultasBD.instancia().modificarRegistrado(registrado);
+                    ConsultasBD.instancia().añadirMiPersonaje(ma, registrado);
                 }
                 if(personaje instanceof Fighter){
                     Fighter f=(Fighter)personaje;
                     MiFighter mf=new MiFighter(0, 0, 1, 0, 0, f, 0);
                     registrado.añadirPersonajes(mf);
                     registrado.gastarPuntosOro(personaje.getPrecio());
-                    consultasBD.instancia().modificarRegistrado(registrado);
-                    consultasBD.instancia().añadirMiPersonaje(mf, registrado);
+                    ConsultasBD.instancia().modificarRegistrado(registrado);
+                    ConsultasBD.instancia().añadirMiPersonaje(mf, registrado);
                 }
                 JOptionPane.showMessageDialog(rootPane, "Personaje comprado con éxito", "Comprar personaje", JOptionPane.INFORMATION_MESSAGE);
                 t.mostrar();

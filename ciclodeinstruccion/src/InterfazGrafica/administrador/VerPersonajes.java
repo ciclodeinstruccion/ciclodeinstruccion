@@ -1,21 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz que muestra una lista de todos los personajes
  */
 package InterfazGrafica.administrador;
 
 import ciclodeinstruccion.Usuarios.Administrador;
 import javax.swing.table.DefaultTableModel;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import Personaje.Personaje;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 
-/**
- *
- * @author Rubén
- */
 public class VerPersonajes extends javax.swing.JDialog {
 
     /**
@@ -132,7 +126,7 @@ public class VerPersonajes extends javax.swing.JDialog {
 
     private void modificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseReleased
         if(personajes.getSelectedRow()>-1){
-            Personaje p=consultasBD.instancia().buscarPersonaje(personajes.getValueAt(personajes.getSelectedRow(), 0).toString());
+            Personaje p=ConsultasBD.instancia().buscarPersonaje(personajes.getValueAt(personajes.getSelectedRow(), 0).toString());
             ModificarPersonaje mp= new ModificarPersonaje(null, true, p,this);
             mp.mostrar();
             this.setVisible(false);
@@ -172,6 +166,10 @@ public class VerPersonajes extends javax.swing.JDialog {
     private void personajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_personajesMouseClicked
         this.repaint();
     }//GEN-LAST:event_personajesMouseClicked
+    
+    /**
+     * Muestra una tabla con todos los personajes
+     */
     public void mostrar(){
         tabla=new DefaultTableModel(this.admin.tablaPersonajes(), cabecera);
         personajes.setModel(tabla);

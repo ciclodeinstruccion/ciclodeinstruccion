@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz gráfica en la que se muestran los personajes que tiene un usuario
  */
 package InterfazGrafica.administrador;
 
@@ -10,10 +8,6 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author alumno
- */
 public class VerMasUsuarios extends javax.swing.JDialog{
 
     /**
@@ -168,11 +162,9 @@ public class VerMasUsuarios extends javax.swing.JDialog{
     private void jScrollPane1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane1MouseWheelMoved
         this.repaint();
     }//GEN-LAST:event_jScrollPane1MouseWheelMoved
-
     /**
-     * @param args the command line arguments
+     * Muestra una tabla con los personajes de un usuario seleccionado previamente
      */
-    
     public void mostrar(){
         nombreUsuario.setEditable(false);
         nombreUsuario.setText(r.getNombre());
@@ -180,6 +172,11 @@ public class VerMasUsuarios extends javax.swing.JDialog{
         tabla=new DefaultTableModel(this.r.tablaMisPersonajes(), cabecera);
         misPersonajes.setModel(tabla); 
     }
+    /**
+     * @param args the command line arguments
+     */
+    
+    
     
     
     

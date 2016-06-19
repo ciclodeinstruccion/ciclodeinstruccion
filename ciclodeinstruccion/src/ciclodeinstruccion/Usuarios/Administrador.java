@@ -12,7 +12,7 @@ import java.util.Arrays;
 import static java.util.Collections.list;
 import java.util.Iterator;
 import java.util.Scanner;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import Personaje.Asesino;
 import Personaje.Fighter;
 import Personaje.Tanque;
@@ -29,7 +29,7 @@ public class Administrador extends Usuario{
     }
     public String [][] tablaUsuarios(){
         ArrayList <Registrado> usuarios =new ArrayList();
-        usuarios=consultasBD.instancia().todosRegistrados();
+        usuarios=ConsultasBD.instancia().todosRegistrados();
         String arrayUsuarios [][]=new String [usuarios.size()][3];
         for(int i=0; i<arrayUsuarios.length;i++){
             arrayUsuarios[i][0]=usuarios.get(i).getNombre();
@@ -41,7 +41,7 @@ public class Administrador extends Usuario{
     
     public String [][] tablaEstadisticas(){
         ArrayList <String> nombres =new ArrayList();
-        nombres=consultasBD.instancia().nombreTodosPersonajes();
+        nombres=ConsultasBD.instancia().nombreTodosPersonajes();
         String nombresPj []=new String [nombres.size()];
         float winratio [][]=new float [nombres.size()][nombres.size()];
         for(int i=0;i<nombresPj.length;i++){
@@ -51,8 +51,8 @@ public class Administrador extends Usuario{
         
         for(int i=0;i<nombresPj.length;i++){
             for(int j=0;j<nombresPj2.length;j++){
-                float pJugadas=consultasBD.instancia().partidasJugadas2Personajes(nombresPj[i], nombresPj2[j]) + consultasBD.instancia().partidasJugadas2Personajes(nombresPj2[j], nombresPj[i]);
-                float pGanadas=consultasBD.instancia().partidasGanadasPersonaje(nombresPj[i], nombresPj2[j], nombresPj[i]) + consultasBD.instancia().partidasGanadasPersonaje(nombresPj2[j], nombresPj[i], nombresPj[i]);
+                float pJugadas=ConsultasBD.instancia().partidasJugadas2Personajes(nombresPj[i], nombresPj2[j]) + ConsultasBD.instancia().partidasJugadas2Personajes(nombresPj2[j], nombresPj[i]);
+                float pGanadas=ConsultasBD.instancia().partidasGanadasPersonaje(nombresPj[i], nombresPj2[j], nombresPj[i]) + ConsultasBD.instancia().partidasGanadasPersonaje(nombresPj2[j], nombresPj[i], nombresPj[i]);
                 if(pJugadas==0){
                     winratio[i][j]=0;
                 }
@@ -65,9 +65,9 @@ public class Administrador extends Usuario{
         float ganadasTotales []=new float [nombres.size()];
         int jugadasTotales []=new int [nombres.size()];
         for(int i=0;i<ganadasTotales.length;i++){
-            float pJugadasT=consultasBD.instancia().partidasJugadas1Personaje1(nombresPj[i])+consultasBD.instancia().partidasJugadas1Personaje2(nombresPj[i]);
+            float pJugadasT=ConsultasBD.instancia().partidasJugadas1Personaje1(nombresPj[i])+ConsultasBD.instancia().partidasJugadas1Personaje2(nombresPj[i]);
             jugadasTotales[i]=(int)pJugadasT;
-            float pGanadasT=consultasBD.instancia().partidasGanadas1Personaje(nombresPj[i]);
+            float pGanadasT=ConsultasBD.instancia().partidasGanadas1Personaje(nombresPj[i]);
             if(pJugadasT==0){
                 ganadasTotales[i]=0;
             }
@@ -98,7 +98,7 @@ public class Administrador extends Usuario{
     
     public String [] cabeceraEstadisticas(){
         ArrayList <String> nombres =new ArrayList();
-        nombres=consultasBD.instancia().nombreTodosPersonajes();
+        nombres=ConsultasBD.instancia().nombreTodosPersonajes();
         String nombresPj []=new String [nombres.size()+3];
         nombresPj[0]="PERSONAJES";
         nombresPj[nombresPj.length-2]="P.TOTALES";
@@ -111,7 +111,7 @@ public class Administrador extends Usuario{
     
     public String [][] tablaPersonajes(){
         ArrayList <Personaje> personajes=new ArrayList();
-        personajes=consultasBD.instancia().todosLosPersonajes();
+        personajes=ConsultasBD.instancia().todosLosPersonajes();
         String pj [][]= new String [personajes.size()][6];
         
         for (int i=0; i<pj.length;i++){
@@ -237,7 +237,7 @@ public class Administrador extends Usuario{
     }
     public String [][] tablaHistorialPartidas(){
         ArrayList <Partida> historial=new ArrayList();
-        historial=consultasBD.instancia().todasLasPartidas();
+        historial=ConsultasBD.instancia().todasLasPartidas();
         String arrayPartidas[][]=new String [historial.size()][7];
         
         for(int i=0;i<arrayPartidas.length;i++){

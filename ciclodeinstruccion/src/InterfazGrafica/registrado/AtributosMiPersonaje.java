@@ -6,7 +6,7 @@ package InterfazGrafica.registrado;
 import InterfazGrafica.registrado.MisPersonajes;
 import MiPersonaje.*;
 import ciclodeinstruccion.Usuarios.Registrado;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -389,7 +389,7 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
     private void masVidaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masVidaMouseReleased
         if(masVida.isEnabled()){
             miPersonaje.aumentarBonusVida();
-            consultasBD.instancia().modificarMiPersonaje(miPersonaje, registrado);
+            ConsultasBD.instancia().modificarMiPersonaje(miPersonaje, registrado);
             this.mostrar();
             this.setVisible(true);
         }
@@ -398,7 +398,7 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
     private void masDañoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masDañoMouseReleased
         if(masDaño.isEnabled()){
             miPersonaje.aumentarBonusDaño();
-            consultasBD.instancia().modificarMiPersonaje(miPersonaje, registrado);
+            ConsultasBD.instancia().modificarMiPersonaje(miPersonaje, registrado);
             this.mostrar();
             this.setVisible(true);
         }
@@ -409,17 +409,17 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
             if(miPersonaje instanceof MiTanque){
                 MiTanque mt =(MiTanque) miPersonaje;
                 mt.aumentarArmadura();
-                consultasBD.instancia().modificarMiPersonaje(mt, registrado);
+                ConsultasBD.instancia().modificarMiPersonaje(mt, registrado);
             }
             else if(miPersonaje instanceof MiAsesino){
                 MiAsesino ma =(MiAsesino) miPersonaje;
                 ma.aumentarEsquivar();
-                consultasBD.instancia().modificarMiPersonaje(ma, registrado);
+                ConsultasBD.instancia().modificarMiPersonaje(ma, registrado);
             }
             else if(miPersonaje instanceof MiFighter){
                 MiFighter mf =(MiFighter) miPersonaje;
                 mf.aumentarCritico();
-                consultasBD.instancia().modificarMiPersonaje(mf, registrado);
+                ConsultasBD.instancia().modificarMiPersonaje(mf, registrado);
             }
             this.mostrar();
             this.setVisible(true);
@@ -429,7 +429,7 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
     private void menosVidaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosVidaMouseReleased
         if(menosVida.isEnabled()){
             miPersonaje.disminuirBonusVida();
-            consultasBD.instancia().modificarMiPersonaje(miPersonaje, registrado);
+            ConsultasBD.instancia().modificarMiPersonaje(miPersonaje, registrado);
             this.mostrar();
             this.setVisible(true);
         }
@@ -438,7 +438,7 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
     private void menosDañoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosDañoMouseReleased
         if(menosDaño.isEnabled()){
             miPersonaje.disminuirBonusDaño();
-            consultasBD.instancia().modificarMiPersonaje(miPersonaje, registrado);
+            ConsultasBD.instancia().modificarMiPersonaje(miPersonaje, registrado);
             this.mostrar();
             this.setVisible(true);
         }
@@ -449,17 +449,17 @@ public class AtributosMiPersonaje extends javax.swing.JDialog {
             if(miPersonaje instanceof MiTanque){
                 MiTanque mt =(MiTanque) miPersonaje;
                 mt.disminuirArmadura();
-                consultasBD.instancia().modificarMiPersonaje(mt, registrado);
+                ConsultasBD.instancia().modificarMiPersonaje(mt, registrado);
             }
             else if(miPersonaje instanceof MiAsesino){
                 MiAsesino ma =(MiAsesino) miPersonaje;
                 ma.disminuirEsquivar();
-                consultasBD.instancia().modificarMiPersonaje(ma, registrado);
+                ConsultasBD.instancia().modificarMiPersonaje(ma, registrado);
             }
             else if(miPersonaje instanceof MiFighter){
                 MiFighter mf =(MiFighter) miPersonaje;
                 mf.disminuirCritico();
-                consultasBD.instancia().modificarMiPersonaje(mf, registrado);
+                ConsultasBD.instancia().modificarMiPersonaje(mf, registrado);
             }
             this.mostrar();
             this.setVisible(true);

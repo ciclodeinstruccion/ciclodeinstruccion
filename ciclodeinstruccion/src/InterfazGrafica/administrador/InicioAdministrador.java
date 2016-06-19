@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Panel inicial de un usuario administrador
  */
 package InterfazGrafica.administrador;
 
@@ -11,10 +9,6 @@ import InterfazGrafica.administrador.VerHistorialAdministrador;
 import InterfazGrafica.administrador.VerUsuarios;
 import ciclodeinstruccion.Usuarios.Administrador;
 
-/**
- *
- * @author Rubén
- */
 public class InicioAdministrador extends javax.swing.JFrame {
 
     /**

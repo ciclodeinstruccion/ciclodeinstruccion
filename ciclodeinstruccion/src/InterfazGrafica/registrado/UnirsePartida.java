@@ -4,7 +4,7 @@
 package InterfazGrafica.registrado;
 
 import InterfazGrafica.registrado.VerPartida;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import MiPersonaje.MiAsesino;
 import MiPersonaje.MiFighter;
 import MiPersonaje.MiPersonaje;
@@ -357,13 +357,13 @@ public class UnirsePartida extends javax.swing.JDialog {
             }
             else if(JOptionPane.showConfirmDialog(rootPane, "¿Esta seguro que quieres unirte a esta partida?", "Unirse a partida", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE)==0){
                 unirse.setEnabled(false);
-                Partida p=consultasBD.instancia().buscarUnaPartidaUnirsePorId(Integer.parseInt(tablaPartidas.getValueAt(tablaPartidas.getSelectedRow(), 0).toString()));
+                Partida p=ConsultasBD.instancia().buscarUnaPartidaUnirsePorId(Integer.parseInt(tablaPartidas.getValueAt(tablaPartidas.getSelectedRow(), 0).toString()));
                 p.unirsePartida(registrado, mp);
-                consultasBD.instancia().modificarRegistrado(registrado);
+                ConsultasBD.instancia().modificarRegistrado(registrado);
                 p.jugarPartida();
-                consultasBD.instancia().unirsePartida(p);
-                consultasBD.instancia().modificarRegistrado(p.getGanador());
-                consultasBD.instancia().modificarMiPersonaje(p.getpGanador(), p.getGanador());
+                ConsultasBD.instancia().unirsePartida(p);
+                ConsultasBD.instancia().modificarRegistrado(p.getGanador());
+                ConsultasBD.instancia().modificarMiPersonaje(p.getpGanador(), p.getGanador());
                 VerPartida vp=new VerPartida(ir, true, p, true, ir, false, null,false,null);
                 vp.mostrar();
                 this.setVisible(false);

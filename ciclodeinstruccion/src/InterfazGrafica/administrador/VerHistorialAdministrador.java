@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz en la que se muestra una lista de todas las partidas jugadas
  */
 package InterfazGrafica.administrador;
 
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import InterfazGrafica.registrado.InicioRegistrado;
 import ciclodeinstruccion.Partida;
 import ciclodeinstruccion.Usuarios.Administrador;
@@ -14,10 +12,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author alumno
- */
 public class VerHistorialAdministrador extends javax.swing.JDialog {
 
     /**
@@ -139,7 +133,14 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
     private void jScrollPane1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane1MouseWheelMoved
        this.repaint();
     }//GEN-LAST:event_jScrollPane1MouseWheelMoved
-
+    /**
+     * Muestra una tabla con datos de todas las partidas jugadas
+     */
+    public void mostrar(){
+        
+        tabla1 = new DefaultTableModel(admin.tablaHistorialPartidas(), cabecera);
+        tabla.setModel(tabla1);
+    }
     /**
      * @param args the command line arguments
      */
@@ -182,11 +183,7 @@ public class VerHistorialAdministrador extends javax.swing.JDialog {
         });
     }
     
-    public void mostrar(){
-        
-        tabla1 = new DefaultTableModel(admin.tablaHistorialPartidas(), cabecera);
-        tabla.setModel(tabla1);
-    }
+
     
                    
 

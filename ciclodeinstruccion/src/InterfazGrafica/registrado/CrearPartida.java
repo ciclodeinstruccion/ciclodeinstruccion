@@ -7,7 +7,7 @@ import InterfazGrafica.registrado.InicioRegistrado;
 import ciclodeinstruccion.Partida;
 import ciclodeinstruccion.Usuarios.Registrado;
 import javax.swing.table.DefaultTableModel;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import MiPersonaje.MiAsesino;
 import MiPersonaje.MiFighter;
 import MiPersonaje.MiPersonaje;
@@ -352,10 +352,10 @@ public class CrearPartida extends javax.swing.JDialog {
             }
             else if(JOptionPane.showConfirmDialog(rootPane, "¿Esta seguro que quieres crear la partida?", "Crear partida", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE)==0){
                 Seleccionar.setEnabled(false);
-                Partida p=new Partida(consultasBD.instancia().identificadorPartida()+1, registrado, this.mp);
+                Partida p=new Partida(ConsultasBD.instancia().identificadorPartida()+1, registrado, this.mp);
                 p.comprarPartida();
-                consultasBD.instancia().añadirPArtida(p);
-                consultasBD.instancia().modificarRegistrado(registrado);
+                ConsultasBD.instancia().añadirPArtida(p);
+                ConsultasBD.instancia().modificarRegistrado(registrado);
                 JOptionPane.showMessageDialog(rootPane, "Partida creada con éxito", "Crear partida", JOptionPane.INFORMATION_MESSAGE);
                 this.setVisible(false);
                 ir.mostrar();

@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Panel de inicio
  */
 package InterfazGrafica;
 
@@ -26,10 +24,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
 
-/**
- *
- * @author Rubén
- */
 public class Inicio extends javax.swing.JFrame {
 
     /**
@@ -272,7 +266,7 @@ public class Inicio extends javax.swing.JFrame {
         }
         Registrado r1= new Registrado(0, 1, 500, 0, 0, 0, 0, 0, 0, "Jero", "jero", "aaa", new Date());
         Registrado r2= new Registrado(0, 1, 500, 0, 0, 0, 0, 0, 0, "Jose Luis", "Jose Luis", "aaa", new Date());
-        ArrayList <Personaje> personajes=consultasBD.instancia().todosLosPersonajes();
+        ArrayList <Personaje> personajes=ConsultasBD.instancia().todosLosPersonajes();
         Personaje p1=personajes.get(GeneradorAleatorios.generarAleatorio(9));
         Personaje p2=personajes.get(GeneradorAleatorios.generarAleatorio(9));
         Partida partida=null;

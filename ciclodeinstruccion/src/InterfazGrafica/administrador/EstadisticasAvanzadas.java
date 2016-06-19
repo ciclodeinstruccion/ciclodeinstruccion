@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz en la que se muestran estadísticas sobre las partidas
  */
 package InterfazGrafica.administrador;
 
@@ -10,10 +8,6 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Rubén
- */
 public class EstadisticasAvanzadas extends javax.swing.JDialog {
 
     /**
@@ -124,6 +118,9 @@ public class EstadisticasAvanzadas extends javax.swing.JDialog {
     private void estadisticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estadisticasMouseClicked
         this.repaint();
     }//GEN-LAST:event_estadisticasMouseClicked
+    /**
+     * Muestra una tabla con las estadísticas
+     */
     public void mostrar(){
         cabecera=admin.cabeceraEstadisticas();
         tabla=new DefaultTableModel(this.admin.tablaEstadisticas(), cabecera);

@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz gráfica desde la que se modifican los datos de un personaje
  */
 package InterfazGrafica.administrador;
 
@@ -13,15 +11,11 @@ import Personaje.Tanque;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import Excepciones.ErrorModificarPersonaje;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Rubén
- */
 public class ModificarPersonaje extends javax.swing.JDialog {
 
     /**
@@ -212,7 +206,7 @@ public class ModificarPersonaje extends javax.swing.JDialog {
             vp.setVisible(true);
         }
         try {
-            consultasBD.instancia().modificarPersonaje(this.personaje);
+            ConsultasBD.instancia().modificarPersonaje(this.personaje);
         } catch (ErrorModificarPersonaje ex) {
             Logger.getLogger(ModificarPersonaje.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -247,6 +241,9 @@ public class ModificarPersonaje extends javax.swing.JDialog {
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/volver.png")));
     }//GEN-LAST:event_jButton1MouseEntered
+    /**
+     * Muestra los datos del personaje a modificar
+     */
     public void mostrar(){
         nombre.setText(personaje.getNombre());
         vida.setText(Float.toString(personaje.getVida()));
@@ -270,7 +267,10 @@ public class ModificarPersonaje extends javax.swing.JDialog {
             especial.setText(Float.toString(f.getCritico()));
         }
     }
-    
+    /**
+     * Comprueba si la vida es correcta. Retorna 0 si no lo es
+     * @return vida
+     */
     public float vidaNueva(){
         float vida=0;
         try{
@@ -285,7 +285,10 @@ public class ModificarPersonaje extends javax.swing.JDialog {
         }
         return vida;
     }
-    
+    /**
+     * Comprueba si el daño es correcto.Retorna 0 si no lo es
+     * @return daño
+     */
     public float dañoNuevo(){
         float daño=0;
         try{
@@ -300,7 +303,10 @@ public class ModificarPersonaje extends javax.swing.JDialog {
         }
         return daño;
     }
-    
+    /**
+     * Comprueba si el atributo espeial es correcto. Retorna 0 si no lo es
+     * @return especial
+     */
     public float especialNuevo(){
         float especial=0;
         try{
@@ -322,7 +328,10 @@ public class ModificarPersonaje extends javax.swing.JDialog {
         }
         return especial;  
     }
-    
+    /**
+     * Comprueba si el precio es correcto. Retorna 0 si no lo es
+     * @return precio
+     */
     public int precioNuevo(){
         int precio=0;
         try{

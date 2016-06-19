@@ -1,22 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz gráfica que muestra una lista de todos los usuarios registrados
  */
 package InterfazGrafica.administrador;
 
 import BaseDeDatos.ConexionBD;
 import ciclodeinstruccion.Usuarios.Administrador;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author alumno
- */
 public class VerUsuarios extends javax.swing.JDialog {
 
     /**
@@ -192,7 +186,7 @@ public class VerUsuarios extends javax.swing.JDialog {
 
     private void masInformacionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masInformacionMouseReleased
         if(tablaUsuarios.getSelectedRow()>-1){
-            Registrado r = consultasBD.instancia().buscarRegistrado(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0).toString());
+            Registrado r = ConsultasBD.instancia().buscarRegistrado(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0).toString());
             VerMasUsuarios vmu = new VerMasUsuarios(null, true, r,this);
             vmu.mostrar();
             this.setVisible(false);
@@ -203,7 +197,7 @@ public class VerUsuarios extends javax.swing.JDialog {
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         if(tablaUsuarios.getSelectedRow()>-1){
             
-            Registrado r = consultasBD.instancia().buscarRegistrado(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0).toString()); 
+            Registrado r = ConsultasBD.instancia().buscarRegistrado(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0).toString()); 
             ModificarRegistrado mr = new ModificarRegistrado(null, true, r,this);
             this.setVisible(false);
             mr.setVisible(true);
@@ -257,6 +251,9 @@ public class VerUsuarios extends javax.swing.JDialog {
     private void jScrollPane1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollPane1MouseWheelMoved
         this.repaint();
     }//GEN-LAST:event_jScrollPane1MouseWheelMoved
+    /**
+     * Muestra una tabla con los datos de todos los usuarios
+     */
     public void mostrar(){
         String [][] t=admin.tablaUsuarios();
         tabla=new DefaultTableModel(t, cabecera);

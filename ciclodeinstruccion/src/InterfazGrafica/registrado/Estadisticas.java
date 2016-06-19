@@ -5,7 +5,7 @@ package InterfazGrafica.registrado;
 
 import ciclodeinstruccion.Usuarios.Registrado;
 import org.jfree.data.category.DefaultCategoryDataset;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import MiPersonaje.MiPersonaje;
 import Personaje.Personaje;
 import java.awt.BorderLayout;
@@ -410,7 +410,7 @@ public class Estadisticas extends javax.swing.JDialog {
         if(ver.isEnabled()){
            if(tablaHisto.getSelectedRow()>-1){
                 ver.setEnabled(false);
-                Partida p= consultasBD.instancia().buscarUnaPartidaFinalizadaPorId(Integer.parseInt(tablaHisto.getValueAt(tablaHisto.getSelectedRow(), 0).toString()));
+                Partida p= ConsultasBD.instancia().buscarUnaPartidaFinalizadaPorId(Integer.parseInt(tablaHisto.getValueAt(tablaHisto.getSelectedRow(), 0).toString()));
                 VerPartida vp=new VerPartida(null, true, p, false, null, false, null, true, this);
                 vp.mostrar();
                 this.setVisible(false);
@@ -467,12 +467,12 @@ public class Estadisticas extends javax.swing.JDialog {
     public void mostrar(String nombre){
         barrasPersonajes.removeAll();
         ArrayList <Personaje> personajes=new ArrayList();
-        personajes=consultasBD.instancia().todosLosPersonajes();
+        personajes=ConsultasBD.instancia().todosLosPersonajes();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         MiPersonaje mp=this.registrado.getMisPersonajes().get(this.registrado.buscarMiPersonaje(nombre));
         for(Personaje p:personajes){
-            int jugadas=consultasBD.instancia().jugadasMiPersonaje1(registrado, mp, p.getNombre())+consultasBD.instancia().jugadasMiPersonaje2(registrado, mp, p.getNombre());
-            int ganadas=consultasBD.instancia().ganadasMiPersonaje1(registrado, mp, p.getNombre())+consultasBD.instancia().ganadasMiPersonaje2(registrado, mp, p.getNombre());
+            int jugadas=ConsultasBD.instancia().jugadasMiPersonaje1(registrado, mp, p.getNombre())+ConsultasBD.instancia().jugadasMiPersonaje2(registrado, mp, p.getNombre());
+            int ganadas=ConsultasBD.instancia().ganadasMiPersonaje1(registrado, mp, p.getNombre())+ConsultasBD.instancia().ganadasMiPersonaje2(registrado, mp, p.getNombre());
             int perdidas=jugadas-ganadas;
             dataset.addValue(perdidas, "Perdidas", p.getNombre());
             dataset.addValue(ganadas, "Ganadas", p.getNombre());
@@ -503,8 +503,8 @@ public class Estadisticas extends javax.swing.JDialog {
      * Muestra un gráfico tipo queso con informacion sobre las partidas del usuario
      */
     public void mostrar2(){
-        int jugadas=consultasBD.instancia().jugadasJ1(registrado)+consultasBD.instancia().jugadasJ2(registrado);
-        int ganadas=consultasBD.instancia().partidasGanadas(registrado);
+        int jugadas=ConsultasBD.instancia().jugadasJ1(registrado)+ConsultasBD.instancia().jugadasJ2(registrado);
+        int ganadas=ConsultasBD.instancia().partidasGanadas(registrado);
         DefaultPieDataset pie= new DefaultPieDataset();
         pie.setValue("Ganadas", ganadas);
         pie.setValue("Perdidas", jugadas-ganadas);
@@ -528,7 +528,7 @@ public class Estadisticas extends javax.swing.JDialog {
      * Desactiva los botones de los personajes que no tiene el usuario
      */
     public void mostrar3(){
-        tablaClasi = new DefaultTableModel(consultasBD.instancia().clasificacion(), cabecera);
+        tablaClasi = new DefaultTableModel(ConsultasBD.instancia().clasificacion(), cabecera);
         tabla.setModel(tablaClasi);
         if(registrado.buscarMiPersonaje("Chuck Norris")==-1){
             this.chuckNorris.setEnabled(false);

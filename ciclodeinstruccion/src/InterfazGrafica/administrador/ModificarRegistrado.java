@@ -1,20 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Interfaz desde la que se modifican los datos de un registrado
  */
 package InterfazGrafica.administrador;
 
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 import ciclodeinstruccion.Usuarios.Registrado;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author alumno
- */
 public class ModificarRegistrado extends javax.swing.JDialog {
 
     /**
@@ -30,7 +24,7 @@ public class ModificarRegistrado extends javax.swing.JDialog {
         initComponents();  
         this.setLocationRelativeTo(null);
         
-        if(consultasBD.instancia().estaBaneado(r)){
+        if(ConsultasBD.instancia().estaBaneado(r)){
             banear.setSelected(true);
         }else{
             banear.setSelected(false);
@@ -193,21 +187,21 @@ public class ModificarRegistrado extends javax.swing.JDialog {
         
         if(comprobarActu(nombreNuevo.getText(),correoNuevo.getText(),contraseñaNueva.getText())){
             if(nombreNuevo.getText()!=r.getNombre()){
-                if(consultasBD.instancia().existeNombre(nombreNuevo.getText())==false){
+                if(ConsultasBD.instancia().existeNombre(nombreNuevo.getText())==false){
                     String nombreViejo = r.getNombre();
                     r.setNombre(nombreNuevo.getText());
-                    consultasBD.instancia().cambiarNombreRegistrado(r, nombreViejo);
+                    ConsultasBD.instancia().cambiarNombreRegistrado(r, nombreViejo);
                 }
             }
             if(correoNuevo.getText()!=r.getCorreo()){ 
-                if(!consultasBD.instancia().existeCorreo(correoNuevo.getText())){
+                if(!ConsultasBD.instancia().existeCorreo(correoNuevo.getText())){
                     r.setCorreo(correoNuevo.getText());
-                    consultasBD.instancia().modificarRegistrado(r);
+                    ConsultasBD.instancia().modificarRegistrado(r);
                 }
             }    
             if(contraseñaNueva.getText()!=r.getContraseña()){
                 r.setContraseña(contraseñaNueva.getText());
-                consultasBD.instancia().modificarRegistrado(r);
+                ConsultasBD.instancia().modificarRegistrado(r);
             }
             vu.mostrar();
             this.setVisible(false);
@@ -235,10 +229,10 @@ public class ModificarRegistrado extends javax.swing.JDialog {
 
     private void banearMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_banearMouseReleased
         if(!banear.isSelected()){
-            consultasBD.instancia().desbanearRegistrado(r);
+            ConsultasBD.instancia().desbanearRegistrado(r);
             
         }else{
-            consultasBD.instancia().banearRegistrado(r);
+            ConsultasBD.instancia().banearRegistrado(r);
             
         }
         
@@ -268,18 +262,24 @@ public class ModificarRegistrado extends javax.swing.JDialog {
     private void modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseEntered
         modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones/Hover/modificar.png")));
     }//GEN-LAST:event_modificarMouseEntered
-
+    /**
+     * Comprueba si los datos son válidos
+     * @param nombre
+     * @param correo
+     * @param contraseña
+     * @return 
+     */
     public boolean comprobarActu(String nombre, String correo, String contraseña){
         boolean correcto=true;
         if(nombre.equals("")||correo.equals("")||contraseña.equals("")){
             correcto=false;
             JOptionPane.showMessageDialog(rootPane, "Los datos de registro no son válidos", "Registrarse", JOptionPane.WARNING_MESSAGE);
         }
-        else if(consultasBD.instancia().existeNombre(nombre)){
+        else if(ConsultasBD.instancia().existeNombre(nombre)){
             correcto=false;
             JOptionPane.showMessageDialog(rootPane, "Ya existe un usuario registrado con este nombre", "Registrarse", JOptionPane.WARNING_MESSAGE);
         }
-        else if(consultasBD.instancia().existeCorreo(correo)){
+        else if(ConsultasBD.instancia().existeCorreo(correo)){
             correcto=false;
             JOptionPane.showMessageDialog(rootPane, "Ya existe un usuario registrado con este correo", "Registrarse", JOptionPane.WARNING_MESSAGE);
         }

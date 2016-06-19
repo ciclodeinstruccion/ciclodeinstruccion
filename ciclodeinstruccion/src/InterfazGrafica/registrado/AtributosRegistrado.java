@@ -4,7 +4,7 @@
 package InterfazGrafica.registrado;
 
 import ciclodeinstruccion.Usuarios.Registrado;
-import BaseDeDatos.consultasBD;
+import BaseDeDatos.ConsultasBD;
 
 public class AtributosRegistrado extends javax.swing.JDialog {
 
@@ -381,7 +381,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void masFuerzaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masFuerzaMouseReleased
         if(masFuerza.isEnabled()){
             registrado.modificarFuerza();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);
@@ -391,7 +391,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void masVitalidadMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masVitalidadMouseReleased
         if(masVitalidad.isEnabled()){
             registrado.modificarVitalidad();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -402,7 +402,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void masEspecialMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masEspecialMouseReleased
         if(masEspecial.isEnabled()){
             registrado.modificarEspecial();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -413,7 +413,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void masInteligenciaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masInteligenciaMouseReleased
         if(masInteligencia.isEnabled()){
             registrado.modificarInteligencia();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -424,7 +424,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void menosVitalidadMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosVitalidadMouseReleased
         if(menosVitalidad.isEnabled()){
             registrado.disminuirVidalidad();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -435,7 +435,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void menosFuerzaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosFuerzaMouseReleased
         if(menosFuerza.isEnabled()){
             registrado.disminuirFuerza();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -446,7 +446,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void menosEspecialMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosEspecialMouseReleased
         if(menosEspecial.isEnabled()){
             registrado.disminuirEspecial();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
@@ -457,7 +457,7 @@ public class AtributosRegistrado extends javax.swing.JDialog {
     private void menosInteligenciaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosInteligenciaMouseReleased
         if(menosInteligencia.isEnabled()){
             registrado.disminuirInteligencia();
-            consultasBD.instancia().modificarRegistrado(registrado);
+            ConsultasBD.instancia().modificarRegistrado(registrado);
             //this.setVisible(false);
             this.mostrar();
             this.setVisible(true);    
