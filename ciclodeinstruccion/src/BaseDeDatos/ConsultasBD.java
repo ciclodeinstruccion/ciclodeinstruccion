@@ -1,5 +1,5 @@
 /**
- * Clase
+ * Clase que contiene las consultas SQL
  */
 package BaseDeDatos;
 
